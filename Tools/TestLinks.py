@@ -75,6 +75,6 @@ def main(directories):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print(f"Usage: {Path(sys.executable).with_suffix("").name} {os.path.basename(sys.argv[0])} <directory>")
+        print(f"Usage: {Path(sys.executable).with_suffix('').name} {os.path.basename(sys.argv[0])} <directory>")
     else:
         main(sys.argv[1:])
