@@ -30,4 +30,5 @@ jobs:
         shell: pwsh
         run: |
           python3 .\Tools\TestLinks.py manifests
+          python3 .\Tools\TestInstall.py manifests
 

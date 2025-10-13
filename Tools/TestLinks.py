@@ -58,7 +58,6 @@ def check_url(url):
     return result
 
 def main(directories):
-    all_results = []
     seen = set()
 
     for directory in directories:
@@ -72,7 +71,6 @@ def main(directories):
                     result = check_url(url)
                     print(f"HEAD: {result['HEAD']}")
                     print(f"GET:  {result['GET']}")
-                    all_results.append(result)
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
