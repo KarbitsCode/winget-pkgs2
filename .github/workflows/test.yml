@@ -21,6 +21,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5.0.0
 
+      - name: Set up python packages
+        shell: pwsh
+        run: |
+          pip install requests
+
       - name: Run python scripts
         shell: pwsh
         run: |
