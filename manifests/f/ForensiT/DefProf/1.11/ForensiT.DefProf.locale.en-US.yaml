@@ -1,0 +1,27 @@
+# Created using wingetcreate 1.9.4.0
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.9.0.schema.json
+
+PackageIdentifier: ForensiT.DefProf
+PackageVersion: "1.11"
+PackageLocale: en-US
+Publisher: ForensiT
+PublisherUrl: https://www.forensit.com/
+PublisherSupportUrl: https://www.forensit.com/support.html
+PrivacyUrl: https://www.forensit.com/privacy_statement.html
+PackageName: ForensiT DefProf
+PackageUrl: https://www.forensit.com/downloads.html
+License: Freeware
+LicenseUrl: https://www.forensit.com/DefProf/END-USER%20LICENSE%20AGREEMENT.rtf
+Copyright: Copyright © ForensiT Software Ltd. All rights reserved.
+CopyrightUrl: https://www.forensit.com/company.html
+ShortDescription: DefProf - Seamlessly sync your default Windows profile with ease.
+Description: DefProf updates the Default Windows User Profile with the documents and settings from another user profile that you specify. You can use DefProf on Windows 7 where the "Copy To" button is greyed out in the "User Profiles" dialog box.
+Moniker: defprof
+Tags:
+- default
+- profile
+- admin
+- update
+- command
+ManifestType: defaultLocale
+ManifestVersion: 1.9.0

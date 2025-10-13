@@ -1,0 +1,19 @@
+# Created using wingetcreate 1.9.4.0
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.9.0.schema.json
+
+PackageIdentifier: ForensiT.DefProf
+PackageVersion: "1.11"
+InstallerLocale: en-US
+InstallerType: msi
+NestedInstallerType: portable
+NestedInstallerFiles:
+- RelativeFilePath: \APPDIR\Defprof.exe
+  PortableCommandAlias: defprof
+ArchiveBinariesDependOnPath: true
+ProductCode: '{5270FF71-D83F-41B5-B47D-191D689D6BEE}'
+Installers:
+- Architecture: x86
+  InstallerUrl: https://www.forensit.com/Downloads/DefProf.msi
+  InstallerSha256: 83E440B791AE26F70B70EA58D9A28DF4D5B77734F616A86DC77E50F455A03CAF
+ManifestType: installer
+ManifestVersion: 1.9.0

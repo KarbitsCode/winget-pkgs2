@@ -1,0 +1,30 @@
+# Created using wingetcreate 1.6.4.0
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.9.0.schema.json
+
+PackageIdentifier: BandicamCompany.Bandicut
+PackageVersion: 3.6.1.639
+PackageLocale: en-US
+Publisher: Bandicam.com
+PublisherUrl: https://www.bandicam.com/
+PublisherSupportUrl: https://www.bandicam.com/faqs/
+PrivacyUrl: https://www.bandicam.com/company/privacy/
+Author: Bandicam Company
+PackageName: Bandicut
+PackageUrl: https://www.bandicam.com/bandicut-video-cutter/
+License: Shareware
+LicenseUrl: https://www.bandicam.com/company/tos/
+Copyright: Copyright (c) 2008-2020 Bandicam Company. All rights reserved.
+CopyrightUrl: https://www.bandicam.com/company/tos/
+ShortDescription: Bandicut is super fast video-cutting and joining software with an easy-to-use interface.
+Descriptions: |-
+  Bandicut is super fast video-cutting and joining software with an easy-to-use interface.
+  It allows users to trim parts of a video quickly while maintaining the quality of the original video.
+  Users can also extract audio from video to MP3, join multiple video files, remove one or more parts from the video, or split the video into multiple files.
+Moniker: bandicut
+Tags:
+- cut
+- video
+- video-editing
+ReleaseNotesUrl: https://www.bandicam.com/bandicut-video-cutter/history/
+ManifestType: defaultLocale
+ManifestVersion: 1.9.0

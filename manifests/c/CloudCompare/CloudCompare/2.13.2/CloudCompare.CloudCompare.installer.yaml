@@ -1,0 +1,17 @@
+# Created using wingetcreate 1.10.3.0
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.10.0.schema.json
+
+PackageIdentifier: CloudCompare.CloudCompare
+PackageVersion: 2.13.2
+InstallerLocale: en-US
+InstallerType: inno
+AppsAndFeaturesEntries:
+- DisplayName: CloudCompare 2.13.2 (07-06-2024)
+  DisplayVersion: 2.13.2 (07-06-2024)
+Installers:
+- Architecture: x64
+  InstallerUrl: https://cloudcompare.org/release/CloudCompare_v2.13.2_setup_x64.exe
+  InstallerSha256: 2384FAAABDC10BA11D64652B324724481CBA6E2634CE5D1D95B2F9AC457DC163
+ManifestType: installer
+ManifestVersion: 1.10.0
+ReleaseDate: 2024-07-08
