@@ -43,6 +43,7 @@ jobs:
         shell: pwsh
         run: |
           winget --info
+          winget source remove msstore
 
       - name: Run python scripts
         shell: pwsh
