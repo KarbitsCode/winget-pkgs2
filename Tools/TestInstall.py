@@ -22,7 +22,7 @@ def test_install(directory):
 
     ps_script = Path(os.path.dirname(__file__)) / "Bootstrap.ps1"
     print(f"\n[INSTALL] Running {ps_script} ...")
-    install_proc = run_powershell(ps_script, directory, "-WinGetOptions \"--accept-package-agreements --accept-source-agreements --disable-interactivity\"")
+    install_proc = run_powershell(ps_script, directory, "-WinGetOptions", "--accept-package-agreements --accept-source-agreements --disable-interactivity")
 
     if install_proc.returncode != 0:
         print("PowerShell script failed.")
@@ -36,27 +36,36 @@ def test_install(directory):
         print("PowerShell did not write the JSON output.")
         return {"INST": install_success, "UNINST": uninstall_success}
     try:
-        data = json.loads(tmp_json.read_text(encoding="utf-8"))
+        data = json.loads(tmp_json.read_text(encoding="utf-8-sig"))
     except Exception as e:
         print("Failed to parse JSON: ", e)
         return {"INST": install_success, "UNINST": uninstall_success}
 
-    product_code = data.get("ProductCode")
-    if not product_code:
+    # Ensure data is always a list
+    if isinstance(data, dict):
+        data = [data]
+    elif not isinstance(data, list):
+        print("Unexpected JSON format from PowerShell.")
+        return {"INST": True, "UNINST": False}
+
+    # Extract unique product codes from json
+    product_codes = sorted(set(d["ProductCode"] for d in data if d.get("ProductCode")))
+
+    if not product_codes:
         print("No ProductCode found in PowerShell output.")
-        return {"INST": install_success, "UNINST": uninstall_success}
+        return {"INST": True, "UNINST": False}
 
-    print(f"Installation completed. Found ProductCode: {product_code}")
+    print(f"Installation completed. Found ProductCode(s): {product_codes}")
 
-    # Try uninstalling the package via winget
-    print(f"[UNINSTALL] Running: winget uninstall {product_code}")
-    proc = subprocess.run(["winget", "uninstall", product_code])
-    uninstall_success = proc.returncode == 0
-
-    if uninstall_success:
-        print(f"Uninstall succeeded for {product_code}")
-    else:
-        print(f"Uninstall failed for {product_code}")
+    uninstall_success = True
+    for product_code in product_codes:
+        print(f"[UNINSTALL] Running: winget uninstall {product_code}")
+        proc = subprocess.run(["winget", "uninstall", product_code])
+        if proc.returncode == 0:
+            print(f"Uninstall succeeded for {product_code}")
+        else:
+            print(f"Uninstall failed for {product_code}")
+            uninstall_success = False
 
     return {"INST": install_success, "UNINST": uninstall_success}
 
