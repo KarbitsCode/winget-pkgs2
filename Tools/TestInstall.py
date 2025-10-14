@@ -22,7 +22,7 @@ def test_install(directory):
 
     ps_script = Path(os.path.dirname(__file__)) / "Bootstrap.ps1"
     print(f"\n[INSTALL] Running {ps_script} ...")
-    install_proc = run_powershell(ps_script, directory)
+    install_proc = run_powershell(ps_script, directory, "-WinGetOptions \"--accept-package-agreements --accept-source-agreements --disable-interactivity\"")
 
     if install_proc.returncode != 0:
         print("PowerShell script failed.")

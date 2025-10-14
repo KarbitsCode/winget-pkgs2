@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  test:
+  test-links:
     runs-on: windows-latest
     permissions:
       contents: read
@@ -30,5 +30,22 @@ jobs:
         shell: pwsh
         run: |
           python3 .\Tools\TestLinks.py manifests
+
+  test-install:
+    runs-on: windows-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5.0.0
+
+      - name: Set up python packages
+        shell: pwsh
+        run: |
+          pip install requests
+
+      - name: Run python scripts
+        shell: pwsh
+        run: |
           python3 .\Tools\TestInstall.py manifests
 
