@@ -47,23 +47,18 @@ Write-Host @'
 winget settings --Enable LocalManifestFiles
 winget settings --Enable LocalArchiveMalwareScanOverride
 
-$paths = @(
-  "$env:LOCALAPPDATA\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\LocalState\settings.json",
-  "$env:LOCALAPPDATA\Microsoft\WinGet\Settings\settings.json"
-)
+$p = (winget settings export | ConvertFrom-Json).userSettingsFile
 
 if ($DisableSpinner) {
-  foreach ($p in $paths) {
-    if (Test-Path $p) {
-      Copy-Item $p "$p.bak" -Force
-      $raw = Get-Content $p -Raw
-      # Remove line comments
-      $raw = $raw -replace '(?m)^\s*//.*$' -replace ',(\s*[}\]])', '$1'
-      $j = $raw | ConvertFrom-Json
-      if (-not $j.visual) { $j.visual = @{} }
-      $j.visual.progressBar = 'disabled'
-      $j | ConvertTo-Json -Depth 10 | Set-Content $p -Encoding UTF8
-    }
+  if (Test-Path $p) {
+    Copy-Item $p "$p.bak" -Force
+    $raw = Get-Content $p -Raw
+    # Remove line comments
+    $raw = $raw -replace '(?m)^\s*//.*$' -replace ',(\s*[}\]])', '$1'
+    $j = $raw | ConvertFrom-Json
+    if (-not $j.visual) { $j.visual = @{} }
+    $j.visual.progressBar = 'disabled'
+    $j | ConvertTo-Json -Depth 10 | Set-Content $p -Encoding UTF8
   }
 }
 
@@ -100,11 +95,9 @@ $diff | Format-Table -Wrap
 $diff | ConvertTo-Json -Compress | Set-Content -Path "$([System.IO.Path]::GetTempPath())\arp.json" -Encoding UTF8
 
 # Restore the settings
-foreach ($p in $paths) {
-  if (Test-Path $p) {
-    if (Test-Path "$p.bak") {
-      Move-Item "$p.bak" $p -Force
-    }
+if (Test-Path $p) {
+  if (Test-Path "$p.bak") {
+    Move-Item "$p.bak" $p -Force
   }
 }
 
