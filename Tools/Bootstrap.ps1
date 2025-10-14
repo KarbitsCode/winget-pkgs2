@@ -1,6 +1,8 @@
 Param(
   [Parameter(Position = 0, HelpMessage = 'The Manifest to install in the Sandbox.')]
   [String] $Manifest,
+  [Parameter(HelpMessage = 'Disable spinner animation when installing package (for CI)')]
+  [switch] $DisableSpinner,
   [Parameter(HelpMessage = 'Additional options for WinGet')]
   [string] $WinGetOptions
 )
@@ -45,6 +47,26 @@ Write-Host @'
 winget settings --Enable LocalManifestFiles
 winget settings --Enable LocalArchiveMalwareScanOverride
 
+$paths = @(
+  "$env:LOCALAPPDATA\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\LocalState\settings.json",
+  "$env:LOCALAPPDATA\Microsoft\WinGet\Settings\settings.json"
+)
+
+if ($DisableSpinner) {
+  foreach ($p in $paths) {
+    if (Test-Path $p) {
+      Copy-Item $p "$p.bak" -Force
+      $raw = Get-Content $p -Raw
+      # Remove line comments
+      $raw = $raw -replace '(?m)^\s*//.*$' -replace ',(\s*[}\]])', '$1'
+      $j = $raw | ConvertFrom-Json
+      if (-not $j.visual) { $j.visual = @{} }
+      $j.visual.progressBar = 'disabled'
+      $j | ConvertTo-Json -Depth 10 | Set-Content $p -Encoding UTF8
+    }
+  }
+}
+
 $originalARP = Get-ARPTable
 $geoID = (Get-WinHomeLocation).GeoID
 Set-WinHomeLocation -GeoID $geoID
@@ -76,3 +98,13 @@ Write-Host @'
 $diff = (Compare-Object (Get-ARPTable) $originalARP -Property DisplayName,DisplayVersion,Publisher,ProductCode,Scope)| Select-Object -Property * -ExcludeProperty SideIndicator
 $diff | Format-Table -Wrap
 $diff | ConvertTo-Json -Compress | Set-Content -Path "$([System.IO.Path]::GetTempPath())\arp.json" -Encoding UTF8
+
+# Restore the settings
+foreach ($p in $paths) {
+  if (Test-Path $p) {
+    if (Test-Path "$p.bak") {
+      Move-Item "$p.bak" $p -Force
+    }
+  }
+}
+
