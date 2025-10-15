@@ -35,14 +35,18 @@ jobs:
 
           if (-not $changed) {
             Write-Host "No manifest changes detected"
-            echo "folder=manifests" >> $env:GITHUB_OUTPUT
-            exit 0
+            if ($env:GITHUB_EVENT_NAME -eq "workflow_dispatch") {
+              $folder = "manifests"
+            } else {
+              $folder = ""
+            }
+          } else {
+            # Extract the top-level changed folder under manifests/
+            $folder = $changed | ForEach-Object { Split-Path $_ -Parent } | Sort-Object -Unique
+            Write-Host "Folder changed under manifests: $folder"
           }
-
-          # Extract the top-level changed folder under manifests/
-          $folder = $changed | ForEach-Object { Split-Path $_ -Parent } | Sort-Object -Unique
+      
           echo "folder=$folder" >> $env:GITHUB_OUTPUT
-          Write-Host "Folder changed under manifests: $folder"
 
       - name: Run python scripts
         if: steps.detect.outputs.folder != ''
@@ -73,14 +77,14 @@ jobs:
 
           if (-not $changed) {
             Write-Host "No manifest changes detected"
-            echo "folder=" >> $env:GITHUB_OUTPUT
-            exit 0
+            $folder = ""
+          } else {
+            # Extract the top-level changed folder under manifests/
+            $folder = $changed | ForEach-Object { Split-Path $_ -Parent } | Sort-Object -Unique
+            Write-Host "Folder changed under manifests: $folder"
           }
-
-          # Extract the top-level changed folder under manifests/
-          $folder = $changed | ForEach-Object { Split-Path $_ -Parent } | Sort-Object -Unique
+      
           echo "folder=$folder" >> $env:GITHUB_OUTPUT
-          Write-Host "Folder changed under manifests: $folder"
 
       - name: Run python scripts
         if: steps.detect.outputs.folder != ''
