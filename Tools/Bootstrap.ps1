@@ -26,6 +26,38 @@ function Get-ARPTable {
       Select-Object DisplayName, DisplayVersion, Publisher, @{N='ProductCode'; E={$_.PSChildName}}, @{N='Scope'; E={if($_.PSDrive.Name -eq 'HKCU') {'User'} else {'Machine'}}}
 }
 
+# https://gist.github.com/asheroto/96bcabe428e8ad134ef204573810041f
+function Strip-Progress {
+  param(
+    [ScriptBlock]$ScriptBlock
+  )
+
+  # Regex pattern to match spinner characters and progress bar patterns
+  $progressPattern = 'Γû[Æê]|^\s+[-\\|/]\s+$'
+
+  # Corrected regex pattern for size formatting, ensuring proper capture groups are utilized
+  $sizePattern = '(\d+(\.\d{1,2})?)\s+(B|KB|MB|GB|TB|PB) /\s+(\d+(\.\d{1,2})?)\s+(B|KB|MB|GB|TB|PB)'
+
+  $previousLineWasEmpty = $false # Track if the previous line was empty
+
+  & $ScriptBlock 2>&1 | ForEach-Object {
+    if ($_ -is [System.Management.Automation.ErrorRecord]) {
+      "ERROR: $($_.Exception.Message)"
+    } elseif ($_ -match '^\s*$') {
+      if (-not $previousLineWasEmpty) {
+        Write-Output ""
+        $previousLineWasEmpty = $true
+      }
+    } else {
+      $line = $_ -replace $progressPattern, '' -replace $sizePattern, '$1 $3 / $4 $6'
+      if (-not [string]::IsNullOrWhiteSpace($line)) {
+        $previousLineWasEmpty = $false
+        $line
+      }
+    }
+  }
+}
+
 Write-Host @'
 --> Installing WinGet
 '@
@@ -78,7 +110,12 @@ Write-Host @"
 --> Installing the Manifest $manifestFileName
 
 "@
-winget install --manifest $Manifest --verbose-logs --ignore-local-archive-malware-scan --dependency-source winget @($WinGetOptions -split ' ')
+$scriptBlock = { winget install --manifest $Manifest --verbose-logs --ignore-local-archive-malware-scan --dependency-source winget @($WinGetOptions -split ' ') }
+if ($DisableSpinner -or $env:GITHUB_ACTIONS) {
+  Strip-Progress -ScriptBlock $scriptBlock
+} else {
+  & $scriptBlock
+}
 
 Write-Host @'
 

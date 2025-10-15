@@ -33,9 +33,6 @@ def test_install(directory):
         print("PowerShell script failed.")
         return {"INST": install_success, "UNINST": uninstall_success}
 
-    # If we got to this point, the install should be a success
-    install_success = True
-
     # Read JSON diff result from PowerShell
     if not tmp_json.exists():
         print("PowerShell did not write the JSON output.")
@@ -51,23 +48,24 @@ def test_install(directory):
         data = [data]
     elif not isinstance(data, list):
         print("Unexpected JSON format from PowerShell.")
-        return {"INST": True, "UNINST": False}
+        return {"INST": install_success, "UNINST": uninstall_success}
 
     # Extract unique product codes from json
     product_codes = sorted(set(d["ProductCode"] for d in data if d.get("ProductCode")))
 
     if not product_codes:
         print("No ProductCode found in PowerShell output.")
-        return {"INST": True, "UNINST": False}
+        return {"INST": install_success, "UNINST": uninstall_success}
 
     print(f"Installation completed. Found ProductCode(s): {product_codes}")
+    install_success = True
 
-    uninstall_success = True
     for product_code in product_codes:
         print(f"[UNINSTALL] Running: winget uninstall {product_code}")
         proc = subprocess.run(["winget", "uninstall", product_code])
         if proc.returncode == 0:
             print(f"Uninstall succeeded for {product_code}")
+            uninstall_success = True
         else:
             print(f"Uninstall failed for {product_code}")
             uninstall_success = False
