@@ -21,8 +21,13 @@ def test_install(directory):
         tmp_json.unlink()
 
     ps_script = Path(os.path.dirname(__file__)) / "Bootstrap.ps1"
-    print(f"\n[INSTALL] Running {ps_script} ...")
-    install_proc = run_powershell(ps_script, directory, "-DisableSpinner", "-WinGetOptions", "--accept-package-agreements --accept-source-agreements --disable-interactivity")
+    ps_args = []
+    ps_args.append("-WinGetOptions")
+    ps_args.append("--accept-package-agreements --accept-source-agreements --disable-interactivity")
+    if os.getenv("GITHUB_ACTIONS"):
+        ps_args.append("-DisableSpinner")
+    print(f"\n[INSTALL] Running {ps_script} with {ps_args}")
+    install_proc = run_powershell(ps_script, directory, *ps_args)
 
     if install_proc.returncode != 0:
         print("PowerShell script failed.")
@@ -77,8 +82,8 @@ def main(directories):
             folder = file_path.parent
             if folder not in seen:
                 seen.add(folder)
-                print(f"\nFolder: {folder}")
                 result = test_install(folder)
+                print(f"\nFolder: {folder}")
                 print(f"Install succeed: {result['INST']}")
                 print(f"Uninstall succeed: {result['UNINST']}")
 
