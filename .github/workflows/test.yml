@@ -40,7 +40,7 @@ jobs:
           }
 
           # Extract the top-level changed folder under manifests/
-          $folder = ($changed | ForEach-Object { ($_ -split '/')[0..1] -join '/' } | Select-Object -Unique)[0]
+          $folder = $changed | ForEach-Object { Split-Path $_ -Parent } | Sort-Object -Unique
           echo "folder=$folder" >> $env:GITHUB_OUTPUT
           Write-Host "Folder changed under manifests: $folder"
 
@@ -78,7 +78,7 @@ jobs:
           }
 
           # Extract the top-level changed folder under manifests/
-          $folder = ($changed | ForEach-Object { ($_ -split '/')[0..1] -join '/' } | Select-Object -Unique)[0]
+          $folder = $changed | ForEach-Object { Split-Path $_ -Parent } | Sort-Object -Unique
           echo "folder=$folder" >> $env:GITHUB_OUTPUT
           Write-Host "Folder changed under manifests: $folder"
 
