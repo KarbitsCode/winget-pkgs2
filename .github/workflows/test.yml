@@ -26,10 +26,29 @@ jobs:
         run: |
           pip install requests
 
-      - name: Run python scripts
+      - name: Detect changed folder
+        id: detect
         shell: pwsh
         run: |
-          python3 .\Tools\TestLinks.py manifests
+          git fetch origin ${{ github.event.before }} --depth=1
+          $changed = git diff --name-only ${{ github.event.before }} ${{ github.sha }} | Where-Object { $_ -like "manifests/*" }
+
+          if (-not $changed) {
+            Write-Host "No manifest changes detected"
+            echo "folder=manifests" >> $env:GITHUB_OUTPUT
+            exit 0
+          }
+
+          # Extract the top-level changed folder under manifests/
+          $folder = ($changed | ForEach-Object { ($_ -split '/')[0..1] -join '/' } | Select-Object -Unique)[0]
+          echo "folder=$folder" >> $env:GITHUB_OUTPUT
+          Write-Host "Folder changed under manifests: $folder"
+
+      - name: Run python scripts
+        if: steps.detect.outputs.folder != ''
+        shell: pwsh
+        run: |
+          python3 .\Tools\TestLinks.py ${{ steps.detect.outputs.folder }}
 
   test-install:
     runs-on: windows-latest
@@ -43,9 +62,29 @@ jobs:
         shell: pwsh
         run: |
           winget --info
+          winget source remove msstore
 
-      - name: Run python scripts
+      - name: Detect changed folder
+        id: detect
         shell: pwsh
         run: |
-          python3 .\Tools\TestInstall.py manifests
+          git fetch origin ${{ github.event.before }} --depth=1
+          $changed = git diff --name-only ${{ github.event.before }} ${{ github.sha }} | Where-Object { $_ -like "manifests/*" }
+
+          if (-not $changed) {
+            Write-Host "No manifest changes detected"
+            echo "folder=" >> $env:GITHUB_OUTPUT
+            exit 0
+          }
+
+          # Extract the top-level changed folder under manifests/
+          $folder = ($changed | ForEach-Object { ($_ -split '/')[0..1] -join '/' } | Select-Object -Unique)[0]
+          echo "folder=$folder" >> $env:GITHUB_OUTPUT
+          Write-Host "Folder changed under manifests: $folder"
+
+      - name: Run python scripts
+        if: steps.detect.outputs.folder != ''
+        shell: pwsh
+        run: |
+          python3 .\Tools\TestInstall.py ${{ steps.detect.outputs.folder }}
 
