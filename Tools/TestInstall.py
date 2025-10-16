@@ -26,6 +26,7 @@ def test_install(directory):
     ps_args.append("--accept-package-agreements --accept-source-agreements --disable-interactivity")
     if os.getenv("GITHUB_ACTIONS"):
         ps_args.append("-DisableSpinner")
+    ps_args.append("-AutoUninstall")
     print(f"\n[INSTALL] Running {ps_script} with {ps_args}")
     install_proc = run_powershell(ps_script, directory, *ps_args)
 
@@ -33,7 +34,7 @@ def test_install(directory):
         print("PowerShell script failed.")
         return {"INST": install_success, "UNINST": uninstall_success}
 
-    # Read JSON diff result from PowerShell
+    # Read JSON result from PowerShell
     if not tmp_json.exists():
         print("PowerShell did not write the JSON output.")
         return {"INST": install_success, "UNINST": uninstall_success}
@@ -43,32 +44,11 @@ def test_install(directory):
         print("Failed to parse JSON: ", e)
         return {"INST": install_success, "UNINST": uninstall_success}
 
-    # Ensure data is always a list
-    if isinstance(data, dict):
-        data = [data]
-    elif not isinstance(data, list):
-        print("Unexpected JSON format from PowerShell.")
-        return {"INST": install_success, "UNINST": uninstall_success}
-
-    # Extract unique product codes from json
-    product_codes = sorted(set(d["ProductCode"] for d in data if d.get("ProductCode")))
-
-    if not product_codes:
-        print("No ProductCode found in PowerShell output.")
-        return {"INST": install_success, "UNINST": uninstall_success}
-
-    print(f"Installation completed. Found ProductCode(s): {product_codes}")
-    install_success = True
-
-    for product_code in product_codes:
-        print(f"[UNINSTALL] Running: winget uninstall {product_code}")
-        proc = subprocess.run(["winget", "uninstall", product_code])
-        if proc.returncode == 0:
-            print(f"Uninstall succeeded for {product_code}")
+    if data["InstallResult"]["ExitCode"] == 0:
+        install_success = True
+    for item in data["UninstallResult"]:
+        if item["ExitCode"] == 0:
             uninstall_success = True
-        else:
-            print(f"Uninstall failed for {product_code}")
-            uninstall_success = False
 
     return {"INST": install_success, "UNINST": uninstall_success}
 

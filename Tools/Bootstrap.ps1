@@ -3,6 +3,8 @@ Param(
   [String] $Manifest,
   [Parameter(HelpMessage = 'Disable spinner animation when installing package (for CI)')]
   [switch] $DisableSpinner,
+  [Parameter(HelpMessage = 'Automatically uninstall newly installed package')]
+  [switch] $AutoUninstall,
   [Parameter(HelpMessage = 'Additional options for WinGet')]
   [string] $WinGetOptions
 )
@@ -111,11 +113,12 @@ Write-Host @"
 
 "@
 $scriptBlock = { winget install --manifest $Manifest --verbose-logs --ignore-local-archive-malware-scan --dependency-source winget @($WinGetOptions -split ' ') }
-if ($DisableSpinner -or $env:GITHUB_ACTIONS) {
+if ($env:GITHUB_ACTIONS) {
   Strip-Progress -ScriptBlock $scriptBlock
 } else {
   & $scriptBlock
 }
+$installResult = @{ ExitCode = $LASTEXITCODE }
 
 Write-Host @'
 
@@ -129,7 +132,36 @@ Write-Host @'
 '@
 $diff = (Compare-Object (Get-ARPTable) $originalARP -Property DisplayName,DisplayVersion,Publisher,ProductCode,Scope)| Select-Object -Property * -ExcludeProperty SideIndicator
 $diff | Format-Table -Wrap
-$diff | ConvertTo-Json -Compress | Set-Content -Path "$([System.IO.Path]::GetTempPath())\arp.json" -Encoding UTF8
+
+if ($AutoUninstall) {
+Write-Host @"
+
+--> Uninstalling the Manifest $manifestFileName
+
+"@
+  $uninstallResult = @()
+  foreach ($item in $diff) {
+    $code = $item.ProductCode
+    if ($code -ne $null) {
+      $scriptBlock = { winget uninstall $code }
+      if ($env:GITHUB_ACTIONS) {
+        Strip-Progress -ScriptBlock $scriptBlock
+      } else {
+        & $scriptBlock
+      }
+      $uninstallResult += [PSCustomObject]@{
+        ProductCode = $code
+        ExitCode = $LASTEXITCODE
+      }
+    }
+  }
+}
+
+[PSCustomObject]@{
+  InstallResult = $installResult
+  ARPDiff = $diff
+  UninstallResult = $uninstallResult
+} | ConvertTo-Json -Compress | Set-Content -Path "$([System.IO.Path]::GetTempPath())\arp.json" -Encoding UTF8
 
 # Restore the settings
 if (Test-Path $p) {
