@@ -2,6 +2,8 @@ import re
 import os
 import sys
 import uuid
+import yaml
+import hashlib
 import requests
 import tempfile
 from pathlib import Path
@@ -11,6 +13,30 @@ def extract_urls_from_file(file_path):
     text = Path(file_path).read_text(encoding="utf-8", errors="ignore")
     url_pattern = re.compile(r"https?://[^\s'\"<>]+")
     return url_pattern.findall(text)
+
+def sha256sum(data):
+    """Compute SHA256 hash of given bytes."""
+    sha256 = hashlib.sha256()
+    sha256.update(data)
+    return sha256.hexdigest().upper()
+
+def check_hash(file_path, url, response):
+    """Checks in installer.yml has installers hash match"""
+    if file_path.name.endswith((".installer.yml", ".installer.yaml")):
+        with open(file_path.resolve(), "r", encoding="utf-8") as f:
+            data = yaml.safe_load(f)
+        installers = data.get("Installers", [])
+        for installer in installers:
+            if url != installer.get("InstallerUrl"):
+                continue
+            actual = sha256sum(response.content)
+            expected = installer.get("InstallerSha256")
+            print(f"Expected: {expected}")
+            print(f"Actual:   {actual}")
+            if actual == expected:
+                print("Installer hash match")
+            else:
+                print("Installer hash mismatch!")
 
 def dump_response(prefix, response):
     """Dump response to %TEMP% with random filename."""
@@ -38,7 +64,7 @@ def dump_response(prefix, response):
         except Exception as e:
             print(f"Failed to write meta file: {e}")
 
-def check_url(url):
+def check_url(url, file_path):
     """Check a URL with HEAD and GET requests."""
     result = {"url": url}
     try:
@@ -52,6 +78,7 @@ def check_url(url):
         resp = requests.get(url, timeout=10, allow_redirects=True)
         result["GET"] = resp.status_code
         if resp.ok:
+            check_hash(file_path, url, resp)
             dump_response("GET", resp)
     except Exception as e:
         result["GET"] = f"Error: {e}"
@@ -68,7 +95,7 @@ def main(directories):
                     seen.add(url)
                     print(f"\nFile: {file_path}")
                     print(f"URL:  {url}")
-                    result = check_url(url)
+                    result = check_url(url, file_path)
                     print(f"HEAD: {result['HEAD']}")
                     print(f"GET:  {result['GET']}")
 
