@@ -74,18 +74,9 @@ def main(directories):
             folder = file_path.parent
             if folder not in seen:
                 seen.add(folder)
-                if has_two_arch(folder):
-                    result = test_install(folder, "-a x86")
-                    print(f"\nFolder: {folder} (x86)")
-                    print(f"Install succeed: {result['INST']}")
-                    print(f"Uninstall succeed: {result['UNINST']}")
-                    result = test_install(folder, "-a x64")
-                    print(f"\nFolder: {folder} (x64)")
-                    print(f"Install succeed: {result['INST']}")
-                    print(f"Uninstall succeed: {result['UNINST']}")
-                else:
-                    result = test_install(folder)
-                    print(f"\nFolder: {folder}")
+                for arch in ["x86", "x64"] if has_two_arch(folder) else [None]:
+                    result = test_install(folder, f"-a {arch}" if arch else "")
+                    print(f"\nFolder: {folder}" + (f" ({arch})" if arch else ""))
                     print(f"Install succeed: {result['INST']}")
                     print(f"Uninstall succeed: {result['UNINST']}")
 
