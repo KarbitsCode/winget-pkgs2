@@ -1,16 +1,30 @@
 import os
 import sys
 import json
+import yaml
 import tempfile
 import subprocess
 from pathlib import Path
+
+def has_two_arch(directory: str) -> bool:
+    """Checks if installer.yml has x86 and x64 installers"""
+    for root, _, files in os.walk(directory):
+        for file in files:
+            if file.endswith((".installer.yml", ".installer.yaml")):
+                with open(os.path.join(root, file), "r", encoding="utf-8") as f:
+                    data = yaml.safe_load(f)
+                installers = data.get("Installers", [])
+                archs = {inst.get("Architecture") for inst in installers if isinstance(inst, dict)}
+                if "x86" in archs and "x64" in archs:
+                    return True
+    return False
 
 def run_powershell(script_path, *args):
     """Run a PowerShell script and pass args, streaming output to console."""
     cmd = ["powershell", "-ExecutionPolicy", "Bypass", "-File", str(script_path), *map(str, args)]
     return subprocess.run(cmd, check=False)
 
-def test_install(directory):
+def test_install(directory, args = ""):
     """Test install/uninstall of a package"""
     install_success = False
     uninstall_success = False
@@ -23,11 +37,11 @@ def test_install(directory):
     ps_script = Path(os.path.dirname(__file__)) / "Bootstrap.ps1"
     ps_args = []
     ps_args.append("-WinGetOptions")
-    ps_args.append("--accept-package-agreements --accept-source-agreements --disable-interactivity")
+    ps_args.append(f"--accept-package-agreements --accept-source-agreements --disable-interactivity {args}")
     if os.getenv("GITHUB_ACTIONS"):
         ps_args.append("-DisableSpinner")
     ps_args.append("-AutoUninstall")
-    print(f"\n[INSTALL] Running {ps_script} with {ps_args}")
+    print(f"\nRunning {ps_script} with {ps_args}")
     install_proc = run_powershell(ps_script, directory, *ps_args)
 
     if install_proc.returncode != 0:
@@ -60,10 +74,20 @@ def main(directories):
             folder = file_path.parent
             if folder not in seen:
                 seen.add(folder)
-                result = test_install(folder)
-                print(f"\nFolder: {folder}")
-                print(f"Install succeed: {result['INST']}")
-                print(f"Uninstall succeed: {result['UNINST']}")
+                if has_two_arch(folder):
+                    result = test_install(folder, "-a x86")
+                    print(f"\nFolder: {folder} (x86)")
+                    print(f"Install succeed: {result['INST']}")
+                    print(f"Uninstall succeed: {result['UNINST']}")
+                    result = test_install(folder, "-a x64")
+                    print(f"\nFolder: {folder} (x64)")
+                    print(f"Install succeed: {result['INST']}")
+                    print(f"Uninstall succeed: {result['UNINST']}")
+                else:
+                    result = test_install(folder)
+                    print(f"\nFolder: {folder}")
+                    print(f"Install succeed: {result['INST']}")
+                    print(f"Uninstall succeed: {result['UNINST']}")
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
