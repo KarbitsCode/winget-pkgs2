@@ -24,7 +24,7 @@ jobs:
       - name: Set up python packages
         shell: pwsh
         run: |
-          pip install requests
+          pip install requests pyyaml
 
       - name: Detect changed folder
         id: detect
@@ -61,6 +61,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5.0.0
+
+      - name: Set up python packages
+        shell: pwsh
+        run: |
+          pip install requests pyyaml
 
       - name: Set up winget
         shell: pwsh
