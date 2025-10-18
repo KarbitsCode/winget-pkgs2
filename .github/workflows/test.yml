@@ -72,6 +72,7 @@ jobs:
       - name: Set up winget
         shell: pwsh
         run: |
+          [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
           function Get-ReleaseTag {
             $releasesAPIResponse = Invoke-RestMethod 'https://api.github.com/repos/microsoft/winget-cli/releases?per_page=100'
             if (!$script:Prerelease) {
