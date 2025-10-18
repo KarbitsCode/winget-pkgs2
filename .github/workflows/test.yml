@@ -72,6 +72,24 @@ jobs:
       - name: Set up winget
         shell: pwsh
         run: |
+          function Get-ReleaseTag {
+            $releasesAPIResponse = Invoke-RestMethod 'https://api.github.com/repos/microsoft/winget-cli/releases?per_page=100'
+            if (!$script:Prerelease) {
+              $releasesAPIResponse = $releasesAPIResponse.Where({ !$_.prerelease })
+            }
+            if (![String]::IsNullOrWhiteSpace($script:WinGetVersion)) {
+              $releasesAPIResponse = @($releasesAPIResponse.Where({ $_.tag_name -match $('^v?' + [regex]::escape($script:WinGetVersion)) }))
+            }
+            if ($releasesAPIResponse.Count -lt 1) {
+              Write-Output 'No WinGet releases found matching criteria'
+              exit 1
+            }
+            $releasesAPIResponse = $releasesAPIResponse | Sort-Object -Property published_at -Descending
+            return $releasesAPIResponse[0].tag_name
+          }
+          
+          Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery -Verbose -AllowClobber
+          Repair-WinGetPackageManager -Version $(Get-ReleaseTag) -Verbose
           winget --info
           winget source remove msstore
 
