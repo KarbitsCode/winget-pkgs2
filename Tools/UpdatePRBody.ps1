@@ -1,16 +1,18 @@
 param(
     [Parameter(Mandatory = $true, Position = 0)]
-    [string]$BodyFile
+    [string]$BodyFile,
+    [Parameter(Position = 1)]
+    [int]$Count = 1
 )
 
 $BodyFile = Join-Path -Path $(Get-Location).Path -ChildPath $BodyFile
 Push-Location .\winget-pkgs\
 
 # Get the latest open PR
-$prNumber = gh pr list --author "@me" --state open --limit 1 --json number --jq ".[0].number"
+$prNumbers = gh pr list --author "@me" --state open --limit $Count --json number --jq ".[].number"
 
-if (-not $prNumber) {
-    Write-Error "No open PRs found for your account."
+if (-not $prNumbers) {
+    Write-Error "No open PRs found under account."
     exit 1
 }
 
@@ -19,8 +21,11 @@ if (-not (Test-Path $BodyFile)) {
     exit 1
 }
 
-# Update PR body
-gh pr edit $prNumber --body-file "$BodyFile"
+# Oldest to newest
+foreach ($prNumber in ($prNumbers | Sort-Object {[int]$_})) {
+    # Update PR body
+    gh pr edit $prNumber --body-file "$BodyFile"
+    Write-Host "Updated PR #$prNumber body with contents of $(Split-Path $BodyFile -Leaf)" -ForegroundColor Green
+}
 
-Write-Host "Updated PR #$prNumber body with contents of $BodyFile" -ForegroundColor Green
 Pop-Location

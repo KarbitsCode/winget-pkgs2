@@ -34,7 +34,7 @@ def check_hash(file_path, url, response):
             print(f"Expected: {expected}")
             print(f"Actual:   {actual}")
             if actual == expected:
-                print("Installer hash match")
+                print("Installer hash match!")
             else:
                 print("Installer hash mismatch!")
 

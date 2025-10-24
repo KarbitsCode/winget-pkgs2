@@ -11,7 +11,7 @@ Push-Location .\winget-pkgs\
 $prNumbers = gh pr list --author "@me" --state open --limit $Count --json number --jq ".[].number"
 
 if (-not $prNumbers) {
-    Write-Error "No open PRs found for your account."
+    Write-Error "No open PRs found under account."
     exit 1
 }
 
