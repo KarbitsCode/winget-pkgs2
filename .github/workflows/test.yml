@@ -88,9 +88,7 @@ jobs:
             return $releasesAPIResponse[0].tag_name
           }
           
-          Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery -Verbose -AllowClobber
-          Get-Process -Name winget, DesktopAppInstaller, AppInstaller -ErrorAction SilentlyContinue | Stop-Process -Force
-          Start-Sleep -Seconds 2
+          Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery -Verbose -AllowClobber -RequiredVersion 1.11.510
           Repair-WinGetPackageManager -Version $(Get-ReleaseTag) -Verbose
           winget --info
           winget source remove msstore
