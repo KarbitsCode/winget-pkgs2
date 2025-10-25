@@ -19,18 +19,18 @@ if (-not $prNumbers) {
 foreach ($prNumber in ($prNumbers | Sort-Object {[int]$_})) {
     # Fetch the original title
     $oldTitle = gh pr view $prNumber --json title --jq ".title"
-    
+
     Write-Host "Original title: $oldTitle" -ForegroundColor Yellow
     if ($oldTitle -match "^(?<prefix>[^:]+):\s") {
         $existingPrefix = $matches["prefix"]
         Write-Host "Title already has a prefix: $existingPrefix" -ForegroundColor Yellow
         continue
     }
-    
+
     # Edit the PR title and get the result
     gh pr edit $prNumber --title "$($NewTitlePrefix): $oldTitle"
     $newTitle = gh pr view $prNumber --json title --jq ".title"
-    
+
     Write-Host "Updated PR #$prNumber title to: '$newTitle'" -ForegroundColor Green
 }
 
