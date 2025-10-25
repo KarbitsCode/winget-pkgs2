@@ -318,7 +318,7 @@ Write-Host @'
 --> Installing the Manifest $manifestFileName
 
 '@
-winget install --manifest '$manifestPathInSandbox' --verbose-logs --ignore-local-archive-malware-scan --dependency-source winget $WinGetOptions
+winget install --manifest '$manifestPathInSandbox' --verbose-logs --ignore-local-archive-malware-scan --accept-package-agreements --accept-source-agreements --dependency-source winget $WinGetOptions
 
 Write-Host @'
 

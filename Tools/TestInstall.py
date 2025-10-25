@@ -36,12 +36,13 @@ def test_install(directory, args = ""):
 
     ps_script = Path(os.path.dirname(__file__)) / "Bootstrap.ps1"
     ps_args = []
-    ps_args.append("-WinGetOptions")
-    ps_args.append(f"--accept-package-agreements --accept-source-agreements --disable-interactivity {args}")
     if os.getenv("GITHUB_ACTIONS"):
+        args += " --silent"
         ps_args.append("-DisableSpinner")
+    ps_args.append("-WinGetOptions")
+    ps_args.append(f"--disable-interactivity {args}")
     ps_args.append("-AutoUninstall")
-    print(f"\nRunning {ps_script} with {ps_args}")
+    # print(f"\nRunning {ps_script} with {ps_args}")
     install_proc = run_powershell(ps_script, directory, *ps_args)
 
     if install_proc.returncode != 0:
