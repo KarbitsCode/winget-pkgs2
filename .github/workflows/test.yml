@@ -91,7 +91,26 @@ jobs:
           Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery -Verbose -AllowClobber
           Get-Process -Name winget, WindowsPackageManagerServer, AppInstaller -ErrorAction SilentlyContinue | Stop-Process -Force
           Start-Sleep -Seconds 2
-          Repair-WinGetPackageManager -Version $(Get-ReleaseTag) -Verbose
+          try {
+            Repair-WinGetPackageManager -Version $(Get-ReleaseTag) -Verbose
+          } catch {
+            Write-Warning "Repair failed: $($_.Exception.Message)"
+            if ($_.Exception.Message -match '0x80073D02') {
+                if ($_.Exception.Message -match 'ActivityId\]\s+([0-9a-fA-F-]+)') {
+                    $activityId = $matches[1]
+                    Write-Host "Found ActivityId: $activityId"
+                    try {
+                        Write-Host "Retrieving AppX logs..."
+                        Get-AppPackageLog -ActivityId $activityId | Format-List
+                    } catch {
+                        Write-Warning "Could not retrieve AppX log for $activityId"
+                    }
+                }
+                return $false
+              } else {
+                  throw
+              }
+          }
           winget --info
           winget source remove msstore
 
