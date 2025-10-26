@@ -119,17 +119,7 @@ Write-Host @"
 "@
 $scriptBlock = { winget install --manifest $Manifest --verbose-logs --ignore-local-archive-malware-scan --accept-package-agreements --accept-source-agreements --dependency-source winget @($WinGetOptions -split ' ') }
 if ($env:GITHUB_ACTIONS) {
-  # Try disabling smartscreen
-  $systemKey = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System"
-  If (!(Test-Path $systemKey)) { New-Item -Path $systemKey -Force | Out-Null }
-  Set-ItemProperty -Path $systemKey -Name "EnableSmartScreen" -Type DWord -Value 0 -Force
-  Set-ItemProperty -Path $systemKey -Name "ShellSmartScreenLevel" -Type String -Value "Off" -Force
-
   Strip-Progress -ScriptBlock $scriptBlock
-
-  # Reverting registry
-  Remove-ItemProperty -Path $systemKey -Name "EnableSmartScreen" -Force -ErrorAction SilentlyContinue
-  Remove-ItemProperty -Path $systemKey -Name "ShellSmartScreenLevel" -Force -ErrorAction SilentlyContinue
 } else {
   & $scriptBlock
 }
