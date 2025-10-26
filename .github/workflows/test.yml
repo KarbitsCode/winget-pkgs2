@@ -101,7 +101,7 @@ jobs:
                     Write-Host "Found ActivityId: $activityId"
                     try {
                         Write-Host "Retrieving AppX logs..."
-                        Get-AppPackageLog -ActivityId $activityId | Format-List
+                        Get-AppPackageLog -ActivityId $activityId
                     } catch {
                         Write-Warning "Could not retrieve AppX log for $activityId"
                     }
