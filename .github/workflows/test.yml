@@ -37,7 +37,7 @@ jobs:
 
           if (-not $manifestsChanged) {
             Write-Host "No manifest changes detected"
-            if ($env:GITHUB_EVENT_NAME -eq "workflow_dispatch") {
+            if ($env:GITHUB_EVENT_NAME -eq "workflow_dispatch" -or $itselfChanged) {
               $folder = "manifests"
             } else {
               $folder = ""
@@ -88,7 +88,7 @@ jobs:
             return $releasesAPIResponse[0].tag_name
           }
           
-          Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery -Verbose -AllowClobber
+          Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery -Verbose -AllowClobber -RequiredVersion 1.11.460
           Get-Process -Name winget, WindowsPackageManagerServer, AppInstaller -ErrorAction SilentlyContinue | Stop-Process -Force
           Start-Sleep -Seconds 2
           try {
