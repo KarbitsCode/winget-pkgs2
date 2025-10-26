@@ -96,20 +96,18 @@ jobs:
           } catch {
             Write-Warning "Repair failed: $($_.Exception.Message)"
             if ($_.Exception.Message -match '0x80073D02') {
-                if ($_.Exception.Message -match 'ActivityId\]\s+([0-9a-fA-F-]+)') {
-                    $activityId = $matches[1]
-                    Write-Host "Found ActivityId: $activityId"
-                    try {
-                        Write-Host "Retrieving AppX logs..."
-                        Get-AppPackageLog -ActivityId $activityId
-                    } catch {
-                        Write-Warning "Could not retrieve AppX log for $activityId"
-                    }
+              if ($_.Exception.Message -match 'ActivityId\]\s+([0-9a-fA-F-]+)') {
+                $activityId = $matches[1]
+                Write-Host "Found ActivityId: $activityId"
+                try {
+                  Write-Host "Retrieving AppX logs..."
+                  Get-AppPackageLog -ActivityId $activityId | Format0List
+                } catch {
+                  Write-Warning "Could not retrieve AppX log for $activityId"
                 }
-                return $false
-              } else {
-                  throw
               }
+            }
+            throw $_.Exception
           }
           winget --info
           winget source remove msstore
