@@ -88,11 +88,9 @@ jobs:
             return $releasesAPIResponse[0].tag_name
           }
           
-          Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery -Verbose -AllowClobber -RequiredVersion 1.11.460
-          Get-Process -Name winget, WindowsPackageManagerServer, AppInstaller -ErrorAction SilentlyContinue | Stop-Process -Force
-          Start-Sleep -Seconds 2
+          Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery -Verbose -AllowClobber
           try {
-            Repair-WinGetPackageManager -Version $(Get-ReleaseTag) -Verbose
+            Repair-WinGetPackageManager -Version $(Get-ReleaseTag) -Force -Verbose
           } catch {
             Write-Warning "Repair failed: $($_.Exception.Message)"
             if ($_.Exception.Message -match '0x80073D02') {
