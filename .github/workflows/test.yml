@@ -22,9 +22,11 @@ jobs:
         uses: actions/checkout@v5.0.0
 
       - name: Set up python packages
-        shell: pwsh
-        run: |
-          pip install requests pyyaml
+        uses: actions/setup-python@v6.0.0
+        with:
+          python-version: '3.13'
+          check-latest: true
+          pip-install: requests pyyaml
 
       - name: Detect changed folder
         id: detect
@@ -65,9 +67,11 @@ jobs:
         uses: actions/checkout@v5.0.0
 
       - name: Set up python packages
-        shell: pwsh
-        run: |
-          pip install requests pyyaml
+        uses: actions/setup-python@v6.0.0
+        with:
+          python-version: '3.13'
+          check-latest: true
+          pip-install: requests pyyaml
 
       - name: Set up winget
         shell: pwsh
