@@ -17,10 +17,10 @@ if (-not $prNumbers) {
 
 # Oldest to newest
 foreach ($prNumber in ($prNumbers | Sort-Object {[int]$_})) {
-    # Fetch the original title
     $oldTitle = gh pr view $prNumber --json title --jq ".title"
-
     Write-Host "Original title: $oldTitle" -ForegroundColor Yellow
+
+    # Check if the PR already has prefixed title
     if ($oldTitle -match "^(?<prefix>[^:]+):\s") {
         $existingPrefix = $matches["prefix"]
         Write-Host "Title already has a prefix: $existingPrefix" -ForegroundColor Yellow

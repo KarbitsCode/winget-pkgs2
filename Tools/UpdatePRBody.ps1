@@ -23,9 +23,21 @@ if (-not (Test-Path $BodyFile)) {
 
 # Oldest to newest
 foreach ($prNumber in ($prNumbers | Sort-Object {[int]$_})) {
+    $prUrl = gh pr view $prNumber --json url --jq ".url"
+
+    # Footer that the bot usually add to PR automatically
+    $footer = "###### Microsoft Reviewers: [Open in CodeFlow](https://microsoft.github.io/open-pr/?codeflow=$prUrl)"
+
+    # Assign footer to the given md template
+    $tempFile = New-TemporaryFile
+    Get-Content $BodyFile | Out-File $tempFile -Encoding utf8
+    Add-Content $tempFile $footer -Encoding utf8
+
     # Update PR body
-    gh pr edit $prNumber --body-file "$BodyFile"
+    gh pr edit $prNumber --body-file "$tempFile"
     Write-Host "Updated PR #$prNumber body with contents of $(Split-Path $BodyFile -Leaf)" -ForegroundColor Green
+
+    Remove-Item $tempFile -Force
 }
 
 Pop-Location
