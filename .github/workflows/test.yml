@@ -22,10 +22,11 @@ jobs:
         uses: actions/checkout@v5.0.0
 
       - name: Set up python packages
-        uses: actions/setup-python@v6.0.0
+        uses: actions/setup-python@2e3e4b15a884dc73a63f962bff250a855150a234
         with:
           python-version: '3.13'
           check-latest: true
+          update-environment: true
           pip-install: requests pyyaml
 
       - name: Detect changed folder
@@ -67,10 +68,11 @@ jobs:
         uses: actions/checkout@v5.0.0
 
       - name: Set up python packages
-        uses: actions/setup-python@v6.0.0
+        uses: actions/setup-python@2e3e4b15a884dc73a63f962bff250a855150a234
         with:
           python-version: '3.13'
           check-latest: true
+          update-environment: true
           pip-install: requests pyyaml
 
       - name: Set up winget
