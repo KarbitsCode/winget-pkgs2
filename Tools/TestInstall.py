@@ -6,7 +6,7 @@ import tempfile
 import subprocess
 from pathlib import Path
 
-def has_two_arch(directory: str) -> bool:
+def get_installer_arch(directory):
     """Checks if installer.yml has x86 and x64 installers"""
     for root, _, files in os.walk(directory):
         for file in files:
@@ -15,9 +15,7 @@ def has_two_arch(directory: str) -> bool:
                     data = yaml.safe_load(f)
                 installers = data.get("Installers", [])
                 archs = {inst.get("Architecture") for inst in installers if isinstance(inst, dict)}
-                if "x86" in archs and "x64" in archs:
-                    return True
-    return False
+    return list(sorted(archs))
 
 def run_powershell(script_path, *args):
     """Run a PowerShell script and pass args, streaming output to console."""
@@ -75,7 +73,7 @@ def main(directories):
             folder = file_path.parent
             if folder not in seen:
                 seen.add(folder)
-                for arch in ["x86", "x64"] if has_two_arch(folder) else [None]:
+                for arch in get_installer_arch(folder):
                     result = test_install(folder, f"-a {arch}" if arch else "")
                     print(f"\nFolder: {folder}" + (f" ({arch})" if arch else ""))
                     print(f"Install succeed: {result['INST']}")

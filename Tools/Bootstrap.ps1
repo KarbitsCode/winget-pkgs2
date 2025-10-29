@@ -148,7 +148,7 @@ Write-Host @"
   foreach ($item in $diff) {
     $code = $item.ProductCode
     if ($null -ne $code) {
-      $scriptBlock = { winget uninstall $code @($WinGetOptions -split ' ') }
+      $scriptBlock = { winget uninstall $code }
       if ($env:GITHUB_ACTIONS) {
         Strip-Progress -ScriptBlock $scriptBlock
       } else {
