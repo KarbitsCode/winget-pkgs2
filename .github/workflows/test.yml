@@ -24,7 +24,7 @@ jobs:
       - name: Set up python packages
         uses: actions/setup-python@2e3e4b15a884dc73a63f962bff250a855150a234
         with:
-          python-version: '3.13'
+          python-version: '3.14'
           check-latest: true
           update-environment: true
           pip-install: requests pyyaml
@@ -70,7 +70,7 @@ jobs:
       - name: Set up python packages
         uses: actions/setup-python@2e3e4b15a884dc73a63f962bff250a855150a234
         with:
-          python-version: '3.13'
+          python-version: '3.14'
           check-latest: true
           update-environment: true
           pip-install: requests pyyaml
