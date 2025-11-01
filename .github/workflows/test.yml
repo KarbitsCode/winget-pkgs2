@@ -27,12 +27,13 @@ jobs:
         uses: actions/checkout@v5.0.0
 
       - name: Set up python packages
-        uses: actions/setup-python@2e3e4b15a884dc73a63f962bff250a855150a234
-        with:
-          python-version: '3.14'
-          check-latest: true
-          update-environment: true
-          pip-install: requests pyyaml -v
+        shell: pwsh
+        run: |
+          python --version
+          & {
+            py -m pip install -U pip -vvv
+            pip install requests pyyaml -vvv
+          } | Select-String -NotMatch "Found link|Skipping link"
 
       - name: Detect changed folder
         id: detect
@@ -73,12 +74,13 @@ jobs:
         uses: actions/checkout@v5.0.0
 
       - name: Set up python packages
-        uses: actions/setup-python@2e3e4b15a884dc73a63f962bff250a855150a234
-        with:
-          python-version: '3.14'
-          check-latest: true
-          update-environment: true
-          pip-install: requests pyyaml -v
+        shell: pwsh
+        run: |
+          python --version
+          & {
+            py -m pip install -U pip -vvv
+            pip install requests pyyaml -vvv
+          } | Select-String -NotMatch "Found link|Skipping link"
 
       - name: Set up winget
         shell: pwsh
