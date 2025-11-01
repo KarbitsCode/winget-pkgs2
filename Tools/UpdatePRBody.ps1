@@ -23,15 +23,23 @@ if (-not (Test-Path $BodyFile)) {
 
 # Oldest to newest
 foreach ($prNumber in ($prNumbers | Sort-Object {[int]$_})) {
-    $prUrl = gh pr view $prNumber --json url --jq ".url"
+    $prInfo = gh pr view $prNumber --json url,body | ConvertFrom-Json
+    $prUrl = $prInfo.url
+    $prBody = $prInfo.body
 
     # Footer that the bot usually add to PR automatically
     $footer = "###### Microsoft Reviewers: [Open in CodeFlow](https://microsoft.github.io/open-pr/?codeflow=$prUrl)"
 
-    # Assign footer to the given md template
-    $tempFile = New-TemporaryFile
-    Get-Content $BodyFile | Out-File $tempFile -Encoding utf8
-    Add-Content $tempFile $footer -Encoding utf8
+    if ($prBody -match [regex]::Escape($footer)) {
+      # Assign footer to the given md template
+      $tempFile = New-TemporaryFile
+      Get-Content $BodyFile | Out-File $tempFile -Encoding utf8
+      Add-Content $tempFile $footer -Encoding utf8
+      Write-Host "Added footer to markdown template ($(Split-Path $tempFile -Leaf))" -ForegroundColor Yellow
+    } else {
+      # Footer doesn't exist yet, let the bot fill that out to prevent duplication
+      $tempFile = $BodyFile
+    }
 
     # Update PR body
     gh pr edit $prNumber --body-file "$tempFile"
