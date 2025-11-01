@@ -32,7 +32,7 @@ jobs:
           python-version: '3.14'
           check-latest: true
           update-environment: true
-          pip-install: requests pyyaml -vvv
+          pip-install: requests pyyaml -v
 
       - name: Detect changed folder
         id: detect
@@ -78,7 +78,7 @@ jobs:
           python-version: '3.14'
           check-latest: true
           update-environment: true
-          pip-install: requests pyyaml -vvv
+          pip-install: requests pyyaml -v
 
       - name: Set up winget
         shell: pwsh
