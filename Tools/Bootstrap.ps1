@@ -1,8 +1,10 @@
 ﻿Param(
   [Parameter(Position = 0, HelpMessage = 'The Manifest to install in the Sandbox.')]
   [String] $Manifest,
-  [Parameter(HelpMessage = 'Disable spinner animation when installing package (for CI)')]
+  [Parameter(HelpMessage = 'Disable spinner animation when installing a package')]
   [switch] $DisableSpinner,
+  [Parameter(HelpMessage = 'Strip progress bar when installing a package')]
+  [switch] $StripProgress,
   [Parameter(HelpMessage = 'Automatically uninstall newly installed package')]
   [switch] $AutoUninstall,
   [Parameter(HelpMessage = 'Additional options for WinGet')]
@@ -83,13 +85,13 @@ winget settings --Enable LocalArchiveMalwareScanOverride
 
 $p = (winget settings export | ConvertFrom-Json).userSettingsFile
 
-if ($DisableSpinner) {
-  if (Test-Path $p) {
-    Copy-Item $p "$p.bak" -Force
-    $raw = Get-Content $p -Raw
-    # Remove line comments
-    $raw = $raw -replace '(?m)^\s*//.*$' -replace ',(\s*[}\]])', '$1'
-    $j = $raw | ConvertFrom-Json
+if (Test-Path $p) {
+  Copy-Item $p "$p.bak" -Force
+  $raw = Get-Content $p -Raw
+  # Remove line comments
+  $raw = $raw -replace '(?m)^\s*//.*$' -replace ',(\s*[}\]])', '$1'
+  $j = $raw | ConvertFrom-Json
+  if ($DisableSpinner) {
     if (-not $j.visual) {
       $j | Add-Member -NotePropertyName 'visual' -NotePropertyValue ([PSCustomObject]@{})
     }
@@ -97,8 +99,8 @@ if ($DisableSpinner) {
       $j.visual | Add-Member -NotePropertyName 'progressBar' -NotePropertyValue @{}
     }
     $j.visual.progressBar = 'disabled'
-    $j | ConvertTo-Json -Depth 10 | Set-Content $p -Encoding UTF8
   }
+  $j | ConvertTo-Json -Depth 10 | Set-Content $p -Encoding UTF8
 }
 
 $originalARP = Get-ARPTable
@@ -118,7 +120,7 @@ Write-Host @"
 
 "@
 $scriptBlock = { winget install --manifest $Manifest --verbose-logs --ignore-local-archive-malware-scan --accept-package-agreements --accept-source-agreements --dependency-source winget @($WinGetOptions -split ' ') }
-if ($env:GITHUB_ACTIONS) {
+if ($StripProgress) {
   Strip-Progress -ScriptBlock $scriptBlock
 } else {
   & $scriptBlock
@@ -149,7 +151,7 @@ Write-Host @"
     $code = $item.ProductCode
     if ($null -ne $code) {
       $scriptBlock = { winget uninstall --product-code $code }
-      if ($env:GITHUB_ACTIONS) {
+      if ($StripProgress) {
         Strip-Progress -ScriptBlock $scriptBlock
       } else {
         & $scriptBlock
