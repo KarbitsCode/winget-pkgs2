@@ -20,6 +20,7 @@ concurrency:
 jobs:
   test-links:
     runs-on: windows-latest
+    timeout-minutes: 120
     permissions:
       contents: read
     steps:
@@ -66,6 +67,7 @@ jobs:
 
   test-install:
     runs-on: windows-latest
+    timeout-minutes: 120
     permissions:
       contents: read
     steps:
