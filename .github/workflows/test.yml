@@ -52,7 +52,6 @@ jobs:
               $folder = ""
             }
           } else {
-            # Extract the top-level changed folder under manifests/
             $folder = $manifestsChanged | ForEach-Object { Split-Path $_ -Parent } | Sort-Object -Unique
             Write-Host "Folder changed under manifests: $folder"
           }
@@ -103,7 +102,7 @@ jobs:
           
           Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery -Verbose -AllowClobber
           try {
-            Repair-WinGetPackageManager -Version $(Get-ReleaseTag) -Force -Verbose
+            Repair-WinGetPackageManager -Version $(Get-ReleaseTag) -Verbose
           } catch {
             Write-Warning "Repair failed: $($_.Exception.Message)"
             if ($_.Exception.Message -match '0x80073D02') {
@@ -136,7 +135,6 @@ jobs:
             Write-Host "No manifest changes detected"
             $folder = ""
           } else {
-            # Extract the top-level changed folder under manifests/
             $folder = $manifestsChanged | ForEach-Object { Split-Path $_ -Parent } | Sort-Object -Unique
             Write-Host "Folder changed under manifests: $folder"
           }
