@@ -32,6 +32,7 @@ jobs:
         run: |
           python --version
           & {
+            python -m pip install --upgrade pip
             pip install requests pyyaml -vvv
           } | Select-String -NotMatch "Found link|Skipping link"
 
@@ -62,7 +63,7 @@ jobs:
         if: steps.detect.outputs.folder != ''
         shell: pwsh
         run: |
-          python3 .\Tools\TestLinks.py ${{ steps.detect.outputs.folder }}
+          python .\Tools\TestLinks.py ${{ steps.detect.outputs.folder }}
 
   test-install:
     runs-on: windows-latest
@@ -78,6 +79,7 @@ jobs:
         run: |
           python --version
           & {
+            python -m pip install --upgrade pip
             pip install requests pyyaml -vvv
           } | Select-String -NotMatch "Found link|Skipping link"
 
@@ -145,5 +147,5 @@ jobs:
         if: steps.detect.outputs.folder != ''
         shell: pwsh
         run: |
-          python3 .\Tools\TestInstall.py ${{ steps.detect.outputs.folder }}
+          python .\Tools\TestInstall.py ${{ steps.detect.outputs.folder }}
 
