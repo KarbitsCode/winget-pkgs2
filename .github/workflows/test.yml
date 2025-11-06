@@ -32,7 +32,7 @@ jobs:
         run: |
           python --version
           & {
-            python -m pip install --upgrade pip
+            python -m pip install --upgrade pip -vvv
             pip install requests pyyaml -vvv
           } | Select-String -NotMatch "Found link|Skipping link"
 
@@ -79,7 +79,7 @@ jobs:
         run: |
           python --version
           & {
-            python -m pip install --upgrade pip
+            python -m pip install --upgrade pip -vvv
             pip install requests pyyaml -vvv
           } | Select-String -NotMatch "Found link|Skipping link"
 
@@ -104,7 +104,7 @@ jobs:
           
           Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery -Verbose -AllowClobber
           try {
-            Repair-WinGetPackageManager -Version $(Get-ReleaseTag) -Verbose
+            Repair-WinGetPackageManager -Version $(Get-ReleaseTag) -Force -Verbose
           } catch {
             Write-Warning "Repair failed: $($_.Exception.Message)"
             if ($_.Exception.Message -match '0x80073D02') {
