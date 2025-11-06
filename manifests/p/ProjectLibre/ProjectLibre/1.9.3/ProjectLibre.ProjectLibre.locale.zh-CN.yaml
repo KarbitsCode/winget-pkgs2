@@ -2,7 +2,7 @@
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.locale.1.10.0.schema.json
 
 PackageIdentifier: ProjectLibre.ProjectLibre
-PackageVersion: 1.9.8
+PackageVersion: 1.9.3
 PackageLocale: zh-CN
 ShortDescription: 开源项目管理软件
 Tags:
