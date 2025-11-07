@@ -44,7 +44,7 @@ jobs:
           $changed = git diff --name-only ${{ github.event.before }} ${{ github.sha }}
           $manifestsChanged = $changed | Where-Object { $_ -like "manifests/*" }
           $itselfChanged = $changed | Where-Object { $_ -like "*test.yml" }
-
+          
           if (-not $manifestsChanged) {
             Write-Host "No manifest changes detected"
             if ($env:GITHUB_EVENT_NAME -eq "workflow_dispatch" -or $itselfChanged) {
@@ -56,7 +56,7 @@ jobs:
             $folder = $manifestsChanged | ForEach-Object { Split-Path $_ -Parent } | Sort-Object -Unique
             Write-Host "Folder changed under manifests: $folder"
           }
-      
+          
           echo "folder=$folder" >> $env:GITHUB_OUTPUT
 
       - name: Run python scripts
@@ -122,10 +122,14 @@ jobs:
             }
             throw $_.Exception
           }
-          New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\AppHost" -Force -Verbose
+          
+          New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\AppHost" -Force -Verbose | Out-Null
           Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\AppHost" -Name "EnableWebContentEvaluation" -Value 0 -Force -Verbose
-          New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Force -Verbose
+          New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Force -Verbose | Out-Null
           Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "EnableSmartScreen" -Value 0 -Force -Verbose
+          New-Item "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments" -Force -Verbose | Out-Null
+          Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments" -Name "SaveZoneInformation" -Value 1 -Force -Verbose
+          
           winget --info
           winget source remove msstore
 
@@ -137,7 +141,7 @@ jobs:
           $changed = git diff --name-only ${{ github.event.before }} ${{ github.sha }}
           $manifestsChanged = $changed | Where-Object { $_ -like "manifests/*" }
           $itselfChanged = $changed | Where-Object { $_ -like "*test.yml" }
-
+          
           if (-not $manifestsChanged) {
             Write-Host "No manifest changes detected"
             $folder = ""
@@ -145,7 +149,7 @@ jobs:
             $folder = $manifestsChanged | ForEach-Object { Split-Path $_ -Parent } | Sort-Object -Unique
             Write-Host "Folder changed under manifests: $folder"
           }
-      
+          
           echo "folder=$folder" >> $env:GITHUB_OUTPUT
 
       - name: Run python scripts
