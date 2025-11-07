@@ -122,7 +122,10 @@ jobs:
             }
             throw $_.Exception
           }
-          Set-MpPreference -EnableSmartScreen $false -Verbose
+          New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\AppHost" -Force -Verbose
+          Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\AppHost" -Name "EnableWebContentEvaluation" -Value 0 -Force -Verbose
+          New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Force -Verbose
+          Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "EnableSmartScreen" -Value 0 -Force -Verbose
           winget --info
           winget source remove msstore
 
