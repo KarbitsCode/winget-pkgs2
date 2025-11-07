@@ -70,6 +70,7 @@ jobs:
     timeout-minutes: 120
     permissions:
       contents: read
+      actions: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5.0.0
@@ -149,3 +150,15 @@ jobs:
         run: |
           python .\Tools\TestInstall.py ${{ steps.detect.outputs.folder }}
 
+      - name: Remove old artifacts
+        uses: c-hive/gha-remove-artifacts@v1.4.0
+        with:
+          age: '1 day'
+          skip-recent: 0
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v5.0.0
+        with:
+          name: screenshots
+          path: |
+            Tools/SSs/
