@@ -10,7 +10,7 @@ import subprocess
 from pathlib import Path
 from datetime import datetime
 
-def get_screenshots(stop_event, folder, interval=5):
+def get_screenshots(stop_event, folder, interval=10):
     """
     Takes desktop screenshots every [interval] seconds until stop_event is triggered.
     """
