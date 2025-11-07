@@ -52,7 +52,6 @@ def test_install(directory, args = ""):
     ps_script = Path(os.path.dirname(__file__)) / "Bootstrap.ps1"
     ps_args = []
     if os.getenv("GITHUB_ACTIONS"):
-        args += " --silent"
         ps_args.append("-StripProgress")
         ps_args.append("-DisableSpinner")
     ps_args.append("-WinGetOptions")
@@ -60,7 +59,7 @@ def test_install(directory, args = ""):
     ps_args.append("-AutoUninstall")
 
     # Start screenshoting
-    ss_dir = Path(__file__).parent / "SSs"
+    ss_dir = Path(__file__).parent / "ss"
     ss_stop = threading.Event()
     ss_thread = threading.Thread(target=get_screenshots, args=(ss_stop, ss_dir))
     ss_thread.start()
