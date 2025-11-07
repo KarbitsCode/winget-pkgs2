@@ -122,6 +122,7 @@ jobs:
             }
             throw $_.Exception
           }
+          Set-MpPreference -EnableSmartScreen $false -Verbose
           winget --info
           winget source remove msstore
 
