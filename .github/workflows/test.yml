@@ -33,7 +33,7 @@ jobs:
           python --version
           & {
             python -m pip install --upgrade pip -vvv
-            pip install requests pyyaml -vvv
+            pip install requests pyyaml mss -vvv
           } | Select-String -NotMatch "Found link|Skipping link"
 
       - name: Detect changed folder
@@ -80,7 +80,7 @@ jobs:
           python --version
           & {
             python -m pip install --upgrade pip -vvv
-            pip install requests pyyaml -vvv
+            pip install requests pyyaml mss -vvv
           } | Select-String -NotMatch "Found link|Skipping link"
 
       - name: Set up winget
