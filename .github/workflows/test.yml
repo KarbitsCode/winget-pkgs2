@@ -157,8 +157,11 @@ jobs:
           skip-recent: 0
 
       - name: Upload artifact
+        if: always()
         uses: actions/upload-artifact@v5.0.0
         with:
           name: screenshots
+          if-no-files-found: warn
+          compression-level: 9
           path: |
             Tools/SSs/
