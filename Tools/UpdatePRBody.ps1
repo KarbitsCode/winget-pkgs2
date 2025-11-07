@@ -31,21 +31,23 @@ foreach ($prNumber in ($prNumbers | Sort-Object {[int]$_})) {
     $footer = "###### Microsoft Reviewers: [Open in CodeFlow](https://microsoft.github.io/open-pr/?codeflow=$prUrl)"
 
     if ($prBody -match [regex]::Escape($footer)) {
-      # Assign footer to the given md template
-      $tempFile = New-TemporaryFile
-      Get-Content $BodyFile | Out-File $tempFile -Encoding utf8
-      Add-Content $tempFile $footer -Encoding utf8
-      Write-Host "Added footer to markdown template ($(Split-Path $tempFile -Leaf))" -ForegroundColor Yellow
+        # Assign footer to the given md template
+        $tempFile = New-TemporaryFile
+        Get-Content $BodyFile | Out-File $tempFile -Encoding utf8
+        Add-Content $tempFile $footer -Encoding utf8
+        Write-Host "Added footer to markdown template ($(Split-Path $tempFile -Leaf))" -ForegroundColor Yellow
     } else {
-      # Footer doesn't exist yet, let the bot fill that out to prevent duplication
-      $tempFile = $BodyFile
+        # Footer doesn't exist yet, let the bot fill that out to prevent duplication
+        $tempFile = $BodyFile
     }
 
     # Update PR body
     gh pr edit $prNumber --body-file "$tempFile"
     Write-Host "Updated PR #$prNumber body with contents of $(Split-Path $BodyFile -Leaf)" -ForegroundColor Green
 
-    Remove-Item $tempFile -Force
+    if ($tempFile -ne $BodyFile) {
+        Remove-Item $tempFile -Force
+    }
 }
 
 Pop-Location
