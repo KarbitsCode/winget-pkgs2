@@ -86,6 +86,9 @@ winget settings --Enable LocalArchiveMalwareScanOverride
 $p = (winget settings export | ConvertFrom-Json).userSettingsFile
 
 if (Test-Path $p) {
+  if (Test-Path "$p.bak") {
+    Move-Item "$p.bak" $p -Force
+  }
   Copy-Item $p "$p.bak" -Force
   $raw = Get-Content $p -Raw
   # Remove line comments

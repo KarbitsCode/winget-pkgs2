@@ -1,10 +1,27 @@
 import os
 import sys
+import mss
 import json
 import yaml
+import time
 import tempfile
+import threading
 import subprocess
 from pathlib import Path
+from datetime import datetime
+
+def get_screenshots(stop_event, folder, interval=5):
+    """
+    Takes desktop screenshots every [interval] seconds until stop_event is triggered.
+    """
+    folder.mkdir(parents=True, exist_ok=True)
+    with mss.mss() as sct:
+        monitor_index = 1  # 1 = primary monitor
+        while not stop_event.is_set():
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            img_path = folder / f"screenshot_{timestamp}.png"
+            sct.shot(mon=monitor_index, output=str(img_path))
+            time.sleep(interval)
 
 def get_installer_arch(directory):
     """Checks if installer.yml has x86 and x64 installers"""
@@ -41,8 +58,19 @@ def test_install(directory, args = ""):
     ps_args.append("-WinGetOptions")
     ps_args.append(f"--disable-interactivity {args}")
     ps_args.append("-AutoUninstall")
+
+    # Start screenshoting
+    ss_dir = Path(__file__).parent / "SSs"
+    ss_stop = threading.Event()
+    ss_thread = threading.Thread(target=get_screenshots, args=(ss_stop, ss_dir))
+    ss_thread.start()
+
     # print(f"\nRunning {ps_script} with {ps_args}")
     install_proc = run_powershell(ps_script, directory, *ps_args)
+
+    # Stop screenshoting
+    ss_stop.set()
+    ss_thread.join()
 
     if install_proc.returncode != 0:
         print("PowerShell script failed.")
