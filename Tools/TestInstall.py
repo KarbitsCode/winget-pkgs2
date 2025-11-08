@@ -4,11 +4,44 @@ import mss
 import json
 import yaml
 import time
+import ctypes
 import tempfile
 import threading
 import subprocess
 from pathlib import Path
+from ctypes import wintypes
 from datetime import datetime
+
+def auto_popups(stop_event):
+    user32 = ctypes.windll.user32
+    WM_GETTEXT = 0x000D
+    BM_CLICK = 0x00F5
+    EnumWindowsProc = ctypes.WINFUNCTYPE(ctypes.c_bool, wintypes.HWND, wintypes.LPARAM)
+    def callback(hwnd, lParam):
+        # Get class name of the window
+        class_name = ctypes.create_unicode_buffer(256)
+        user32.GetClassNameW(hwnd, class_name, 256)
+        # print(f"Class name value: {class_name.value}")
+        if class_name.value == "#32770":  # Common window popup
+            # Inside dialog, find buttons
+            def click_buttons(child_hwnd, _):
+                btn_class = ctypes.create_unicode_buffer(256)
+                user32.GetClassNameW(child_hwnd, btn_class, 256)
+                # print(f"Button class value: {btn_class.value}")
+                if btn_class.value == "Button":
+                    text_buf = ctypes.create_unicode_buffer(1024)
+                    user32.GetWindowTextW(child_hwnd, text_buf, 1024)
+                    caption = text_buf.value.replace("&", "").strip()
+                    # print(f"Button text: {caption}")
+                    if caption in ("OK", "Yes", "Run", "Continue", "Uninstall", "Close", "Finish"):
+                        user32.SendMessageW(child_hwnd, BM_CLICK, 0, 0)
+                return True
+            user32.EnumChildWindows(hwnd, EnumWindowsProc(click_buttons), 0)
+        return True
+    while not stop_event.is_set():
+        # print('Running for popups')
+        user32.EnumWindows(EnumWindowsProc(callback), 0)
+        time.sleep(1)
 
 def get_screenshots(stop_event, folder, interval=10):
     """
@@ -61,7 +94,7 @@ def test_install(directory, args = ""):
     # Start screenshoting
     ss_dir = Path(__file__).parent / "ss"
     ss_stop = threading.Event()
-    ss_thread = threading.Thread(target=get_screenshots, args=(ss_stop, ss_dir))
+    ss_thread = threading.Thread(target=get_screenshots, args=[ss_stop, ss_dir])
     ss_thread.start()
 
     # print(f"\nRunning {ps_script} with {ps_args}")
@@ -96,6 +129,11 @@ def test_install(directory, args = ""):
 def main(directories):
     seen = set()
 
+    # Start handling popups
+    pp_stop = threading.Event()
+    pp_thread = threading.Thread(target=auto_popups, args=[pp_stop])
+    pp_thread.start()
+
     for directory in directories:
         for file_path in Path(directory).rglob("*.y*ml"):
             folder = file_path.parent
@@ -106,6 +144,10 @@ def main(directories):
                     print(f"\nFolder: {folder}" + (f" ({arch})" if arch else ""))
                     print(f"Install succeed: {result['INST']}")
                     print(f"Uninstall succeed: {result['UNINST']}")
+
+    # Stop handling popups
+    pp_stop.set()
+    pp_thread.join()
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
