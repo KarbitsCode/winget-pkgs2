@@ -42,6 +42,7 @@ git checkout $prBranch
 git commit --allow-empty -m "$commitMessage"
 git push origin $prBranch -v
 git checkout master
+git branch -D $prBranch
 
 Pop-Location
 Write-Host "Empty commit successfully pushed to PR #$PRNumber" -ForegroundColor Green
