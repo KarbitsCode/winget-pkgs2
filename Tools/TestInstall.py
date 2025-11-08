@@ -6,6 +6,8 @@ import yaml
 import time
 import ctypes
 import tempfile
+import platform
+import traceback
 import threading
 import subprocess
 from pathlib import Path
@@ -39,7 +41,6 @@ def auto_popups(stop_event):
             user32.EnumChildWindows(hwnd, EnumWindowsProc(click_buttons), 0)
         return True
     while not stop_event.is_set():
-        # print('Running for popups')
         user32.EnumWindows(EnumWindowsProc(callback), 0)
         time.sleep(1)
 
@@ -97,11 +98,14 @@ def test_install(directory, args = ""):
     ss_thread = threading.Thread(target=get_screenshots, args=[ss_stop, ss_dir])
     ss_thread.start()
 
-    # print(f"\nRunning {ps_script} with {ps_args}")
-    install_proc = run_powershell(ps_script, directory, *ps_args)
-
-    # Stop screenshoting
-    ss_stop.set()
+    try:
+        # print(f"\nRunning {ps_script} with {ps_args}")
+        install_proc = run_powershell(ps_script, directory, *ps_args)
+    except KeyboardInterrupt:
+        traceback.print_exc()
+    finally:
+        # Stop screenshoting
+        ss_stop.set()
     ss_thread.join()
 
     if install_proc.returncode != 0:
@@ -134,23 +138,28 @@ def main(directories):
     pp_thread = threading.Thread(target=auto_popups, args=[pp_stop])
     pp_thread.start()
 
-    for directory in directories:
-        for file_path in sorted(Path(directory).rglob("*.y*ml")):
-            folder = file_path.parent
-            if folder not in seen:
-                seen.add(folder)
-                for arch in get_installer_arch(folder):
-                    result = test_install(folder, f"-a {arch}" if arch else "")
-                    print(f"\nFolder: {folder}" + (f" ({arch})" if arch else ""))
-                    print(f"Install succeed: {result['INST']}")
-                    print(f"Uninstall succeed: {result['UNINST']}")
-
-    # Stop handling popups
-    pp_stop.set()
+    try:
+        for directory in directories:
+            for file_path in sorted(Path(directory).rglob("*.y*ml")):
+                folder = file_path.parent
+                if folder not in seen:
+                    seen.add(folder)
+                    for arch in get_installer_arch(folder):
+                        if platform.machine().lower() != arch == "arm64":
+                            continue
+                        result = test_install(folder, f"-a {arch}" if arch else "")
+                        print(f"\nFolder: {folder}" + (f" ({arch})" if arch else ""))
+                        print(f"Install succeed: {result["INST"]}")
+                        print(f"Uninstall succeed: {result["UNINST"]}")
+    except KeyboardInterrupt:
+        traceback.print_exc()
+    finally:
+        # Stop handling popups
+        pp_stop.set()
     pp_thread.join()
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print(f"Usage: {Path(sys.executable).with_suffix('').name} {os.path.basename(sys.argv[0])} <directory>")
+        print(f"Usage: {Path(sys.executable).with_suffix("").name} {os.path.basename(sys.argv[0])} <directory>")
     else:
         main(sys.argv[1:])
