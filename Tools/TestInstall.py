@@ -135,7 +135,7 @@ def main(directories):
     pp_thread.start()
 
     for directory in directories:
-        for file_path in Path(directory).rglob("*.y*ml"):
+        for file_path in sorted(Path(directory).rglob("*.y*ml")):
             folder = file_path.parent
             if folder not in seen:
                 seen.add(folder)
