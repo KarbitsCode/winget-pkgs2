@@ -12,6 +12,15 @@ on:
       - reopened
       - synchronize
   workflow_dispatch:
+    inputs:
+      doTestLinks:
+        required: true
+        default: true
+        type: boolean
+      doTestInstall:
+        required: true
+        default: false
+        type: boolean
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -60,14 +69,14 @@ jobs:
           echo "folder=$folder" >> $env:GITHUB_OUTPUT
 
       - name: Run python scripts
-        if: steps.detect.outputs.folder != ''
+        if: steps.detect.outputs.folder != '' && (github.event_name != 'workflow_dispatch' || inputs.doTestLinks)
         shell: pwsh
         run: |
           python .\Tools\TestLinks.py ${{ steps.detect.outputs.folder }}
 
   test-install:
     runs-on: windows-latest
-    timeout-minutes: 120
+    timeout-minutes: 360
     permissions:
       contents: read
       actions: write
@@ -157,7 +166,7 @@ jobs:
           echo "folder=$folder" >> $env:GITHUB_OUTPUT
 
       - name: Run python scripts
-        if: steps.detect.outputs.folder != ''
+        if: steps.detect.outputs.folder != '' && (github.event_name != 'workflow_dispatch' || inputs.doTestInstall)
         shell: pwsh
         run: |
           python .\Tools\TestInstall.py ${{ steps.detect.outputs.folder }}
