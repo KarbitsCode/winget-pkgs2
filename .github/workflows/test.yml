@@ -12,7 +12,7 @@ on:
       - reopened
       - synchronize
   schedule:
-    - cron: 30 11 * * *
+    - cron: 0 12 * * *
   workflow_dispatch:
     inputs:
       doTestLinks:
