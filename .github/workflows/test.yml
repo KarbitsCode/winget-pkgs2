@@ -11,6 +11,8 @@ on:
       - opened
       - reopened
       - synchronize
+  schedule:
+    - cron: 30 11 * * *
   workflow_dispatch:
     inputs:
       doTestLinks:
@@ -56,7 +58,7 @@ jobs:
           
           if (-not $manifestsChanged) {
             Write-Host "No manifest changes detected"
-            if ($env:GITHUB_EVENT_NAME -eq "workflow_dispatch" -or $itselfChanged) {
+            if ($env:GITHUB_EVENT_NAME -in @("workflow_dispatch", "schedule") -or $itselfChanged) {
               $folder = "manifests"
             } else {
               $folder = ""
@@ -153,7 +155,7 @@ jobs:
           
           if (-not $manifestsChanged) {
             Write-Host "No manifest changes detected"
-            if ($env:GITHUB_EVENT_NAME -eq "workflow_dispatch" -or $itselfChanged) {
+            if ($env:GITHUB_EVENT_NAME -in @("workflow_dispatch", "schedule") -or $itselfChanged) {
               $folder = "manifests"
             } else {
               $folder = ""
