@@ -97,12 +97,12 @@ def main(directories):
                     print(f"\nFile: {file_path}")
                     print(f"URL:  {url}")
                     result = check_url(url, file_path)
-                    print(f"HEAD: {result["HEAD"]}")
-                    print(f"GET:  {result["GET"]}")
+                    print(f"HEAD: {result['HEAD']}")
+                    print(f"GET:  {result['GET']}")
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print(f"Usage: {Path(sys.executable).with_suffix("").name} {os.path.basename(sys.argv[0])} <directory>")
+        print(f"Usage: {Path(sys.executable).with_suffix('').name} {os.path.basename(sys.argv[0])} <directory>")
     else:
         if "--no-dump" in sys.argv:
             os.environ["NO_DUMP"] = "true"
