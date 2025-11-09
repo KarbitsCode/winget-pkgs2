@@ -70,17 +70,18 @@ def check_url(url, file_path):
     result = {"url": url}
     try:
         resp = requests.head(url, timeout=10, allow_redirects=True)
-        result["HEAD"] = resp.status_code
-        if resp.ok:
-            dump_response("HEAD", resp)
+        result["HEAD"] = str(resp.status_code)
+        dump_response("HEAD", resp)
+        result["HEAD"] += " (NOK)" if not resp.ok else ""
     except Exception as e:
         result["HEAD"] = f"Error: {e}"
     try:
         resp = requests.get(url, timeout=10, allow_redirects=True)
-        result["GET"] = resp.status_code
+        result["GET"] = str(resp.status_code)
         if resp.ok:
             check_hash(file_path, url, resp)
-            dump_response("GET", resp)
+        dump_response("GET", resp)
+        result["GET"] += " (NOK)" if not resp.ok else ""
     except Exception as e:
         result["GET"] = f"Error: {e}"
     return result
