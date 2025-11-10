@@ -103,7 +103,10 @@ def main(directories):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print(f"Usage: {Path(sys.executable).with_suffix('').name} {os.path.basename(sys.argv[0])} <directory>")
+        if os.getenv("GITHUB_ACTIONS"):
+            print("Nothing to do, exiting...")
+        else:
+            print(f"Usage: {Path(sys.executable).with_suffix('').name} {os.path.basename(sys.argv[0])} <directory>")
     else:
         if "--no-dump" in sys.argv:
             os.environ["NO_DUMP"] = "true"
