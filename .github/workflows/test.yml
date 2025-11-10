@@ -71,7 +71,7 @@ jobs:
           echo "folder=$folder" >> $env:GITHUB_OUTPUT
 
       - name: Run python scripts
-        if: steps.detect.outputs.folder != '' && (github.event_name != 'workflow_dispatch' || inputs.doTestLinks)
+        if: github.event_name != 'workflow_dispatch' || inputs.doTestLinks
         shell: pwsh
         run: |
           python .\Tools\TestLinks.py ${{ steps.detect.outputs.folder }}
@@ -168,7 +168,7 @@ jobs:
           echo "folder=$folder" >> $env:GITHUB_OUTPUT
 
       - name: Run python scripts
-        if: steps.detect.outputs.folder != '' && (github.event_name != 'workflow_dispatch' || inputs.doTestInstall)
+        if: github.event_name != 'workflow_dispatch' || inputs.doTestInstall
         shell: pwsh
         run: |
           python .\Tools\TestInstall.py ${{ steps.detect.outputs.folder }}
