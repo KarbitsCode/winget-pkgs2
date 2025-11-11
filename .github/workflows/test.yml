@@ -64,7 +64,7 @@ jobs:
             $folder = $manifestsChanged | ForEach-Object { Split-Path $_ -Parent } | Sort-Object -Unique
             Write-Host "Folder changed under manifests: $folder"
           }
-          
+          echo "$folder"
           echo "folder=$((,$folder | ConvertTo-Json -Compress))" >> $env:GITHUB_OUTPUT
 
   test-links:
