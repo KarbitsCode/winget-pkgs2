@@ -175,13 +175,13 @@ jobs:
         run: |
           python .\Tools\TestInstall.py ${{ matrix.folders }}
 
-    - name: Prepare artifact name
-      id: artifact
-      if: always()
-      shell: pwsh
-      run: |
-        $name = ${{ matrix.folders }} -replace '/', '-'
-        echo "artifact_name=$name" >> $env:GITHUB_OUTPUT
+      - name: Prepare artifact name
+        id: artifact
+        if: always()
+        shell: pwsh
+        run: |
+          $name = ${{ matrix.folders }} -replace '/', '-'
+          echo "artifact_name=$name" >> $env:GITHUB_OUTPUT
 
       - name: Upload artifact
         needs: artifact
