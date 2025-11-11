@@ -175,11 +175,19 @@ jobs:
         run: |
           python .\Tools\TestInstall.py ${{ matrix.folders }}
 
+    - name: Prepare artifact name
+      id: artifact
+      if: always()
+      shell: pwsh
+      run: |
+        $name = ${{ matrix.folders }} -replace '/', '-'
+        echo "artifact_name=$name" >> $env:GITHUB_OUTPUT
+
       - name: Upload artifact
-        if: always()
+        needs: artifact
         uses: actions/upload-artifact@v5.0.0
         with:
-          name: screenshots-${{ matrix.folders.replace('/', '-') }}
+          name: screenshots-${{ steps.artifact.outputs.artifact_name }}
           if-no-files-found: warn
           compression-level: 9
           path: |
