@@ -64,7 +64,7 @@ jobs:
             $folder = $manifestsChanged | ForEach-Object { Split-Path $_ -Parent } | Sort-Object -Unique
             Write-Host "Folder changed under manifests: $folder"
           }
-          echo "$folder"
+          
           echo "folder=$((,$folder | ConvertTo-Json -Compress))" >> $env:GITHUB_OUTPUT
 
   test-links:
@@ -76,7 +76,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        folders: ${{ fromJson(needs.detect.outputs.folder).value }}
+        folders: ${{ fromJson(needs.detect.outputs.folder) }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5.0.0
@@ -106,7 +106,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        folders: ${{ fromJson(needs.detect.outputs.folder).value }}
+        folders: ${{ fromJson(needs.detect.outputs.folder) }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5.0.0
