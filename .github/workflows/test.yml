@@ -38,6 +38,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5.0.0
 
+      - name: Remove old artifacts
+        uses: c-hive/gha-remove-artifacts@v1.4.0
+        with:
+          age: '1 day'
+          skip-recent: 0
+
       - name: Detect changed folder
         id: detect
         shell: pwsh
@@ -92,7 +98,7 @@ jobs:
 
   test-install:
     runs-on: windows-latest
-    timeout-minutes: 360
+    timeout-minutes: 240
     needs: detect
     permissions:
       contents: read
@@ -169,17 +175,11 @@ jobs:
         run: |
           python .\Tools\TestInstall.py ${{ matrix.folders }}
 
-      - name: Remove old artifacts
-        uses: c-hive/gha-remove-artifacts@v1.4.0
-        with:
-          age: '1 day'
-          skip-recent: 0
-
       - name: Upload artifact
         if: always()
         uses: actions/upload-artifact@v5.0.0
         with:
-          name: screenshots-${{ matrix.folder }}
+          name: screenshots-${{ matrix.folders }}
           if-no-files-found: warn
           compression-level: 9
           path: |
