@@ -179,7 +179,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v5.0.0
         with:
-          name: screenshots
+          name: screenshots-${{ matrix.folder }}
           if-no-files-found: warn
           compression-level: 9
           path: |
