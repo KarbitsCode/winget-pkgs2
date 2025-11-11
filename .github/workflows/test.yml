@@ -155,7 +155,7 @@ jobs:
           
           if (-not $manifestsChanged) {
             Write-Host "No manifest changes detected"
-            if ($env:GITHUB_EVENT_NAME -in @("workflow_dispatch", "schedule") -or $itselfChanged) {
+            if ($env:GITHUB_EVENT_NAME -in @("workflow_dispatch") -or $itselfChanged) {
               $folder = "manifests"
             } else {
               $folder = ""
