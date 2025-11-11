@@ -49,17 +49,17 @@ jobs:
           
           if (-not $manifestsChanged) {
             Write-Host "No manifest changes detected"
-            if ($env:GITHUB_EVENT_NAME -in @("workflow_dispatch", "schedule")) {
-              $folder = "manifests"
+            if ($env:GITHUB_EVENT_NAME -in @("workflow_dispatch", "schedule") -or $itselfChanged) {
+              $folder = Get-ChildItem "manifests" -Directory | Select-Object -ExpandProperty Name | ForEach-Object { "manifests/$_" }
             } else {
-              $folder = ""
+              $folder = @()
             }
           } else {
             $folder = $manifestsChanged | ForEach-Object { Split-Path $_ -Parent } | Sort-Object -Unique
             Write-Host "Folder changed under manifests: $folder"
           }
           
-          echo "folder=$folder" >> $env:GITHUB_OUTPUT
+          echo "folder=$(($folder | ConvertTo-Json -Compress))" >> $env:GITHUB_OUTPUT
 
   test-links:
     runs-on: windows-latest
@@ -67,6 +67,10 @@ jobs:
     needs: detect
     permissions:
       contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        folders: ${{ fromJson(needs.detect.outputs.folder) }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5.0.0
@@ -84,7 +88,7 @@ jobs:
         if: github.event_name != 'workflow_dispatch' || inputs.doTestLinks
         shell: pwsh
         run: |
-          python .\Tools\TestLinks.py ${{ needs.detect.outputs.folder }}
+          python .\Tools\TestLinks.py ${{ matrix.folders }}
 
   test-install:
     runs-on: windows-latest
@@ -93,6 +97,10 @@ jobs:
     permissions:
       contents: read
       actions: write
+    strategy:
+      fail-fast: false
+      matrix:
+        folders: ${{ fromJson(needs.detect.outputs.folder) }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5.0.0
@@ -159,7 +167,7 @@ jobs:
         if: github.event_name != 'workflow_dispatch' || inputs.doTestInstall
         shell: pwsh
         run: |
-          python .\Tools\TestInstall.py ${{ needs.detect.outputs.folder }}
+          python .\Tools\TestInstall.py ${{ matrix.folders }}
 
       - name: Remove old artifacts
         uses: c-hive/gha-remove-artifacts@v1.4.0
