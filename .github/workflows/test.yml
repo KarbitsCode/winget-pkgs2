@@ -29,9 +29,42 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  detect:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    outputs:
+      folder: ${{ steps.detect.outputs.folder }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5.0.0
+
+      - name: Detect changed folder
+        id: detect
+        shell: pwsh
+        run: |
+          git fetch origin ${{ github.event.before }} --depth=1
+          $changed = git diff --name-only ${{ github.event.before }} ${{ github.sha }}
+          $manifestsChanged = $changed | Where-Object { $_ -like "manifests/*" }
+          $itselfChanged = $changed | Where-Object { $_ -like "*test.yml" }
+          
+          if (-not $manifestsChanged) {
+            Write-Host "No manifest changes detected"
+            if ($env:GITHUB_EVENT_NAME -in @("workflow_dispatch", "schedule")) {
+              $folder = "manifests"
+            } else {
+              $folder = ""
+            }
+          } else {
+            $folder = $manifestsChanged | ForEach-Object { Split-Path $_ -Parent } | Sort-Object -Unique
+            Write-Host "Folder changed under manifests: $folder"
+          }
+          
+          echo "folder=$folder" >> $env:GITHUB_OUTPUT
+
   test-links:
     runs-on: windows-latest
     timeout-minutes: 120
+    needs: detect
     permissions:
       contents: read
     steps:
@@ -47,38 +80,16 @@ jobs:
             pip install requests pyyaml mss -vvv
           } | Select-String -NotMatch "Found link|Skipping link"
 
-      - name: Detect changed folder
-        id: detect
-        shell: pwsh
-        run: |
-          git fetch origin ${{ github.event.before }} --depth=1
-          $changed = git diff --name-only ${{ github.event.before }} ${{ github.sha }}
-          $manifestsChanged = $changed | Where-Object { $_ -like "manifests/*" }
-          $itselfChanged = $changed | Where-Object { $_ -like "*test.yml" }
-          
-          if (-not $manifestsChanged) {
-            Write-Host "No manifest changes detected"
-            if ($env:GITHUB_EVENT_NAME -in @("workflow_dispatch", "schedule") -or $itselfChanged) {
-              $folder = "manifests"
-            } else {
-              $folder = ""
-            }
-          } else {
-            $folder = $manifestsChanged | ForEach-Object { Split-Path $_ -Parent } | Sort-Object -Unique
-            Write-Host "Folder changed under manifests: $folder"
-          }
-          
-          echo "folder=$folder" >> $env:GITHUB_OUTPUT
-
       - name: Run python scripts
         if: github.event_name != 'workflow_dispatch' || inputs.doTestLinks
         shell: pwsh
         run: |
-          python .\Tools\TestLinks.py ${{ steps.detect.outputs.folder }}
+          python .\Tools\TestLinks.py ${{ needs.detect.outputs.folder }}
 
   test-install:
     runs-on: windows-latest
     timeout-minutes: 360
+    needs: detect
     permissions:
       contents: read
       actions: write
@@ -144,34 +155,11 @@ jobs:
           winget --info
           winget source remove msstore
 
-      - name: Detect changed folder
-        id: detect
-        shell: pwsh
-        run: |
-          git fetch origin ${{ github.event.before }} --depth=1
-          $changed = git diff --name-only ${{ github.event.before }} ${{ github.sha }}
-          $manifestsChanged = $changed | Where-Object { $_ -like "manifests/*" }
-          $itselfChanged = $changed | Where-Object { $_ -like "*test.yml" }
-          
-          if (-not $manifestsChanged) {
-            Write-Host "No manifest changes detected"
-            if ($env:GITHUB_EVENT_NAME -in @("workflow_dispatch") -or $itselfChanged) {
-              $folder = "manifests"
-            } else {
-              $folder = ""
-            }
-          } else {
-            $folder = $manifestsChanged | ForEach-Object { Split-Path $_ -Parent } | Sort-Object -Unique
-            Write-Host "Folder changed under manifests: $folder"
-          }
-          
-          echo "folder=$folder" >> $env:GITHUB_OUTPUT
-
       - name: Run python scripts
         if: github.event_name != 'workflow_dispatch' || inputs.doTestInstall
         shell: pwsh
         run: |
-          python .\Tools\TestInstall.py ${{ steps.detect.outputs.folder }}
+          python .\Tools\TestInstall.py ${{ needs.detect.outputs.folder }}
 
       - name: Remove old artifacts
         uses: c-hive/gha-remove-artifacts@v1.4.0
