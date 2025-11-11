@@ -52,12 +52,13 @@ jobs:
           $changed = git diff --name-only ${{ github.event.before }} ${{ github.sha }}
           $manifestsChanged = $changed | Where-Object { $_ -like "manifests/*" }
           $itselfChanged = $changed | Where-Object { $_ -like "*test.yml" }
-          $folder = @()
           
           if (-not $manifestsChanged) {
             Write-Host "No manifest changes detected"
             if ($env:GITHUB_EVENT_NAME -in @("workflow_dispatch", "schedule") -or $itselfChanged) {
               $folder = Get-ChildItem "manifests" -Directory | Select-Object -ExpandProperty Name | ForEach-Object { "manifests/$_" }
+            } else {
+              $folder = @()
             }
           } else {
             $folder = $manifestsChanged | ForEach-Object { Split-Path $_ -Parent } | Sort-Object -Unique
