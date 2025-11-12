@@ -61,7 +61,7 @@ jobs:
               $folder = @()
             }
           } else {
-            $folder = $manifestsChanged | ForEach-Object { Split-Path $_ -Parent } | Sort-Object -Unique
+            $folder = $manifestsChanged | ForEach-Object { (Split-Path $_ -Parent) -replace '\\', '/' } | Sort-Object -Unique
             Write-Host "Folder changed under manifests: $folder"
           }
           
