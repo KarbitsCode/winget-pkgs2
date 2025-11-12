@@ -90,11 +90,24 @@ jobs:
             pip install requests pyyaml mss -vvv
           } | Select-String -NotMatch "Found link|Skipping link"
 
+      - name: Prepare manifests list
+        id: prepare
+        shell: pwsh
+        run: |
+          $folders = '${{ needs.detect.outputs.folder }}' | ConvertFrom-Json
+          $all = Get-ChildItem "manifests" -Directory | Select-Object -ExpandProperty Name | ForEach-Object { "manifests/$_" }
+          if (($folders.Count -eq $all.Count) -and ((@($folders | Sort-Object) -join ',') -eq (@($all | Sort-Object) -join ','))) {
+            $out = "manifests"
+          } else {
+            $out = $folders -join ' '
+          }
+          echo "folders=$out" >> $env:GITHUB_OUTPUT
+
       - name: Run python scripts
         if: github.event_name != 'workflow_dispatch' || inputs.doTestLinks
         shell: pwsh
         run: |
-          python .\Tools\TestLinks.py ${{ matrix.folders }}
+          python .\Tools\TestLinks.py ${{ steps.prepare.outputs.folders }}
 
   test-install:
     runs-on: windows-latest
@@ -180,7 +193,7 @@ jobs:
         if: always()
         shell: pwsh
         run: |
-          $name = "${{ matrix.folders }}" -replace '/', '-'
+          $name = "${{ matrix.folders }}".Replace("manifests/", "").Replace("/", "-").Replace(".", "-")
           echo "artifact_name=$name" >> $env:GITHUB_OUTPUT
 
       - name: Upload artifact
