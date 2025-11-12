@@ -31,6 +31,8 @@ concurrency:
 jobs:
   detect:
     runs-on: windows-latest
+    permissions:
+      contents: read
     timeout-minutes: 30
     outputs:
       folder: ${{ steps.detect.outputs.folder }}
