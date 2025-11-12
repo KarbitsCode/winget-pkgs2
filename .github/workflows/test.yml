@@ -73,10 +73,6 @@ jobs:
     needs: detect
     permissions:
       contents: read
-    strategy:
-      fail-fast: false
-      matrix:
-        folders: ${{ fromJson(needs.detect.outputs.folder) }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5.0.0
