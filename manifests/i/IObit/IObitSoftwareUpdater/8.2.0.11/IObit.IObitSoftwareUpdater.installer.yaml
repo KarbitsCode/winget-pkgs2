@@ -1,8 +1,8 @@
 # Created using wingetcreate 1.10.3.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.10.0.schema.json
 
-PackageIdentifier: IObit.DriverBooster
-PackageVersion: 13.0.0.143
+PackageIdentifier: IObit.IObitSoftwareUpdater
+PackageVersion: 8.2.0.11
 InstallerLocale: en-US
 InstallerType: inno
 Scope: machine
@@ -11,20 +11,16 @@ InstallModes:
 - silent
 - silentWithProgress
 UpgradeBehavior: install
-FileExtensions:
-- dbd
-- dbop
-ProductCode: Driver Booster_is1
+ProductCode: IObit Software Updater_is1
 AppsAndFeaturesEntries:
-- DisplayName: Driver Booster 13
+- DisplayName: IObit Software Updater
   Publisher: IObit
-  DisplayVersion: 13.0.0
-  ProductCode: Driver Booster_is1
+  ProductCode: IObit Software Updater_is1
 ElevationRequirement: elevatesSelf
 Installers:
 - Architecture: x86
-  InstallerUrl: https://cdn.iobit.com/dl/driver_booster_setup.exe
-  InstallerSha256: 22DB44F5136A3FF89AC591DA0EAA607BCBF7B7846B5242DA7136ABBF1CDAD35F
+  InstallerUrl: https://cdn.iobit.com/dl/iobit-software-updater-setup.exe
+  InstallerSha256: 96D28FB5FB5B6AA45246FC0A7ACD7854AE7945D91AEA1AF17DE2FAF7D52D2B8C
 ManifestType: installer
 ManifestVersion: 1.10.0
-ReleaseDate: 2025-09-16
+ReleaseDate: 2025-11-12
