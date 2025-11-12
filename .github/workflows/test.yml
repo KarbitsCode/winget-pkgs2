@@ -61,11 +61,18 @@ jobs:
               $folder = @()
             }
           } else {
-            $folder = $manifestsChanged | ForEach-Object { (Split-Path $_ -Parent) -replace '\\', '/' } | Sort-Object -Unique
+            $folder = $manifestsChanged | ForEach-Object { Split-Path $_ -Parent } | Sort-Object -Unique
             Write-Host "Folder changed under manifests: $folder"
           }
           
-          echo "folder=$(($folder | ConvertTo-Json -Compress))" >> $env:GITHUB_OUTPUT
+          if ($folder.Count -gt 1) {
+              $out = $folder | ConvertTo-Json -Compress
+          } else {
+              $quoted = '"' + ($folder -replace '"', '\"') + '"'
+              $out = '[' + $quoted + ']'
+          }
+          
+          echo "folder=$out" >> $env:GITHUB_OUTPUT
 
   test-links:
     runs-on: windows-latest
