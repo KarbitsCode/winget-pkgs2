@@ -46,14 +46,14 @@ def dump_response(prefix, response):
         base_name = f"{prefix}_{uuid.uuid4().hex}"
         body_file = temp_dir / f"{base_name}.bin"
         meta_file = temp_dir / f"{base_name}.meta"
-
+        
         # Write response body
         try:
             with open(body_file, "wb") as f:
                 f.write(response.content)
         except Exception as e:
             print(f"Failed to write body file: {e}")
-
+        
         # Write response metadata
         try:
             with open(meta_file, "w", encoding="utf-8") as f:
@@ -68,15 +68,16 @@ def dump_response(prefix, response):
 def check_url(url, file_path):
     """Check a URL with HEAD and GET requests."""
     result = {"url": url}
+    timeout = 15
     try:
-        resp = requests.head(url, timeout=10, allow_redirects=True)
+        resp = requests.head(url, timeout=timeout, allow_redirects=True)
         result["HEAD"] = str(resp.status_code)
         dump_response("HEAD", resp)
         result["HEAD"] += " (NOK)" if not resp.ok else ""
     except Exception as e:
         result["HEAD"] = f"Error: {e}"
     try:
-        resp = requests.get(url, timeout=10, allow_redirects=True)
+        resp = requests.get(url, timeout=timeout, allow_redirects=True)
         result["GET"] = str(resp.status_code)
         if resp.ok:
             check_hash(file_path, url, resp)
@@ -88,7 +89,7 @@ def check_url(url, file_path):
 
 def main(directories):
     seen = set()
-
+    
     for directory in directories:
         for file_path in sorted(Path(directory).rglob("*.y*ml")):
             urls = extract_urls_from_file(file_path)
