@@ -78,7 +78,7 @@ Tip: you can type 'Update-EnvironmentVariables' to update your environment varia
 
 Write-Host @'
 
---> Configuring Winget
+--> Configuring WinGet
 '@
 winget settings --Enable LocalManifestFiles
 winget settings --Enable LocalArchiveMalwareScanOverride
@@ -109,17 +109,17 @@ if (Test-Path $p) {
 $originalARP = Get-ARPTable
 $geoID = (Get-WinHomeLocation).GeoID
 Set-WinHomeLocation -GeoID $geoID
-$manifestFileName = Split-Path $Manifest -Leaf
+$manifestFileName = "$((Get-ChildItem -Path $Manifest -Filter '*.yaml' | Select-Object -First 1).BaseName -replace '\.(installer|locale\.[\w-]+)$','') $(Split-Path $Manifest -Leaf)"
 Write-Host @"
 
---> Validating the Manifest $manifestFileName
+--> Validating the manifest $manifestFileName
 
 "@
 winget validate --manifest $Manifest --verbose-logs
 
 Write-Host @"
 
---> Installing the Manifest $manifestFileName
+--> Installing the manifest $manifestFileName
 
 "@
 $scriptBlock = { winget install --manifest $Manifest --verbose-logs --ignore-local-archive-malware-scan --accept-package-agreements --accept-source-agreements --dependency-source winget @($WinGetOptions -split ' ') }
@@ -146,7 +146,7 @@ $diff | Format-Table -Wrap
 if ($AutoUninstall) {
 Write-Host @"
 
---> Uninstalling the Manifest $manifestFileName
+--> Uninstalling the manifest $manifestFileName
 
 "@
   $uninstallResult = @()
