@@ -207,7 +207,7 @@ jobs:
         if: always()
         with:
           name: screenshots-${{ steps.artifact.outputs.artifact_name }}
-          if-no-files-found: warn
+          if-no-files-found: ignore
           compression-level: 9
           path: |
             Tools/ss/
