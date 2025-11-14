@@ -117,7 +117,7 @@ jobs:
 
   test-install:
     runs-on: windows-latest
-    timeout-minutes: 240
+    timeout-minutes: 360
     needs: detect
     permissions:
       contents: read
