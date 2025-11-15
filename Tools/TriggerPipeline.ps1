@@ -1,14 +1,15 @@
 param(
     [Parameter(Mandatory = $true, Position = 0)]
-    [int]$PRNumber
+    [string]$PRNumber
 )
 
 Push-Location .\winget-pkgs\
 
-$prInfo = gh pr view $PRNumber --json title,headRepository,headRepositoryOwner,headRefName | ConvertFrom-Json
+$prNumber = $PRNumber -replace '#', ''
+$prInfo = gh pr view $prNumber --json title,headRepository,headRepositoryOwner,headRefName | ConvertFrom-Json
 
 if (-not $prInfo) {
-    Write-Error "Could not retrieve PR #$PRNumber"
+    Write-Error "Could not retrieve PR #$prNumber"
     exit 1
 }
 
@@ -22,7 +23,7 @@ if ($prTitle -match $pattern) {
     $name = $matches[1]
     $commitMessage = "Update $name.yaml"
 } else {
-    Write-Error "Wrong title format on PR #$PRNumber"
+    Write-Error "Wrong title format on PR #$prNumber"
     exit 1
 }
 
@@ -30,7 +31,7 @@ Write-Host "Creating empty commit on:" -ForegroundColor Yellow
 Write-Host "- branch '$prBranch'" -ForegroundColor Yellow
 Write-Host "- repo '$prRepo'" -ForegroundColor Yellow
 Write-Host "For PR:" -ForegroundColor Yellow
-Write-Host "- number '$PRNumber'" -ForegroundColor Yellow
+Write-Host "- number '$prNumber'" -ForegroundColor Yellow
 Write-Host "- title '$prTitle'" -ForegroundColor Yellow
 Write-Host "With:" -ForegroundColor Yellow
 Write-Host "- message '$commitMessage'" -ForegroundColor Yellow
@@ -44,6 +45,5 @@ git push origin $prBranch -v
 git checkout master
 git branch -D $prBranch
 
-Pop-Location
-Write-Host "Empty commit successfully pushed to PR #$PRNumber" -ForegroundColor Green
+Write-Host "Empty commit successfully pushed to PR #$prNumber" -ForegroundColor Green
 Pop-Location
