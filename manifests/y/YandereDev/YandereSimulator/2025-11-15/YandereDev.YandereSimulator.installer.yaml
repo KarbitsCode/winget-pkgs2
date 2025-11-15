@@ -2,7 +2,7 @@
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.10.0.schema.json
 
 PackageIdentifier: YandereDev.YandereSimulator
-PackageVersion: 2025-10-31
+PackageVersion: 2025-11-15
 InstallerType: zip
 NestedInstallerType: portable
 NestedInstallerFiles:
@@ -10,7 +10,7 @@ NestedInstallerFiles:
 Installers:
 - Architecture: x64
   InstallerUrl: https://yanderesimulator.com/dl/latest.zip
-  InstallerSha256: DEE29A834568BA2FDB6D4321E06B5DD5862B91A72A1C04A923BEC1CBF8683C79
+  InstallerSha256: 2DE31BC3798C97763CD2870DCEC2EBE6FAF5A9E91EF96D47E1589A906E57EC0F
 ManifestType: installer
 ManifestVersion: 1.10.0
-ReleaseDate: 2025-10-31
+ReleaseDate: 2025-11-15
