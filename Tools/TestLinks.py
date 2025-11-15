@@ -91,16 +91,19 @@ def main(directories):
     seen = set()
     
     for directory in directories:
-        for file_path in sorted(Path(directory).rglob("*.y*ml")):
-            urls = extract_urls_from_file(file_path)
-            for url in urls:
-                if url not in seen:
-                    seen.add(url)
-                    print(f"\nFile: {file_path}")
-                    print(f"URL:  {url}")
-                    result = check_url(url, file_path)
-                    print(f"HEAD: {result['HEAD']}")
-                    print(f"GET:  {result['GET']}")
+        if os.path.exists(directory):
+            for file_path in sorted(Path(directory).rglob("*.y*ml")):
+                urls = extract_urls_from_file(file_path)
+                for url in urls:
+                    if url not in seen:
+                        seen.add(url)
+                        print(f"\nFile: {file_path}")
+                        print(f"URL:  {url}")
+                        result = check_url(url, file_path)
+                        print(f"HEAD: {result['HEAD']}")
+                        print(f"GET:  {result['GET']}")
+        else:
+            print(f"Directory doesn't exist: {directory}")
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:

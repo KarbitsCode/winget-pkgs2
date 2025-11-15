@@ -182,17 +182,20 @@ def main(directories):
     
     try:
         for directory in directories:
-            for file_path in sorted(Path(directory).rglob("*.y*ml")):
-                folder = file_path.parent
-                if folder not in seen:
-                    seen.add(folder)
-                    for arch in get_installer_arch(folder):
-                        if platform.machine().lower() != arch == "arm64":
-                            continue
-                        result = test_install(folder, f"-a {arch}" if arch else "")
-                        print(f"\nFolder: {folder}" + (f" ({arch})" if arch else ""))
-                        print(f"Install succeed: {result['INST']}")
-                        print(f"Uninstall succeed: {result['UNINST']}")
+            if os.path.exists(directory):
+                for file_path in sorted(Path(directory).rglob("*.y*ml")):
+                    folder = file_path.parent
+                    if folder not in seen:
+                        seen.add(folder)
+                        for arch in get_installer_arch(folder):
+                            if platform.machine().lower() != arch == "arm64":
+                                continue
+                            result = test_install(folder, f"-a {arch}" if arch else "")
+                            print(f"\nFolder: {folder}" + (f" ({arch})" if arch else ""))
+                            print(f"Install succeed: {result['INST']}")
+                            print(f"Uninstall succeed: {result['UNINST']}")
+            else:
+                print(f"Direcory doesn't exist: {directory}")
     except KeyboardInterrupt:
         traceback.print_exc()
     finally:
