@@ -93,7 +93,7 @@ jobs:
           python --version
           & {
             python -m pip install --upgrade pip -vvv
-            pip install requests pyyaml mss -vvv
+            pip install requests psutil pyyaml mss -vvv
           } | Select-String -NotMatch "Found link|Skipping link"
 
       - name: Prepare manifests list
@@ -136,7 +136,7 @@ jobs:
           python --version
           & {
             python -m pip install --upgrade pip -vvv
-            pip install requests pyyaml mss -vvv
+            pip install requests psutil pyyaml mss -vvv
           } | Select-String -NotMatch "Found link|Skipping link"
 
       - name: Set up winget
