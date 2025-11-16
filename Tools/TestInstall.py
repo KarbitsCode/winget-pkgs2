@@ -109,10 +109,14 @@ def get_installer_arch(directory):
                 archs = {inst.get("Architecture") for inst in installers if isinstance(inst, dict)}
     return list(sorted(archs))
 
-def run_powershell(script_path, *args):
-    """Run a PowerShell script and pass args, streaming output to console"""
+def run_powershell(script_path, *args, timeout=600):
+    """Run a PowerShell script with timeout, streaming output to console"""
     cmd = ["powershell", "-ExecutionPolicy", "Bypass", "-File", str(script_path), *map(str, args)]
-    return subprocess.run(cmd, check=False)
+    try:
+        return subprocess.run(cmd, check=False, shell=False, timeout=timeout)
+    except subprocess.TimeoutExpired as e:
+        print(f"PowerShell script timed out after {timeout} seconds.")
+        return subprocess.CompletedProcess(cmd, returncode=-999)
 
 def test_install(directory, args = ""):
     """Test install/uninstall of a package"""
