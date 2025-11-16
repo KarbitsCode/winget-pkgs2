@@ -143,12 +143,18 @@ jobs:
         shell: pwsh
         run: |
           function Get-ReleaseTag {
+            [CmdletBinding()]
+            param()
             try {
-              $releasesAPIResponse = Invoke-RestMethod 'https://api.github.com/repos/microsoft/winget-cli/releases?per_page=100' -Verbose
+              $irmParams = @{Uri = "https://api.github.com/repos/microsoft/winget-cli/releases?per_page=100"}
+              if ($PSBoundParameters.ContainsKey("Verbose")) {
+                  $irmParams["Verbose"] = $true
+              }
+              $releasesAPIResponse = Invoke-RestMethod @irmParams
             } catch {
               $statusCode = $_.Exception.Response.StatusCode.Value__
               if ($statusCode -eq 403) {
-                Write-Output "Rate limited. Waiting 10 seconds before retry..."
+                Write-Verbose "Rate limited. Waiting 10 seconds before retry..."
                 Start-Sleep -Seconds 10
                 return Get-ReleaseTag
               } else {
@@ -157,7 +163,7 @@ jobs:
             }
             $releasesAPIResponse = $releasesAPIResponse.Where({ !$_.prerelease })
             if ($releasesAPIResponse.Count -lt 1) {
-              Write-Output 'No WinGet releases found matching criteria'
+              Write-Output "No WinGet releases found matching criteria"
               exit 1
             }
             $releasesAPIResponse = $releasesAPIResponse | Sort-Object -Property published_at -Descending
@@ -166,11 +172,11 @@ jobs:
           
           Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery -Verbose -AllowClobber
           try {
-            Repair-WinGetPackageManager -Version $(Get-ReleaseTag) -Force -Verbose
+            Repair-WinGetPackageManager -Version $(Get-ReleaseTag -Verbose) -Force -Verbose
           } catch {
             Write-Warning "Repair failed: $($_.Exception.Message)"
-            if ($_.Exception.Message -match '0x80073D02') {
-              if ($_.Exception.Message -match 'ActivityId\]\s+([0-9a-fA-F-]+)') {
+            if ($_.Exception.Message -match "0x80073D02") {
+              if ($_.Exception.Message -match "ActivityId\]\s+([0-9a-fA-F-]+)") {
                 $activityId = $matches[1]
                 Write-Output "Found ActivityId: $activityId"
                 try {
