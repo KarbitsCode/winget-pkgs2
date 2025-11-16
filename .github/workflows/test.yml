@@ -57,7 +57,7 @@ jobs:
           $itselfChanged = $changed | Where-Object { $_ -like "*test.yml" }
           
           if (-not $manifestsChanged) {
-            Write-Host "No manifest changes detected"
+            Write-Output "No manifest changes detected"
             if ($env:GITHUB_EVENT_NAME -in @("workflow_dispatch", "schedule") -or $itselfChanged) {
               $folder = Get-ChildItem "manifests" -Directory | Select-Object -ExpandProperty Name | ForEach-Object { "manifests/$_" }
             } else {
@@ -65,7 +65,7 @@ jobs:
             }
           } else {
             $folder = $manifestsChanged | ForEach-Object { (Split-Path $_ -Parent) -replace '\\', '/' } | Sort-Object -Unique
-            Write-Host "Folder changed under manifests: $folder"
+            Write-Output "Folder changed under manifests: $folder"
           }
           
           if ($folder.Count -gt 1) {
@@ -143,13 +143,19 @@ jobs:
         shell: pwsh
         run: |
           function Get-ReleaseTag {
-            $releasesAPIResponse = Invoke-RestMethod 'https://api.github.com/repos/microsoft/winget-cli/releases?per_page=100' -Verbose
-            if (!$script:Prerelease) {
-              $releasesAPIResponse = $releasesAPIResponse.Where({ !$_.prerelease })
+            try {
+              $releasesAPIResponse = Invoke-RestMethod 'https://api.github.com/repos/microsoft/winget-cli/releases?per_page=100' -Verbose
+            } catch {
+              $statusCode = $_.Exception.Response.StatusCode.Value__
+              if ($statusCode -eq 403) {
+                Write-Output "Rate limited. Waiting 10 seconds before retry..."
+                Start-Sleep -Seconds 10
+                return Get-ReleaseTag
+              } else {
+                throw
+              }
             }
-            if (![String]::IsNullOrWhiteSpace($script:WinGetVersion)) {
-              $releasesAPIResponse = @($releasesAPIResponse.Where({ $_.tag_name -match $('^v?' + [regex]::escape($script:WinGetVersion)) }))
-            }
+            $releasesAPIResponse = $releasesAPIResponse.Where({ !$_.prerelease })
             if ($releasesAPIResponse.Count -lt 1) {
               Write-Output 'No WinGet releases found matching criteria'
               exit 1
@@ -166,9 +172,9 @@ jobs:
             if ($_.Exception.Message -match '0x80073D02') {
               if ($_.Exception.Message -match 'ActivityId\]\s+([0-9a-fA-F-]+)') {
                 $activityId = $matches[1]
-                Write-Host "Found ActivityId: $activityId"
+                Write-Output "Found ActivityId: $activityId"
                 try {
-                  Write-Host "Retrieving AppX logs..."
+                  Write-Output "Retrieving AppX logs..."
                   Get-AppPackageLog -ActivityId $activityId | Format0List
                 } catch {
                   Write-Warning "Could not retrieve AppX log for $activityId"
