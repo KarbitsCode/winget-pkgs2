@@ -5,6 +5,7 @@ import json
 import yaml
 import time
 import ctypes
+import psutil
 import tempfile
 import platform
 import traceback
@@ -112,11 +113,17 @@ def get_installer_arch(directory):
 def run_powershell(script_path, *args, timeout=600):
     """Run a PowerShell script with timeout, streaming output to console"""
     cmd = ["powershell", "-ExecutionPolicy", "Bypass", "-File", str(script_path), *map(str, args)]
-    try:
-        return subprocess.run(cmd, check=False, shell=False, timeout=timeout)
-    except subprocess.TimeoutExpired as e:
-        print(f"PowerShell script timed out after {timeout} seconds.")
-        return subprocess.CompletedProcess(cmd, returncode=-999)
+    with subprocess.Popen(cmd, shell=True) as proc:
+        try:
+            proc.wait(timeout=timeout)
+            return subprocess.CompletedProcess(cmd, proc.returncode)
+        except subprocess.TimeoutExpired:
+            print(f"PowerShell script timed out after {timeout} seconds.")
+            parent = psutil.Process(proc.pid)
+            for child in parent.children(recursive=True):
+                child.kill()
+            parent.kill()
+            return subprocess.CompletedProcess(cmd, returncode=-999)
 
 def test_install(directory, args = ""):
     """Test install/uninstall of a package"""
@@ -154,7 +161,7 @@ def test_install(directory, args = ""):
     ss_thread.join()
     
     if install_proc.returncode != 0:
-        print("PowerShell script failed.")
+        print(f"PowerShell script failed. ({install_proc.returncode})")
         return {"INST": install_success, "UNINST": uninstall_success}
     
     # Read JSON result from PowerShell
