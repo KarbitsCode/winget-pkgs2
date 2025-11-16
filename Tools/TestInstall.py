@@ -15,6 +15,7 @@ from ctypes import wintypes
 from datetime import datetime
 
 def auto_popups(stop_event):
+    """Scan for installer popups and auto-close them if exists"""
     user32 = ctypes.windll.user32
     WM_GETTEXT = 0x000D
     WM_GETTEXTLENGTH = 0x000E
@@ -76,7 +77,7 @@ def auto_popups(stop_event):
             user32.keybd_event(VK_ENTER, 0, 2, 0) # up
             time.sleep(2)
             user32.SetForegroundWindow(hwnd)
-            # Simulate Enter key
+            # Simulate Tab key
             user32.keybd_event(VK_TAB, 0, 0, 0)  # down
             time.sleep(0.05)
             user32.keybd_event(VK_TAB, 0, 2, 0)  # up
@@ -87,9 +88,7 @@ def auto_popups(stop_event):
         time.sleep(1)
 
 def get_screenshots(stop_event, folder, interval=10):
-    """
-    Takes desktop screenshots every [interval] seconds until stop_event is triggered.
-    """
+    """Takes desktop screenshots every [interval] seconds until stop_event is triggered"""
     folder.mkdir(parents=True, exist_ok=True)
     with mss.mss() as sct:
         monitor_index = 1  # 1 = primary monitor
@@ -100,7 +99,7 @@ def get_screenshots(stop_event, folder, interval=10):
             time.sleep(interval)
 
 def get_installer_arch(directory):
-    """Checks if installer.yml has x86 and x64 installers"""
+    """Get installer architectures from package's installer.yml"""
     for root, _, files in os.walk(directory):
         for file in files:
             if file.endswith((".installer.yml", ".installer.yaml")):
@@ -111,7 +110,7 @@ def get_installer_arch(directory):
     return list(sorted(archs))
 
 def run_powershell(script_path, *args):
-    """Run a PowerShell script and pass args, streaming output to console."""
+    """Run a PowerShell script and pass args, streaming output to console"""
     cmd = ["powershell", "-ExecutionPolicy", "Bypass", "-File", str(script_path), *map(str, args)]
     return subprocess.run(cmd, check=False)
 

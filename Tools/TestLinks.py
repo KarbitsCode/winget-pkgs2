@@ -9,13 +9,13 @@ import tempfile
 from pathlib import Path
 
 def extract_urls_from_file(file_path):
-    """Extract all URLs from a YAML file (raw text scan)."""
+    """Extract all URLs from a YAML file (raw text scan)"""
     text = Path(file_path).read_text(encoding="utf-8", errors="ignore")
     url_pattern = re.compile(r"https?://[^\s'\"<>]+")
     return url_pattern.findall(text)
 
 def sha256sum(data):
-    """Compute SHA256 hash of given bytes."""
+    """Compute SHA256 hash of given bytes"""
     sha256 = hashlib.sha256()
     sha256.update(data)
     return sha256.hexdigest().upper()
@@ -39,7 +39,7 @@ def check_hash(file_path, url, response):
                 print("Installer hash mismatch!")
 
 def dump_response(prefix, response):
-    """Dump response to %TEMP% with random filename."""
+    """Dump response to %TEMP% with random filename"""
     # If NO_DUMP is false and we're not in CI and args being only "manifests"
     if os.getenv("NO_DUMP", "0").lower() not in ("true", "1") and not os.getenv("GITHUB_ACTIONS") and sys.argv[1] != "manifests":
         temp_dir = Path(tempfile.gettempdir())
@@ -65,8 +65,8 @@ def dump_response(prefix, response):
         except Exception as e:
             print(f"Failed to write meta file: {e}")
 
-def check_url(url, file_path):
-    """Check a URL with HEAD and GET requests."""
+def test_links(url, file_path):
+    """Test a URL with HEAD and GET requests"""
     result = {"url": url}
     timeout = 15
     try:
@@ -99,7 +99,7 @@ def main(directories):
                         seen.add(url)
                         print(f"\nFile: {file_path}")
                         print(f"URL:  {url}")
-                        result = check_url(url, file_path)
+                        result = test_links(url, file_path)
                         print(f"HEAD: {result['HEAD']}")
                         print(f"GET:  {result['GET']}")
         else:
