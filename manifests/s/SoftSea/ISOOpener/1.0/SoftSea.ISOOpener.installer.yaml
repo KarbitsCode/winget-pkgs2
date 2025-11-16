@@ -13,8 +13,8 @@ InstallModes:
 UpgradeBehavior: uninstallPrevious
 ProductCode: '{CE235F00-F8CD-41AF-83D5-236D90E33BFB}_is1'
 AppsAndFeaturesEntries:
-- ProductCode: '{CE235F00-F8CD-41AF-83D5-236D90E33BFB}_is1'
-  Publisher: www.isoopener.com
+- Publisher: www.isoopener.com
+  ProductCode: '{CE235F00-F8CD-41AF-83D5-236D90E33BFB}_is1'
 ElevationRequirement: elevatesSelf
 InstallationMetadata:
   DefaultInstallLocation: '%ProgramFiles%\ISO Opener'

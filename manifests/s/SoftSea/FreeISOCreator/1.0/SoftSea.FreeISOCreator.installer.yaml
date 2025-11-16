@@ -13,8 +13,8 @@ InstallModes:
 UpgradeBehavior: uninstallPrevious
 ProductCode: '{FBEF93EA-D52F-45B5-91D3-ABEACE4C7615}_is1'
 AppsAndFeaturesEntries:
-- ProductCode: '{FBEF93EA-D52F-45B5-91D3-ABEACE4C7615}_is1'
-  Publisher: freeisocreator.com
+- Publisher: freeisocreator.com
+  ProductCode: '{FBEF93EA-D52F-45B5-91D3-ABEACE4C7615}_is1'
 ElevationRequirement: elevatesSelf
 InstallationMetadata:
   DefaultInstallLocation: '%ProgramFiles%\Free ISO Creator'
