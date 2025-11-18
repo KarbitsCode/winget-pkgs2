@@ -4,6 +4,7 @@ param(
 )
 
 Push-Location .\winget-pkgs\
+git restore .
 
 foreach ($PRNumber in $PRNumbers) {
 	$prNumber = $PRNumber -replace '#', ''
@@ -37,7 +38,6 @@ foreach ($PRNumber in $PRNumbers) {
 	Write-Host "With:" -ForegroundColor Yellow
 	Write-Host "- message '$commitMessage'" -ForegroundColor Yellow
 
-	git restore .
 	git pull -v --prune
 	git fetch origin $prBranch -v
 	git checkout $prBranch
