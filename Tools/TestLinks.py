@@ -4,6 +4,7 @@ import sys
 import uuid
 import yaml
 import hashlib
+import platform
 import requests
 import tempfile
 from pathlib import Path
@@ -68,16 +69,17 @@ def dump_response(prefix, response):
 def test_links(url, file_path):
     """Test a URL with HEAD and GET requests"""
     result = {"url": url}
+    headers = {"User-Agent": f"Python/{platform.python_version()} (Windows NT 10.0; Win64; x64)"}
     timeout = 15
     try:
-        resp = requests.head(url, timeout=timeout, allow_redirects=True)
+        resp = requests.head(url, timeout=timeout, headers=headers, allow_redirects=True)
         result["HEAD"] = str(resp.status_code)
         dump_response("HEAD", resp)
         result["HEAD"] += " (NOK)" if not resp.ok else ""
     except Exception as e:
         result["HEAD"] = f"Error: {e}"
     try:
-        resp = requests.get(url, timeout=timeout, allow_redirects=True)
+        resp = requests.get(url, timeout=timeout, headers=headers, allow_redirects=True)
         result["GET"] = str(resp.status_code)
         if resp.ok:
             check_hash(file_path, url, resp)
