@@ -19,7 +19,7 @@ def sha256sum(data):
     """Compute SHA256 hash of given bytes"""
     sha256 = hashlib.sha256()
     sha256.update(data)
-    return sha256.hexdigest().upper()
+    return sha256.hexdigest()
 
 def check_hash(file_path, url, response):
     """Checks in installer.yml has installers hash match"""
@@ -30,8 +30,8 @@ def check_hash(file_path, url, response):
         for installer in installers:
             if url != installer.get("InstallerUrl"):
                 continue
-            actual = sha256sum(response.content)
-            expected = installer.get("InstallerSha256")
+            actual = sha256sum(response.content).upper()
+            expected = installer.get("InstallerSha256").upper()
             print(f"Expected: {expected}")
             print(f"Actual:   {actual}")
             if actual == expected:
