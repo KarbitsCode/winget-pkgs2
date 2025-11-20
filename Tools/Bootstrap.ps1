@@ -144,15 +144,17 @@ $diff = (Compare-Object (Get-ARPTable) $originalARP -Property DisplayName,Displa
 $diff | Format-Table -Wrap
 
 if ($AutoUninstall) {
+  if ($diff) {
 Write-Host @"
 
 --> Uninstalling the manifest $manifestFileName
 
 "@
+  }
   $uninstallResult = @()
   foreach ($item in $diff) {
     $code = $item.ProductCode
-    if ($null -ne $code) {
+    if ($code) {
       $scriptBlock = { winget uninstall --product-code $code }
       if ($StripProgress) {
         Strip-Progress -ScriptBlock $scriptBlock
