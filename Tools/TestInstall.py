@@ -5,6 +5,7 @@ import json
 import yaml
 import time
 import ctypes
+import shutil
 import psutil
 import tempfile
 import platform
@@ -145,6 +146,7 @@ def test_install(directory, args = ""):
     ps_args.append("-AutoUninstall")
     
     # Start screenshoting
+    global ss_dir
     ss_dir = Path(__file__).parent / "ss"
     ss_stop = threading.Event()
     ss_thread = threading.Thread(target=get_screenshots, args=[ss_stop, ss_dir])
@@ -220,4 +222,9 @@ if __name__ == "__main__":
         else:
             print(f"Usage: {Path(sys.executable).with_suffix('').name} {os.path.basename(sys.argv[0])} <directory>")
     else:
+        if "--no-ss" in sys.argv:
+            os.environ["NO_SS"] = "true"
+            sys.argv.remove("--no-ss")
         main(sys.argv[1:])
+        if os.getenv("NO_SS", "0").lower() in ("true", "1"):
+            shutil.rmtree(ss_dir)
