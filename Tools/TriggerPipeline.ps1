@@ -20,7 +20,7 @@ foreach ($PRNumber in $PRNumbers) {
 	$prTitle = $prInfo.title
 
 	# Extract the text after ':' (if present) and before 'version'
-	$pattern = '(?::\s*)?([A-Za-z0-9\.\-_]+)(?:\s+version.*)?$'
+	$pattern = '^(?:.*:\s*)?([A-Za-z0-9._-]+)(?:\s+version\s+.*)?$'
 	if ($prTitle -match $pattern) {
 		$name = $matches[1]
 		$commitMessage = "Update $name.yaml"
