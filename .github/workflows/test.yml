@@ -39,7 +39,7 @@ jobs:
       folder: ${{ steps.detect.outputs.folder }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5.0.1
+        uses: actions/checkout@v6.0.0
 
       - name: Remove old artifacts
         uses: c-hive/gha-remove-artifacts@v1.4.0
@@ -85,7 +85,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5.0.1
+        uses: actions/checkout@v6.0.0
 
       - name: Set up python packages
         shell: pwsh
@@ -128,7 +128,7 @@ jobs:
         folders: ${{ fromJson(needs.detect.outputs.folder) }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5.0.1
+        uses: actions/checkout@v6.0.0
 
       - name: Set up python packages
         shell: pwsh
