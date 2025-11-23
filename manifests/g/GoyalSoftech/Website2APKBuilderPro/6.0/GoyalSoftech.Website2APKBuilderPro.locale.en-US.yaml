@@ -2,7 +2,7 @@
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: GoyalSoftech.Website2APKBuilderPro
-PackageVersion: "5.4"
+PackageVersion: "6.0"
 PackageLocale: en-US
 Publisher: Goyal Softech Pvt. Ltd.
 PublisherUrl: https://websitetoapk.com/
@@ -12,14 +12,14 @@ PackageName: Website 2 APK Builder Pro
 PackageUrl: https://websitetoapk.com/download.html
 License: Proprietary
 LicenseUrl: https://websitetoapk.com/terms-privacy.html
-Copyright: 2016 - 2024 © Goyal Softech Pvt. Ltd.
+Copyright: 2016 - 2025 © Goyal Softech Pvt. Ltd.
 ShortDescription: Convert your Website or HTML5 to Android Apps.
 Tags:
 - website
 - apk
 - android
 - html
-ReleaseNotesUrl: https://github.com/praveshagrawal/Website-2-APK-Builder/releases/tag/v5.4
+ReleaseNotesUrl: https://github.com/praveshagrawal/Website-2-APK-Builder/releases/tag/v6.0
 PurchaseUrl: https://websitetoapk.com/pricing.html
 Documentations:
 - DocumentLabel: Product Documentation
