@@ -153,7 +153,8 @@ jobs:
               $releasesAPIResponse = Invoke-RestMethod @irmParams
             } catch {
               $statusCode = $_.Exception.Response.StatusCode.Value__
-              if ($statusCode -eq 403) {
+              $messageText = $_.Exception.Message
+              if ($statusCode -eq 403 -or $messageText -match "rate limit") {
                 Write-Verbose "Rate limited. Waiting 10 seconds before retry..."
                 Start-Sleep -Seconds 10
                 return Get-ReleaseTag
