@@ -155,12 +155,11 @@ jobs:
               $statusCode = $_.Exception.Response.StatusCode.Value__
               $messageText = $_.Exception.Message
               if ($statusCode -eq 403 -or $messageText -match "rate limit") {
-                Write-Verbose "Rate limited. Waiting 60 seconds before retry..."
+                Write-Warning "Rate limited. Waiting 60 seconds before retry..."
                 Start-Sleep -Seconds 60
                 return Get-ReleaseTag
-              } else {
-                throw
               }
+              throw $_.Exception
             }
             $releasesAPIResponse = $releasesAPIResponse.Where({ !$_.prerelease })
             if ($releasesAPIResponse.Count -lt 1) {
@@ -170,25 +169,32 @@ jobs:
             $releasesAPIResponse = $releasesAPIResponse | Sort-Object -Property published_at -Descending
             return $releasesAPIResponse[0].tag_name
           }
-          
-          try {
-            Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery -Verbose -AllowClobber
-            Repair-WinGetPackageManager -Version $(Get-ReleaseTag -Verbose) -Force -Verbose
-          } catch {
-            Write-Warning "Repair failed: $($_.Exception.Message)"
-            if ($_.Exception.Message -match "0x80073D02") {
-              if ($_.Exception.Message -match "ActivityId\]\s+([0-9a-fA-F-]+)") {
-                $activityId = $matches[1]
-                Write-Output "Found ActivityId: $activityId"
-                try {
-                  Write-Output "Retrieving AppX logs..."
-                  Get-AppPackageLog -ActivityId $activityId | Format0List
-                } catch {
-                  Write-Warning "Could not retrieve AppX log for $activityId"
+
+          while($true) {
+            try {
+              Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery -Verbose -AllowClobber
+              Repair-WinGetPackageManager -Version $(Get-ReleaseTag -Verbose) -Force -Verbose
+            } catch {
+              $messageText = $_.Exception.Message
+              Write-Warning "Repair failed: $($messageText)"
+              if ($messageText -match "0x80073D02") {
+                if ($messageText -match "ActivityId\]\s+([0-9a-fA-F-]+)") {
+                  $activityId = $matches[1]
+                  Write-Output "Found ActivityId: $activityId"
+                  try {
+                    Write-Output "Retrieving AppX logs..."
+                    Get-AppPackageLog -ActivityId $activityId | Format0List
+                  } catch {
+                    Write-Warning "Could not retrieve AppX log for $activityId"
+                  }
                 }
+              } else if ($messageText -match "rate limit") {
+                Write-Warning "Rate limited. Waiting 60 seconds before retry..."
+                Start-Sleep -Seconds 60
+                continue
               }
+              throw $_.Exception
             }
-            throw $_.Exception
           }
           
           New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\AppHost" -Force -Verbose | Out-Null
