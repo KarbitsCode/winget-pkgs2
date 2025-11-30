@@ -152,15 +152,23 @@ def test_install(directory, args = ""):
     ss_thread = threading.Thread(target=get_screenshots, args=[ss_stop, ss_dir])
     ss_thread.start()
     
+    # Start handling popups
+    pp_stop = threading.Event()
+    pp_thread = threading.Thread(target=auto_popups, args=[pp_stop])
+    pp_thread.start()
+    
     try:
         # print(f"\nRunning {ps_script} with {ps_args}")
         install_proc = run_powershell(ps_script, directory, *ps_args)
     except KeyboardInterrupt:
         traceback.print_exc()
     finally:
+        # Stop handling popups
+        pp_stop.set()
+        pp_thread.join()
         # Stop screenshoting
         ss_stop.set()
-    ss_thread.join()
+        ss_thread.join()
     
     if install_proc.returncode != 0:
         print(f"PowerShell script failed. ({install_proc.returncode})")
@@ -187,11 +195,6 @@ def test_install(directory, args = ""):
 def main(directories):
     seen = set()
     
-    # Start handling popups
-    pp_stop = threading.Event()
-    pp_thread = threading.Thread(target=auto_popups, args=[pp_stop])
-    pp_thread.start()
-    
     try:
         for directory in directories:
             if os.path.exists(directory):
@@ -210,10 +213,6 @@ def main(directories):
                 print(f"Direcory doesn't exist: {directory}")
     except KeyboardInterrupt:
         traceback.print_exc()
-    finally:
-        # Stop handling popups
-        pp_stop.set()
-    pp_thread.join()
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
