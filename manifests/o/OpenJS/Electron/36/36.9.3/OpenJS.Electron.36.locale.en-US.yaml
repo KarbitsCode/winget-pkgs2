@@ -1,8 +1,8 @@
-# Created with komac v2.11.2
+# Created with komac v2.14.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: OpenJS.Electron.36
-PackageVersion: 36.0.1
+PackageVersion: 36.9.3
 PackageLocale: en-US
 Publisher: OpenJS Foundation
 PublisherUrl: https://openjsf.org/
@@ -24,10 +24,9 @@ Tags:
 - v8
 - works-with-codespaces
 ReleaseNotes: |-
-  Release Notes for v36.0.1
+  Release Notes for v36.9.3
   Fixes
-  - Fixed the visibleOnAllWorkspaces property on Linux. #46850 (Also in 35)
-  - Fixed the issue where maximizing and restoring the window does not respect the corner radius settings, and the corner radius is incorrect in fullscreen mode. #46848 (Also in 35)
-ReleaseNotesUrl: https://github.com/electron/electron/releases/tag/v36.0.1
+  - Fixed high CPU usage with <input> tag on macOS 26. #48419 (Also in 37, 38, 39)
+ReleaseNotesUrl: https://github.com/electron/electron/releases/tag/v36.9.3
 ManifestType: defaultLocale
 ManifestVersion: 1.10.0
