@@ -94,6 +94,13 @@ if (Test-Path $p) {
   # Remove line comments
   $raw = $raw -replace '(?m)^\s*//.*$' -replace ',(\s*[}\]])', '$1'
   $j = $raw | ConvertFrom-Json
+  if (-not $j.uninstallBehavior) {
+    $j | Add-Member -NotePropertyName 'uninstallBehavior' -NotePropertyValue ([PSCustomObject]@{})
+  }
+  if (-not $j.uninstallBehavior.purgePortablePackage) {
+    $j.uninstallBehavior | Add-Member -NotePropertyName 'purgePortablePackage' -NotePropertyValue @{}
+  }
+  $j.uninstallBehavior.purgePortablePackage = $true
   if ($DisableSpinner) {
     if (-not $j.visual) {
       $j | Add-Member -NotePropertyName 'visual' -NotePropertyValue ([PSCustomObject]@{})
@@ -103,7 +110,7 @@ if (Test-Path $p) {
     }
     $j.visual.progressBar = 'disabled'
   }
-  $j | ConvertTo-Json -Depth 10 | Set-Content $p -Encoding UTF8
+  $j | ConvertTo-Json | Set-Content $p -Encoding UTF8
 }
 
 $originalARP = Get-ARPTable
@@ -173,7 +180,7 @@ Write-Host @"
   InstallResult = $installResult
   ARPDiff = $diff
   UninstallResult = $uninstallResult
-} | ConvertTo-Json -Compress | Set-Content -Path "$([System.IO.Path]::GetTempPath())\arp.json" -Encoding UTF8
+} | ConvertTo-Json | Set-Content -Path "$([System.IO.Path]::GetTempPath())\arp.json" -Encoding UTF8
 
 # Restore the settings
 if (Test-Path $p) {
