@@ -33,6 +33,7 @@ function Get-ARPTable {
 # https://gist.github.com/asheroto/96bcabe428e8ad134ef204573810041f
 function Strip-Progress {
   param(
+    [Parameter(Mandatory = $true, Position = 0)]
     [ScriptBlock]$ScriptBlock
   )
 
@@ -62,6 +63,36 @@ function Strip-Progress {
   }
 }
 
+function Set-NestedJsonValue {
+    param(
+      [Parameter(Mandatory = $true, Position = 0)]
+      $Root,
+      [Parameter(Mandatory = $true, Position = 1)]
+      [string[]]$Path,
+      [Parameter(Mandatory = $true, Position = 2)]
+      $Value
+    )
+
+  $current = $Root
+  for ($i = 0; $i -lt $Path.Count; $i++) {
+    $key = $Path[$i]
+    $isLast = ($i -eq $Path.Count - 1)
+    if ($isLast) {
+      if (-not $current.PSObject.Properties[$key]) {
+        $current | Add-Member -NotePropertyName $key -NotePropertyValue $Value
+      } else {
+        $current.$key = $Value
+      }
+    } else {
+      if (-not $current.PSObject.Properties[$key]) {
+        $current | Add-Member -NotePropertyName $key -NotePropertyValue ([PSCustomObject]@{})
+      }
+      $current = $current.$key
+    }
+  }
+}
+
+
 Write-Host @'
 --> Installing WinGet
 '@
@@ -69,8 +100,8 @@ Write-Host @'
 Write-Host @'
 --> Disabling safety warning when running installer
 '@
-# New-Item -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Associations' | Out-Null
-# New-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Associations' -Name 'ModRiskFileTypes' -Type 'String' -Value '.bat;.exe;.reg;.vbs;.chm;.msi;.js;.cmd' | Out-Null
+New-Item -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Associations' -Force | Out-Null
+New-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Associations' -Name 'ModRiskFileTypes' -Type 'String' -Value '.bat;.exe;.reg;.vbs;.chm;.msi;.js;.cmd' -Force | Out-Null
 
 Write-Host @'
 Tip: you can type 'Update-EnvironmentVariables' to update your environment variables, such as after installing a new software.
@@ -94,21 +125,9 @@ if (Test-Path $p) {
   # Remove line comments
   $raw = $raw -replace '(?m)^\s*//.*$' -replace ',(\s*[}\]])', '$1'
   $j = $raw | ConvertFrom-Json
-  if (-not $j.uninstallBehavior) {
-    $j | Add-Member -NotePropertyName 'uninstallBehavior' -NotePropertyValue ([PSCustomObject]@{})
-  }
-  if (-not $j.uninstallBehavior.purgePortablePackage) {
-    $j.uninstallBehavior | Add-Member -NotePropertyName 'purgePortablePackage' -NotePropertyValue @{}
-  }
-  $j.uninstallBehavior.purgePortablePackage = $true
+  Set-NestedJsonValue $j @('uninstallBehavior', 'purgePortablePackage') $true
   if ($DisableSpinner) {
-    if (-not $j.visual) {
-      $j | Add-Member -NotePropertyName 'visual' -NotePropertyValue ([PSCustomObject]@{})
-    }
-    if (-not $j.visual.progressBar) {
-      $j.visual | Add-Member -NotePropertyName 'progressBar' -NotePropertyValue @{}
-    }
-    $j.visual.progressBar = 'disabled'
+    Set-NestedJsonValue $j @('visual', 'progressBar') 'disabled'
   }
   $j | ConvertTo-Json | Set-Content $p -Encoding UTF8
 }
