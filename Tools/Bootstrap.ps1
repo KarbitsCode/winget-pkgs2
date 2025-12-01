@@ -63,8 +63,7 @@ function Strip-Progress {
   }
 }
 
-function Set-NestedJsonValue {
-  [CmdletBinding(SupportsShouldProcess)]
+function Add-NestedJsonValue {
   param(
     [Parameter(Mandatory = $true, Position = 0)]
     $Object,
@@ -125,9 +124,9 @@ if (Test-Path $p) {
   $raw = Get-Content $p -Raw
   $raw = $raw -replace '(?m)^\s*//.*$' -replace ',(\s*[}\]])', '$1' # Remove line comments
   $j = $raw | ConvertFrom-Json
-  Set-NestedJsonValue -Object $j -Path @('uninstallBehavior', 'purgePortablePackage') -Value $true
+  Add-NestedJsonValue -Object $j -Path @('uninstallBehavior', 'purgePortablePackage') -Value $true
   if ($DisableSpinner) {
-    Set-NestedJsonValue -Object $j -Path @('visual', 'progressBar') -Value 'disabled'
+    Add-NestedJsonValue -Object $j -Path @('visual', 'progressBar') -Value 'disabled'
   }
   $j | ConvertTo-Json | Set-Content $p -Encoding UTF8
 }
