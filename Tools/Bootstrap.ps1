@@ -64,16 +64,17 @@ function Strip-Progress {
 }
 
 function Set-NestedJsonValue {
-    param(
-      [Parameter(Mandatory = $true, Position = 0)]
-      $Root,
-      [Parameter(Mandatory = $true, Position = 1)]
-      [string[]]$Path,
-      [Parameter(Mandatory = $true, Position = 2)]
-      $Value
-    )
+  [CmdletBinding(SupportsShouldProcess)]
+  param(
+    [Parameter(Mandatory = $true, Position = 0)]
+    $Object,
+    [Parameter(Mandatory = $true, Position = 1)]
+    [string[]]$Path,
+    [Parameter(Mandatory = $true, Position = 2)]
+    $Value
+  )
 
-  $current = $Root
+  $current = $Object
   for ($i = 0; $i -lt $Path.Count; $i++) {
     $key = $Path[$i]
     $isLast = ($i -eq $Path.Count - 1)
@@ -122,12 +123,11 @@ if (Test-Path $p) {
   }
   Copy-Item $p "$p.bak" -Force
   $raw = Get-Content $p -Raw
-  # Remove line comments
-  $raw = $raw -replace '(?m)^\s*//.*$' -replace ',(\s*[}\]])', '$1'
+  $raw = $raw -replace '(?m)^\s*//.*$' -replace ',(\s*[}\]])', '$1' # Remove line comments
   $j = $raw | ConvertFrom-Json
-  Set-NestedJsonValue $j @('uninstallBehavior', 'purgePortablePackage') $true
+  Set-NestedJsonValue -Object $j -Path @('uninstallBehavior', 'purgePortablePackage') -Value $true
   if ($DisableSpinner) {
-    Set-NestedJsonValue $j @('visual', 'progressBar') 'disabled'
+    Set-NestedJsonValue -Object $j -Path @('visual', 'progressBar') -Value 'disabled'
   }
   $j | ConvertTo-Json | Set-Content $p -Encoding UTF8
 }
