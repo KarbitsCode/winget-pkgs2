@@ -29,6 +29,9 @@ def auto_popups(stop_event):
     EnumWindowsProc = ctypes.WINFUNCTYPE(ctypes.c_bool, wintypes.HWND, wintypes.LPARAM)
     
     def callback(hwnd, lParam):
+        if os.getenv("NO_PP", "0").lower() in ("true", "1"):
+            return
+        
         # Get class name of the window
         class_name = ctypes.create_unicode_buffer(256)
         user32.GetClassNameW(hwnd, class_name, 256)
@@ -224,6 +227,9 @@ if __name__ == "__main__":
         if "--no-ss" in sys.argv:
             os.environ["NO_SS"] = "true"
             sys.argv.remove("--no-ss")
+        if "--no-pp" in sys.argv:
+            os.environ["NO_PP"] = "true"
+            sys.argv.remove("--no-pp")
         main(sys.argv[1:])
         if os.getenv("NO_SS", "0").lower() in ("true", "1"):
             shutil.rmtree(ss_dir)
