@@ -12,7 +12,6 @@ InstallModes:
 - silentWithProgress
 UpgradeBehavior: uninstallPrevious
 ProductCode: '{10FD06B0-A517-4604-97C2-8D55F9D80F5F}_is1'
-ReleaseDate: 2013-11-24
 AppsAndFeaturesEntries:
 - Publisher: isotowbfs.com
   ProductCode: '{10FD06B0-A517-4604-97C2-8D55F9D80F5F}_is1'
@@ -25,3 +24,4 @@ Installers:
   InstallerSha256: 89D98B61F1CA6EDA85B20F5BF416C488B111561BA81B34172E127B6EBC99274C
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2013-11-24

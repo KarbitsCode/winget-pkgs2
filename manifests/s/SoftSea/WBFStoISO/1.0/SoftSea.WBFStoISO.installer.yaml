@@ -12,7 +12,6 @@ InstallModes:
 - silentWithProgress
 UpgradeBehavior: uninstallPrevious
 ProductCode: '{55F0E086-2E1C-4478-B52E-DA6025A46434}_is1'
-ReleaseDate: 2011-11-17
 AppsAndFeaturesEntries:
 - Publisher: wbfstoiso.com
   ProductCode: '{55F0E086-2E1C-4478-B52E-DA6025A46434}_is1'
@@ -25,3 +24,4 @@ Installers:
   InstallerSha256: 235E0E6E32C5A44389D7F4AF06449B451DD219E1C76B63557A86F6EB95C23EB4
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2011-11-17
