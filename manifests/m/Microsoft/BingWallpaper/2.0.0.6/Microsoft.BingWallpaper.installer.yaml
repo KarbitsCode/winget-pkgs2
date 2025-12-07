@@ -6,7 +6,7 @@ PackageVersion: 2.0.0.6
 InstallerType: exe
 InstallerSwitches:
   Silent: /C:"msiexec.exe /i BWCInstaller.msi /quiet /qn /norestart"
-  SilentWithProgress: /C:"msiexec.exe /i BWCInstaller.msi /quiet /qb /norestart"
+  SilentWithProgress: /C:"msiexec.exe /i BWCInstaller.msi /quiet /qb! /norestart"
 Installers:
 - Architecture: x86
   InstallerUrl: https://download.microsoft.com/download/2/5/2/252967a0-bd0f-4899-b1bd-1e46e19b07bf/Installer/2.0.0.6/Bing/W011/BingWallpaper.exe
