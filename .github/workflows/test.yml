@@ -40,6 +40,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6.0.1
+        with:
+          fetch-depth: 0
 
       - name: Remove old artifacts
         uses: c-hive/gha-remove-artifacts@v1.4.0
