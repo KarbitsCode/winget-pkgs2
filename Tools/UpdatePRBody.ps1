@@ -23,6 +23,7 @@ if (-not (Test-Path $BodyFile)) {
 
 # Oldest to newest
 foreach ($prNumber in ($prNumbers | Sort-Object {[int]$_})) {
+    Write-Host "Processing PR #$prNumber..." -ForegroundColor Yellow
     $prInfo = gh pr view $prNumber --json url,body | ConvertFrom-Json
     $prUrl = $prInfo.url
     $prBody = $prInfo.body

@@ -17,6 +17,7 @@ if (-not $prNumbers) {
 
 # Oldest to newest
 foreach ($prNumber in ($prNumbers | Sort-Object {[int]$_})) {
+    Write-Host "Processing PR #$prNumber..." -ForegroundColor Yellow
     $oldTitle = gh pr view $prNumber --json title --jq ".title"
     Write-Host "Original title: $oldTitle" -ForegroundColor Yellow
 
