@@ -1,8 +1,8 @@
 # Created using wingetcreate 1.10.3.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.10.0.schema.json
 
-PackageIdentifier: RootsMagic.RootsMagic.8
-PackageVersion: 8.5.0
+PackageIdentifier: RootsMagic.RootsMagic.7
+PackageVersion: 7.7.0.0
 InstallerLocale: en-US
 InstallerType: inno
 Scope: machine
@@ -17,17 +17,17 @@ FileExtensions:
 - rmgb
 - rmgc
 - rmtree
-ProductCode: '{A28324FE-31F8-44BC-83D7-0108E80B6FFB}_is1'
+ProductCode: '{D6286873-A757-4A4D-A6EF-0081B3EE32CA}_is1'
 AppsAndFeaturesEntries:
-- DisplayVersion: RootsMagic 8.5.0.0
-  ProductCode: '{A28324FE-31F8-44BC-83D7-0108E80B6FFB}_is1'
+- DisplayVersion: RootsMagic 7.7.0.0
+  ProductCode: '{D6286873-A757-4A4D-A6EF-0081B3EE32CA}_is1'
 ElevationRequirement: elevatesSelf
 InstallationMetadata:
-  DefaultInstallLocation: '%ProgramFiles%\RootsMagic 8'
+  DefaultInstallLocation: '%ProgramFiles%\RootsMagic 7'
 Installers:
 - Architecture: x86
-  InstallerUrl: https://files.rootsmagic.com/RM8/RootsMagic8Setup.exe
-  InstallerSha256: 6E250F003E53039EBC3A11A6F61A9E225E0AD183E781888EACD7E250EC41AC2A
+  InstallerUrl: https://files.rootsmagic.com/RM7/RM7Setup.exe
+  InstallerSha256: 2309D4C666303E27DA18141E30BE1E37DA2ACCD0169600C0F4CD82F4244F003F
 ManifestType: installer
 ManifestVersion: 1.10.0
-ReleaseDate: 2023-02-09
+ReleaseDate: 2021-10-05
