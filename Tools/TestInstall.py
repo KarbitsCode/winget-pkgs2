@@ -201,7 +201,7 @@ def main(directories):
     try:
         for directory in directories:
             if os.path.exists(directory):
-                for file_path in sorted(Path(directory).rglob("*.y*ml")):
+                for file_path in reversed(sorted(Path(directory).rglob("*.y*ml"))):
                     folder = file_path.parent
                     if folder not in seen:
                         seen.add(folder)

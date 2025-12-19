@@ -94,7 +94,7 @@ def main(directories):
     
     for directory in directories:
         if os.path.exists(directory):
-            for file_path in sorted(Path(directory).rglob("*.y*ml")):
+            for file_path in reversed(sorted(Path(directory).rglob("*.y*ml"))):
                 urls = extract_urls_from_file(file_path)
                 for url in urls:
                     if url not in seen:
