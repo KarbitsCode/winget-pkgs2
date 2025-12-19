@@ -197,11 +197,17 @@ def test_install(directory, args = ""):
 
 def main(directories):
     seen = set()
+    sort_key = lambda p: (
+        2 if ".installer." in p.name.lower()
+        else 1 if ".locale." in p.name.lower()
+        else 0,
+        p.name.lower()
+    )
     
     try:
         for directory in directories:
             if os.path.exists(directory):
-                for file_path in reversed(sorted(Path(directory).rglob("*.y*ml"))):
+                for file_path in sorted(Path(directory).rglob("*.y*ml"), key=sort_key):
                     folder = file_path.parent
                     if folder not in seen:
                         seen.add(folder)
