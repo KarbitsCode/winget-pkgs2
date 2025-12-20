@@ -219,7 +219,7 @@ def main(directories):
                             print(f"Install succeed: {result['INST']}")
                             print(f"Uninstall succeed: {result['UNINST']}")
             else:
-                print(f"Direcory doesn't exist: {directory}")
+                print(f"Directory doesn't exist: {directory}")
     except KeyboardInterrupt:
         traceback.print_exc()
 
