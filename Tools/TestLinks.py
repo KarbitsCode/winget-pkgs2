@@ -70,7 +70,7 @@ def test_links(url, file_path):
     """Test a URL with HEAD and GET requests"""
     result = {"url": url}
     headers = {"User-Agent": f"Python/{platform.python_version()} (Windows NT 10.0; Win64; x64)"}
-    timeout = 15
+    timeout = 10
     try:
         resp = requests.head(url, timeout=timeout, headers=headers, allow_redirects=True)
         result["HEAD"] = str(resp.status_code)
