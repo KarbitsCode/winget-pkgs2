@@ -22,7 +22,7 @@ InstallationMetadata:
   DefaultInstallLocation: '%ProgramFiles%\Bandicut'
 Installers:
 - Architecture: x64
-  InstallerUrl: https://dl.bandicam.com/bandicut/old/bandicut-setup-4.2.4.2552.exe
-  InstallerSha256: 57814CD95BBBE6754A53F45B51438A93CDC884A82153A16BF52A19DC97FE6A7C
+  InstallerUrl: https://dl.bandicam.com/bandicut/bandicut-setup.exe
+  InstallerSha256: 927CA646F03086B877E83B9814BA5D9E95ABDE610192EBC2EFE7E233F3DF044B
 ManifestType: installer
 ManifestVersion: 1.10.0
