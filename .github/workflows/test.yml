@@ -154,9 +154,9 @@ jobs:
               }
               $response  = Invoke-WebRequest @iwrParams
               $releasesAPIResponse = $response.Content | ConvertFrom-Json
-              $limit     = [int]$response.Headers["X-RateLimit-Limit"]
-              $remaining = [int]$response.Headers["X-RateLimit-Remaining"]
-              $resetTime = [DateTimeOffset]::FromUnixTimeSeconds([long]$response.Headers["X-RateLimit-Reset"])
+              $limit     = $response.Headers["X-RateLimit-Limit"] -as [int]
+              $remaining = $response.Headers["X-RateLimit-Remaining"] -as [int]
+              $resetTime = [DateTimeOffset]::FromUnixTimeSeconds($response.Headers["X-RateLimit-Reset"] -as [long])
               Write-Warning "GitHub API: $remaining / $limit remaining - resets at $resetTime.LocalDateTime"
             } catch {
               $statusCode = $_.Exception.Response.StatusCode.Value__
