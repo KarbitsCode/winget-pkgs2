@@ -148,11 +148,16 @@ jobs:
             [CmdletBinding()]
             param()
             try {
-              $irmParams = @{Uri = "https://api.github.com/repos/microsoft/winget-cli/releases?per_page=100"}
+              $iwrParams = @{Uri = "https://api.github.com/repos/microsoft/winget-cli/releases?per_page=100"}
               if ($PSBoundParameters.ContainsKey("Verbose")) {
-                  $irmParams["Verbose"] = $true
+                  $iwrParams["Verbose"] = $true
               }
-              $releasesAPIResponse = Invoke-RestMethod @irmParams
+              $response  = Invoke-WebRequest @iwrParams
+              $releasesAPIResponse = $response.Content | ConvertFrom-Json
+              $limit     = [int]$response.Headers["X-RateLimit-Limit"]
+              $remaining = [int]$response.Headers["X-RateLimit-Remaining"]
+              $resetTime = [DateTimeOffset]::FromUnixTimeSeconds([long]$response.Headers["X-RateLimit-Reset"])
+              Write-Warning "GitHub API: $remaining / $limit remaining - resets at $resetTime.LocalDateTime"
             } catch {
               $statusCode = $_.Exception.Response.StatusCode.Value__
               $messageText = $_.Exception.Message
