@@ -157,8 +157,8 @@ jobs:
               $limit     = [int]$response.Headers["X-RateLimit-Limit"][0]
               $remaining = [int]$response.Headers["X-RateLimit-Remaining"][0]
               $resetTime = [DateTimeOffset]::FromUnixTimeSeconds([long]$response.Headers["X-RateLimit-Reset"][0])
-              $currTime  = [DateTimeOffset]::Now.LocalDateTime)
-              Write-Warning "GitHub API rate limit: $remaining / $limit remaining - resets at $($resetTime.LocalDateTime) (now $($currTime)"
+              $currTime  = [DateTimeOffset]::Now.LocalDateTime
+              Write-Warning "GitHub API rate limit: $remaining / $limit remaining - resets at $($resetTime.LocalDateTime) (now $($currTime))"
             } catch {
               $statusCode = $_.Exception.Response.StatusCode.Value__
               $messageText = $_.Exception.Message
