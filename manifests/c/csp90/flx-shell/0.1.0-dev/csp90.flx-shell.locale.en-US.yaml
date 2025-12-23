@@ -1,0 +1,23 @@
+# Created using wingetcreate 1.10.3.0
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
+
+PackageIdentifier: csp90.flx-shell
+PackageVersion: 0.1.0-dev
+PackageLocale: en-US
+Publisher: Cyber Slot
+PublisherUrl: https://github.com/ytcyberslotp90
+PublisherSupportUrl: https://github.com/ytcyberslotp90/fluxium-terminal-winget/issues
+Author: Krishnendu
+PackageName: Fluxium Terminal
+PackageUrl: https://github.com/ytcyberslotp90/fluxium-terminal-winget
+License: MIT License
+LicenseUrl: https://github.com/ytcyberslotp90/Fluxium-Terminal/blob/HEAD/LICENSE.txt
+Copyright: Copyright (c) 2025 Cyber Slot
+ShortDescription: Custom terminal with colorful UI and built-in commands.
+Description: Fluxium Terminal is a custom Windows terminal built using C#, featuring colorful UI, directory tree listing, networking tools, and fun easter eggs.
+ReleaseNotesUrl: https://github.com/ytcyberslotp90/fluxium-terminal-winget/releases/tag/v0.1.0-dev
+Documentations:
+- DocumentLabel: Wiki
+  DocumentUrl: https://github.com/ytcyberslotp90/fluxium-terminal-winget/wiki
+ManifestType: defaultLocale
+ManifestVersion: 1.10.0
