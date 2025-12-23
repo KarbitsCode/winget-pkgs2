@@ -154,9 +154,15 @@ jobs:
               }
               $response  = Invoke-WebRequest @iwrParams
               $releasesAPIResponse = $response.Content | ConvertFrom-Json
-              $limit     = [int]$response.Headers["X-RateLimit-Limit"][0]
-              $remaining = [int]$response.Headers["X-RateLimit-Remaining"][0]
-              $resetTime = [DateTimeOffset]::FromUnixTimeSeconds([long]$response.Headers["X-RateLimit-Reset"][0])
+              $limit     = $response.Headers["X-RateLimit-Limit"]
+              $remaining = $response.Headers["X-RateLimit-Remaining"]
+              $reset     = $response.Headers["X-RateLimit-Reset"]
+              if ($limit     -is [array]) { $limit     = $limit[0] }
+              if ($remaining -is [array]) { $remaining = $remaining[0] }
+              if ($reset     -is [array]) { $reset     = $reset[0] }
+              $limit     = [int]$limit
+              $remaining = [int]$remaining
+              $resetTime = [DateTimeOffset]::FromUnixTimeSeconds([long]$reset)
               $currTime  = [DateTimeOffset]::Now.LocalDateTime
               Write-Warning "GitHub API rate limit: $remaining / $limit remaining - resets at $($resetTime.LocalDateTime) (now $($currTime))"
             } catch {
@@ -192,7 +198,7 @@ jobs:
                   Write-Output "Found ActivityId: $activityId"
                   try {
                     Write-Output "Retrieving AppX logs..."
-                    Get-AppPackageLog -ActivityId $activityId | Format0List
+                    Get-AppPackageLog -ActivityId $activityId | Format-List
                   } catch {
                     Write-Warning "Could not retrieve AppX log for $activityId"
                   }
