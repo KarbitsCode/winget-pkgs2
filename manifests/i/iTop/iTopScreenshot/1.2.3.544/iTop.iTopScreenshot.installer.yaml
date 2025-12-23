@@ -1,4 +1,4 @@
-# Created with komac v2.13.0
+# Created using wingetcreate 1.10.3.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.10.0.schema.json
 
 PackageIdentifier: iTop.iTopScreenshot
@@ -6,7 +6,6 @@ PackageVersion: 1.2.3.544
 InstallerLocale: en-US
 InstallerType: inno
 ProductCode: iTop Screenshot_is1
-ReleaseDate: 2021-06-10
 AppsAndFeaturesEntries:
 - ProductCode: iTop Screenshot_is1
 ElevationRequirement: elevatesSelf
@@ -16,3 +15,4 @@ Installers:
   InstallerSha256: B5CFA2C9D2C838B279E1838CE18F32015C3C9E67B7B270F76C8147515DB0C3C0
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2021-06-10

@@ -1,4 +1,4 @@
-# Created with komac v2.13.0
+# Created using wingetcreate 1.10.3.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.10.0.schema.json
 
 PackageIdentifier: iTop.iTopPDF
@@ -6,7 +6,6 @@ PackageVersion: 3.4.0.16
 InstallerLocale: en-US
 InstallerType: inno
 ProductCode: iTop PDF_is1
-ReleaseDate: 2023-03-10
 AppsAndFeaturesEntries:
 - ProductCode: iTop PDF_is1
 ElevationRequirement: elevatesSelf
@@ -16,3 +15,4 @@ Installers:
   InstallerSha256: A619AB451BA1052D6A65CB82B2429C408EB527DA318C10AF46B1C83EA4ACF11F
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2023-03-10

@@ -1,4 +1,4 @@
-# Created with komac v2.13.0
+# Created using wingetcreate 1.10.3.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.10.0.schema.json
 
 PackageIdentifier: iTop.iTopEasyDesktop
@@ -6,7 +6,6 @@ PackageVersion: 1.2.0.16
 InstallerLocale: en-US
 InstallerType: inno
 ProductCode: iTop Easy Desktop_is1
-ReleaseDate: 2023-01-12
 AppsAndFeaturesEntries:
 - ProductCode: iTop Easy Desktop_is1
 ElevationRequirement: elevatesSelf
@@ -16,3 +15,4 @@ Installers:
   InstallerSha256: 200C908CE71CAB67824D39414B6D50179865030E167E1FCAD2C0DDFD3514467E
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2023-01-12

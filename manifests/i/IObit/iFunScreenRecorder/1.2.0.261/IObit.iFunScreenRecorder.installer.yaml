@@ -1,4 +1,4 @@
-# Created with YamlCreate.ps1 v2.1.4 $debug=AUSU.7-2-6
+# Created using wingetcreate 1.10.3.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.10.0.schema.json
 
 PackageIdentifier: IObit.iFunScreenRecorder
@@ -14,8 +14,8 @@ UpgradeBehavior: install
 ProductCode: iFun Screen Recorder_is1
 AppsAndFeaturesEntries:
 - DisplayName: iFun Screen Recorder
-  DisplayVersion: 1.2.0
   Publisher: IObit
+  DisplayVersion: 1.2.0
   ProductCode: iFun Screen Recorder_is1
 ElevationRequirement: elevatesSelf
 Installers:

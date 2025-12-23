@@ -1,4 +1,4 @@
-# Created with komac v2.13.0
+# Created using wingetcreate 1.10.3.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.10.0.schema.json
 
 PackageIdentifier: iTop.iTopPrivateBrowser
@@ -6,7 +6,6 @@ PackageVersion: 3.2.0.275
 InstallerLocale: en-US
 InstallerType: inno
 ProductCode: iTop Private Browser_is1
-ReleaseDate: 2022-11-23
 AppsAndFeaturesEntries:
 - ProductCode: iTop Private Browser_is1
 ElevationRequirement: elevatesSelf
@@ -16,3 +15,4 @@ Installers:
   InstallerSha256: BCE7819B3D4365DAEDC7A7C9EECC7E110D224D12B7E518CA4D9B92C7A119BC65
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2022-11-23

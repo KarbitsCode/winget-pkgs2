@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.10.3.0
+# Created with komac v2.14.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.10.0.schema.json
 
 PackageIdentifier: SoftSea.MDFtoISO
-PackageVersion: "1.0"
+PackageVersion: '1.0'
 InstallerLocale: en-US
 InstallerType: inno
 Scope: machine
@@ -12,6 +12,7 @@ InstallModes:
 - silentWithProgress
 UpgradeBehavior: uninstallPrevious
 ProductCode: '{79DDA36F-B19E-4293-A4F2-FA3EC1C06E6E}_is1'
+ReleaseDate: 2011-09-26
 AppsAndFeaturesEntries:
 - Publisher: mdftoiso.com
   ProductCode: '{79DDA36F-B19E-4293-A4F2-FA3EC1C06E6E}_is1'
@@ -24,4 +25,3 @@ Installers:
   InstallerSha256: 7087A6A80F326F6AC8D839BAA14029BD101DB5213F1FC2BBD3F984F6901B098B
 ManifestType: installer
 ManifestVersion: 1.10.0
-ReleaseDate: 2011-09-26

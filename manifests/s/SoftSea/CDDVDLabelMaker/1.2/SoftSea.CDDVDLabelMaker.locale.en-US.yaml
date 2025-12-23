@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.10.3.0
+# Created with komac v2.14.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: SoftSea.CDDVDLabelMaker
-PackageVersion: "1.2"
+PackageVersion: '1.2'
 PackageLocale: en-US
 Publisher: SoftSea
 PublisherUrl: https://www.softsea.com/
@@ -17,12 +17,12 @@ ShortDescription: A CD and DVD label and jewel case design software.
 Description: CD & DVD Label Maker is one powerful CD and DVD label and jewel case design software, help you to create beautiful and professional CD/DVD labels, CD & DVD Label Maker is one freeware of www.cddvdlabelmaker.com, completely free for any personal or commercial use, it is a very useful tool for office, family and hobby, it is very ease and flexibility.
 Moniker: cddvdlabelmaker
 Tags:
-- softsea
 - cd
+- design
 - dvd
 - label
-- design
 - maker
+- softsea
 - tool
 - utility
 Documentations:

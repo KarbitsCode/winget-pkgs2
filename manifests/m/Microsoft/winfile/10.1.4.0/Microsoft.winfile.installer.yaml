@@ -8,20 +8,20 @@ InstallerType: zip
 NestedInstallerType: portable
 Installers:
 - Architecture: x86
-  InstallerUrl: https://github.com/microsoft/winfile/releases/download/v10.1.4.0/Winfile_v10.1.4.0.zip
-  InstallerSha256: DFC94F57AC57DCFBCE6455F432FB79A56126E9C01B8567CDD2657DA1DDA3B520
   NestedInstallerFiles:
   - RelativeFilePath: x86\Winfile.exe
     PortableCommandAlias: winfile
+  InstallerUrl: https://github.com/microsoft/winfile/releases/download/v10.1.4.0/Winfile_v10.1.4.0.zip
+  InstallerSha256: DFC94F57AC57DCFBCE6455F432FB79A56126E9C01B8567CDD2657DA1DDA3B520
   Dependencies:
     PackageDependencies:
     - PackageIdentifier: Microsoft.VCRedist.2015+.x86
 - Architecture: x64
-  InstallerUrl: https://github.com/microsoft/winfile/releases/download/v10.1.4.0/Winfile_v10.1.4.0.zip
-  InstallerSha256: DFC94F57AC57DCFBCE6455F432FB79A56126E9C01B8567CDD2657DA1DDA3B520
   NestedInstallerFiles:
   - RelativeFilePath: x64\Winfile.exe
     PortableCommandAlias: winfile
+  InstallerUrl: https://github.com/microsoft/winfile/releases/download/v10.1.4.0/Winfile_v10.1.4.0.zip
+  InstallerSha256: DFC94F57AC57DCFBCE6455F432FB79A56126E9C01B8567CDD2657DA1DDA3B520
   Dependencies:
     PackageDependencies:
     - PackageIdentifier: Microsoft.VCRedist.2015+.x64

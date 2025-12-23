@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.10.3.0
+# Created with komac v2.14.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.10.0.schema.json
 
 PackageIdentifier: SoftSea.UIFtoISO
-PackageVersion: "1.0"
+PackageVersion: '1.0'
 InstallerLocale: en-US
 InstallerType: inno
 Scope: machine
@@ -12,6 +12,7 @@ InstallModes:
 - silentWithProgress
 UpgradeBehavior: uninstallPrevious
 ProductCode: '{D1A56C98-DCAD-4735-8E61-02C867D92DE8}_is1'
+ReleaseDate: 2011-09-29
 AppsAndFeaturesEntries:
 - Publisher: uiftoiso.com
   ProductCode: '{D1A56C98-DCAD-4735-8E61-02C867D92DE8}_is1'
@@ -24,4 +25,3 @@ Installers:
   InstallerSha256: C0D649CD41C8AE2881D4EF2E69144FE9BEEA5BDBF657284B59BF5C97CF3B3FD2
 ManifestType: installer
 ManifestVersion: 1.10.0
-ReleaseDate: 2011-09-29

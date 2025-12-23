@@ -6,7 +6,6 @@ PackageVersion: 3.1.0.19
 InstallerLocale: en-US
 InstallerType: inno
 ProductCode: Top Data Protector_is1
-ReleaseDate: 2022-04-13
 AppsAndFeaturesEntries:
 - ProductCode: Top Data Protector_is1
 ElevationRequirement: elevatesSelf
@@ -16,3 +15,4 @@ Installers:
   InstallerSha256: D493D732758B9109A4122A85154BD2BCB15C675E9E638FEA59DE6C454910D9C6
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2022-04-13

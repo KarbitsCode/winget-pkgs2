@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.10.3.0
+# Created with komac v2.14.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: SoftSea.ISODisk
-PackageVersion: "1.1"
+PackageVersion: '1.1'
 PackageLocale: en-US
 Publisher: SoftSea
 PublisherUrl: https://www.softsea.com/
@@ -17,14 +17,14 @@ ShortDescription: A free and powerful ISO disk image file tool.
 Description: ISODisk is a FREE and powerful ISO disk image file tool, allows you to create virtual CD/DVD driver up to 20 drivers, mount an .ISO disk image and access the files on it as if it were burned to CD or DVD. This free program can quickly create ISO image file from CD/DVD-ROM, with ISODisk, you don't need install any other virtual drive software. Once you map the archive to a virtual drive, you can be able to view the contents in Windows Explorer.
 Moniker: isodisk
 Tags:
-- softsea
-- iso
 - disk
-- virtual
 - drive
+- iso
 - mount
-- utility
+- softsea
 - tool
+- utility
+- virtual
 Documentations:
 - DocumentLabel: Homepage
   DocumentUrl: https://www.isodisk.com/

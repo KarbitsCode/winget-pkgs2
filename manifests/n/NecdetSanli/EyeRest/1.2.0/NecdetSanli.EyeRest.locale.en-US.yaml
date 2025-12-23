@@ -28,18 +28,18 @@ Description: |
   The app is built with .NET Framework 4.8 and WinForms, is open source, and does not collect any personal data or telemetry. For full details, source code, and privacy information, see the project page.
 Moniker: eyerest
 Tags:
-- eye-health
 - break-reminder
-- tray-app
-- windows-utility
-- productivity
-- focus
 - dotnet
+- ergonomics
+- eye-health
+- focus
 - health
 - open-source
-- work-break
-- ergonomics
+- productivity
 - screen-time
+- tray-app
+- windows-utility
+- work-break
 ReleaseNotes: |-
   ## Highlights
 

@@ -1,4 +1,4 @@
-# Created with komac v2.13.0
+# Created using wingetcreate 1.10.3.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.10.0.schema.json
 
 PackageIdentifier: iTop.SmartGameBooster
@@ -6,7 +6,6 @@ PackageVersion: 5.3.0.670
 InstallerLocale: en-US
 InstallerType: inno
 ProductCode: Smart Game Booster_is1
-ReleaseDate: 2024-01-09
 AppsAndFeaturesEntries:
 - DisplayName: Smart Game Booster 5.3
   Publisher: Smart Game Booster
@@ -19,3 +18,4 @@ Installers:
   InstallerSha256: FB1947184523D28FA4ED47F06E648EBEF74F2029345DB5762EBACC114C3B047F
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2024-01-09

@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.10.3.0
+# Created with komac v2.14.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: SoftSea.ISOtoUSB
-PackageVersion: "1.6"
+PackageVersion: '1.6'
 PackageLocale: en-US
 Publisher: SoftSea
 PublisherUrl: https://www.softsea.com/
@@ -17,13 +17,13 @@ ShortDescription: A software that can help you write an ISO image file to USB di
 Description: ISO to USB is a free and small software that can burn the ISO image file directly to the USB drives, these USB drives include USB flash drives, memory sticks and other USB storage devices, it also supports to create a bootable USB disk with Windows operating systems.
 Moniker: isotousb
 Tags:
-- softsea
-- iso
-- usb
 - image
-- write
-- utility
+- iso
+- softsea
 - tool
+- usb
+- utility
+- write
 Documentations:
 - DocumentLabel: Homepage
   DocumentUrl: https://www.isotousb.com/

@@ -1,4 +1,4 @@
-# Created with komac v2.13.0
+# Created using wingetcreate 1.10.3.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.10.0.schema.json
 
 PackageIdentifier: iTop.IOTransfer
@@ -10,7 +10,6 @@ InstallerSwitches:
   Silent: /SP- /SUPPRESSMSGBOXES /NORESTART /VERYSILENT /Installer
   SilentWithProgress: /SP- /SUPPRESSMSGBOXES /NORESTART /SILENT /Installer
 ProductCode: IOTransfer_is1
-ReleaseDate: 2022-02-28
 AppsAndFeaturesEntries:
 - DisplayName: IOTransfer 4
   Publisher: IOTransfer
@@ -25,3 +24,4 @@ Installers:
   InstallerSha256: 17288BEAE0D17AD2DF4D16D036C8DB2472E9B07E82C9DC5191566190DDCF83B1
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2022-02-28

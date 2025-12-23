@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.10.3.0
+# Created with komac v2.14.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: SoftSea.DVDtoISO
-PackageVersion: "1.0"
+PackageVersion: '1.0'
 PackageLocale: en-US
 Publisher: SoftSea
 PublisherUrl: https://www.softsea.com/
@@ -17,12 +17,12 @@ ShortDescription: A free DVD/CD disc image creating software.
 Description: DVD to ISO is a free DVD/CD image creating tool, it can help you to rip and convert DVD/CD data into a single ISO image file. It is very easy to use, no complicated settings, just a few mouse clicks, you can easily create your own disc images for optical discs by yourself.
 Moniker: dvdtoiso
 Tags:
-- softsea
-- iso
 - cd
-- dvd
 - convert
+- dvd
 - image
+- iso
+- softsea
 - tool
 - utility
 Documentations:
