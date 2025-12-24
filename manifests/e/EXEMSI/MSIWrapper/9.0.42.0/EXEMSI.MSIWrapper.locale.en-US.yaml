@@ -35,7 +35,7 @@ Tags:
 - package
 - setup
 - wrapper
-ReleaseNotes: |
+ReleaseNotes: |-
   - Control visibility of entries in Apps & Features (Add or Remove Programs). Works for both the MSI and the wrapped installer.
   - Set the MSI package platform to either x86 (32-bit) or x64 (64-bit).
 ReleaseNotesUrl: https://www.exemsi.com/version-history/

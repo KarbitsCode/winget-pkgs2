@@ -35,8 +35,7 @@ Tags:
 - package
 - setup
 - wrapper
-ReleaseNotes: |
-  - Command line macros [SourceDir] and [OriginalDatabase] were introduced.
+ReleaseNotes: '- Command line macros [SourceDir] and [OriginalDatabase] were introduced.'
 ReleaseNotesUrl: https://www.exemsi.com/version-history/
 PurchaseUrl: https://www.exemsi.com/professional/
 Documentations:

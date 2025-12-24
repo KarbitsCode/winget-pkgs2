@@ -35,7 +35,7 @@ Tags:
 - package
 - setup
 - wrapper
-ReleaseNotes: |
+ReleaseNotes: |-
   - Removed WiX dependency.
   - Major performance improvement.
 ReleaseNotesUrl: https://www.exemsi.com/version-history/

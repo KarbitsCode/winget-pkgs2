@@ -1,4 +1,4 @@
-# Created with komac v2.12.1
+# Created with komac v2.14.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: EXEMSI.MSIWrapper
@@ -35,8 +35,7 @@ Tags:
 - package
 - setup
 - wrapper
-ReleaseNotes: |
-  - New: MSI custom actions transferred from VB Script to a native Win32 DLL. This will make MSI packages install on systems that have problems with the scripting engine.
+ReleaseNotes: '- New: MSI custom actions transferred from VB Script to a native Win32 DLL. This will make MSI packages install on systems that have problems with the scripting engine.'
 ReleaseNotesUrl: https://www.exemsi.com/version-history/
 PurchaseUrl: https://www.exemsi.com/professional/
 Documentations:

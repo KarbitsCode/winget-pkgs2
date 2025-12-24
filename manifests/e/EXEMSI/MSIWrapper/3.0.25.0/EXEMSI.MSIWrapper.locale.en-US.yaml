@@ -35,7 +35,7 @@ Tags:
 - package
 - setup
 - wrapper
-ReleaseNotes: |
+ReleaseNotes: |-
   - Fix that allows you to run the MSI file multiple times.
   - Does not show system components in the list of application ids.
 ReleaseNotesUrl: https://www.exemsi.com/version-history/

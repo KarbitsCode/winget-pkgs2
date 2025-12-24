@@ -35,7 +35,7 @@ Tags:
 - package
 - setup
 - wrapper
-ReleaseNotes: |
+ReleaseNotes: |-
   - Fixed registration of DLL to work for all users.
   - Setup now installs MSI Wrapper for all users.
   - Supports setting a specific Product ID instead of an auto-generated one.

@@ -17,9 +17,9 @@ FileExtensions:
 - rmgb
 - rmgc
 - rmtree
-ProductCode: 'RootsMagic_is1'
+ProductCode: RootsMagic_is1
 AppsAndFeaturesEntries:
-- ProductCode: 'RootsMagic_is1'
+- ProductCode: RootsMagic_is1
 ElevationRequirement: elevatesSelf
 InstallationMetadata:
   DefaultInstallLocation: '%ProgramFiles%\RootsMagic'

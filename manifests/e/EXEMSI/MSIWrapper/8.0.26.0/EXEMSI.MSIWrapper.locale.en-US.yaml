@@ -35,8 +35,7 @@ Tags:
 - package
 - setup
 - wrapper
-ReleaseNotes: |
-  - FIPS compliant license check. Users with FIPS enabled could not enter the professional license key.
+ReleaseNotes: '- FIPS compliant license check. Users with FIPS enabled could not enter the professional license key.'
 ReleaseNotesUrl: https://www.exemsi.com/version-history/
 PurchaseUrl: https://www.exemsi.com/professional/
 Documentations:

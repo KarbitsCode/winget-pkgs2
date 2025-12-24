@@ -35,8 +35,7 @@ Tags:
 - package
 - setup
 - wrapper
-ReleaseNotes: |
-  - Support for impersonation. The wrapped installer can now run in the security context of the logged-in user instead of the Windows Installer service.
+ReleaseNotes: '- Support for impersonation. The wrapped installer can now run in the security context of the logged-in user instead of the Windows Installer service.'
 ReleaseNotesUrl: https://www.exemsi.com/version-history/
 PurchaseUrl: https://www.exemsi.com/professional/
 Documentations:

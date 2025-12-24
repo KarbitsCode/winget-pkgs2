@@ -35,8 +35,7 @@ Tags:
 - package
 - setup
 - wrapper
-ReleaseNotes: |
-  - Fixes temporary file problem with icons.
+ReleaseNotes: '- Fixes temporary file problem with icons.'
 ReleaseNotesUrl: https://www.exemsi.com/version-history/
 PurchaseUrl: https://www.exemsi.com/professional/
 Documentations:

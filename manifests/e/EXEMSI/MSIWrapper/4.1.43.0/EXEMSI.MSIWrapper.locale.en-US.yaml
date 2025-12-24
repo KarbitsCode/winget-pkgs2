@@ -35,7 +35,7 @@ Tags:
 - package
 - setup
 - wrapper
-ReleaseNotes: |
+ReleaseNotes: |-
   - Better support for converting WISE installers to MSI.
   - Forces UAC elevation when running uninstall scripts.
 ReleaseNotesUrl: https://www.exemsi.com/version-history/

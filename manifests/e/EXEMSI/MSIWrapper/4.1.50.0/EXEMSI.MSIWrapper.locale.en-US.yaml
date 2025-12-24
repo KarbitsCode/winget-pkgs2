@@ -35,7 +35,7 @@ Tags:
 - package
 - setup
 - wrapper
-ReleaseNotes: |
+ReleaseNotes: |-
   - Fixed problem where MSI worked with the manual install but hanged or froze with GPO.
   - New feature: Environment variable substitution in configuration values when running MsiWrapperBatch.exe.
 ReleaseNotesUrl: https://www.exemsi.com/version-history/

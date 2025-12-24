@@ -35,7 +35,7 @@ Tags:
 - package
 - setup
 - wrapper
-ReleaseNotes: |
+ReleaseNotes: |-
   - Shows the wrapped setup and uninstaller on top of the Windows Installer progress bar.
   - Control if the MSI requires permission elevation.
   - Fixes error 740 caused by elevation problems.

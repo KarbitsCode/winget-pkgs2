@@ -35,7 +35,7 @@ Tags:
 - package
 - setup
 - wrapper
-ReleaseNotes: |
+ReleaseNotes: |-
   - Support for wrapping setups without entries in the Add / Remove programs.
   - Extended wait period when wrapped installers are finishing.
   - Uses SystemComponent instead of wrapped_uninstallstring entry in the registry.

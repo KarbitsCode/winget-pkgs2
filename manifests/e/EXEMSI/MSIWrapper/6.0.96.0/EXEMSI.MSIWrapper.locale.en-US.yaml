@@ -35,7 +35,7 @@ Tags:
 - package
 - setup
 - wrapper
-ReleaseNotes: |
+ReleaseNotes: |-
   - Use comment setting in file properties.
   - Minor improvements.
 ReleaseNotesUrl: https://www.exemsi.com/version-history/

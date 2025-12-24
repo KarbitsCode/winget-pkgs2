@@ -35,7 +35,7 @@ Tags:
 - package
 - setup
 - wrapper
-ReleaseNotes: |
+ReleaseNotes: |-
   - Support for Windows 8.
   - Support for Windows Server 2012.
   - Improvements in upgrading functionality.

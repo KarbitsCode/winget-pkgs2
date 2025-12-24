@@ -6,9 +6,9 @@ PackageVersion: "4.108"
 InstallerLocale: en-US
 InstallerType: inno
 Scope: machine
-ProductCode: 'Tera Term_is1'
+ProductCode: Tera Term_is1
 AppsAndFeaturesEntries:
-- ProductCode: 'Tera Term_is1'
+- ProductCode: Tera Term_is1
 InstallationMetadata:
   DefaultInstallLocation: '%ProgramFiles(x86)%\teraterm'
 Installers:

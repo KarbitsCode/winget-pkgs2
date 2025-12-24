@@ -35,7 +35,7 @@ Tags:
 - package
 - setup
 - wrapper
-ReleaseNotes: |
+ReleaseNotes: |-
   - Installation is now canceled if before/after actions return a non-zero exit code.
   - Control MSI file properties from XML configuration files.
   - All features are now available in the unregistered version.

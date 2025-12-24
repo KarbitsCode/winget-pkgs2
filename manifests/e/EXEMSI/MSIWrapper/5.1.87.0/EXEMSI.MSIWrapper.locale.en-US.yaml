@@ -35,7 +35,7 @@ Tags:
 - package
 - setup
 - wrapper
-ReleaseNotes: |
+ReleaseNotes: |-
   - New: Test MSI in elevated mode.
   - New: Icon export feature.
   - New: Save setup icon in the configuration file.

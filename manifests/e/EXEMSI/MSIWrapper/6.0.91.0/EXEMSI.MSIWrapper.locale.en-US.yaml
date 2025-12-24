@@ -35,7 +35,7 @@ Tags:
 - package
 - setup
 - wrapper
-ReleaseNotes: |
+ReleaseNotes: |-
   - New: Auto detect if the wrapped setup is installed per user or per machine.
   - New: Option to force elevation of wrapped installer and uninstaller.
   - Fix: User Interface Level (UILevel) is now used during uninstall.
