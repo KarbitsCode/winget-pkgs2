@@ -154,6 +154,8 @@ jobs:
           Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments" -Name "SaveZoneInformation" -Value 1 -Force -Verbose
           
           winget --info
+          winget source reset --force
+          winget source list
 
       - name: Run python scripts
         if: github.event_name != 'workflow_dispatch' || inputs.doTestInstall
