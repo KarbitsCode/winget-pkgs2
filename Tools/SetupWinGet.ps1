@@ -44,7 +44,6 @@ function Get-ReleaseTag {
 
 while ($true) {
 	try {
-		Install-PackageProvider -Name NuGet -Force -Verbose
 		Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery -Verbose -AllowClobber
 		Repair-WinGetPackageManager -Version $(Get-ReleaseTag -Verbose) -Force -Verbose
 		break
