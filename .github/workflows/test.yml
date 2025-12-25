@@ -144,8 +144,6 @@ jobs:
       - name: Set up winget
         shell: pwsh
         run: |
-          .\Tools\SetupWinGet.ps1
-          
           New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\AppHost" -Force -Verbose | Out-Null
           Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\AppHost" -Name "EnableWebContentEvaluation" -Value 0 -Force -Verbose
           New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Force -Verbose | Out-Null
@@ -153,6 +151,7 @@ jobs:
           New-Item "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments" -Force -Verbose | Out-Null
           Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments" -Name "SaveZoneInformation" -Value 1 -Force -Verbose
           
+          .\Tools\SetupWinGet.ps1
           winget --info
           winget source reset --force
           winget source list
