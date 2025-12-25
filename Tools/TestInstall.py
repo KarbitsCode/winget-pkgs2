@@ -145,7 +145,7 @@ def test_install(directory, args = ""):
         ps_args.append("-StripProgress")
         ps_args.append("-DisableSpinner")
     ps_args.append("-WinGetOptions")
-    ps_args.append(f"--disable-interactivity {args}")
+    ps_args.append(f"{args}")
     ps_args.append("-AutoUninstall")
     
     # Start screenshoting

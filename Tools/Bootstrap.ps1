@@ -147,7 +147,7 @@ Write-Host @"
 --> Installing the manifest $manifestFileName
 
 "@
-$scriptBlock = { winget install --manifest $Manifest --verbose-logs --ignore-local-archive-malware-scan --accept-package-agreements --accept-source-agreements --dependency-source winget @($WinGetOptions -split ' ') }
+$scriptBlock = { winget install --manifest $Manifest --verbose-logs --ignore-local-archive-malware-scan --accept-package-agreements --accept-source-agreements --disable-interactivity --dependency-source winget @($WinGetOptions -split ' ') }
 if ($StripProgress) {
   Strip-Progress -ScriptBlock $scriptBlock
 } else {
@@ -180,7 +180,7 @@ Write-Host @"
   foreach ($item in $diff) {
     $code = $item.ProductCode
     if ($code) {
-      $scriptBlock = { winget uninstall --product-code $code }
+      $scriptBlock = { winget uninstall --product-code $code --verbose-logs --accept-source-agreements --disable-interactivity }
       if ($StripProgress) {
         Strip-Progress -ScriptBlock $scriptBlock
       } else {
