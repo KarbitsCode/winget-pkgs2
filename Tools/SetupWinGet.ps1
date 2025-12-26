@@ -1,3 +1,60 @@
+function Get-GitHubRateLimit {
+	[CmdletBinding()]
+	param (
+		[Parameter(Mandatory = $false)]
+		$Response,
+		[Parameter(Mandatory = $false)]
+		[System.Collections.IDictionary]
+		$Headers
+	)
+	function Get-FromHeaders {
+		[CmdletBinding()]
+		param(
+			[Parameter(Mandatory = $true)]
+			[System.Collections.IDictionary]
+			$h
+		)
+		if (-not $h["X-RateLimit-Limit"]) { return $null }
+		$limit     = $h["X-RateLimit-Limit"]
+		$remaining = $h["X-RateLimit-Remaining"]
+		$reset     = $h["X-RateLimit-Reset"]
+		if ($limit     -is [array]) { $limit     = $limit[0] }
+		if ($remaining -is [array]) { $remaining = $remaining[0] }
+		if ($reset     -is [array]) { $reset     = $reset[0] }
+		$limit     = [int]$limit
+		$remaining = [int]$remaining
+		$resetTime = [DateTimeOffset]::FromUnixTimeSeconds([long]$reset).LocalDateTime
+		$currTime  = [DateTimeOffset]::Now.LocalDateTime
+		$info = [PSCustomObject]@{
+			Limit     = $limit
+			Remaining = $remaining
+			Reset     = $resetTime
+			Current   = $currTime
+		}
+	}
+	if ($Response -and $Response.Headers) {
+		$info = Get-FromHeaders $Response.Headers
+	}
+	if (-not $info -and $Headers) {
+		$info = Get-FromHeaders $Headers
+	}
+	if (-not $info) {
+		$r = Invoke-WebRequest -Uri "https://api.github.com/rate_limit"
+		$rate = ($r.Content | ConvertFrom-Json).rate
+		$limit     = [int]$rate.limit
+		$remaining = [int]$rate.remaining
+		$resetTime = [DateTimeOffset]::FromUnixTimeSeconds([long]$rate.reset).LocalDateTime
+		$currTime  = [DateTimeOffset]::Now.LocalDateTime
+		$info = [PSCustomObject]@{
+			Limit     = $limit
+			Remaining = $remaining
+			Reset     = $resetTime
+			Current   = $currTime
+		}
+	}
+	$percent = [Math]::Round(($info.Remaining / $info.Limit) * 100, 1)
+	Write-Warning "GitHub API rate limit: $remaining / $limit remaining ($percent%) - resets at $($resetTime) (now $($currTime))"
+}
 function Get-ReleaseTag {
 	[CmdletBinding()]
 	param()
@@ -6,19 +63,10 @@ function Get-ReleaseTag {
 		if ($PSBoundParameters.ContainsKey("Verbose")) {
 			$iwrParams["Verbose"] = $true
 		}
+		Get-GitHubRateLimit
 		$response  = Invoke-WebRequest @iwrParams
 		$releasesAPIResponse = $response.Content | ConvertFrom-Json
-		$limit     = $response.Headers["X-RateLimit-Limit"]
-		$remaining = $response.Headers["X-RateLimit-Remaining"]
-		$reset     = $response.Headers["X-RateLimit-Reset"]
-		if ($limit     -is [array]) { $limit     = $limit[0] }
-		if ($remaining -is [array]) { $remaining = $remaining[0] }
-		if ($reset     -is [array]) { $reset     = $reset[0] }
-		$limit     = [int]$limit
-		$remaining = [int]$remaining
-		$resetTime = [DateTimeOffset]::FromUnixTimeSeconds([long]$reset)
-		$currTime  = [DateTimeOffset]::Now.LocalDateTime
-		Write-Warning "GitHub API rate limit: $remaining / $limit remaining - resets at $($resetTime.LocalDateTime) (now $($currTime))"
+		Get-GitHubRateLimit $response
 	} catch {
 		$statusCode = $_.Exception.Response.StatusCode.Value__
 		$messageText = $_.Exception.Message
@@ -46,6 +94,7 @@ while ($true) {
 	try {
 		Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery -Verbose -AllowClobber
 		Repair-WinGetPackageManager -Version $(Get-ReleaseTag -Verbose) -Force -Verbose
+		Get-GitHubRateLimit
 		break
 	} catch {
 		$messageText = $_.Exception.Message
