@@ -2,8 +2,6 @@ function Get-GitHubRateLimit {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory = $false)]
-		$Response,
-		[Parameter(Mandatory = $false)]
 		[System.Collections.IDictionary]
 		$Headers
 	)
@@ -32,10 +30,7 @@ function Get-GitHubRateLimit {
 			Current   = $currTime
 		}
 	}
-	if ($Response -and $Response.Headers) {
-		$info = Get-FromHeaders $Response.Headers
-	}
-	if (-not $info -and $Headers) {
+	if ($Headers) {
 		$info = Get-FromHeaders $Headers
 	}
 	if (-not $info) {
@@ -66,7 +61,7 @@ function Get-ReleaseTag {
 		Get-GitHubRateLimit
 		$response  = Invoke-WebRequest @iwrParams
 		$releasesAPIResponse = $response.Content | ConvertFrom-Json
-		Get-GitHubRateLimit $response
+		Get-GitHubRateLimit $response.Headers
 	} catch {
 		$statusCode = $_.Exception.Response.StatusCode.Value__
 		$messageText = $_.Exception.Message
