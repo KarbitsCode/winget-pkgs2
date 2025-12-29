@@ -167,7 +167,7 @@ jobs:
         if: always()
         shell: pwsh
         run: |
-          $name = "${{ matrix.folders }}".Replace("manifests/", "").Replace("/", "-")
+          $name = "${{ matrix.folders }}" -replace 'manifests/', '' -replace '/', '-'
           echo "artifact_name=$name" >> $env:GITHUB_OUTPUT
 
       - name: Upload artifact
