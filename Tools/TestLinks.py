@@ -69,8 +69,14 @@ def dump_response(prefix, response):
 def test_links(url, file_path):
     """Test a URL with HEAD and GET requests"""
     result = {"url": url}
-    headers = {"User-Agent": f"Python/{platform.python_version()} (Windows NT 10.0; Win64; x64)"}
     timeout = 10
+    headers = {
+        "User-Agent": (
+            f"Python/{'.'.join((platform.python_version_tuple()[:2]))} "
+            f"(Windows NT {(v := sys.getwindowsversion()).major}.{v.minor}; "
+            f"{'Win64; x64' if platform.machine() == 'AMD64' else platform.machine()})"
+        )
+    }
     try:
         resp = requests.head(url, timeout=timeout, headers=headers, allow_redirects=True)
         result["HEAD"] = str(resp.status_code)
