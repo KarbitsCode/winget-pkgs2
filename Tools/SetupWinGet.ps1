@@ -12,7 +12,9 @@ function Get-GitHubRateLimit {
 			[System.Collections.IDictionary]
 			$h
 		)
-		if (-not $h["X-RateLimit-Limit"]) { return $null }
+		if (-not $h["X-RateLimit-Limit"]) {
+			return $null
+		}
 		$limit     = $h["X-RateLimit-Limit"]
 		$remaining = $h["X-RateLimit-Remaining"]
 		$reset     = $h["X-RateLimit-Reset"]
@@ -29,6 +31,7 @@ function Get-GitHubRateLimit {
 			Reset     = $resetTime
 			Current   = $currTime
 		}
+		return $info
 	}
 	if ($Headers) {
 		$info = Get-FromHeaders $Headers
@@ -48,17 +51,13 @@ function Get-GitHubRateLimit {
 		}
 	}
 	$percent = [Math]::Round(($info.Remaining / $info.Limit) * 100, 1)
-	Write-Warning "GitHub API rate limit: $remaining / $limit remaining ($percent%) - resets at $($resetTime) (now $($currTime))"
+	Write-Warning "GitHub API rate limit: $($info.Remaining) / $($info.Limit) remaining ($percent%) - resets at $($info.Reset) (now $($info.Current))"
 }
 function Get-ReleaseTag {
 	[CmdletBinding()]
 	param()
 	try {
 		$iwrParams = @{Uri = "https://api.github.com/repos/microsoft/winget-cli/releases?per_page=100"}
-		if ($PSBoundParameters.ContainsKey("Verbose")) {
-			$iwrParams["Verbose"] = $true
-		}
-		Get-GitHubRateLimit
 		$response  = Invoke-WebRequest @iwrParams
 		$releasesAPIResponse = $response.Content | ConvertFrom-Json
 		Get-GitHubRateLimit $response.Headers
@@ -87,6 +86,7 @@ function Get-ReleaseTag {
 
 while ($true) {
 	try {
+		Get-GitHubRateLimit
 		Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery -Verbose -AllowClobber
 		Repair-WinGetPackageManager -Version $(Get-ReleaseTag -Verbose) -Force -Verbose
 		Get-GitHubRateLimit
