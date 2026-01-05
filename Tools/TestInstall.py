@@ -219,13 +219,21 @@ def main(directories):
                     folder = file_path.parent
                     if folder not in seen:
                         seen.add(folder)
-                        for arch, insttype in get_installers(folder):
-                            if platform.machine().lower() not in ("arm", "arm64"):
-                                if arch.lower() in ("arm", "arm64"):
-                                    # Filter out the arm archs for now
-                                    continue
-                            result = test_install(folder, " ".join(x for x in (f"-a {arch}" if arch else None, f"--installer-type {insttype}" if insttype else None) if x))
-                            print(f"\nFolder: {folder}" + (" (" + ", ".join(x for x in (arch, insttype) if x) + ")" if arch or insttype else ""))
+                        for arch, inst_type in get_installers(folder):
+                            if (arch.lower() != "neutral") and ((platform.machine().lower() in ("arm", "arm64")) != (arch.lower() in ("arm", "arm64"))):
+                                # Skip arm if machine is not arm-based (and otherwise)
+                                # Neutral should always pass (aka is not supposed to get into this scope)
+                                continue
+                            args = []
+                            label = []
+                            if arch:
+                                args.append(f"-a {arch}")
+                                label.append(arch)
+                            if inst_type:
+                                args.append(f"--installer-type {inst_type}")
+                                label.append(inst_type)
+                            result = test_install(folder, " ".join(args))
+                            print(f"\nFolder: {folder}" + (f" ({', '.join(label)})" if label else ""))
                             print(f"Install succeed: {result['INST']}")
                             print(f"Uninstall succeed: {result['UNINST']}")
             else:
