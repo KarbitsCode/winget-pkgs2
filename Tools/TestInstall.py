@@ -103,16 +103,24 @@ def get_screenshots(stop_event, folder, interval=10):
             sct.shot(mon=monitor_index, output=str(img_path))
             time.sleep(interval)
 
-def get_installer_arch(directory):
-    """Get installer architectures from package's installer.yml"""
+def get_installers(directory):
+    """Get all installers from package's installer.yml"""
+    pairs = set()
     for root, _, files in os.walk(directory):
         for file in files:
             if file.endswith((".installer.yml", ".installer.yaml")):
                 with open(os.path.join(root, file), "r", encoding="utf-8") as f:
-                    data = yaml.safe_load(f)
+                    data = yaml.safe_load(f) or {}
+                default_type = data.get("InstallerType")
                 installers = data.get("Installers", [])
-                archs = {inst.get("Architecture") for inst in installers if isinstance(inst, dict)}
-    return list(sorted(archs))
+                for inst in installers:
+                    if not isinstance(inst, dict):
+                        continue
+                    arch = inst.get("Architecture")
+                    inst_type = inst.get("InstallerType") or default_type
+                    pairs.add((arch, inst_type))
+    return sorted(pairs)
+
 
 def run_powershell(script_path, *args, timeout=600):
     """Run a PowerShell script with timeout, streaming output to console"""
@@ -211,11 +219,13 @@ def main(directories):
                     folder = file_path.parent
                     if folder not in seen:
                         seen.add(folder)
-                        for arch in get_installer_arch(folder):
-                            if platform.machine().lower() != arch == "arm64":
-                                continue
-                            result = test_install(folder, f"-a {arch}" if arch else "")
-                            print(f"\nFolder: {folder}" + (f" ({arch})" if arch else ""))
+                        for arch, insttype in get_installers(folder):
+                            if platform.machine().lower() not in ("arm", "arm64"):
+                                if arch.lower() in ("arm", "arm64"):
+                                    # Filter out the arm archs for now
+                                    continue
+                            result = test_install(folder, " ".join(x for x in (f"-a {arch}" if arch else None, f"--installer-type {insttype}" if insttype else None) if x))
+                            print(f"\nFolder: {folder}" + (" (" + ", ".join(x for x in (arch, insttype) if x) + ")" if arch or insttype else ""))
                             print(f"Install succeed: {result['INST']}")
                             print(f"Uninstall succeed: {result['UNINST']}")
             else:
