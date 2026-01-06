@@ -119,7 +119,7 @@ def get_installers(directory):
                     arch = inst.get("Architecture")
                     inst_type = inst.get("InstallerType") or default_type
                     pairs.add((arch, inst_type))
-    return sorted(pairs)
+    return sorted(pairs, key=lambda x: (x[1] or "", x[0] or ""))
 
 
 def run_powershell(script_path, *args, timeout=600):
