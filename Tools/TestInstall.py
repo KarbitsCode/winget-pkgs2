@@ -111,15 +111,26 @@ def get_installers(directory):
             if file.endswith((".installer.yml", ".installer.yaml")):
                 with open(os.path.join(root, file), "r", encoding="utf-8") as f:
                     data = yaml.safe_load(f) or {}
-                default_type = data.get("InstallerType")
-                installers = data.get("Installers", [])
-                for inst in installers:
+                default_inst_type = data.get("InstallerType")
+                default_nested_inst_type = data.get("NestedInstallerType")
+                for inst in data.get("Installers", []):
                     if not isinstance(inst, dict):
                         continue
                     arch = inst.get("Architecture")
-                    inst_type = inst.get("InstallerType") or default_type
-                    pairs.add((arch, inst_type))
-    return sorted(pairs, key=lambda x: (x[1] or "", x[0] or ""))
+                    inst_type = inst.get("InstallerType") or default_inst_type
+                    nested_inst_type = inst.get("NestedInstallerType") or default_nested_inst_type
+                    is_portable = (
+                        inst_type == "portable"
+                        or nested_inst_type == "portable"
+                    )
+                    pairs.add((arch, inst_type, is_portable))
+    return [ # make sure portable installer type always sorted last
+        (arch, inst_type)
+        for arch, inst_type, _ in sorted(
+            pairs,
+            key=lambda x: (x[2], x[1] or "", x[0] or "")
+        )
+    ]
 
 
 def run_powershell(script_path, *args, timeout=600):
