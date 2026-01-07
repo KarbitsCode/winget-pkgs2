@@ -2,7 +2,7 @@
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: IObit.SmartDefrag
-PackageVersion: 11.1.0.466
+PackageVersion: 11.2.0.472
 PackageLocale: en-US
 Publisher: IObit
 PublisherUrl: https://www.iobit.com/
@@ -21,11 +21,11 @@ Tags:
 - optimization
 - performance
 ReleaseNotes: |-
-  v11.1 (2025-10-21)
-  - Optimized Boot Time Defrag for faster startup
-  - Improved the Smart Defrag feature and file prioritization for faster file access
-  - Enlarged the database of Disk Cleanup to free up more disk space
-  - Fixed minor bugs
+  v11.2 (2026-01-06)
+  - More accurate detection of disk types
+  - Optimized Smart Analyze to analyze more intelligently, delivering more precise results
+  - Improved defragment engine to boost defragment performance
+  - Fixed bugs
 Documentations:
 - DocumentLabel: FAQ
   DocumentUrl: https://www.iobit.com/faq.php

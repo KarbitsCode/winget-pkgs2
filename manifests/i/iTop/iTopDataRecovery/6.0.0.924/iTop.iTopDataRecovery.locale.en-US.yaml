@@ -2,7 +2,7 @@
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: iTop.iTopDataRecovery
-PackageVersion: 5.5.0.844
+PackageVersion: 6.0.0.924
 PackageLocale: en-US
 Publisher: iTop Inc.
 PublisherUrl: https://www.itopvpn.com/
@@ -16,9 +16,13 @@ Copyright: Copyright © iTop Inc. All rights reserved.
 CopyrightUrl: https://www.itopvpn.com/terms/
 ShortDescription: Data Recovery Made Easy - iTop Data Recovery
 ReleaseNotes: |-
-  v5.5 (2025-11-17)
-  - Optimized deep scanning for DCR, ORF, MRW, DNG, and WMF files
-  - Fixed known bugs
+  v6.0 (2026-01-06)
+  - Added support for scanning NAS devices
+  - Added support for previewing files on NAS devices
+  - Added support for recovering data to Cloud like Google Drive and Dropbox
+  - Enhanced Deep Scan to scan out more lost data
+  - Accelerated scanning to significantly save your time
+  - Optimized UI for easier operation and better user experience
 PurchaseUrl: https://www.itopvpn.com/store/
 Documentations:
 - DocumentLabel: Blog
