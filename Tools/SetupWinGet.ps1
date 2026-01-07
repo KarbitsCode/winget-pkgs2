@@ -2,14 +2,12 @@ function Get-GitHubRateLimit {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory = $false)]
-		[System.Collections.IDictionary]
 		$Headers
 	)
 	function Get-FromHeaders {
 		[CmdletBinding()]
 		param(
 			[Parameter(Mandatory = $true)]
-			[System.Collections.IDictionary]
 			$h
 		)
 		if (-not $h["X-RateLimit-Limit"]) {
@@ -62,8 +60,11 @@ function Get-ReleaseTag {
 		$releasesAPIResponse = $response.Content | ConvertFrom-Json
 		Get-GitHubRateLimit $response.Headers
 	} catch {
-		$statusCode = $_.Exception.Response.StatusCode.Value__
+		$iwrResponse = $_.Exception.Response
 		$messageText = $_.Exception.Message
+		$statusCode = $iwrResponse.StatusCode.Value__
+		$headers = $iwrResponse.Headers
+		Get-GitHubRateLimit $headers
 		if ($statusCode -eq 403 -or $messageText -match "rate limit") {
 			Write-Warning "Rate limited. Waiting 60 seconds before retry..."
 			Start-Sleep -Seconds 60
