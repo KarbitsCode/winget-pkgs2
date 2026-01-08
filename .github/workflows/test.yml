@@ -66,15 +66,15 @@ jobs:
               $folder = @()
             }
           } else {
-            $folder = $manifestsChanged | ForEach-Object { (Split-Path $_ -Parent) -replace '\\', '/' } | Sort-Object -Unique
+            $folder = $manifestsChanged | ForEach-Object { (Split-Path $_ -Parent) -replace "\\", "/" } | Sort-Object -Unique
             Write-Output "Folder changed under manifests: $folder"
           }
           
           if ($folder.Count -gt 1) {
               $out = $folder | ConvertTo-Json -Compress
           } else {
-              $quoted = '"' + ($folder -replace '"', '\"') + '"'
-              $out = '[' + $quoted + ']'
+              $quoted = "`"" + ($folder -replace "`"", "\`"") + "`""
+              $out = "[" + $quoted + "]"
           }
           
           echo "folder=$out" >> $env:GITHUB_OUTPUT
@@ -102,12 +102,12 @@ jobs:
         id: prepare
         shell: pwsh
         run: |
-          $folders = '${{ needs.detect.outputs.folder }}' | ConvertFrom-Json
+          $folders = "${{ needs.detect.outputs.folder }}" | ConvertFrom-Json
           $all = Get-ChildItem "manifests" -Directory | Select-Object -ExpandProperty Name | ForEach-Object { "manifests/$_" }
-          if (($folders.Count -eq $all.Count) -and ((@($folders | Sort-Object) -join ',') -eq (@($all | Sort-Object) -join ','))) {
+          if (($folders.Count -eq $all.Count) -and ((@($folders | Sort-Object) -join ",") -eq (@($all | Sort-Object) -join ","))) {
             $out = "manifests"
           } else {
-            $out = $folders -join ' '
+            $out = $folders -join " "
           }
           echo "folders=$out" >> $env:GITHUB_OUTPUT
 
@@ -167,7 +167,7 @@ jobs:
         if: always()
         shell: pwsh
         run: |
-          $name = "${{ matrix.folders }}" -replace 'manifests/', '' -replace '/', '-'
+          $name = "${{ matrix.folders }}" -replace "manifests/", "" -replace "/", "-"
           echo "artifact_name=$name" >> $env:GITHUB_OUTPUT
 
       - name: Upload artifact
