@@ -102,7 +102,7 @@ jobs:
         id: prepare
         shell: pwsh
         run: |
-          $folders = "${{ needs.detect.outputs.folder }}" | ConvertFrom-Json
+          $folders = '${{ needs.detect.outputs.folder }}' | ConvertFrom-Json
           $all = Get-ChildItem "manifests" -Directory | Select-Object -ExpandProperty Name | ForEach-Object { "manifests/$_" }
           if (($folders.Count -eq $all.Count) -and ((@($folders | Sort-Object) -join ",") -eq (@($all | Sort-Object) -join ","))) {
             $out = "manifests"
