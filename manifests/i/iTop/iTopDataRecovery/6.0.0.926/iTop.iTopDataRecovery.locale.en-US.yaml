@@ -1,35 +1,33 @@
 # Created using wingetcreate 1.10.3.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
-PackageIdentifier: iTop.iTopVPN
-PackageVersion: 7.1.0.6723
+PackageIdentifier: iTop.iTopDataRecovery
+PackageVersion: 6.0.0.926
 PackageLocale: en-US
 Publisher: iTop Inc.
 PublisherUrl: https://www.itopvpn.com/
 PublisherSupportUrl: https://www.itopvpn.com/support/
 PrivacyUrl: https://www.itopvpn.com/privacy/
-PackageName: iTop VPN
-PackageUrl: https://www.itopvpn.com/vpn-windows/
+PackageName: iTop Data Recovery
+PackageUrl: https://www.itopvpn.com/data-recovery-software/
 License: Freeware
 LicenseUrl: https://www.itopvpn.com/eula/
 Copyright: Copyright © iTop Inc. All rights reserved.
 CopyrightUrl: https://www.itopvpn.com/terms/
-ShortDescription: FREE VPN from iTop Secures Your Online Privacy - iTop VPN
+ShortDescription: Data Recovery Made Easy - iTop Data Recovery
 ReleaseNotes: |-
-  v7.1 (2025-11-17)
-  - Automatic connection supports more scenarios
-  - Added support for boosting Steam games
-  - Optimized the auto-login process and fixed some occasional login failures
-  - Better compatibility with Windows 11 version 25H2
-  - Improved interface to better adapted to 4K screen displays
-  - Fixed all known bugs
-PurchaseUrl: https://www.itopvpn.com/purchase/
+  v6.0 (2026-01-06)
+  - Added support for scanning NAS devices
+  - Added support for previewing files on NAS devices
+  - Added support for recovering data to Cloud like Google Drive and Dropbox
+  - Enhanced Deep Scan to scan out more lost data
+  - Accelerated scanning to significantly save your time
+  - Optimized UI for easier operation and better user experience
+PurchaseUrl: https://www.itopvpn.com/store/
 Documentations:
 - DocumentLabel: Blog
   DocumentUrl: https://www.itopvpn.com/blog/
 - DocumentLabel: FAQ
   DocumentUrl: https://www.itopvpn.com/faqs/
-- DocumentLabel: User Manual
-  DocumentUrl: https://www.itopvpn.com/user-manual/itop-vpn-for-windows/
 ManifestType: defaultLocale
 ManifestVersion: 1.10.0
