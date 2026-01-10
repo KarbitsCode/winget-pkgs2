@@ -2,7 +2,9 @@ param(
     [Parameter(Mandatory = $true, Position = 0)]
     [string]$BodyFile,
     [Parameter(Position = 1)]
-    [int]$Count = 1
+    [int]$Count = 1,
+    [Parameter(Position = 2)]
+    [string]$Resolves
 )
 
 $BodyFile = Join-Path -Path $(Get-Location).Path -ChildPath $BodyFile
@@ -40,6 +42,14 @@ foreach ($prNumber in ($prNumbers | Sort-Object {[int]$_})) {
     } else {
         # Footer doesn't exist yet, let the bot fill that out to prevent duplication
         $tempFile = $BodyFile
+    }
+
+    if ($Resolves) {
+        $issueNumber = $Resolves -replace '#', ''
+        $bodyContent = Get-Content $tempFile -Raw
+        $bodyContent = $bodyContent -replace "Resolves #\[Issue Number\]", "Resolves #$issueNumber"
+        $bodyContent | Out-File $tempFile -Encoding utf8
+        Write-Host "Added resolves line to markdown template ($(Split-Path $tempFile -Leaf))" -ForegroundColor Yellow
     }
 
     # Update PR body
