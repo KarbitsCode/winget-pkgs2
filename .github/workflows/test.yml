@@ -71,7 +71,7 @@ jobs:
           }
 
           $out = ($folder | ConvertTo-Json -Compress) -replace '"', "'"
-          if (-not ($out.Trim().StartsWith("[") -and $out.Trim().EndsWith("]"))) {
+          if ($out -and (-not ($out.Trim().StartsWith("[") -and $out.Trim().EndsWith("]")))) {
               $out = "[$out]"
           }
           
