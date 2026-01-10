@@ -94,7 +94,7 @@ jobs:
           & {
             python -m pip install --upgrade pip -vvv
             pip install requests psutil pyyaml mss -vvv
-          } | Select-String -NotMatch "Found link|Skipping link"
+          } | Select-String -NotMatch "Found|Skipping link"
 
       - name: Prepare manifests list
         id: prepare
@@ -137,7 +137,7 @@ jobs:
           & {
             python -m pip install --upgrade pip -vvv
             pip install requests psutil pyyaml mss -vvv
-          } | Select-String -NotMatch "Found link|Skipping link"
+          } | Select-String -NotMatch "Found|Skipping link"
 
       - name: Set up winget
         shell: pwsh
