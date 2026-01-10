@@ -72,7 +72,7 @@ jobs:
 
           $out = ($folder | ConvertTo-Json -Compress) -replace '"', "'"
           if (-not ($out.Trim().StartsWith("[") -and $out.Trim().EndsWith("]"))) {
-              $out = "[" + $out + "]"
+              $out = "[$out]"
           }
           
           echo "folder=$out" >> $env:GITHUB_OUTPUT
@@ -165,7 +165,7 @@ jobs:
         if: always()
         shell: pwsh
         run: |
-          $name = "${{ matrix.folders }}" -replace "manifests/", "" -replace "/", "-"
+          $name = "${{ matrix.folders }}" -replace "manifests/", "" -replace "[\\/]", "-"
           echo "artifact_name=$name" >> $env:GITHUB_OUTPUT
 
       - name: Upload artifact
