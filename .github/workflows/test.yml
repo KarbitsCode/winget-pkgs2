@@ -74,7 +74,7 @@ jobs:
           if ($out -and (-not ($out.Trim().StartsWith("[") -and $out.Trim().EndsWith("]")))) {
             $out = "[$out]"
           } elseif (-not $out) {
-            $out = "[]"
+            $out = "['']"
           }
           
           echo "folder=$out" >> $env:GITHUB_OUTPUT
