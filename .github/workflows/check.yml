@@ -4,10 +4,6 @@ on:
     types: [upstream_push]
   workflow_dispatch:
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: false
-
 jobs:
   check:
     runs-on: windows-latest
