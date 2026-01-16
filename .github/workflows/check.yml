@@ -25,7 +25,7 @@ jobs:
 
       - name: Check manifests
         id: detect
-        shell: pwsh
+        shell: powershell
         run: |
           cd upstream
           .\Tools\CheckDependencies.ps1 -Verbose
