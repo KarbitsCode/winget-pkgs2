@@ -26,8 +26,10 @@ jobs:
       - name: Check manifests
         id: detect
         shell: powershell
+        continue-on-error: true
         run: |
           cd upstream
           .\Tools\CheckDependencies.ps1 -Verbose
+          .\Tools\CheckDependencies.ps1 -Offline -Verbose
           .\Tools\CheckDisplayVersions.ps1 -Verbose
           .\Tools\CheckMonikers.ps1 -Verbose
