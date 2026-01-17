@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.10.3.0
+# Created with komac v2.14.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: SoftSea.FreeMKVPlayer
-PackageVersion: "1.0"
+PackageVersion: '1.0'
 PackageLocale: en-US
 Publisher: SoftSea
 PublisherUrl: https://www.softsea.com/
@@ -17,14 +17,14 @@ ShortDescription: A small, simple, easy to use MKV video player application.
 Description: Free MKV player is a small utility released by mkvcodec.com, free for any personal use. This program is simple, compact and easy to use, is specifically designed to play MKV format files, built-in MKV video decoder, supports all the basic operation of video playback. This software is completely free, no adware, totally clean.
 Moniker: freemkvplayer
 Tags:
-- softsea
-- mkv
 - matroska
 - media
-- video
+- mkv
 - player
+- softsea
 - tool
 - utility
+- video
 Documentations:
 - DocumentLabel: Homepage
   DocumentUrl: https://www.mkvcodec.com/

@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.10.3.0
+# Created with komac v2.14.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: SoftSea.DjVuViewer
-PackageVersion: "1.1"
+PackageVersion: '1.1'
 PackageLocale: en-US
 Publisher: SoftSea
 PublisherUrl: https://www.softsea.com/
@@ -17,15 +17,15 @@ ShortDescription: A small *.djvu file reader software.
 Description: DjVu Viewer is a small .djvu file reader, enables you to open and view DjVu format files, easily zoom in and zoom out. This software can generate the thumbnails of all image pages, allow you to quickly browse. And, you can export the images to other format image files, such as JPEG, PNG, GIF, TIFF and BMP formats, program supports batch conversion, you can convert all images at once.
 Moniker: djvuviewer
 Tags:
-- softsea
-- ebook
 - book
 - djvu
+- ebook
 - image
-- viewer
 - reader
+- softsea
 - tool
 - utility
+- viewer
 Documentations:
 - DocumentLabel: Homepage
   DocumentUrl: https://www.djvuviewer.com/

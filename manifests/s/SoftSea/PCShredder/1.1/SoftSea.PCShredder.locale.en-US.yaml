@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.10.3.0
+# Created with komac v2.14.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: SoftSea.PCShredder
-PackageVersion: "1.1"
+PackageVersion: '1.1'
 PackageLocale: en-US
 Publisher: SoftSea
 PublisherUrl: https://www.softsea.com/
@@ -17,13 +17,13 @@ ShortDescription: A free data removal and file shredder software.
 Description: PC Shredder is one free data removal and file shredder software, can permanently delete files, folders and make them irrecoverable, completely shredding the files you specify, make it impossible for anyone to restore deleted information. Prevent your business data, important documents and personal information from being recovered. PC Shredder is Freeware. It is free for both personal and commercial use.
 Moniker: pcshredder
 Tags:
-- softsea
-- file
-- shredder
-- deletion
-- folder
 - data
+- deletion
+- file
+- folder
 - removal
+- shredder
+- softsea
 - tool
 - utility
 Documentations:

@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.10.3.0
+# Created with komac v2.14.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: SoftSea.CBRReader
-PackageVersion: "1.0"
+PackageVersion: '1.0'
 PackageLocale: en-US
 Publisher: SoftSea
 PublisherUrl: https://www.softsea.com/
@@ -17,15 +17,15 @@ ShortDescription: A free comic book archive format (*.cbr) file reader.
 Description: CBR Reader is a free *.cbr file reader, the CBR is a very popular comic book archive format, this program can help you to easily open and view these comic book files, it also supports other similar comic format files, such as *.cbz, *.cb7, *.cbt and *.cba files. So, if you are a comic fan, this is a very useful software. At the best, it is completely free.
 Moniker: cbrreader
 Tags:
-- softsea
-- ebook
 - book
 - cbr
 - comic
+- ebook
 - reader
-- viewer
+- softsea
 - tool
 - utility
+- viewer
 Documentations:
 - DocumentLabel: Homepage
   DocumentUrl: https://www.cbrreader.com/

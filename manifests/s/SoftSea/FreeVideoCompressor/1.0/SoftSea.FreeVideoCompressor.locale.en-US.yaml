@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.10.3.0
+# Created with komac v2.14.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: SoftSea.FreeVideoCompressor
-PackageVersion: "1.0"
+PackageVersion: '1.0'
 PackageLocale: en-US
 Publisher: SoftSea
 PublisherUrl: https://www.softsea.com/
@@ -17,12 +17,12 @@ ShortDescription: A free and lightweight video compression software.
 Description: Free Video Compressor is a free and lightweight compression software for video files, it can help you to easily compress video files and save your PC disk space. This software can work with many popular video formats, such as MP4 (MPEG), WMV, FLV, AVI, MOV, MKV, ASF, MPG, RMVB (RM) and more.
 Moniker: freevideocompressor
 Tags:
-- softsea
-- media
-- video
 - compress
+- media
+- softsea
 - tool
 - utility
+- video
 Documentations:
 - DocumentLabel: Homepage
   DocumentUrl: https://www.freevideocompressor.com/

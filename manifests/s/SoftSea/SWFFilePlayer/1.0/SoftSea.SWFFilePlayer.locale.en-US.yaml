@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.10.3.0
+# Created with komac v2.14.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: SoftSea.SWFFilePlayer
-PackageVersion: "1.0"
+PackageVersion: '1.0'
 PackageLocale: en-US
 Publisher: SoftSea
 PublisherUrl: https://www.softsea.com/
@@ -17,14 +17,14 @@ ShortDescription: A free player for SWF (Shockwave Flash) files.
 Description: SWF File Player is a simple player for SWF files. Many Flash games are in the SWF format and this software can help you to quickly open and play the content of these files. If you have several SWF files, this software will be a very useful utility for you. Additionally, it is completely free to use.
 Moniker: swffileplayer
 Tags:
-- softsea
-- media
-- video
-- swf
 - flash
+- media
 - player
+- softsea
+- swf
 - tool
 - utility
+- video
 Documentations:
 - DocumentLabel: Homepage
   DocumentUrl: https://www.swffileplayer.com/

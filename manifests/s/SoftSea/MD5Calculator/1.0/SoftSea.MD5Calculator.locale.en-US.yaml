@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.10.3.0
+# Created with komac v2.14.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: SoftSea.MD5Calculator
-PackageVersion: "1.0"
+PackageVersion: '1.0'
 PackageLocale: en-US
 Publisher: SoftSea
 PublisherUrl: https://www.softsea.com/
@@ -17,11 +17,11 @@ ShortDescription: A free, simple and easy-to-use MD5 hash value calculation tool
 Description: MD5 Calculator is a freeware to calculate and compare MD5 checksums for any files. You can copy the generated hash to clipboard, and can verify the MD5 hash to ensure the file integrity is correct with the matching file. It is fast, small and very easy to use.
 Moniker: md5calculator
 Tags:
-- softsea
-- hash
-- checksum
 - calculation
+- checksum
+- hash
 - md5
+- softsea
 - tool
 - utility
 Documentations:

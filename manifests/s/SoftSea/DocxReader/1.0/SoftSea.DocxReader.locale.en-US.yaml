@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.10.3.0
+# Created with komac v2.14.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: SoftSea.DocxReader
-PackageVersion: "1.0"
+PackageVersion: '1.0'
 PackageLocale: en-US
 Publisher: SoftSea
 PublisherUrl: https://www.softsea.com/
@@ -17,13 +17,13 @@ ShortDescription: A small Word docx document viewer.
 Description: Docx Reader is a handy Word Docx document viewer. It allows users to view the Docx documents without Microsoft Word. Simple and easy to use. Many users don't have Microsoft Word or still use Word 2003 or even earlier, Docx Reader can help you to open, view and read the docx format documents, and don't need Microsoft Word installed in your PC.
 Moniker: docxreader
 Tags:
-- softsea
-- word
-- docx
-- viewer
 - document
+- docx
+- softsea
 - tool
 - utility
+- viewer
+- word
 Documentations:
 - DocumentLabel: Homepage
   DocumentUrl: https://www.docxreader.com/

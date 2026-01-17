@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.10.3.0
+# Created with komac v2.14.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: SoftSea.BIKPlayer
-PackageVersion: "1.0"
+PackageVersion: '1.0'
 PackageLocale: en-US
 Publisher: SoftSea
 PublisherUrl: https://www.softsea.com/
@@ -17,14 +17,14 @@ ShortDescription: A free and simple player for Bink game video files.
 Description: BIK Player is a free game utility designed for gamers, it can open and play the Bink video format files (*.bik) in many games. This software currently includes the most basic playback features, supports full-screen playback mode.
 Moniker: bikplayer
 Tags:
-- softsea
-- bink
 - bik
+- bink
 - media
-- video
 - player
+- softsea
 - tool
 - utility
+- video
 Documentations:
 - DocumentLabel: Homepage
   DocumentUrl: https://www.bikplayer.com/

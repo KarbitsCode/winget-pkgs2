@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.10.3.0
+# Created with komac v2.14.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: SoftSea.ChecksumCalculator
-PackageVersion: "1.0"
+PackageVersion: '1.0'
 PackageLocale: en-US
 Publisher: SoftSea
 PublisherUrl: https://www.softsea.com/
@@ -17,13 +17,13 @@ ShortDescription: A free file checksum calculation software.
 Description: Checksum Calculator is a free file checksum calculation utility, it can support the most commonly used file checksum algorithm, such as md5, crc32, and sha1, can batch process multiple files. This verification software has some useful features, but it is easy to understand and very easy to use.
 Moniker: checksumcalculator
 Tags:
-- softsea
-- hash
-- checksum
 - calculation
-- md5
+- checksum
 - crc32
+- hash
+- md5
 - sha1
+- softsea
 - tool
 - utility
 Documentations:
