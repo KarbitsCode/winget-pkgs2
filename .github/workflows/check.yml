@@ -25,7 +25,14 @@ jobs:
         continue-on-error: true
         run: |
           cd upstream
+          Write-Host "===== CheckDependencies (Online) ====="
           .\Tools\CheckDependencies.ps1 -Verbose
+          
+          Write-Host "===== CheckDependencies (Offline) ====="
           .\Tools\CheckDependencies.ps1 -Offline -Verbose
+          
+          Write-Host "===== CheckDisplayVersions ====="
           .\Tools\CheckDisplayVersions.ps1 -Verbose
+          
+          Write-Host "===== CheckMonikers ====="
           .\Tools\CheckMonikers.ps1 -Verbose
