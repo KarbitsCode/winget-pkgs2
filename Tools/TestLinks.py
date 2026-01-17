@@ -95,7 +95,7 @@ def test_links(url, file_path):
         result["GET"] = f"Error: {e}"
     return result
 
-def main(directories):
+def main(paths):
     seen = set()
     sort_key = lambda p: (
         2 if ".installer." in p.name.lower()
@@ -104,20 +104,26 @@ def main(directories):
         p.name.lower()
     )
     
-    for directory in directories:
-        if os.path.exists(directory):
-            for file_path in sorted(Path(directory).rglob("*.y*ml"), key=sort_key):
-                urls = extract_urls_from_file(file_path)
-                for url in urls:
-                    if url not in seen:
-                        seen.add(url)
-                        print(f"\nFile: {file_path}")
-                        print(f"URL:  {url}")
-                        result = test_links(url, file_path)
-                        print(f"HEAD: {result['HEAD']}")
-                        print(f"GET:  {result['GET']}")
+    for path in paths:
+        path = Path(path)
+        if not path.exists():
+            print(f"Path doesn't exist: {path}")
+        if path.is_file() and path.suffix.lower() in [".yml", ".yaml"]:
+            file_paths = [path]
+        elif path.is_dir():
+            file_paths = sorted(path.rglob("*.y*ml"), key=sort_key)
         else:
-            print(f"Directory doesn't exist: {directory}")
+            continue
+        for file_path in file_paths:
+            urls = extract_urls_from_file(file_path)
+            for url in urls:
+                if url not in seen:
+                    seen.add(url)
+                    print(f"\nFile: {file_path}")
+                    print(f"URL:  {url}")
+                    result = test_links(url, file_path)
+                    print(f"HEAD: {result['HEAD']}")
+                    print(f"GET:  {result['GET']}")
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
