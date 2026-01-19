@@ -6,6 +6,11 @@ PackageVersion: '3.11'
 InstallerLocale: en-US
 InstallerType: zip
 NestedInstallerType: portable
+InstallModes:
+- interactive
+- silent
+- silentWithProgress
+UpgradeBehavior: uninstallPrevious
 Commands:
 - rdcman
 ReleaseDate: 2025-11-11

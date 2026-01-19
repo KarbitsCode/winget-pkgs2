@@ -1,9 +1,18 @@
-﻿#yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
+﻿
+#yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: Microsoft.Sysinternals.Sigcheck
 PackageVersion: "2.90"
+InstallerLocale: en-US
 InstallerType: zip
 NestedInstallerType: portable
+InstallModes:
+- interactive
+- silent
+- silentWithProgress
+UpgradeBehavior: uninstallPrevious
+Commands:
+- sigcheck
 Installers:
 - Architecture: x86
   NestedInstallerFiles:
@@ -27,3 +36,4 @@ Installers:
   InstallerSha256: 96EFA256749FDE2EF157BAEE9677E417047A0D77325AD97CA800FA10C4BF0DBF
 ManifestType: installer
 ManifestVersion: 1.12.0
+ReleaseDate: 2022-07-19

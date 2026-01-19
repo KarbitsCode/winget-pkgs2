@@ -6,6 +6,11 @@ PackageVersion: '1.61'
 InstallerLocale: en-US
 InstallerType: zip
 NestedInstallerType: portable
+InstallModes:
+- interactive
+- silent
+- silentWithProgress
+UpgradeBehavior: uninstallPrevious
 Commands:
 - rammap
 ReleaseDate: 2022-05-11

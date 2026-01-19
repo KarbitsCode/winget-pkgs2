@@ -4,11 +4,12 @@
 PackageIdentifier: Microsoft.Sysinternals.RAMMap
 PackageVersion: '1.61'
 PackageLocale: en-US
-Publisher: Sysinternals
-PublisherUrl: https://www.sysinternals.com/
-PublisherSupportUrl: https://learn.microsoft.com/en-us/sysinternals/
-Author: Mark Russinovich
-PackageName: RamMap
+Publisher: Microsoft Corporation
+PublisherUrl: https://sysinternals.com/
+PublisherSupportUrl: https://support.microsoft.com/en-us/
+PrivacyUrl: https://www.microsoft.com/en-us/privacy/privacystatement
+Author: Mark Russinovich (Sysinternals)
+PackageName: RAMMap
 PackageUrl: https://learn.microsoft.com/en-us/sysinternals/downloads/rammap
 License: Proprietary
 LicenseUrl: https://learn.microsoft.com/en-us/sysinternals/license-terms
@@ -32,13 +33,13 @@ Moniker: rammap
 Tags:
 - sysinternals
 Documentations:
-- DocumentLabel: Sysinternals Utilities Index
-  DocumentUrl: https://learn.microsoft.com/en-us/sysinternals/downloads/
-- DocumentLabel: Troubleshooting with the Windows Sysinternals Tools
-  DocumentUrl: https://learn.microsoft.com/en-us/sysinternals/resources/troubleshooting-book
 - DocumentLabel: Sysinternals Blog
   DocumentUrl: https://techcommunity.microsoft.com/category/windows/blog/sysinternals-blog
 - DocumentLabel: Sysinternals Resources
   DocumentUrl: https://learn.microsoft.com/en-us/sysinternals/resources/
+- DocumentLabel: Sysinternals Utilities Index
+  DocumentUrl: https://learn.microsoft.com/en-us/sysinternals/downloads/
+- DocumentLabel: Troubleshooting with the Windows Sysinternals Tools
+  DocumentUrl: https://learn.microsoft.com/en-us/sysinternals/resources/troubleshooting-book
 ManifestType: defaultLocale
 ManifestVersion: 1.10.0
