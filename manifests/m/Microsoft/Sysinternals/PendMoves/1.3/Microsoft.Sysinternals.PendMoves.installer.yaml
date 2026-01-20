@@ -6,6 +6,11 @@ PackageVersion: '1.3'
 InstallerLocale: en-US
 InstallerType: zip
 NestedInstallerType: portable
+InstallModes:
+- interactive
+- silent
+- silentWithProgress
+UpgradeBehavior: uninstallPrevious
 Commands:
 - pendmoves
 ReleaseDate: 2020-09-18

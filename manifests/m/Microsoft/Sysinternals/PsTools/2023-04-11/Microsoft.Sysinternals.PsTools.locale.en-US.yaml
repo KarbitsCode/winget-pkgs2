@@ -1,26 +1,21 @@
-# Created with komac v2.12.1
+# Created with YamlCreate.ps1 v2.3.4 $debug=NVS1.CRLF.5-1-19041-4170.Win32NT
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
-PackageIdentifier: Microsoft.Sysinternals.MoveFile
-PackageVersion: '1.02'
+PackageIdentifier: Microsoft.Sysinternals.PsTools
+PackageVersion: 2023-04-11
 PackageLocale: en-US
 Publisher: Microsoft Corporation
 PublisherUrl: https://sysinternals.com/
 PublisherSupportUrl: https://support.microsoft.com/en-us/
 PrivacyUrl: https://www.microsoft.com/en-us/privacy/privacystatement
 Author: Mark Russinovich (Sysinternals)
-PackageName: MoveFile
-PackageUrl: https://learn.microsoft.com/en-us/sysinternals/downloads/pendmoves
+PackageName: PsTools Suite
+PackageUrl: https://learn.microsoft.com/en-us/sysinternals/downloads/pstools
 License: Proprietary
 LicenseUrl: https://learn.microsoft.com/en-us/sysinternals/license-terms
-Copyright: Copyright © 1996-2025 Mark Russinovich
-ShortDescription: This MoveFile utility allows you to schedule move and delete commands for the next reboot.
-Description: |-
-  There are several applications, such as service packs and hotfixes, that must replace a file that's in use and is unable to. Windows therefore provides the MoveFileEx API to rename or delete a file and allows the caller to specify that they want the operation to take place the next time the system boots,before the files are referenced. Session Manager performs this task by reading the registered rename and delete commands from the HKLM\System\CurrentControlSet\Control\Session Manager\PendingFileRenameOperations value.
-
-  MoveFile usage:
-  The included MoveFile utility allows you to schedule move and delete commands for the next reboot: 
-  usage: movefile [source] [dest]
+Copyright: Copyright © 1998-2023 Mark Russinovich
+ShortDescription: A set of command-line tools for managing processes.
+Moniker: pstools
 Tags:
 - sysinternals
 Documentations:

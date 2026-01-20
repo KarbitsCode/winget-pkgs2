@@ -6,6 +6,11 @@ PackageVersion: '4.01'
 InstallerLocale: en-US
 InstallerType: zip
 NestedInstallerType: portable
+InstallModes:
+- interactive
+- silent
+- silentWithProgress
+UpgradeBehavior: uninstallPrevious
 Commands:
 - procmon
 ReleaseDate: 2024-06-20
