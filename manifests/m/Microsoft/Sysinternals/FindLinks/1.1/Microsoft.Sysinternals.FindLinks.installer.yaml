@@ -6,6 +6,11 @@ PackageVersion: '1.1'
 InstallerLocale: en-US
 InstallerType: zip
 NestedInstallerType: portable
+InstallModes:
+- interactive
+- silent
+- silentWithProgress
+UpgradeBehavior: uninstallPrevious
 Commands:
 - findlinks
 ReleaseDate: 2020-09-18

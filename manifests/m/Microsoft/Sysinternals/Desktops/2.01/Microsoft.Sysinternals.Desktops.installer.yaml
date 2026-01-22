@@ -6,6 +6,11 @@ PackageVersion: '2.01'
 InstallerLocale: en-US
 InstallerType: zip
 NestedInstallerType: portable
+InstallModes:
+- interactive
+- silent
+- silentWithProgress
+UpgradeBehavior: uninstallPrevious
 Commands:
 - desktops
 ReleaseDate: 2021-10-12

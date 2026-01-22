@@ -3,11 +3,14 @@
 
 PackageIdentifier: Microsoft.Sysinternals.Ctrl2Cap
 PackageVersion: '3.0'
+InstallerLocale: en-US
 InstallerType: zip
 NestedInstallerType: portable
 NestedInstallerFiles:
 - RelativeFilePath: ctrl2cap.exe
+  PortableCommandAlias: ctrl2cap
 InstallModes:
+- interactive
 - silent
 - silentWithProgress
 UpgradeBehavior: uninstallPrevious
