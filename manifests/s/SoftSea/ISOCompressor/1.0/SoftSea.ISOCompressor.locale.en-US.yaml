@@ -18,10 +18,11 @@ Description: A free game ISO file compression software, which can compress and c
 Moniker: isocompressor
 Tags:
 - compress
+- image
 - iso
+- softsea
 - tool
 - utility
-- iso-compressor
 - cso
 - ciso
 - psp
@@ -29,7 +30,6 @@ Tags:
 - playstationportable
 - nintendo-wii
 - nintendowii
-- filesize-compressing
 - pcsx2
 - iso-to-cso
 - isotocso
