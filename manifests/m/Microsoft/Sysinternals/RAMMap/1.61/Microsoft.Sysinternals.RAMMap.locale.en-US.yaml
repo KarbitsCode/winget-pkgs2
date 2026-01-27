@@ -1,8 +1,8 @@
-# Created with komac v2.12.1
+# Created using wingetcreate 1.10.3.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: Microsoft.Sysinternals.RAMMap
-PackageVersion: '1.61'
+PackageVersion: "1.61"
 PackageLocale: en-US
 Publisher: Microsoft Corporation
 PublisherUrl: https://sysinternals.com/
@@ -18,7 +18,7 @@ ShortDescription: An advanced physical memory usage analysis utility for Windows
 Description: |-
   Have you ever wondered exactly how Windows is assigning physical memory, how much file data is cached in RAM, or how much RAM is used by the kernel and device drivers? RAMMap makes answering those questions easy. 
   RAMMap is an advanced physical memory usage analysis utility for Windows Vista and higher.
-  
+
   It presents usage information in different ways on its several different tabs:
   - Use Counts: usage summary by type and paging list
   - Processes: process working set sizes

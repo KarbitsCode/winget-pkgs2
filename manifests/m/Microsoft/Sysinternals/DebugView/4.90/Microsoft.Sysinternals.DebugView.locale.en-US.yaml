@@ -1,8 +1,8 @@
-# Created with komac v2.12.1
+# Created using wingetcreate 1.10.3.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: Microsoft.Sysinternals.DebugView
-PackageVersion: '4.90'
+PackageVersion: "4.90"
 PackageLocale: en-US
 Publisher: Microsoft Corporation
 PublisherUrl: https://sysinternals.com/
@@ -22,7 +22,7 @@ Description: |-
   - Win32 OutputDebugString
   - Kernel-mode DbgPrint
   - All kernel-mode variants of DbgPrint implemented in Windows XP and Server 2003
-  
+
   DebugView also extracts kernel-mode debug output generated before a crash from Window's 2000/XP crash dump files if DebugView was capturing at the time of the crash.
 
   Here is a list highlighting some of DebugView's other features:

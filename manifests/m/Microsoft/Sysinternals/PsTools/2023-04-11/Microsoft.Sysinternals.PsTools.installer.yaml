@@ -1,4 +1,4 @@
-# Created with YamlCreate.ps1 v2.3.4 $debug=NVS1.CRLF.5-1-19041-4170.Win32NT
+# Created using wingetcreate 1.10.3.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.10.0.schema.json
 
 PackageIdentifier: Microsoft.Sysinternals.PsTools
@@ -11,7 +11,6 @@ InstallModes:
 - silent
 - silentWithProgress
 UpgradeBehavior: uninstallPrevious
-ReleaseDate: 2023-04-11
 Installers:
 - Architecture: x86
   NestedInstallerType: portable
@@ -77,3 +76,4 @@ Installers:
   InstallerSha256: A9CA77DFE03CE15004157727BB43BA66F00CEB215362C9B3D199F000EDAA8D61
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2023-04-11
