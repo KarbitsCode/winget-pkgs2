@@ -46,12 +46,18 @@ foreach ($prNumber in ($prNumbers | Sort-Object {[int]$_})) {
     }
 
     if ($Resolves) {
+        # Make sure inputs are numbers
         if ($Resolves -notmatch '^#?\d+$') {
             throw "Invalid resolves value '$Resolves'"
         }
         $issueNumber = $Resolves -replace '#', ''
         $bodyContent = Get-Content $tempFile -Raw
+
+        # Replace issue number with the actual number
         $bodyContent = $bodyContent -replace "Resolves #\[Issue Number\]", "Resolves #$issueNumber"
+        # Also check the box
+        $bodyContent = $bodyContent -replace "- \[ \] Is there a linked Issue\?", "- [x] Is there a linked Issue?"
+
         $bodyContent | Out-File $tempFile -Encoding utf8
         Write-Host "Added resolves line to markdown template ($(Split-Path $tempFile -Leaf))" -ForegroundColor Yellow
     }
