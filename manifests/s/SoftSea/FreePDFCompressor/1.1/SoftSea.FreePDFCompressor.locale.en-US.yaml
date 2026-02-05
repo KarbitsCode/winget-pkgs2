@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.10.3.0
+# Created with komac v2.14.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: SoftSea.FreePDFCompressor
-PackageVersion: "1.1"
+PackageVersion: '1.1'
 PackageLocale: en-US
 Publisher: SoftSea
 PublisherUrl: https://www.softsea.com/
@@ -17,12 +17,12 @@ ShortDescription: A free PDF compression software.
 Description: Free PDF Compressor is a free PDF compression software to enable you to effectively reduce the size of PDF files. Software is simple and easy to use, select an existing PDF file, and hit button "Compress", a compressed PDF file will be created, page by page, a progress bar will show progress of the whole compression process. This software is completely freeware, free for personal and non-commercial use.
 Moniker: freepdfcompressor
 Tags:
-- softsea
-- pdf
 - compress
 - compressor
+- pdf
 - reduce
 - shrink
+- softsea
 - tool
 - utility
 Documentations:

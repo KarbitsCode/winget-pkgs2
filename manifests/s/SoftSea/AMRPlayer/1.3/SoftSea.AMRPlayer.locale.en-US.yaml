@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.10.3.0
+# Created with komac v2.14.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: SoftSea.AMRPlayer
-PackageVersion: "1.3"
+PackageVersion: '1.3'
 PackageLocale: en-US
 Publisher: SoftSea
 PublisherUrl: https://www.softsea.com/
@@ -17,13 +17,13 @@ ShortDescription: A freeware released to play AMR audio files.
 Description: AMR Player is one freeware to let you can play the AMR audio files on your PC, and support to convert common multimedia file formats ( such as MP3 or WAV) to audio AMR/AWB format, or output AMR audio files to MP3/WAV audio format. AMR Player support AMR-NB( NarrowBand ) and AMR-WB( WideBand ), the audio conversions include AMR to MP3, AMR to WAV, MP3 to AMR, WAV to AMR, it is very fast and easy to use.
 Moniker: amrplayer
 Tags:
-- softsea
-- audio
-- amr
 - adaptive-multi-rate
-- player
+- amr
+- audio
 - convert
 - converter
+- player
+- softsea
 - tool
 - utility
 Documentations:

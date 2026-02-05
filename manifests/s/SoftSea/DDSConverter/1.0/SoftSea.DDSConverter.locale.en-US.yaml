@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.10.3.0
+# Created with komac v2.14.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: SoftSea.DDSConverter
-PackageVersion: "1.0"
+PackageVersion: '1.0'
 PackageLocale: en-US
 Publisher: SoftSea
 PublisherUrl: https://www.softsea.com/
@@ -17,12 +17,12 @@ ShortDescription: A simple image converter for DirectDraw Surface (DDS) images.
 Description: DDS Converter is a free image converter for DirectDraw Surface (DDS) image files, it can help you to easily convert DDS images to other common image formats, such as JPG/JPEG, BMP, PNG and TIF/TIFF format. It can support batch conversion. In addition, this software also provides DDS image viewing function, before you begin the conversion, you can open and view the image content, that is to say, you can use it as a DDS image viewer.
 Moniker: ddsconverter
 Tags:
-- softsea
-- image
+- convert
+- dds
 - directdraw
 - directdraw-surface
-- dds
-- convert
+- image
+- softsea
 - tool
 - utility
 Documentations:

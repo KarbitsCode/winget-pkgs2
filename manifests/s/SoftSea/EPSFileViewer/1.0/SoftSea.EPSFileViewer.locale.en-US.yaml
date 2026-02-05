@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.10.3.0
+# Created with komac v2.14.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: SoftSea.EPSFileViewer
-PackageVersion: "1.0"
+PackageVersion: '1.0'
 PackageLocale: en-US
 Publisher: SoftSea
 PublisherUrl: https://www.softsea.com/
@@ -17,13 +17,13 @@ ShortDescription: A free viewer for EPS files.
 Description: EPS File Viewer is a free and simple file viewer for EPS (Encapsulated PostScript) format files. It can quickly open and show EPS images, provides picture zoom function, and lets you zoom-in or zoom-out. This software is designed to be intuitive, simple, and very easy to use.
 Moniker: epsfileviewer
 Tags:
-- softsea
-- image
 - encapsulated-postscript
 - eps
-- viewer
+- image
+- softsea
 - tool
 - utility
+- viewer
 Documentations:
 - DocumentLabel: Homepage
   DocumentUrl: https://web.archive.org/web/20250908033609/https://epsfileviewer.com/

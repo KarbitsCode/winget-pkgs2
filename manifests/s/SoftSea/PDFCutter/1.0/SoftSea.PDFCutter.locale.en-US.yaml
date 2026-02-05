@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.10.3.0
+# Created with komac v2.14.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: SoftSea.PDFCutter
-PackageVersion: "1.0"
+PackageVersion: '1.0'
 PackageLocale: en-US
 Publisher: SoftSea
 PublisherUrl: https://www.softsea.com/
@@ -17,13 +17,13 @@ ShortDescription: A free PDF document splitting software.
 Description: PDF Cutter is a free PDF document splitting software, it can help you to quickly split PDF files. Software supports three splitting methods, you can choose according to your requirements, simple and easy to use. This software license is free for personal and non-commercial use.
 Moniker: pdfcutter
 Tags:
-- softsea
-- pdf
 - cut
 - cutter
+- page
+- pdf
+- softsea
 - split
 - splitter
-- page
 - tool
 - utility
 Documentations:

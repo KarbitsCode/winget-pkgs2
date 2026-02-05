@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.10.3.0
+# Created with komac v2.14.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: SoftSea.DXFViewer
-PackageVersion: "1.0"
+PackageVersion: '1.0'
 PackageLocale: en-US
 Publisher: SoftSea
 PublisherUrl: https://www.softsea.com/
@@ -17,13 +17,13 @@ ShortDescription: A free viewer for DXF files.
 Description: DXF Viewer is a free viewer for DXF files, it enables you to quickly open and read DXF files, you do not need to install any other huge CAD systems, just use this small software, you can easily view the content of DXF files. This software supports zoom in and zoom out function, very simple and easy to use, moreover, this is a completely free to use.
 Moniker: dxfviewer
 Tags:
-- softsea
 - cad
-- dxf
 - drawing-exchange-format
-- viewer
+- dxf
+- softsea
 - tool
 - utility
+- viewer
 Documentations:
 - DocumentLabel: Homepage
   DocumentUrl: https://www.dxfviewer.com/

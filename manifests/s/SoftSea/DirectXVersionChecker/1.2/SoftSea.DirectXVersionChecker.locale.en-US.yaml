@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.10.3.0
+# Created with komac v2.14.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: SoftSea.DirectXVersionChecker
-PackageVersion: "1.2"
+PackageVersion: '1.2'
 PackageLocale: en-US
 Publisher: SoftSea
 PublisherUrl: https://www.softsea.com/
@@ -17,10 +17,10 @@ ShortDescription: A small freeware to check the DirectX version in your Windows.
 Description: DirectX Version Checker is a small utility designed to check the version of DirectX installed on your computer. The application also can check DirectX Version, DirectX Debug Levels, DirectInput Devices, DirectShow Filters, All Video Compressors and All Audio Compressors. It is very lightweight and extremely easy to use.
 Moniker: directxversionchecker
 Tags:
-- softsea
 - benchmark
-- directx
 - checker
+- directx
+- softsea
 - tool
 - utility
 Documentations:
