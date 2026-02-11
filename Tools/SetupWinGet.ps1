@@ -70,7 +70,7 @@ function Get-ReleaseTag {
 			Start-Sleep -Seconds 60
 			return Get-ReleaseTag
 		} elseif ($statusCode -ge 500 -or $messageText -match "timeout") {
-			Write-Warning "Rate limited. Waiting 60 seconds before retry..."
+			Write-Warning "Timed out. Waiting 60 seconds before retry..."
 			Start-Sleep -Seconds 60
 			return Get-ReleaseTag
 		}
@@ -115,6 +115,9 @@ while ($true) {
 			Start-Sleep -Seconds 60
 			continue
 		}
-		throw $_.Exception
+		Write-Error -ErrorRecord $_ -ErrorAction Continue
+		Write-Warning "Waiting 60 seconds before retry..."
+		Start-Sleep -Seconds 60
+		continue
 	}
 }
