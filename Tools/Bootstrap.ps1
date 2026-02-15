@@ -131,6 +131,8 @@ if (Test-Path $p) {
   $j | ConvertTo-Json | Set-Content $p -Encoding UTF8
 }
 
+Remove-Item "$env:TEMP\WinGet" -Recurse -Force -ErrorAction SilentlyContinue
+
 $originalARP = Get-ARPTable
 $geoID = (Get-WinHomeLocation).GeoID
 Set-WinHomeLocation -GeoID $geoID
