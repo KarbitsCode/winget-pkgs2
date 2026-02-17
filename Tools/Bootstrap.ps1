@@ -131,7 +131,12 @@ if (Test-Path $p) {
   $j | ConvertTo-Json | Set-Content $p -Encoding UTF8
 }
 
-Remove-Item "$env:TEMP\WinGet" -Recurse -Force -ErrorAction SilentlyContinue
+$wingetTemp = "$env:TEMP\WinGet"
+if (Test-Path $wingetTemp) {
+  if ((Get-Item $wingetTemp).PSDrive.Free -lt 1GB) {
+    Remove-Item $wingetTemp -Recurse -Force -ErrorAction SilentlyContinue
+  }
+}
 
 $originalARP = Get-ARPTable
 $geoID = (Get-WinHomeLocation).GeoID
