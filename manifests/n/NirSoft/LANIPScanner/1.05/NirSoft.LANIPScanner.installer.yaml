@@ -10,10 +10,10 @@ NestedInstallerFiles:
 - RelativeFilePath: LANIPScanner.exe
 Commands:
 - LANIPScanner
-ReleaseDate: 2026-02-12
 Installers:
 - Architecture: x86
   InstallerUrl: https://www.nirsoft.net/utils/lanipscanner.zip
   InstallerSha256: C82C32930600D646FA10BCC885FC112C0932D8FF69633C0394A7B8297AF75D38
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2026-02-12

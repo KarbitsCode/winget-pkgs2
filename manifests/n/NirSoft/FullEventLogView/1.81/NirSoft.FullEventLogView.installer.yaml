@@ -10,7 +10,6 @@ NestedInstallerFiles:
 - RelativeFilePath: FullEventLogView.exe
 Commands:
 - FullEventLogView
-ReleaseDate: 2026-02-16
 Installers:
 - Architecture: x86
   InstallerUrl: https://www.nirsoft.net/utils/fulleventlogview.zip
@@ -20,3 +19,4 @@ Installers:
   InstallerSha256: DD67610F19A4FFFE77460F55EBB318523CC8BCBCB8FC3D462EE0DFFAB4BA1D95
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2026-02-16
