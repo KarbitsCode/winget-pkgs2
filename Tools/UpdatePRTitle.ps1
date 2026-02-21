@@ -2,13 +2,24 @@ param(
     [Parameter(Mandatory = $true, Position = 0)]
     [string]$NewTitlePrefix,
     [Parameter(Position = 1)]
-    [int]$Count = 1
+    [int]$Count = 1,
+    [Parameter()]
+    [string[]]$PR
 )
 
 Push-Location .\winget-pkgs\
 
-# Get the latest open PR
-$prNumbers = gh pr list --author "@me" --state open --limit $Count --json number --jq ".[].number"
+if ($PR) {
+    # Use specified PR numbers
+    $prNumbers = foreach ($pr2 in $PR) {
+        $pr2 -split ',' | ForEach-Object {
+            $_ -replace '#', ''
+        }
+    }
+} else {
+    # Get the latest open PR
+    $prNumbers = gh pr list --author "@me" --state open --limit $Count --json number --jq ".[].number"
+}
 
 if (-not $prNumbers) {
     Write-Error "No open PRs found under account."
