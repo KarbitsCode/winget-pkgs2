@@ -1,8 +1,8 @@
-import re
 import os
 import sys
 import uuid
 import yaml
+import regex
 import hashlib
 import platform
 import requests
@@ -12,7 +12,7 @@ from pathlib import Path
 def extract_urls_from_file(file_path):
     """Extract all URLs from a YAML file (raw text scan)"""
     text = Path(file_path).read_text(encoding="utf-8", errors="ignore")
-    url_pattern = re.compile(r"https?://[^\s'\"<>]+")
+    url_pattern = regex.compile(r"https?://[^\s'\"<>]+")
     return url_pattern.findall(text)
 
 def sha256sum(data):
