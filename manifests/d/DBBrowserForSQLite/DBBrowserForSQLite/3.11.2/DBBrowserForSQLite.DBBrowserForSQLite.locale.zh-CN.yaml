@@ -2,7 +2,7 @@
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.locale.1.10.0.schema.json
 
 PackageIdentifier: DBBrowserForSQLite.DBBrowserForSQLite
-PackageVersion: 3.13.1
+PackageVersion: 3.11.2
 PackageLocale: zh-CN
 License: MPL-2.0 和 GPL-3.0-or-later
 ShortDescription: 一款高质量、可视化、开源的工具，创建、设计和编辑 SQLite 兼容的数据库文件。
