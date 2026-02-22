@@ -10,7 +10,6 @@ NestedInstallerFiles:
 - RelativeFilePath: DHCPLogView.exe
 Commands:
 - DHCPLogView
-ReleaseDate: 2026-02-18
 Installers:
 - Architecture: x86
   InstallerUrl: https://www.nirsoft.net/utils/dhcplogview.zip
@@ -20,3 +19,4 @@ Installers:
   InstallerSha256: 036787E69819A84D980381406E098C449C2C9BC86CCC014A28F3265B070F3435
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2026-02-18
