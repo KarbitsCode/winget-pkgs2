@@ -13,8 +13,8 @@ if (-not $changes) {
     exit 0
 }
 
-Write-Host "Changes detected in manifests:" -ForegroundColor Yellow
-git status manifests
+# Properly add line breaks
+$changes2 = ($changes -split '\r?\n' | Where-Object { $_ }) -join "`n"
 
 # Extract package names from changed files for better branch naming
 $changedPaths = $changes | ForEach-Object { ($_ -split '\s+', 2)[1] }
@@ -25,16 +25,15 @@ $packageFolders = $changedPaths | ForEach-Object {
     }
 } | Sort-Object -Unique
 
-if ($packageFolders.Count -eq 1) {
-    $branchSuffix = $packageFolders[0]
-} elseif ($packageFolders.Count -le 3) {
+if ($packageFolders.Count -le 3) {
     $branchSuffix = ($packageFolders -join "_").Substring(0, [Math]::Min(50, ($packageFolders -join "_").Length))
 } else {
     $branchSuffix = "multiple-packages"
 }
 
-$timestamp = Get-Date -Format "yyyyMMdd-HHmmss"
-$branchName = "sync-manifests/$branchSuffix-$timestamp"
+$timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+$branchTimestamp = Get-Date -Format "yyyyMMdd-HHmmss"
+$branchName = "sync-manifests/$branchSuffix-$branchTimestamp"
 
 git checkout -b $branchName
 
@@ -43,7 +42,9 @@ if ($LASTEXITCODE -ne 0) {
     exit 1
 }
 
+git status
 git add manifests
+git status
 git commit -m $CommitMessage
 
 if ($LASTEXITCODE -ne 0) {
@@ -63,7 +64,7 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 $prBody = @"
-$CommitMessage ($(Get-Date -Format "yyyy-MM-dd HH:mm:ss"))
+$CommitMessage ($timestamp)
 
 "@
 
@@ -71,6 +72,18 @@ foreach ($pkg in $packageFolders) {
     # Strip first part ("m.Microsoft.WinDbg" -> "Microsoft.WinDbg")
     $prBody += "`n- $(($pkg -split '\.', 2)[1])"
 }
+
+$prBody += @"
+
+<details>
+<summary>Porcelain diff</summary>
+
+``````
+$changes2
+``````
+
+</details>
+"@
 
 $prUrl = gh pr create `
     --title $CommitMessage `
