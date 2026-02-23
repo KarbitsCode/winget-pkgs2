@@ -59,8 +59,10 @@ jobs:
             $head = "${{ github.event.pull_request.head.sha }}"
             $changed = git diff --name-only $base $head
           } else {
-            git fetch origin ${{ github.event.before }} --depth=1
-            $changed = git diff --name-only ${{ github.event.before }} ${{ github.sha }}
+            $before = "${{ github.event.before }}"
+            $current = "${{ github.sha }}"
+            git fetch origin $before --depth=1
+            $changed = git diff --name-only $before $current
           }
           
           $manifestsChanged = $changed | Where-Object { $_ -like "manifests/*" }
@@ -78,8 +80,8 @@ jobs:
             Write-Output "Folder changed under manifests: $folder"
           }
           
-          $out = ($folder | ConvertTo-Json -Compress) -replace '"', "'"
-          if ($out -and (-not ($out.Trim().StartsWith("[") -and $out.Trim().EndsWith("]")))) {
+          $out = (($folder | ConvertTo-Json -Compress) -replace '"', "'").Trim()
+          if ($out -and (-not ($out.StartsWith("[") -and $out.EndsWith("]")))) {
             $out = "[$out]"
           } elseif (-not $out) {
             $out = "['']"
