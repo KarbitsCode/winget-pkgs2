@@ -55,14 +55,10 @@ jobs:
         shell: pwsh
         run: |
           if ($env:GITHUB_EVENT_NAME -eq "pull_request") {
-            $base = "${{ github.event.pull_request.base.sha }}"
-            $head = "${{ github.event.pull_request.head.sha }}"
-            $changed = git diff --name-only $base $head
+            $changed = git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }}
           } else {
-            $before = "${{ github.event.before }}"
-            $current = "${{ github.sha }}"
-            git fetch origin $before --depth=1
-            $changed = git diff --name-only $before $current
+            git fetch origin ${{ github.event.before }} --depth=1
+            $changed = git diff --name-only ${{ github.event.before }} ${{ github.sha }}
           }
           
           $manifestsChanged = $changed | Where-Object { $_ -like "manifests/*" }
