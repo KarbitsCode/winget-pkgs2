@@ -1,9 +1,11 @@
 import os
+import io
 import sys
 import mss
 import json
 import yaml
 import time
+import atexit
 import ctypes
 import shutil
 import psutil
@@ -15,6 +17,16 @@ import subprocess
 from pathlib import Path
 from ctypes import wintypes
 from datetime import datetime
+
+_buffer = io.StringIO()
+_real_stdout = sys.stdout
+
+def _flush_buffer():
+    _real_stdout.write(_buffer.getvalue())
+    _real_stdout.flush()
+
+sys.stdout = _buffer
+atexit.register(_flush_buffer)
 
 def auto_popups(stop_event):
     """Scan for installer popups and auto-close them if exists"""
