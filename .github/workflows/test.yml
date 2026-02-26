@@ -76,7 +76,7 @@ jobs:
             Write-Output "Folder changed under manifests: $folder"
           }
           
-          $out = [string](($folder | ConvertTo-Json -Compress) -replace '"', "'").Trim()
+          $out = ([string](($folder | ConvertTo-Json -Compress) -replace '"', "'")).Trim()
           if ($out -and (-not ($out.StartsWith("[") -and $out.EndsWith("]")))) {
             $out = "[$out]"
           } elseif (-not $out) {
