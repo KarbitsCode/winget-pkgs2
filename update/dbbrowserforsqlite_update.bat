@@ -8,7 +8,12 @@ if "%~1"=="" (
 )
 
 set "VERSION=%~1"
-for /f "usebackq delims=" %%A in (`powershell -NoProfile -Command "$r = Invoke-RestMethod 'https://api.github.com/repos/sqlitebrowser/sqlitebrowser/releases/tags/v%VERSION%'; $r.assets | ForEach-Object { if ($_.name -match '(win32|x86).*\.(msi|exe)$') { Write-Output ('X86=' + $_.browser_download_url) }; if ($_.name -match '(win64|x64).*\.(msi|exe)$') { Write-Output ('X64=' + $_.browser_download_url) } }"`) do set %%A
+for /f "usebackq delims=" %%A in (`
+    powershell -NoProfile -Command ^
+        "$r = Invoke-RestMethod 'https://api.github.com/repos/sqlitebrowser/sqlitebrowser/releases/tags/v%VERSION%';" ^
+        "$r.assets | Where-Object { $_.name -match '(win32|x86)\.(msi|exe)$' } | ForEach-Object { Write-Output ('X86=' + $_.browser_download_url) };" ^
+        "$r.assets | Where-Object { $_.name -match '(win64|x64)\.(msi|exe)$' } | ForEach-Object { Write-Output ('X64=' + $_.browser_download_url) }"
+`) do set "%%A"
 
 wingetcreate update DBBrowserForSQLite.DBBrowserForSQLite ^
   --version %VERSION% ^
