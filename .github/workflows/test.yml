@@ -177,7 +177,7 @@ jobs:
           echo "artifact_name=$name" >> $env:GITHUB_OUTPUT
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v6.0.0
+        uses: actions/upload-artifact@v7.0.0
         if: always()
         with:
           name: screenshots-${{ steps.artifact.outputs.artifact_name }}
