@@ -1,4 +1,4 @@
-﻿#yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.12.0.schema.json
+﻿#yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: VovSoft.ExecutableBitScanner
 PackageVersion: 1.0.0.0
@@ -12,14 +12,14 @@ PackageName: Vovsoft Executable Bit Scanner
 PackageUrl: https://vovsoft.com/software/executable-bit-scanner/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/executable-bit-scanner/
-Copyright: VOVSOFT.COM © 2015 - 2025
-ShortDescription: A powerful and user-friendly Windows utility designed to analyze and categorize executable files and dynamic-link libraries within your system.
+Copyright: VOVSOFT.COM © 2015 - 2026
+ShortDescription: Executable Bit Scanner is a powerful and user-friendly Windows utility designed to analyze and categorize executable files and dynamic-link libraries within your system.
 Description: |-
   Executable Bit Scanner is a powerful and user-friendly Windows utility designed to analyze and categorize executable files and dynamic-link libraries within your system. This efficient tool scans selected folders, providing valuable insights into the executable landscape of your computer.
 
   All executable binary files start with special markers. This executable checker program automatically checks MZ, NE, PE, LE headers.
 
-  Key Features
+  Key Features:
   1. Comprehensive File Detection:
      Identifies both EXE (executable) and DLL (dynamic-link library) files
      Thorough scanning of selected folders and subfolders
@@ -38,12 +38,13 @@ Description: |-
   Note that as of 1.0.0.0, the tool does not distinguish between traditional and ARM architectures, and that it cannot detect the bits of non-.exe executables.
 ReleaseNotesUrl: https://vovsoft.com/version-history/executable-bit-scanner/
 Documentations:
-- DocumentLabel: Help
+- DocumentLabel: Executable Bit Scanner Help
   DocumentUrl: https://vovsoft.com/help/executable-bit-scanner/
 Tags:
-- executable-bit-scanner
-- detectfilearchitecture
-- detect-file-architecture
-- architecture-detector
+- Executable
+- Bit
+- Scanner
+- Architecture
+- Detector
 ManifestType: defaultLocale
-ManifestVersion: 1.12.0
+ManifestVersion: 1.10.0
