@@ -13,15 +13,11 @@ if (-not $changes) {
     exit 0
 }
 
-# Properly add line breaks
-$changes2 = ($changes -split '\r?\n' | Where-Object { $_ }) -join "`n"
-
 # Extract package names from changed files for better branch naming
 $changedPaths = $changes | ForEach-Object { ($_ -split '\s+', 2)[1] }
 $packageFolders = $changedPaths | ForEach-Object {
-    if ($_ -match 'manifests/[^/]+/[^/]+/[^/]+') {
-        $parts = $_ -split '/'
-        "$($parts[1]).$($parts[2]).$($parts[3])"
+    if ($_ -match 'manifests/(.+?)/[^/]+/?$') {
+        $matches[1] -replace '/', '.'
     }
 } | Sort-Object -Unique
 
@@ -79,7 +75,7 @@ $prBody += @"
 <summary>Porcelain diff</summary>
 
 ``````
-$changes2
+$(($changes -split '\r?\n' | Where-Object { $_ }) -join "`n")
 ``````
 
 </details>

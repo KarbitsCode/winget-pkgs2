@@ -19,14 +19,15 @@ from ctypes import wintypes
 from datetime import datetime
 
 _buffer = io.StringIO()
-_real_stdout = sys.stdout
 
+def _print(*args, **kwargs):
+    print(*args, file=_buffer, **kwargs)
+
+@atexit.register
 def _flush_buffer():
-    _real_stdout.write(_buffer.getvalue())
-    _real_stdout.flush()
-
-sys.stdout = _buffer
-atexit.register(_flush_buffer)
+    sys.stdout.write(_buffer.getvalue())
+    sys.stdout.write("\033]9;4;0\007") # For reseting terminal state
+    sys.stdout.flush()
 
 def auto_popups(stop_event):
     """Scan for installer popups and auto-close them if exists"""
@@ -144,7 +145,6 @@ def get_installers(directory):
         )
     ]
 
-
 def run_powershell(script_path, *args, timeout=600):
     """Run a PowerShell script with timeout, streaming output to console"""
     cmd = ["powershell", "-ExecutionPolicy", "Bypass", "-File", str(script_path), *map(str, args)]
@@ -153,7 +153,7 @@ def run_powershell(script_path, *args, timeout=600):
             proc.wait(timeout=timeout)
             return subprocess.CompletedProcess(cmd, proc.returncode)
         except subprocess.TimeoutExpired:
-            print(f"PowerShell script timed out after {timeout} seconds.")
+            print(f"\nPowerShell script timed out after {timeout} seconds.")
             parent = psutil.Process(proc.pid)
             for child in parent.children(recursive=True):
                 child.kill()
@@ -264,9 +264,9 @@ def main(paths):
                             args.append(f"--installer-type {inst_type}")
                             label.append(inst_type)
                         result = test_install(folder, " ".join(args))
-                        print(f"\nFolder: {folder}" + (f" ({', '.join(label)})" if label else ""))
-                        print(f"Install succeed: {result['INST']}")
-                        print(f"Uninstall succeed: {result['UNINST']}")
+                        _print(f"\nFolder: {folder}" + (f" ({', '.join(label)})" if label else ""))
+                        _print(f"Install succeed: {result['INST']}")
+                        _print(f"Uninstall succeed: {result['UNINST']}")
     except KeyboardInterrupt:
         traceback.print_exc()
 
