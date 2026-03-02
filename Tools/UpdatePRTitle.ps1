@@ -4,18 +4,16 @@ param(
     [Parameter(Position = 1)]
     [int]$Count = 1,
     [Parameter()]
-    [string[]]$PR
+    [string]$PR
 )
 
 Push-Location .\winget-pkgs\
 
 if ($PR) {
     # Use specified PR numbers
-    $prNumbers = foreach ($pr2 in $PR) {
-        $pr2 -split ',' | ForEach-Object {
-            $_ -replace '#', ''
-        }
-    }
+    $prNumbers = $PR -split ',' | ForEach-Object {
+                     $_.Trim() -replace '#', ''
+                 }
 } else {
     # Get the latest open PR
     $prNumbers = gh pr list --author "@me" --state open --limit $Count --json number --jq ".[].number"
@@ -40,7 +38,7 @@ foreach ($prNumber in ($prNumbers | Sort-Object {[int]$_})) {
     }
 
     # Edit the PR title and get the result
-    gh pr edit $prNumber --title "$($NewTitlePrefix): $oldTitle"
+    gh pr edit $prNumber --title "$($NewTitlePrefix.Trim()): $oldTitle"
     $newTitle = gh pr view $prNumber --json title --jq ".title"
 
     Write-Host "Updated PR #$prNumber title to: '$newTitle'" -ForegroundColor Green

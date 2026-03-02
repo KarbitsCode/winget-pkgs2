@@ -3,6 +3,7 @@ param(
     [string]$CommitMessage = "Sync manifests"
 )
 
+$CommitMessage = $CommitMessage.Trim()
 Push-Location $PSScriptRoot\..
 
 # Check if there are changes in manifests

@@ -1,10 +1,10 @@
 param(
     [Parameter(Mandatory = $true, Position = 0, ValueFromRemainingArguments = $true)]
-    [string[]]$PRNumbers
+    [string]$PRNumbers
 )
 
 # Prepare
-$prNumber = $PRNumbers -replace '#', ''
+$prNumber = $PRNumbers.Trim() -replace '#', ''
 $outTemp = Join-Path $env:TEMP "pipeline-artifact-$prNumber.zip"
 Remove-Item $outTemp -Force -ErrorAction SilentlyContinue
 

@@ -6,7 +6,7 @@ param(
     [Parameter(Position = 2)]
     [string]$Resolves,
     [Parameter()]
-    [string[]]$PR
+    [string]$PR
 )
 
 $BodyFile = Join-Path -Path $(Get-Location).Path -ChildPath $BodyFile
@@ -14,11 +14,9 @@ Push-Location .\winget-pkgs\
 
 if ($PR) {
     # Use specified PR numbers
-    $prNumbers = foreach ($pr2 in $PR) {
-        $pr2 -split ',' | ForEach-Object {
-            $_ -replace '#', ''
-        }
-    }
+    $prNumbers = $PR -split ',' | ForEach-Object {
+                     $_.Trim() -replace '#', ''
+                 }
 } else {
     # Get the latest open PR
     $prNumbers = gh pr list --author "@me" --state open --limit $Count --json number --jq ".[].number"

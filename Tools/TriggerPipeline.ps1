@@ -7,7 +7,7 @@ Push-Location .\winget-pkgs\
 git restore .
 
 foreach ($PRNumber in $PRNumbers) {
-	$prNumber = $PRNumber -replace '#', ''
+	$prNumber = $PRNumber.Trim() -replace '#', ''
 	$prInfo = gh pr view $prNumber --json title,headRepository,headRepositoryOwner,headRefName,labels | ConvertFrom-Json
 
 	if (-not $prInfo) {
