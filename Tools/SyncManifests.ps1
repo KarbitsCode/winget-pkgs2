@@ -16,7 +16,7 @@ if (-not $changes) {
 # Extract package names from changed files for better branch naming
 $changedPaths = $changes | ForEach-Object { ($_ -split '\s+', 2)[1] }
 $packageFolders = $changedPaths | ForEach-Object {
-    if ($_ -match 'manifests/(.+?)/[^/]+/?$') {
+    if ($_ -match 'manifests/(.+)/[^/]+/[^/]+$') {
         $matches[1] -replace '/', '.'
     }
 } | Sort-Object -Unique
