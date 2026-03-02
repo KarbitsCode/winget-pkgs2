@@ -12,8 +12,8 @@ set "VERSION=%~2"
 
 for /f "usebackq delims=" %%A in (`
     wingetcreate show IObit.%PKGNAME% ^| powershell -NoProfile -Command ^
-    "$text = $input | Out-String; " ^
-    "if ($text -match 'Architecture:\s*(\S+)') { Write-Output ('ARCH=' + $matches[1]) } " ^
+    "$text = $input | Out-String;" ^
+    "if ($text -match 'Architecture:\s*(\S+)') { Write-Output ('ARCH=' + $matches[1]) };" ^
     "if ($text -match 'InstallerUrl:\s*(\S+)') { Write-Output ('URL=' + $matches[1]) }"
 `) do set "%%A"
 

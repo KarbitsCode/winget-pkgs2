@@ -8,6 +8,7 @@ if "%~1"=="" (
 )
 
 set "VERSION=%~1"
+
 for /f "usebackq delims=" %%A in (`
     powershell -NoProfile -Command ^
         "$r = Invoke-RestMethod 'https://api.github.com/repos/sqlitebrowser/sqlitebrowser/releases/tags/v%VERSION%';" ^
