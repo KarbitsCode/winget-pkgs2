@@ -1,4 +1,5 @@
-﻿#yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
+# Created using wingetcreate 1.10.3.0
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
 PackageIdentifier: VovSoft.ExecutableBitScanner
 PackageVersion: 1.0.0.0
@@ -36,15 +37,15 @@ Description: |-
      Option to export results in various formats (e.g., HTML, TXT, CSV, XLS, XLSX)
 
   Note that as of 1.0.0.0, the tool does not distinguish between traditional and ARM architectures, and that it cannot detect the bits of non-.exe executables.
-ReleaseNotesUrl: https://vovsoft.com/version-history/executable-bit-scanner/
-Documentations:
-- DocumentLabel: Executable Bit Scanner Help
-  DocumentUrl: https://vovsoft.com/help/executable-bit-scanner/
 Tags:
 - Executable
 - Bit
 - Scanner
 - Architecture
 - Detector
+ReleaseNotesUrl: https://vovsoft.com/version-history/executable-bit-scanner/
+Documentations:
+- DocumentLabel: Executable Bit Scanner Help
+  DocumentUrl: https://vovsoft.com/help/executable-bit-scanner/
 ManifestType: defaultLocale
 ManifestVersion: 1.10.0

@@ -14,7 +14,6 @@ UpgradeBehavior: install
 FileExtensions:
 - PDF
 ProductCode: PDF to Image Converter_is1
-ReleaseDate: 2024-09-12
 AppsAndFeaturesEntries:
 - ProductCode: PDF to Image Converter_is1
 ElevationRequirement: elevatesSelf
@@ -26,3 +25,4 @@ Installers:
   InstallerSha256: 24F4F8BE236B0F94F2343FC9E7AD267ADE6F9F509EAFC0FAF69C063536C5BCB4
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2024-09-12

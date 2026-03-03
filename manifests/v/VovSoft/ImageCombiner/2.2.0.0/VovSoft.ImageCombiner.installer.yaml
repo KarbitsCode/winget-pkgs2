@@ -18,7 +18,6 @@ FileExtensions:
 - PNG
 - TIFF
 ProductCode: Image Combiner_is1
-ReleaseDate: 2026-02-18
 AppsAndFeaturesEntries:
 - ProductCode: Image Combiner_is1
 ElevationRequirement: elevatesSelf
@@ -30,3 +29,4 @@ Installers:
   InstallerSha256: 9110C884FA84D920CED8EC5BD1785094548C49E524F179E207C52540C1082E28
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2026-02-18

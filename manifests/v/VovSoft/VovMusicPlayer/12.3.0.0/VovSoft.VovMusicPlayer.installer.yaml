@@ -32,7 +32,6 @@ FileExtensions:
 - WMA
 - WV
 ProductCode: Vov Music Player_is1
-ReleaseDate: 2026-02-24
 AppsAndFeaturesEntries:
 - ProductCode: Vov Music Player_is1
 ElevationRequirement: elevatesSelf
@@ -44,3 +43,4 @@ Installers:
   InstallerSha256: 3F3249D1BBA701FB89ED50BEB4E3322DD4D2835E8FA2F7D1917EC087DA01DA98
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2026-02-24

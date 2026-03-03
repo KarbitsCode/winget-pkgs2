@@ -1,4 +1,4 @@
-# Automatically updated by the winget bot at 2026/Jan/21
+# Created using wingetcreate 1.10.3.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.10.0.schema.json
 
 PackageIdentifier: VovSoft.PreventDiskSleep
@@ -12,7 +12,6 @@ InstallModes:
 - silentWithProgress
 UpgradeBehavior: install
 ProductCode: Prevent Disk Sleep_is1
-ReleaseDate: 2025-07-24
 AppsAndFeaturesEntries:
 - ProductCode: Prevent Disk Sleep_is1
 ElevationRequirement: elevatesSelf
@@ -24,3 +23,4 @@ Installers:
   InstallerSha256: 819358C7BC1FFF19C5219155FEA27149ADF5F238223A9F09A76EA569554451AE
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2025-07-24

@@ -12,7 +12,6 @@ InstallModes:
 - silentWithProgress
 UpgradeBehavior: install
 ProductCode: Vov Screen Recorder_is1
-ReleaseDate: 2026-01-10
 AppsAndFeaturesEntries:
 - ProductCode: Vov Screen Recorder_is1
 ElevationRequirement: elevatesSelf
@@ -24,3 +23,4 @@ Installers:
   InstallerSha256: 8984E359DE9C134520E4B4A51CDF66F4A536150854E05125BF44816C42E21429
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2026-01-10

@@ -15,7 +15,6 @@ Protocols:
 - HTTP
 - HTTPS
 ProductCode: Collect URL_is1
-ReleaseDate: 2026-01-18
 AppsAndFeaturesEntries:
 - ProductCode: Collect URL_is1
 ElevationRequirement: elevatesSelf
@@ -27,3 +26,4 @@ Installers:
   InstallerSha256: 372FD01C9E404092FC0694C1A0B38D9952C9E06294B0AA7EC72D920E2F787976
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2026-01-18

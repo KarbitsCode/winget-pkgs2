@@ -12,7 +12,6 @@ InstallModes:
 - silentWithProgress
 UpgradeBehavior: install
 ProductCode: Web Platform Identifier_is1
-ReleaseDate: 2026-02-28
 AppsAndFeaturesEntries:
 - ProductCode: Web Platform Identifier_is1
 ElevationRequirement: elevatesSelf
@@ -24,3 +23,4 @@ Installers:
   InstallerSha256: 2EC7C9937072BC82C2914552246F99E5EAE67CCB750569061880E62B7665E126
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2026-02-28

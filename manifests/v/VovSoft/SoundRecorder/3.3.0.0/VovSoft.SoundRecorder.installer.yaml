@@ -15,7 +15,6 @@ FileExtensions:
 - MP3
 - WAV
 ProductCode: Sound Recorder_is1
-ReleaseDate: 2026-02-10
 AppsAndFeaturesEntries:
 - ProductCode: Sound Recorder_is1
 ElevationRequirement: elevatesSelf
@@ -27,3 +26,4 @@ Installers:
   InstallerSha256: 35AD5A48D8D71A53C85F05CEA662934C3BE7FA343B03BB5FD5230838060830AB
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2026-02-10

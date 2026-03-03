@@ -12,7 +12,6 @@ InstallModes:
 - silentWithProgress
 UpgradeBehavior: install
 ProductCode: Random Wordlist Generator_is1
-ReleaseDate: 2026-02-18
 AppsAndFeaturesEntries:
 - ProductCode: Random Wordlist Generator_is1
 ElevationRequirement: elevatesSelf
@@ -24,3 +23,4 @@ Installers:
   InstallerSha256: F9FAB38C0F367F7774F88724805DA7992233113E204C426D56779FEF8760C049
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2026-02-18
