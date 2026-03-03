@@ -12,7 +12,6 @@ InstallModes:
 - silentWithProgress
 UpgradeBehavior: install
 ProductCode: File Checksum Calculator_is1
-ReleaseDate: 2026-02-07
 AppsAndFeaturesEntries:
 - ProductCode: File Checksum Calculator_is1
 ElevationRequirement: elevatesSelf
@@ -24,3 +23,4 @@ Installers:
   InstallerSha256: FA9C575AB6BD5B0FA982063A3DF7C692A3D0A0D8DF14A9AA458B9C67266524D1
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2026-02-07

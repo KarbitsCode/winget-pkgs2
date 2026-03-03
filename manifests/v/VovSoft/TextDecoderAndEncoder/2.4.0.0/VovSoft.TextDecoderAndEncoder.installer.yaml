@@ -12,7 +12,6 @@ InstallModes:
 - silentWithProgress
 UpgradeBehavior: install
 ProductCode: Text Decoder And Encoder_is1
-ReleaseDate: 2026-02-14
 AppsAndFeaturesEntries:
 - ProductCode: Text Decoder And Encoder_is1
 ElevationRequirement: elevatesSelf
@@ -24,3 +23,4 @@ Installers:
   InstallerSha256: 41AA69DA7B6957978E17E8FE78A7B2C8C94FB554189A6CBDD476AE58644339BD
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2026-02-14

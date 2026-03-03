@@ -12,7 +12,6 @@ InstallModes:
 - silentWithProgress
 UpgradeBehavior: install
 ProductCode: Batch Translator_is1
-ReleaseDate: 2026-02-25
 AppsAndFeaturesEntries:
 - ProductCode: Batch Translator_is1
 ElevationRequirement: elevatesSelf
@@ -24,3 +23,4 @@ Installers:
   InstallerSha256: B29BB26ABFE53276FBE732F7B25E16A3B94F807F8D4782397B341E10A1463FB3
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2026-02-25

@@ -12,7 +12,6 @@ InstallModes:
 - silentWithProgress
 UpgradeBehavior: install
 ProductCode: Health Break Reminder_is1
-ReleaseDate: 2026-02-05
 AppsAndFeaturesEntries:
 - ProductCode: Health Break Reminder_is1
 ElevationRequirement: elevatesSelf
@@ -24,3 +23,4 @@ Installers:
   InstallerSha256: 677BC464AC2E886BAEEB4EE1A973486F2D4E5AEFA9A32F26C1B2389CCCCA77F3
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2026-02-05

@@ -12,7 +12,6 @@ InstallModes:
 - silentWithProgress
 UpgradeBehavior: install
 ProductCode: Window Resizer_is1
-ReleaseDate: 2026-02-05
 AppsAndFeaturesEntries:
 - ProductCode: Window Resizer_is1
 ElevationRequirement: elevatesSelf
@@ -24,3 +23,4 @@ Installers:
   InstallerSha256: BB9928B3B61E8B60ED25F56A49702042E776DBAEF4AD176D47FCB4CE3A13CA21
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2026-02-05

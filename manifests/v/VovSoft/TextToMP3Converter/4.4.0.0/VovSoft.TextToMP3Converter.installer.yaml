@@ -14,7 +14,6 @@ UpgradeBehavior: install
 FileExtensions:
 - txt
 ProductCode: Text to MP3 Converter_is1
-ReleaseDate: 2026-02-03
 AppsAndFeaturesEntries:
 - ProductCode: Text to MP3 Converter_is1
 ElevationRequirement: elevatesSelf
@@ -26,3 +25,4 @@ Installers:
   InstallerSha256: 24EA992E17DEF14C7A9A3F127BB9CAD1A203710E14F0D0F6CA136D37DAA62AC4
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2026-02-03

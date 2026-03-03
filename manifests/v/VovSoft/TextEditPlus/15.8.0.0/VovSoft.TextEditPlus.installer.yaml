@@ -16,7 +16,6 @@ FileExtensions:
 - HTML
 - TXT
 ProductCode: Text Edit Plus_is1
-ReleaseDate: 2026-02-24
 AppsAndFeaturesEntries:
 - ProductCode: Text Edit Plus_is1
 ElevationRequirement: elevatesSelf
@@ -28,3 +27,4 @@ Installers:
   InstallerSha256: 46512B9D143BF6D6BFA41E72CD95F0E3B4DEBCBA3823F7B6B7EBED7DC0D3BCD6
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2026-02-24

@@ -12,7 +12,6 @@ InstallModes:
 - silentWithProgress
 UpgradeBehavior: install
 ProductCode: Vov Sticky Notes_is1
-ReleaseDate: 2026-01-26
 AppsAndFeaturesEntries:
 - ProductCode: Vov Sticky Notes_is1
 ElevationRequirement: elevatesSelf
@@ -24,3 +23,4 @@ Installers:
   InstallerSha256: A2E6F3A245DCAE643A48BB1653C339AB0B76C2DEA9090D3566A8B9C58BAF6224
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2026-01-26
