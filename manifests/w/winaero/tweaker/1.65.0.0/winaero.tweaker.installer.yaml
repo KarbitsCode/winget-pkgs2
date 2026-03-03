@@ -15,7 +15,6 @@ InstallModes:
 - silentWithProgress
 UpgradeBehavior: install
 ProductCode: Winaero Tweaker_is1
-ReleaseDate: 2026-02-26
 AppsAndFeaturesEntries:
 - ProductCode: Winaero Tweaker_is1
 ElevationRequirement: elevatesSelf
@@ -30,3 +29,4 @@ Installers:
   InstallerSha256: 9A57D26BB9ABA3ED035D64D731AA0397A043D86B5DB052292319FF715B54837F
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2026-02-26

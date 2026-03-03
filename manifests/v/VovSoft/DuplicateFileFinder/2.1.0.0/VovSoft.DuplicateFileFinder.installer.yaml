@@ -12,7 +12,6 @@ InstallModes:
 - silentWithProgress
 UpgradeBehavior: install
 ProductCode: Duplicate File Finder_is1
-ReleaseDate: 2025-12-21
 AppsAndFeaturesEntries:
 - ProductCode: Duplicate File Finder_is1
 ElevationRequirement: elevatesSelf
@@ -24,3 +23,4 @@ Installers:
   InstallerSha256: A0BA682EF56F2279C5C2F479C7508B620CBC086650601A9850876A98E0F15908
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2025-12-21

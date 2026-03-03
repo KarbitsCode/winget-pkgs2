@@ -14,7 +14,6 @@ UpgradeBehavior: install
 Protocols:
 - SNTP
 ProductCode: Time Sync_is1
-ReleaseDate: 2026-02-25
 AppsAndFeaturesEntries:
 - ProductCode: Time Sync_is1
 ElevationRequirement: elevatesSelf
@@ -26,3 +25,4 @@ Installers:
   InstallerSha256: B9CE2BF5CEC9D6377E362BEDFB241CD2499182BFC8984A8E3C3EC7E8647115AE
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2026-02-25

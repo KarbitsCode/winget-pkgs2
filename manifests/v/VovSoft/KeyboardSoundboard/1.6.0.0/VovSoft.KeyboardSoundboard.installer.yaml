@@ -12,7 +12,6 @@ InstallModes:
 - silentWithProgress
 UpgradeBehavior: install
 ProductCode: Keyboard Soundboard_is1
-ReleaseDate: 2026-02-19
 AppsAndFeaturesEntries:
 - ProductCode: Keyboard Soundboard_is1
 ElevationRequirement: elevatesSelf
@@ -24,3 +23,4 @@ Installers:
   InstallerSha256: 4478E3E3459E78257330C238378AC5BCB7664C20741E31C6D606664E85E757DA
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2026-02-19

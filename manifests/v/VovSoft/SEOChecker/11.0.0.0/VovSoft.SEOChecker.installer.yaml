@@ -12,7 +12,6 @@ InstallModes:
 - silentWithProgress
 UpgradeBehavior: install
 ProductCode: SEO Checker_is1
-ReleaseDate: 2026-02-16
 AppsAndFeaturesEntries:
 - ProductCode: SEO Checker_is1
 ElevationRequirement: elevatesSelf
@@ -24,3 +23,4 @@ Installers:
   InstallerSha256: 7408AF5E780B41268DE0F3B221C58EB95B8B2AD66040426E35E0AE114B4CBC8D
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2026-02-16

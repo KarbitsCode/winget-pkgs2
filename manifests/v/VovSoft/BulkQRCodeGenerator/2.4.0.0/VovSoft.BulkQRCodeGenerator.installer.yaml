@@ -17,7 +17,6 @@ FileExtensions:
 - JPEG
 - PNG
 ProductCode: Bulk QR Code Generator_is1
-ReleaseDate: 2025-12-29
 AppsAndFeaturesEntries:
 - ProductCode: Bulk QR Code Generator_is1
 ElevationRequirement: elevatesSelf
@@ -29,3 +28,4 @@ Installers:
   InstallerSha256: BC509E65D28C5C52CC0948F144C196B7355A602EC3D6FF8317B85728707438F9
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2025-12-29

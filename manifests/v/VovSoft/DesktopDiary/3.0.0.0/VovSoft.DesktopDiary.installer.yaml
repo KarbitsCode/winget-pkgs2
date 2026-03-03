@@ -12,7 +12,6 @@ InstallModes:
 - silentWithProgress
 UpgradeBehavior: install
 ProductCode: Desktop Diary_is1
-ReleaseDate: 2026-01-23
 AppsAndFeaturesEntries:
 - ProductCode: Desktop Diary_is1
 ElevationRequirement: elevatesSelf
@@ -24,3 +23,4 @@ Installers:
   InstallerSha256: A72296FD1B1BAFDC7804ECFBDDA2D4C2A383D2932CA2B4B61DBE5816F1124B37
 ManifestType: installer
 ManifestVersion: 1.10.0
+ReleaseDate: 2026-01-23
