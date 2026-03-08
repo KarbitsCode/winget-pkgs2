@@ -17,14 +17,22 @@ if (-not $changes) {
 # Extract package names from changed files
 $changedPaths = $changes | ForEach-Object { ($_ -split '\s+', 2)[1] }
 $packageFolders = $changedPaths | ForEach-Object {
-    if ($_ -match '/$') {
-        # Has trailing slash, must be directory path
-        if (($_ -replace '/$', '') -match '^manifests/(.+)/[^/]+$') {
+    $path = $_ -replace '/$', ''
+    $last = $path.Split('/')[-1]
+
+    if ($last -match '^\d') {
+        # Has number at end, must be directory path with version number
+        if ($path -match '^manifests/(.+)/[^/]+$') {
+            $matches[1] -replace '/', '.'
+        }
+    } elseif ($last -match '\.[a-zA-Z]{2,5}$') {
+        # Has file extension, must be file path
+        if ($path -match '^manifests/(.+)/[^/]+/[^/]+$') {
             $matches[1] -replace '/', '.'
         }
     } else {
-        # Otherwise, assume it's a file path
-        if ($_ -match '^manifests/(.+)/[^/]+/[^/]+$') {
+        # No version or file extension, probably directory path with no version number
+        if ($path -match '^manifests/(.+)$') {
             $matches[1] -replace '/', '.'
         }
     }
