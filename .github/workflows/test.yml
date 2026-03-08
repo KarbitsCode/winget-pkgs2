@@ -45,7 +45,7 @@ jobs:
 
       - name: Remove old artifacts
         if: github.event_name != 'pull_request'
-        uses: c-hive/gha-remove-artifacts@v1.4.0
+        uses: KarbitsCode/gha-remove-artifacts@e95ba62191be430a660f35173e52280cf601d8c2
         with:
           age: '1 day'
           skip-recent: 0
