@@ -36,7 +36,7 @@ function Get-GitHubRateLimit {
 	}
 	if (-not $info) {
 		$r = Invoke-WebRequest -Uri "https://api.github.com/rate_limit"
-		$rate = ($r.Content | ConvertFrom-Json).rate
+		$rate = ($r.Content | ConvertFrom-Json).resources.core
 		$limit     = [int]$rate.limit
 		$remaining = [int]$rate.remaining
 		$resetTime = [DateTimeOffset]::FromUnixTimeSeconds([long]$rate.reset).LocalDateTime
