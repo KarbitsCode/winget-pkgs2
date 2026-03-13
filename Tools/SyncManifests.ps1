@@ -15,13 +15,12 @@ if (-not $changes) {
 }
 
 # Extract package names from changed files
-$changedPaths = $changes | ForEach-Object { ($_ -split '\s+', 2)[1] }
+$changedPaths = $changes | ForEach-Object { $_.Substring(3) }
 $packageFolders = $changedPaths | ForEach-Object {
     $path = $_ -replace '/$', ''
     $last = $path.Split('/')[-1]
-
-    if ($last -match '^\d') {
-        # Has number at end, must be directory path with version number
+    if ($last -match '^\d+(?:[.-]\d+)+$') {
+        # Has version-like format, must be directory path with version number
         if ($path -match '^manifests/(.+)/[^/]+$') {
             $matches[1] -replace '/', '.'
         }
