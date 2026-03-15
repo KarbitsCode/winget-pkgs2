@@ -26,7 +26,8 @@ def _print(*args, **kwargs):
 @atexit.register
 def _flush_buffer():
     sys.stdout.write(_buffer.getvalue())
-    sys.stdout.write("\033]9;4;0\007") # For reseting terminal state
+    if sys.stdout.isatty() and not os.getenv("GITHUB_ACTIONS"):
+        sys.stdout.write("\033]9;4;0\007") # For resetting terminal state
     sys.stdout.flush()
 
 def auto_popups(stop_event):
