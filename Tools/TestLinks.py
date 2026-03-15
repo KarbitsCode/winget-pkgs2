@@ -124,6 +124,8 @@ def main(paths):
                     result = test_links(url, file_path)
                     print(f"HEAD: {result['HEAD']}")
                     print(f"GET:  {result['GET']}")
+                    if str(result["HEAD"]).startswith("Error:") or str(result["GET"]).startswith("Error:"):
+                        seen.discard(url)
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
