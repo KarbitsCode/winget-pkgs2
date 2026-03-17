@@ -9,7 +9,8 @@ if "%~1"=="" (
 
 set "VERSION=%~1"
 
-wingetcreate update Wakatime.CLIWakatime ^
+komac update Wakatime.CLIWakatime ^
+  --output . ^
   --version %VERSION% ^
   --urls ^
     "https://github.com/wakatime/wakatime-cli/releases/download/v%VERSION%/wakatime-cli-windows-386.zip|x86" ^
