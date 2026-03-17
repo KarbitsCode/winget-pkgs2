@@ -1,11 +1,9 @@
 # Created using wingetcreate 1.10.3.0
-# yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.10.0.schema.json
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: NirSoft.WirelessNetworkWatcher
 PackageVersion: "2.44"
 InstallerLocale: en-US
-Platform:
-- Windows.Desktop
 ReleaseDate: 2026-03-04
 Installers:
 - Architecture: x86
@@ -16,11 +14,11 @@ Installers:
   InstallModes:
   - interactive
   - silent
-  - silentWithProgress
   UpgradeBehavior: install
   ProductCode: NirSoft Wireless Network Watcher
   AppsAndFeaturesEntries:
-  - ProductCode: NirSoft Wireless Network Watcher
+  - DisplayName: NirSoft Wireless Network Watcher
+    ProductCode: NirSoft Wireless Network Watcher
   InstallationMetadata:
     DefaultInstallLocation: '%ProgramFiles(x86)%\NirSoft\Wireless Network Watcher'
 - Architecture: x86
@@ -30,8 +28,7 @@ Installers:
   NestedInstallerType: portable
   NestedInstallerFiles:
   - RelativeFilePath: WNetWatcher.exe
-  Commands:
-  - WNetWatcher
+    PortableCommandAlias: WNetWatcher
 - Architecture: x64
   InstallerUrl: https://www.nirsoft.net/utils/wnetwatcher-x64.zip
   InstallerSha256: 343EBD7DAED1A11CFA3496A947A4FA84E59420FB3695E6B648CF1E96F16BD770
@@ -39,7 +36,6 @@ Installers:
   NestedInstallerType: portable
   NestedInstallerFiles:
   - RelativeFilePath: WNetWatcher.exe
-  Commands:
-  - WNetWatcher
+    PortableCommandAlias: WNetWatcher
 ManifestType: installer
-ManifestVersion: 1.10.0
+ManifestVersion: 1.12.0
