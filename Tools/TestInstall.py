@@ -76,14 +76,14 @@ def auto_popups(stop_event):
                     msg_text = get_dialog_text(hwnd).lower()
                     text_buf = ctypes.create_unicode_buffer(1024)
                     user32.GetWindowTextW(child_hwnd, text_buf, 1024)
-                    caption = text_buf.value.translate(str.maketrans("", "", "&<>")).strip()
+                    caption = text_buf.value.translate(str.maketrans("", "", "&<>")).strip().lower()
                     # print(f"Button text: {caption}")
                     
                     if any(word in msg_text for word in ("restart", "reboot")):
                         # Avoid restarting/rebooting on install/uninstall
-                        if any(word in caption.lower() for word in ("no", "cancel", "abort")):
+                        if any(word in caption for word in ("no", "cancel", "abort")):
                             user32.SendMessageW(child_hwnd, BM_CLICK, 0, 0)
-                    elif any(word in caption.lower() for word in ("ok", "yes", "next", "run", "continue", "uninstall", "close", "finish")):
+                    elif any(word in caption for word in ("ok", "yes", "next", "run", "continue", "uninstall", "close", "finish")):
                         user32.SendMessageW(child_hwnd, BM_CLICK, 0, 0)
                 return True
             
