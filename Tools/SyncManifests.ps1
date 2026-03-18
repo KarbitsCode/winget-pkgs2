@@ -54,7 +54,6 @@ if ($LASTEXITCODE -ne 0) {
     exit 1
 }
 
-git status
 git add manifests
 git status
 git commit -m $CommitMessage
