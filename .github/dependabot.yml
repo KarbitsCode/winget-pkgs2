@@ -11,3 +11,4 @@ updates:
       interval: "daily"
       time: "08:00"
       timezone: "Asia/Makassar"
+    open-pull-requests-limit: 10
