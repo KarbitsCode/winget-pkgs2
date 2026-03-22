@@ -1,8 +1,8 @@
-# Created with komac v2.8.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.12.0.schema.json
 
 PackageIdentifier: NirSoft.NetworkOpenedFiles
-PackageVersion: '1.63'
+PackageVersion: "1.63"
 PackageLocale: en-US
 Publisher: NirSoft
 PublisherUrl: https://www.nirsoft.net/
@@ -16,8 +16,7 @@ LicenseUrl: https://www.nirsoft.net/utils/network_opened_files.html#:~:text=Lice
 Copyright: Copyright © 2016 - 2024 Nir Sofer
 CopyrightUrl: https://www.nirsoft.net/utils/network_opened_files.html#:~:text=Copyright
 ShortDescription: A simple tool to view opened files by other computers on your network.
-Description: |-
-  NetworkOpenedFiles is a simple tool for Windows that displays the list of all files that are currently opened by other computers on your network. For every opened filename, the following information is displayed: Filename, user name, computer name (On Windows 7/2008 or later), Permissions information (Read/Write/Create), locks count, file owner, file size, file attributes, and more...
+Description: 'NetworkOpenedFiles is a simple tool for Windows that displays the list of all files that are currently opened by other computers on your network. For every opened filename, the following information is displayed: Filename, user name, computer name (On Windows 7/2008 or later), Permissions information (Read/Write/Create), locks count, file owner, file size, file attributes, and more...'
 Moniker: networkopenedfiles
 ReleaseNotes: |-
   - Version 1.63:

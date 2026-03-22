@@ -1,4 +1,4 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.12.0.schema.json
 
 PackageIdentifier: NirSoft.WirelessNetworkWatcher
@@ -15,8 +15,7 @@ License: Freeware
 LicenseUrl: https://www.nirsoft.net/utils/wireless_network_watcher.html#:~:text=License
 Copyright: Copyright © 2011 - 2026 Nir Sofer
 CopyrightUrl: https://www.nirsoft.net/utils/wireless_network_watcher.html#:~:text=Copyright
-ShortDescription: |-
-  Small utility to scan computers and devices connected to your wireless network.
+ShortDescription: Small utility to scan computers and devices connected to your wireless network.
 Description: |-
   Wireless Network Watcher is a small utility that scans your wireless network and displays the list of all computers and devices that are currently connected to your network.
   For every computer or device that is connected to your network, the following information is displayed:

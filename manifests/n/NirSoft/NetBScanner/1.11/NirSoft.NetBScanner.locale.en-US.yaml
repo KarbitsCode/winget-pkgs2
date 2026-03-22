@@ -1,4 +1,4 @@
-# Created with YamlCreate.ps1 v2.3.4 $debug=AUSU.CRLF.5-1-19041-4170.Win32NT
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.12.0.schema.json
 
 PackageIdentifier: NirSoft.NetBScanner
@@ -20,13 +20,10 @@ Description: |-
   NetBScanner is a network scanner tool that scans all computers in the IP addresses range you choose, using NetBIOS protocol. For every computer located by this NetBIOS scanner, the following information is displayed: IP Address, Computer Name, Workgroup or Domain, MAC Address, and the company that manufactured the network adapter (determined according to the MAC address). NetBScanner also shows whether a computer is a Master Browser.
   You can easily select one or more computers found by NetBScanner, and then export the list into csv/tab-delimited/xml/html file.
 Moniker: netbscanner
-# Tags:
 ReleaseNotes: |-
   - Version 1.11:
     - Updated the internal MAC addresses database.
 ReleaseNotesUrl: https://www.nirsoft.net/utils/netbios_scanner.html#:~:text=Versions%20History
-# PurchaseUrl:
-# InstallationNotes:
 Documentations:
 - DocumentLabel: FAQ
   DocumentUrl: https://www.nirsoft.net/faq.html
