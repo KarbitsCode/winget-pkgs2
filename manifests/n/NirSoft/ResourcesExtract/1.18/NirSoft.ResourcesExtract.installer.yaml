@@ -1,4 +1,4 @@
-# Created using wingetcreate 1.5.2.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: NirSoft.ResourcesExtract
@@ -9,7 +9,6 @@ NestedInstallerType: portable
 NestedInstallerFiles:
 - RelativeFilePath: ResourcesExtract.exe
   PortableCommandAlias: ResourcesExtract
-ReleaseDate: 2014-04-15
 Installers:
 - Architecture: x86
   InstallerUrl: https://www.nirsoft.net/utils/resourcesextract.zip
@@ -19,3 +18,4 @@ Installers:
   InstallerSha256: C68E2EBDA348D67BBF92D45FB423038E9413E24B531FC5C50AA663B17DBCCBB5
 ManifestType: installer
 ManifestVersion: 1.12.0
+ReleaseDate: 2014-04-15

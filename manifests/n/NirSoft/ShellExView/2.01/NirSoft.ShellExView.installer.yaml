@@ -1,16 +1,15 @@
-# Created with komac v2.14.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: NirSoft.ShellExView
-PackageVersion: '2.01'
+PackageVersion: "2.01"
 InstallerLocale: en-US
-ReleaseDate: 2019-06-09
 Installers:
 - Architecture: x86
-  InstallerUrl: https://www.nirsoft.net/utils/shexview_setup.exe
-  InstallerSha256: B7BFA133B0F0FBD6B35772F6E5F4E13B66F9E2904536564D07F74166C4C979B6
   InstallerType: nullsoft
   Scope: machine
+  InstallerUrl: https://www.nirsoft.net/utils/shexview_setup.exe
+  InstallerSha256: B7BFA133B0F0FBD6B35772F6E5F4E13B66F9E2904536564D07F74166C4C979B6
   InstallModes:
   - interactive
   - silent
@@ -39,3 +38,4 @@ Installers:
   InstallerSha256: 73248FB48EE6387CADBD6BDDE5265CBEF465CEA7FCA8F3B72EAC5C408F4E7CCB
 ManifestType: installer
 ManifestVersion: 1.12.0
+ReleaseDate: 2019-06-09

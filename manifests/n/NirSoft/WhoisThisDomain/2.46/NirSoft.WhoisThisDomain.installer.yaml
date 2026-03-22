@@ -1,16 +1,15 @@
-# Created with YamlCreate.ps1 v2.1.2 $debug=NVS1.7-2-4
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: NirSoft.WhoisThisDomain
 PackageVersion: "2.46"
 InstallerLocale: en-US
-ReleaseDate: 2022-01-14
 Installers:
 - Architecture: x86
-  InstallerUrl: https://www.nirsoft.net/utils/whoistd_setup.exe
-  InstallerSha256: 355CAF9D250634C7F3D15D59ED3BE676B61030568B21B2F29A5D1006C3028A9C
   InstallerType: nullsoft
   Scope: machine
+  InstallerUrl: https://www.nirsoft.net/utils/whoistd_setup.exe
+  InstallerSha256: 355CAF9D250634C7F3D15D59ED3BE676B61030568B21B2F29A5D1006C3028A9C
   InstallModes:
   - interactive
   - silent
@@ -22,12 +21,13 @@ Installers:
   InstallationMetadata:
     DefaultInstallLocation: '%ProgramFiles(x86)%\NirSoft\WhoisThisDomain'
 - Architecture: x86
-  InstallerUrl: https://www.nirsoft.net/utils/whoistd.zip
-  InstallerSha256: C24D09C7BFB6BA9008EA38BC09B0E4F30B9C55B27708C54724CF7343B76C46CC
   InstallerType: zip
   NestedInstallerType: portable
   NestedInstallerFiles:
   - RelativeFilePath: whoistd.exe
     PortableCommandAlias: whoistd
+  InstallerUrl: https://www.nirsoft.net/utils/whoistd.zip
+  InstallerSha256: C24D09C7BFB6BA9008EA38BC09B0E4F30B9C55B27708C54724CF7343B76C46CC
 ManifestType: installer
 ManifestVersion: 1.12.0
+ReleaseDate: 2022-01-14

@@ -1,8 +1,8 @@
-# Created with komac v2.13.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.12.0.schema.json
 
 PackageIdentifier: NirSoft.NetworkCountersWatch
-PackageVersion: '1.06'
+PackageVersion: "1.06"
 PackageLocale: en-US
 Publisher: NirSoft
 PublisherUrl: https://www.nirsoft.net/
@@ -20,13 +20,10 @@ Description: |-
   NetworkCountersWatch is a tool for Windows that displays system counters for every network interface on your system. The system counters include the number of incoming/outgoing bytes, number of incoming/outgoing packets, number of broadcast packets, and more.
   You can also initialize all counters to zero at any time in order to watch the network counters for specific event. NetworkCountersWatch also calculates and displays the current download speed and upload speed on your network interface.
 Moniker: networkcounterswatch
-# Tags:
 ReleaseNotes: |-
   - Version 1.06:
     - Added 'Always On Top' option.
 ReleaseNotesUrl: https://www.nirsoft.net/utils/network_counters_watch.html#:~:text=Versions%20History
-# PurchaseUrl:
-# InstallationNotes:
 Documentations:
 - DocumentLabel: FAQ
   DocumentUrl: https://www.nirsoft.net/faq.html

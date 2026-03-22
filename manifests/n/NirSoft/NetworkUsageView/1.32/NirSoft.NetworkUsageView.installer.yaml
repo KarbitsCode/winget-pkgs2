@@ -1,15 +1,14 @@
-# Created with komac v2.8.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: NirSoft.NetworkUsageView
-PackageVersion: '1.32'
+PackageVersion: "1.32"
 InstallerLocale: en-US
 InstallerType: zip
 NestedInstallerType: portable
 NestedInstallerFiles:
 - RelativeFilePath: NetworkUsageView.exe
   PortableCommandAlias: NetworkUsageView
-ReleaseDate: 2024-10-29
 Installers:
 - Architecture: x86
   InstallerUrl: https://www.nirsoft.net/utils/networkusageview.zip
@@ -19,3 +18,4 @@ Installers:
   InstallerSha256: 2372C1E333767CD2501B994405063C37EE815D7FA7D03C66F847CDF7382817AC
 ManifestType: installer
 ManifestVersion: 1.12.0
+ReleaseDate: 2024-10-29
