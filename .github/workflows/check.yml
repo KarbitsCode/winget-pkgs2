@@ -14,6 +14,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6.0.2
         with:
+          fetch-depth: 0
+
+      - name: Checkout upstream repository
+        uses: actions/checkout@v6.0.2
+        with:
           repository: KarbitsCode/winget-pkgs
           ref: ${{ github.event.client_payload.branch }}
           path: upstream
