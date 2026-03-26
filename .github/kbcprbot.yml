@@ -1,2 +1,4 @@
 merge:
   title_templ: "{{title}}"
+  on_label:
+    - sync-manifests
