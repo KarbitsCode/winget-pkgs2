@@ -1,8 +1,8 @@
 # Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
-PackageIdentifier: IObit.IObitSoftwareUpdater
-PackageVersion: 8.4.0.13
+PackageIdentifier: VovSoft.HideFiles
+PackageVersion: 9.3.0.0
 InstallerLocale: en-US
 InstallerType: inno
 Scope: machine
@@ -11,16 +11,16 @@ InstallModes:
 - silent
 - silentWithProgress
 UpgradeBehavior: install
-ProductCode: IObit Software Updater_is1
+ProductCode: Hide Files_is1
 AppsAndFeaturesEntries:
-- DisplayName: IObit Software Updater
-  Publisher: IObit
-  ProductCode: IObit Software Updater_is1
+- ProductCode: Hide Files_is1
 ElevationRequirement: elevatesSelf
+InstallationMetadata:
+  DefaultInstallLocation: '%ProgramFiles%\VOVSOFT\Hide Files'
 Installers:
 - Architecture: x86
-  InstallerUrl: https://cdn.iobit.com/dl/iobit-software-updater-setup.exe
-  InstallerSha256: F418BC15704FEC0F2E990303EFD3167B3BEDECE906C49EF2D77FD4EC1ED8C28A
+  InstallerUrl: https://files.vovsoft.com/hide-files.exe
+  InstallerSha256: E1DB990926595AABFC259CD38591BD41433CD4928D382087400D84F3D9A4AE4D
 ManifestType: installer
 ManifestVersion: 1.12.0
-ReleaseDate: 2026-03-20
+ReleaseDate: 2026-03-31
