@@ -47,6 +47,7 @@ $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
 $branchTimestamp = Get-Date -Format "yyyyMMdd-HHmmss"
 $branchName = "sync-manifests/$branchSuffix-$branchTimestamp"
 
+git pull -v --prune
 git checkout -b $branchName
 
 if ($LASTEXITCODE -ne 0) {
