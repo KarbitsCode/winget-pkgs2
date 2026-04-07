@@ -1,6 +1,7 @@
 param(
     [Parameter(Position = 0)]
-    [int]$Delay = 60
+    [int]$Delay = 60,
+    [switch]$Once
 )
 
 $targetLabel = "Internal-Error"
@@ -15,16 +16,20 @@ while ($true) {
     # Oldest to newest
     foreach ($pr in ($prs | Sort-Object {[int]$_.number})) {
         foreach ($prlabel in $pr.labels.name) {
-            if ($prlabel -contains $targetLabel) {
+            if ($prlabel -match $targetLabel) {
                 $targetprs += $pr.number
             }
         }
     }
 
     if ($targetprs.Count -gt 0) {
-      pwsh -file $(Join-Path $(Split-Path $PSCommandPath -Parent) "TriggerPipeline.ps1") $($targetprs -join ' ')
+        pwsh -file $(Join-Path $(Split-Path $PSCommandPath -Parent) "TriggerPipeline.ps1") $($targetprs -join ' ')
     }
 
-    Start-Sleep -Seconds $Delay
+    if (-not $Once) {
+        Start-Sleep -Seconds $Delay
+    } else {
+        break
+    }
 }
 
