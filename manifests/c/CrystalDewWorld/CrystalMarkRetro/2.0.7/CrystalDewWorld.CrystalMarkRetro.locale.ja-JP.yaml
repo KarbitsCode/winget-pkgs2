@@ -26,6 +26,10 @@ Tags:
 - ベンチマーク
 - ユーティリティ
 - 速度
+ReleaseNotes: |-
+  ※ベンチマーク結果は2.0.0と完全互換
+  - 著作権者から「CrystalMark Inc.」を削除
+  - ライブラリ更新
 ReleaseNotesUrl: https://crystalmark.info/ja/software/crystalmarkretro/crystalmarkretro-history/
 Documentations:
 - DocumentLabel: インストールマニュアル

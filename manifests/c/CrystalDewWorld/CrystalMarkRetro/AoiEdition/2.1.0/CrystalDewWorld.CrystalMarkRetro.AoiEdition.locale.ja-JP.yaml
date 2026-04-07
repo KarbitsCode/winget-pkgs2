@@ -28,6 +28,10 @@ Tags:
 - ベンチマーク
 - ユーティリティ
 - 速度
+ReleaseNotes: |-
+  ※ベンチマーク結果は2.0.0と完全互換
+  - GDI+依存を解消（9x/NT版の配布サイズを約900KB削減）
+  - QRコード生成高速化
 ReleaseNotesUrl: https://crystalmark.info/ja/software/crystalmarkretro/crystalmarkretro-history/
 Documentations:
 - DocumentLabel: インストールマニュアル

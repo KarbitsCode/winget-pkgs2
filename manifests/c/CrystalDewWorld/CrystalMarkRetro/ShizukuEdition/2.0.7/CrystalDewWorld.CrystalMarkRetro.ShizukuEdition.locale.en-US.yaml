@@ -29,6 +29,10 @@ Tags:
 - ssd
 - storage
 - utility
+ReleaseNotes: |-
+  Benchmark results are fully compatible with 2.0.0.
+  - Removed “CrystalMark Inc.” from the copyright notice
+  - Updated library
 ReleaseNotesUrl: https://crystalmark.info/en/software/crystalmarkretro/crystalmarkretro-history/
 Documentations:
 - DocumentLabel: Installation Manual
