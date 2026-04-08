@@ -70,6 +70,7 @@ git push -v origin $branchName
 
 if ($LASTEXITCODE -ne 0) {
     Write-Error "Failed to push branch"
+    git reset --mixed HEAD~1
     git checkout main
     git branch -D $branchName
     exit 1
