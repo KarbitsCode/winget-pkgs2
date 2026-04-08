@@ -23,7 +23,7 @@ while ($true) {
     }
 
     if ($targetprs.Count -gt 0) {
-        pwsh -file $(Join-Path $(Split-Path $PSCommandPath -Parent) "TriggerPipeline.ps1") $($targetprs -join ' ')
+        pwsh -file $(Join-Path $(Split-Path $PSCommandPath -Parent) "TriggerPipeline.ps1") @targetprs
     }
 
     if (-not $Once) {
