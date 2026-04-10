@@ -2,5 +2,6 @@
 !*/
 !.github/
 !.gitignore
+!.gitattributes
 !README.md
 winget-pkgs/
