@@ -47,6 +47,29 @@ $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
 $branchTimestamp = Get-Date -Format "yyyyMMdd-HHmmss"
 $branchName = "sync-manifests/$branchSuffix-$branchTimestamp"
 
+$prBody = @"
+$CommitMessage ($timestamp)
+
+"@
+
+foreach ($pkg in $packageFolders) {
+    # Strip first part ("m.Microsoft.WinDbg" -> "Microsoft.WinDbg")
+    $prBody += "`n- $(($pkg -split '\.', 2)[1])"
+}
+
+$prBody += @"
+
+<details>
+<summary>Porcelain diff</summary>
+
+``````
+$(($changes -split '\r?\n' | Where-Object { $_ }) -join "`n")
+``````
+
+</details>
+"@
+
+git checkout main
 git pull -v --prune
 git checkout -b $branchName
 
@@ -76,28 +99,6 @@ if ($LASTEXITCODE -ne 0) {
     exit 1
 }
 
-$prBody = @"
-$CommitMessage ($timestamp)
-
-"@
-
-foreach ($pkg in $packageFolders) {
-    # Strip first part ("m.Microsoft.WinDbg" -> "Microsoft.WinDbg")
-    $prBody += "`n- $(($pkg -split '\.', 2)[1])"
-}
-
-$prBody += @"
-
-<details>
-<summary>Porcelain diff</summary>
-
-``````
-$(($changes -split '\r?\n' | Where-Object { $_ }) -join "`n")
-``````
-
-</details>
-"@
-
 $prUrl = gh pr create `
     --title $CommitMessage `
     --body $prBody `
@@ -108,6 +109,7 @@ $prUrl = gh pr create `
 if ($LASTEXITCODE -ne 0) {
     Write-Error "Failed to create PR"
     git checkout main
+    git branch -D $branchName
     exit 1
 }
 
