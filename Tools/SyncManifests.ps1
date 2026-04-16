@@ -19,7 +19,7 @@ $changedPaths = $changes | ForEach-Object { $_.Substring(3) }
 $packageFolders = $changedPaths | ForEach-Object {
     $path = $_ -replace '/$', ''
     $last = $path.Split('/')[-1]
-    if ($last -match '^\d+(?:[.-]\d+)+$') {
+    if ($last -match '^[0-9a-zA-Z]+(?:[.-][0-9a-zA-Z]+)*$') {
         # Has version-like format, must be directory path with version number
         if ($path -match '^manifests/(.+)/[^/]+$') {
             $matches[1] -replace '/', '.'
