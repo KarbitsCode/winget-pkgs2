@@ -33,8 +33,8 @@ def _flush_buffer():
 def auto_popups(stop_event):
     """Scan for installer popups and auto-close them if exists"""
     user32 = ctypes.windll.user32
-    WM_GETTEXT = 0x000D
     WM_GETTEXTLENGTH = 0x000E
+    WM_GETTEXT = 0x000D
     BM_CLICK = 0x00F5
     WM_CLOSE = 0x0010
     BM_CLICK = 0x00F5
@@ -45,6 +45,10 @@ def auto_popups(stop_event):
     def callback(hwnd, lParam):
         if os.getenv("NO_PP", "0").lower() in ("true", "1"):
             return
+        
+        # Make sure to only get visible window
+        if not user32.IsWindowVisible(hwnd) or user32.IsIconic(hwnd):
+            return True
         
         # Get class name of the window
         class_name = ctypes.create_unicode_buffer(256)
@@ -89,17 +93,21 @@ def auto_popups(stop_event):
             
             user32.EnumChildWindows(hwnd, EnumWindowsProc(click_buttons), 0)
         elif "SunAwtFrame" in class_name.value: # Handle Java AWT
-            user32.SetForegroundWindow(hwnd)
-            # Simulate Enter key
-            user32.keybd_event(VK_ENTER, 0, 0, 0) # down
-            time.sleep(0.05)
-            user32.keybd_event(VK_ENTER, 0, 2, 0) # up
-            time.sleep(2)
-            user32.SetForegroundWindow(hwnd)
-            # Simulate Tab key
-            user32.keybd_event(VK_TAB, 0, 0, 0)  # down
-            time.sleep(0.05)
-            user32.keybd_event(VK_TAB, 0, 2, 0)  # up
+            title_buf = ctypes.create_unicode_buffer(512)
+            user32.GetWindowTextW(hwnd, title_buf, 512)
+            title = title_buf.value.lower()
+            if any(word in title for word in ("setup", "wizard", "install", "installer", "uninstall", "uninstaller")):
+                user32.SetForegroundWindow(hwnd)
+                # Simulate Enter key
+                user32.keybd_event(VK_ENTER, 0, 0, 0) # down
+                time.sleep(0.05)
+                user32.keybd_event(VK_ENTER, 0, 2, 0) # up
+                time.sleep(2)
+                user32.SetForegroundWindow(hwnd)
+                # Simulate Tab key
+                user32.keybd_event(VK_TAB, 0, 0, 0)  # down
+                time.sleep(0.05)
+                user32.keybd_event(VK_TAB, 0, 2, 0)  # up
         return True
     
     while not stop_event.is_set():
