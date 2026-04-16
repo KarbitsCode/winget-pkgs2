@@ -4,7 +4,7 @@ param(
     [switch]$Once
 )
 
-$targetLabel = "Internal-Error"
+$targetLabels = @("Internal-Error", "Defender-Error")
 
 while ($true) {
     # Get the latest open PR
@@ -12,11 +12,12 @@ while ($true) {
     $prs = gh pr list --author "@me" --state open --limit 100 --json number,labels | ConvertFrom-Json
     Pop-Location
     $targetprs = @()
+    $targetlabel = $targetLabels -join "|"
 
     # Oldest to newest
     foreach ($pr in ($prs | Sort-Object {[int]$_.number})) {
         foreach ($prlabel in $pr.labels.name) {
-            if ($prlabel -match $targetLabel) {
+            if ($prlabel -match $targetlabel) {
                 $targetprs += $pr.number
             }
         }
