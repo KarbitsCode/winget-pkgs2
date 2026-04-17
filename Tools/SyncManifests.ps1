@@ -19,18 +19,18 @@ $changedPaths = $changes | ForEach-Object { $_.Substring(3) }
 $packageFolders = $changedPaths | ForEach-Object {
     $path = $_ -replace '/$', ''
     $last = $path.Split('/')[-1]
-    if ($last -match '^[0-9a-zA-Z]+(?:[.-][0-9a-zA-Z]+)*$') {
-        # Has version-like format, must be directory path with version number
-        if ($path -match '^manifests/(.+)/[^/]+$') {
-            $matches[1] -replace '/', '.'
-        }
-    } elseif ($last -match '\.[a-zA-Z]{2,5}$') {
+    if ($last -match '\.[a-zA-Z]{2,5}$') {
         # Has file extension, must be file path
         if ($path -match '^manifests/(.+)/[^/]+/[^/]+$') {
             $matches[1] -replace '/', '.'
         }
+    } elseif ($last -match '^[0-9a-zA-Z]+(?:[.-][0-9a-zA-Z]+)*$') {
+        # Has version-like format, must be directory path with version number
+        if ($path -match '^manifests/(.+)/[^/]+$') {
+            $matches[1] -replace '/', '.'
+        }
     } else {
-        # No version or file extension, probably directory path with no version number
+        # No version or file extension, probably directory path with nothing else
         if ($path -match '^manifests/(.+)$') {
             $matches[1] -replace '/', '.'
         }
