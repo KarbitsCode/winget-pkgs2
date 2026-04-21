@@ -19,4 +19,4 @@ for /f "usebackq delims=" %%A in (`
 
 wingetcreate update iTop.%PKGNAME% ^
   --version %VERSION% ^
-  --urls "%URL%|%ARCH%" ^
+  --urls "%URL%|%ARCH%"

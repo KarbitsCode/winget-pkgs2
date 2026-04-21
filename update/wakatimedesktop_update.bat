@@ -14,4 +14,4 @@ wingetcreate update Wakatime.DesktopWakatime ^
   --urls ^
     "https://github.com/wakatime/desktop-wakatime/releases/download/v%VERSION%/wakatime-win32-ia32.exe|x86" ^
     "https://github.com/wakatime/desktop-wakatime/releases/download/v%VERSION%/wakatime-win32-x64.exe|x64" ^
-    "https://github.com/wakatime/desktop-wakatime/releases/download/v%VERSION%/wakatime-win32-arm64.exe|arm64" ^
+    "https://github.com/wakatime/desktop-wakatime/releases/download/v%VERSION%/wakatime-win32-arm64.exe|arm64"

@@ -19,4 +19,4 @@ for /f "usebackq delims=" %%A in (`
 
 wingetcreate update IObit.%PKGNAME% ^
   --version %VERSION% ^
-  --urls "%URL%|%ARCH%" ^
+  --urls "%URL%|%ARCH%"

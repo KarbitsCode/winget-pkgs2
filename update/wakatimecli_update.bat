@@ -15,4 +15,4 @@ komac update Wakatime.CLIWakatime ^
   --urls ^
     "https://github.com/wakatime/wakatime-cli/releases/download/v%VERSION%/wakatime-cli-windows-386.zip|x86" ^
     "https://github.com/wakatime/wakatime-cli/releases/download/v%VERSION%/wakatime-cli-windows-amd64.zip|x64" ^
-    "https://github.com/wakatime/wakatime-cli/releases/download/v%VERSION%/wakatime-cli-windows-arm64.zip|arm64" ^
+    "https://github.com/wakatime/wakatime-cli/releases/download/v%VERSION%/wakatime-cli-windows-arm64.zip|arm64"

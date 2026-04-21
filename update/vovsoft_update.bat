@@ -12,11 +12,14 @@ set "VERSION=%~2"
 
 for /f "usebackq delims=" %%A in (`
     wingetcreate show VovSoft.%PKGNAME% ^| powershell -NoProfile -Command ^
-    "$text = $input | Out-String;" ^
-    "if ($text -match 'Architecture:\s*(\S+)') { Write-Output ('ARCH=' + $matches[1]) };" ^
-    "if ($text -match 'InstallerUrl:\s*(\S+)') { Write-Output ('URL=' + $matches[1]) }"
-`) do set "%%A"
+    "$input = $input | Out-String;" ^
+    "$urls  = @([regex]::Matches($input, 'InstallerUrl:\s*(\S+)') | ForEach-Object { $_.Groups[1].Value });" ^
+    "$archs = @([regex]::Matches($input, 'Architecture:\s*(\S+)') | ForEach-Object { $_.Groups[1].Value });" ^
+    "$count = [Math]::Min($urls.Count, $archs.Count);" ^
+    "$pairs = for ($i=0; $i -lt $count; $i++) { \""$($urls[$i])^|$($archs[$i])\"" };" ^
+    "if ($pairs) { $pairs -join ' ' }"
+`) do set "URL_ARGS=%%A"
 
 wingetcreate update VovSoft.%PKGNAME% ^
   --version %VERSION% ^
-  --urls "%URL%|%ARCH%" ^
+  --urls %URL_ARGS%
