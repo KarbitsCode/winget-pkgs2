@@ -1,4 +1,6 @@
 merge:
-  title_templ: "{{title}}"
-  on_label:
-    - sync-manifests
+  prefer_manual: true
+  title_templ:
+    - text: "{{title}}"
+      on_label:
+        - sync-manifests
