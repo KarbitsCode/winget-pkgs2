@@ -1,5 +1,5 @@
 merge:
-  prefer_manual: true
+  prefer_manual: false
   title_templ:
     - text: "{{title}}"
       on_label:
