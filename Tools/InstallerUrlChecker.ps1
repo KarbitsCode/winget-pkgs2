@@ -15,7 +15,7 @@ try {
     Add-Type -AssemblyName System.IO.Compression.FileSystem
     $zip = [System.IO.Compression.ZipFile]::OpenRead($fl.FullName)
     $zip.Entries | ForEach-Object {
-        Write-Host "File: $($_.FullName) ($($_.CompressedLength) / $($_.Length) ($([math]::Round(($_.CompressedLength / $_.Length)*100, 2))%))"
+        Write-Host "File: $($_.FullName) ($($_.CompressedLength) / $($_.Length) ($([math]::Round(($_.CompressedLength / [math]::Max($_.Length, 1))*100, 2))%))"
     }
     $zip.Dispose()
 } catch {
