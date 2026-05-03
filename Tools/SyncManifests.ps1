@@ -69,6 +69,9 @@ $(($changes -split '\r?\n' | Where-Object { $_ }) -join "`n")
 </details>
 "@
 
+$prBodyFile = New-TemporaryFile
+Set-Content -Path $prBodyFile -Value $prBody -Encoding UTF8
+
 git checkout main
 git pull -v --prune
 git checkout -b $branchName
@@ -99,15 +102,19 @@ if ($LASTEXITCODE -ne 0) {
     exit 1
 }
 
-$prUrl = gh pr create `
-    --title $CommitMessage `
-    --body $prBody `
-    --base main `
-    --head $branchName `
-    --label "sync-manifests"
+try {
+    $prUrl = gh pr create `
+        --title $CommitMessage `
+        --body-file $prBodyFile `
+        --base main `
+        --head $branchName `
+        --label "sync-manifests"
 
-if ($LASTEXITCODE -ne 0) {
-    Write-Error "Failed to create PR"
+    if ($LASTEXITCODE -ne 0) {
+        throw $prUrl
+    }
+} catch {
+    Write-Error "Failed to create PR: $($_.Exception)"
     git checkout main
     git branch -D $branchName
     exit 1
@@ -115,6 +122,7 @@ if ($LASTEXITCODE -ne 0) {
 
 git checkout main
 git branch -D $branchName
+Remove-Item $prBodyFile -Force
 
 Write-Host "PR successfully created at: $prUrl" -ForegroundColor Green
 
