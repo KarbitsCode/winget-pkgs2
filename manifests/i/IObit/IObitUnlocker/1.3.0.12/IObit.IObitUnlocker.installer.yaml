@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.9.3.0
-# yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.10.0.schema.json
+# Created using wingetcreate 1.12.8.0
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: IObit.IObitUnlocker
-PackageVersion: 1.3.0.11
+PackageVersion: 1.3.0.12
 InstallerLocale: en-US
 InstallerType: inno
 Scope: machine
@@ -18,9 +18,9 @@ AppsAndFeaturesEntries:
   ProductCode: IObit Unlocker_is1
 ElevationRequirement: elevatesSelf
 Installers:
-- Architecture: x86
+- Architecture: neutral
   InstallerUrl: https://cdn.iobit.com/dl/unlocker-setup.exe
-  InstallerSha256: 2EFDFFD1CF3ADAB21FF760F009D8893D8C4CBCF63B2C3BFCC1139457C9CD430B
+  InstallerSha256: 25AA598DCC6E5D2EB2E860CF82BEB72F38E78D5F562677AA8B0413F64052328F
 ManifestType: installer
-ManifestVersion: 1.10.0
-ReleaseDate: 2024-07-26
+ManifestVersion: 1.12.0
+ReleaseDate: 2026-04-30
