@@ -1,7 +1,6 @@
 import os
 import io
 import sys
-import mss
 import json
 import yaml
 import time
@@ -14,6 +13,7 @@ import platform
 import traceback
 import threading
 import subprocess
+from mss import MSS
 from pathlib import Path
 from ctypes import wintypes
 from datetime import datetime
@@ -117,7 +117,7 @@ def auto_popups(stop_event):
 def get_screenshots(stop_event, folder, interval=10):
     """Takes desktop screenshots every [interval] seconds until stop_event is triggered"""
     folder.mkdir(parents=True, exist_ok=True)
-    with mss.mss() as sct:
+    with MSS() as sct:
         monitor_index = 1  # 1 = primary monitor
         while not stop_event.is_set():
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
