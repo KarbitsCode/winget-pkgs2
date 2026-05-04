@@ -35,7 +35,7 @@ function Get-GitHubRateLimit {
 		$info = Get-FromHeaders $Headers
 	}
 	if (-not $info) {
-		$r = Invoke-WebRequest -Uri "https://api.github.com/rate_limit"
+		$r = Invoke-WebRequest -Uri "https://api.github.com/rate_limit" -UseBasicParsing
 		$rate = ($r.Content | ConvertFrom-Json).resources.core
 		$limit     = [int]$rate.limit
 		$remaining = [int]$rate.remaining
@@ -51,12 +51,12 @@ function Get-GitHubRateLimit {
 	$percent = [Math]::Round(($info.Remaining / $info.Limit) * 100, 1)
 	Write-Warning "GitHub API rate limit: $($info.Remaining) / $($info.Limit) remaining ($percent%) - resets at $($info.Reset) (now $($info.Current))"
 }
+
 function Get-ReleaseTag {
 	[CmdletBinding()]
 	param()
 	try {
-		$iwrParams = @{Uri = "https://api.github.com/repos/microsoft/winget-cli/releases?per_page=100"}
-		$response  = Invoke-WebRequest @iwrParams
+		$response  = Invoke-WebRequest -Uri "https://api.github.com/repos/microsoft/winget-cli/releases?per_page=100" -UseBasicParsing
 		$releasesAPIResponse = $response.Content | ConvertFrom-Json
 		Get-GitHubRateLimit $response.Headers
 	} catch {
