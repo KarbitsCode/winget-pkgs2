@@ -5,8 +5,10 @@ param(
 
 # Prepare
 $prNumber = $PRNumbers.Trim() -replace '#', ''
-$outTemp = Join-Path $env:TEMP "pipeline-artifact-$prNumber.zip"
-Remove-Item $outTemp -Force -ErrorAction SilentlyContinue
+$outTemp1 = Join-Path $env:TEMP "pipeline-verification-artifact-$prNumber.zip"
+$outTemp2 = Join-Path $env:TEMP "pipeline-validation-artifact-$prNumber.zip"
+Remove-Item $outTemp1 -Force -ErrorAction SilentlyContinue
+Remove-Item $outTemp2 -Force -ErrorAction SilentlyContinue
 
 # Query and get the last (recent) comment
 $comments = gh api repos/microsoft/winget-pkgs/issues/$prNumber/comments | ConvertFrom-Json
@@ -27,6 +29,17 @@ Write-Host "Found buildId: $buildId" -ForegroundColor Yellow
 
 # Download using public azure api
 Write-Host "Downloading artifacts..." -ForegroundColor Yellow
-Invoke-WebRequest -Uri "https://dev.azure.com/shine-oss/$projectId/_apis/build/builds/$buildId/artifacts?artifactName=InstallationVerificationLogs&api-version=7.1&%24format=zip" -OutFile $outTemp
-Write-Host "Downloaded to $outTemp" -ForegroundColor Green
-explorer $outTemp
+try {
+	Invoke-WebRequest -Uri "https://dev.azure.com/shine-oss/$projectId/_apis/build/builds/$buildId/artifacts?artifactName=InstallationVerificationLogs&api-version=7.1&%24format=zip" -OutFile $outTemp1
+	Write-Host "Downloaded to $outTemp1" -ForegroundColor Green
+	explorer $outTemp1
+} catch {
+	Write-Warning "Failed to download artifact: $($_.Exception.Message)"
+}
+try {
+	Invoke-WebRequest -Uri "https://dev.azure.com/shine-oss/$projectId/_apis/build/builds/$buildId/artifacts?artifactName=ValidationResult&api-version=7.1&%24format=zip" -OutFile $outTemp2
+	Write-Host "Downloaded to $outTemp2" -ForegroundColor Green
+	explorer $outTemp2
+} catch {
+	Write-Warning "Failed to download artifact: $($_.Exception.Message)"
+}
