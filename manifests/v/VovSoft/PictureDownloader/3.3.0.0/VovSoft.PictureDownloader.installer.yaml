@@ -1,13 +1,13 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.PictureDownloader
-PackageVersion: 3.2.0.0
+PackageVersion: 3.3.0.0
 InstallerLocale: en-US
 Installers:
 - InstallerUrl: https://files.vovsoft.com/picture-downloader.exe
   Architecture: x86
-  InstallerSha256: 38125EC2A3C2B42F01E9B2CCDD308287242CC4D1B9D5DE36B828261CE4B15667
+  InstallerSha256: 1FCF45135B0DE8F17C10DF1C5DDDFDD2AFC312D40EEE92D826582C8BF01263C1
   InstallerType: inno
   Scope: machine
   InstallModes:
@@ -28,8 +28,8 @@ Installers:
   - RelativeFilePath: picdownload.exe
     PortableCommandAlias: picdownload
   InstallerUrl: https://files.vovsoft.com/picture-downloader-portable.zip
-  InstallerSha256: E80DD90D2600B0D911C7557148ED7BF7F1BFDB5163C70A72EFD7C370DCDE412F
+  InstallerSha256: CDF894B9B57041CDCBB970D266407DC3BE4ED3E28BAC711196885C5A34AA27C3
   ArchiveBinariesDependOnPath: true
 ManifestType: installer
 ManifestVersion: 1.12.0
-ReleaseDate: 2025-11-26
+ReleaseDate: 2026-05-06
