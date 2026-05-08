@@ -41,7 +41,7 @@ foreach ($prNumber in ($prNumbers | Sort-Object {[int]$_})) {
 
     # Always creates temp file for pr body
     $tempFile = New-TemporaryFile
-    Get-Content $BodyFile | Out-File $tempFile -Encoding utf8
+    Get-Content $BodyFile -Encoding utf8 | Out-File $tempFile -Encoding utf8
 
     # Footer that the bot usually add to PR automatically
     $footer = "###### Microsoft Reviewers: [Open in CodeFlow](https://microsoft.github.io/open-pr/?codeflow=$prUrl)"
@@ -60,14 +60,14 @@ foreach ($prNumber in ($prNumbers | Sort-Object {[int]$_})) {
             throw "Invalid resolves value '$Resolves'"
         }
         $issueNumber = $Resolves -replace '#', ''
-        $bodyContent = Get-Content $tempFile -Raw
+        $bodyContent = Get-Content $tempFile -Raw -Encoding utf8
 
         # Replace issue number with the actual number
         $bodyContent = $bodyContent -replace "Resolves #\[Issue Number\]", "Resolves #$issueNumber"
         # Also check the box
-        $bodyContent = $bodyContent -replace "- \[ \] Is there a linked Issue\?", "- [x] Is there a linked Issue?"
+        $bodyContent = $bodyContent -replace "- \[ \] Linked to an issue \(if applicable\)", "- [x] Linked to an issue (if applicable)"
 
-        $bodyContent | Out-File $tempFile -Encoding utf8
+        Set-Content $tempFile $bodyContent -Encoding utf8
         Write-Host "Added resolves line to markdown template ($(Split-Path $tempFile -Leaf))" -ForegroundColor Yellow
     }
 
