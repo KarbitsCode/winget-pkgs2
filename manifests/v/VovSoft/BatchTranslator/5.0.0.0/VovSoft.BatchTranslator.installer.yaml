@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.BatchTranslator
 PackageVersion: 5.0.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/batch-translator.exe
-  Architecture: x86
-  InstallerSha256: B29BB26ABFE53276FBE732F7B25E16A3B94F807F8D4782397B341E10A1463FB3
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/batch-translator.exe
+  InstallerSha256: B29BB26ABFE53276FBE732F7B25E16A3B94F807F8D4782397B341E10A1463FB3
   InstallModes:
   - interactive
   - silent

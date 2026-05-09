@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.ProxySwitcher
 PackageVersion: 1.0.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/proxy-switcher.exe
-  Architecture: x86
-  InstallerSha256: 65E09528AC766269F745EDBC719B314662371D34693ABE96189AAE5539454DE8
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/proxy-switcher.exe
+  InstallerSha256: 65E09528AC766269F745EDBC719B314662371D34693ABE96189AAE5539454DE8
   InstallModes:
   - interactive
   - silent

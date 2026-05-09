@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.TreeNotes
 PackageVersion: 2.6.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/tree-notes.exe
-  Architecture: x86
-  InstallerSha256: E43EC3B0B71CF8CACA20EFE5ECB95C2E1D0289649AF6DD3299ED438F4B7E0C4F
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/tree-notes.exe
+  InstallerSha256: E43EC3B0B71CF8CACA20EFE5ECB95C2E1D0289649AF6DD3299ED438F4B7E0C4F
   InstallModes:
   - interactive
   - silent

@@ -1,28 +1,28 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.JSONBeautifier
 PackageVersion: 2.0.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/json-beautifier.exe
-  Architecture: x64
-  InstallerSha256: E50E7AA7BD428FFE00444DDABB2B4ADF99DA5505F3C90D0A97E15D512E3ED001
+- Architecture: x64
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/json-beautifier.exe
+  InstallerSha256: E50E7AA7BD428FFE00444DDABB2B4ADF99DA5505F3C90D0A97E15D512E3ED001
   InstallModes:
   - interactive
   - silent
   - silentWithProgress
   UpgradeBehavior: install
+  FileExtensions:
+  - JSON
   ProductCode: JSON Beautifier_is1
   AppsAndFeaturesEntries:
   - ProductCode: JSON Beautifier_is1
   ElevationRequirement: elevatesSelf
   InstallationMetadata:
     DefaultInstallLocation: '%ProgramFiles%\VOVSOFT\JSON Beautifier'
-  FileExtensions:
-  - JSON
 - Architecture: x64
   InstallerType: zip
   NestedInstallerType: portable

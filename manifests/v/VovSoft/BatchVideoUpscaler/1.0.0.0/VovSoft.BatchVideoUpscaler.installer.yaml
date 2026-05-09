@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.BatchVideoUpscaler
 PackageVersion: 1.0.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/batch-video-upscaler.exe
-  Architecture: x64
-  InstallerSha256: 7233871C6ACA9288F0D875B4B0C0625BB21B1C9C06F6A8A7B3967553C191D445
+- Architecture: x64
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/batch-video-upscaler.exe
+  InstallerSha256: 7233871C6ACA9288F0D875B4B0C0625BB21B1C9C06F6A8A7B3967553C191D445
   InstallModes:
   - interactive
   - silent

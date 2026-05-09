@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.WebPlatformIdentifier
 PackageVersion: 1.6.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/web-platform-identifier.exe
-  Architecture: x86
-  InstallerSha256: 2EC7C9937072BC82C2914552246F99E5EAE67CCB750569061880E62B7665E126
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/web-platform-identifier.exe
+  InstallerSha256: 2EC7C9937072BC82C2914552246F99E5EAE67CCB750569061880E62B7665E126
   InstallModes:
   - interactive
   - silent

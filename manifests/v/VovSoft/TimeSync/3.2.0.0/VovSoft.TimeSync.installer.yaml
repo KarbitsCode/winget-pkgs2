@@ -1,28 +1,28 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.TimeSync
 PackageVersion: 3.2.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/time-sync.exe
-  Architecture: x86
-  InstallerSha256: B9CE2BF5CEC9D6377E362BEDFB241CD2499182BFC8984A8E3C3EC7E8647115AE
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/time-sync.exe
+  InstallerSha256: B9CE2BF5CEC9D6377E362BEDFB241CD2499182BFC8984A8E3C3EC7E8647115AE
   InstallModes:
   - interactive
   - silent
   - silentWithProgress
   UpgradeBehavior: install
+  Protocols:
+  - SNTP
   ProductCode: Time Sync_is1
   AppsAndFeaturesEntries:
   - ProductCode: Time Sync_is1
   ElevationRequirement: elevatesSelf
   InstallationMetadata:
     DefaultInstallLocation: '%ProgramFiles%\VOVSOFT\Time Sync'
-  Protocols:
-  - SNTP
 - Architecture: x86
   InstallerType: zip
   NestedInstallerType: portable

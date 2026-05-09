@@ -1,4 +1,4 @@
-# Created with komac v2.16.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.AIAutomator
@@ -26,13 +26,13 @@ Description: |-
 
   Batch Prompt Scheduler
   The built-in queue system allows you to load batches of text prompts and image/audio inputs to be processed sequentially. You can also manually edit workflows using `tasks.json` and `models.json` files, giving full control over execution behavior without relying only on the GUI. This makes it easy to structure and manage workflows at scale. Instead of manually waiting for one response to finish before sending the next, you can line up hundreds of tasks and step away. The program will systematically route each input to your chosen LLM, and save the generated outputs into your specified destination files.
-  
+
   Flexible Prompt Input
   The software can read prompt from external sources, giving you full flexibility in how you define your AI queries. Supported input methods include:
   - File: Load your prompt directly from a local file on your system, making it easy to reuse, version, and edit prompts outside the application.
   - URL: Fetch prompt content from a specified web address, enabling dynamic or remotely managed prompt workflows.
   - Browser: Fetch prompt content directly from a website using an integrated browser, allowing you to capture queries from secured or logged-in sessions.
-  
+
   Simplified AI Automation
   The true advantage of this utility lies in its absolute simplicity. While complex automation platforms like n8n or AI agents like OpenClaw offer broad capabilities, they often introduce unnecessary overhead. They typically require configuring and maintaining dedicated servers or cloud instances, which completely contradicts a private, local-first workflow. Furthermore, because of their complex agentic background processes, they can consume massive amounts of tokens, quickly making API usage unexpectedly pricey. In contrast, Vovsoft AI Automator operates entirely as a desktop application on your existing Windows machine. It executes exactly what you schedule with complete transparency, ensuring predictable token usage without any hidden server costs or complicated infrastructure to manage.
 Tags:

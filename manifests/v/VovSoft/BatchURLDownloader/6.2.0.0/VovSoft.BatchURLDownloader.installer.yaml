@@ -1,30 +1,30 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.BatchURLDownloader
 PackageVersion: 6.2.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/batch-url-downloader.exe
-  Architecture: x86
-  InstallerSha256: 92EE01BA8FF6969FAAACDA0487F70B5FCAD11FD6144F6E59A0D1743D69FD005E
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/batch-url-downloader.exe
+  InstallerSha256: 92EE01BA8FF6969FAAACDA0487F70B5FCAD11FD6144F6E59A0D1743D69FD005E
   InstallModes:
   - interactive
   - silent
   - silentWithProgress
   UpgradeBehavior: install
+  Protocols:
+  - FTP
+  - HTTP
+  - HTTPS
   ProductCode: Batch URL Downloader_is1
   AppsAndFeaturesEntries:
   - ProductCode: Batch URL Downloader_is1
   ElevationRequirement: elevatesSelf
   InstallationMetadata:
     DefaultInstallLocation: '%ProgramFiles%\VOVSOFT\Batch URL Downloader'
-  Protocols:
-  - FTP
-  - HTTP
-  - HTTPS
 - Architecture: x86
   InstallerType: zip
   NestedInstallerType: portable

@@ -5,11 +5,11 @@ PackageIdentifier: VovSoft.WebsiteWatcher
 PackageVersion: 2.3.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/website-watcher.exe
-  Architecture: x86
-  InstallerSha256: ACA54D2DA1A8E2CC3E6AC602FC68D693F1D6E0086C1CD5D9A1D8C355795CF520
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/website-watcher.exe
+  InstallerSha256: ACA54D2DA1A8E2CC3E6AC602FC68D693F1D6E0086C1CD5D9A1D8C355795CF520
   InstallModes:
   - interactive
   - silent

@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.PreventComputerSleep
 PackageVersion: 1.2.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/prevent-computer-sleep.exe
-  Architecture: x86
-  InstallerSha256: 10F5726D5AF85367ECC5F9A3063CF16F02733D4C94FAC10F35DFB3EDA6B5ED70
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/prevent-computer-sleep.exe
+  InstallerSha256: 10F5726D5AF85367ECC5F9A3063CF16F02733D4C94FAC10F35DFB3EDA6B5ED70
   InstallModes:
   - interactive
   - silent

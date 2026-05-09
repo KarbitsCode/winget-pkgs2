@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.FaceDetector
 PackageVersion: 1.0.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/face-detector.exe
-  Architecture: x86
-  InstallerSha256: 498C0EAC88484A3AF56228F8D36721931F8FE9DD5F6A51848078485709891FFB
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/face-detector.exe
+  InstallerSha256: 498C0EAC88484A3AF56228F8D36721931F8FE9DD5F6A51848078485709891FFB
   InstallModes:
   - interactive
   - silent

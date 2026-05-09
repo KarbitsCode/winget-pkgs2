@@ -1,29 +1,29 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.XLStoCSVConverter
 PackageVersion: 2.3.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/xls-to-csv-converter.exe
-  Architecture: x86
-  InstallerSha256: 754309741F4C4EBA126355BD4F523AB8D42CF4936D9EE9B7A4C87DDEFD29B4C1
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/xls-to-csv-converter.exe
+  InstallerSha256: 754309741F4C4EBA126355BD4F523AB8D42CF4936D9EE9B7A4C87DDEFD29B4C1
   InstallModes:
   - interactive
   - silent
   - silentWithProgress
   UpgradeBehavior: install
+  FileExtensions:
+  - CSV
+  - XLS
   ProductCode: XLS to CSV Converter_is1
   AppsAndFeaturesEntries:
   - ProductCode: XLS to CSV Converter_is1
   ElevationRequirement: elevatesSelf
   InstallationMetadata:
     DefaultInstallLocation: '%ProgramFiles%\VOVSOFT\XLS to CSV Converter'
-  FileExtensions:
-  - CSV
-  - XLS
 - Architecture: x86
   InstallerType: zip
   NestedInstallerType: portable

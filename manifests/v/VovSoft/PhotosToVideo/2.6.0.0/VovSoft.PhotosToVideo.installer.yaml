@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.PhotosToVideo
 PackageVersion: 2.6.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/photos-to-video.exe
-  Architecture: x64
-  InstallerSha256: D3BC235694B7B915B343F000A592B3A9AE0A804B2993BE14D288CB0A89C0CF39
+- Architecture: x64
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/photos-to-video.exe
+  InstallerSha256: D3BC235694B7B915B343F000A592B3A9AE0A804B2993BE14D288CB0A89C0CF39
   InstallModes:
   - interactive
   - silent

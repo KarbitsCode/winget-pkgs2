@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.HierarchicalFileManager
 PackageVersion: 1.2.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/hierarchical-file-manager.exe
-  Architecture: x86
-  InstallerSha256: 928B1C288FD7BF451A63A4A252C9841E156413003C7D89E674DAF9702ADAA38C
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/hierarchical-file-manager.exe
+  InstallerSha256: 928B1C288FD7BF451A63A4A252C9841E156413003C7D89E674DAF9702ADAA38C
   InstallModes:
   - interactive
   - silent

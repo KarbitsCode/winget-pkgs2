@@ -5,11 +5,11 @@ PackageIdentifier: VovSoft.DomainChecker
 PackageVersion: 10.1.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/domain-checker.exe
-  Architecture: x86
-  InstallerSha256: 10D48FBA31B57AE60FCFB40604D5003B1E0884EA3170FFFAFDBDEDB5681F68E4
+- Architecture: x86
   InstallerType: inno
   Scope: user
+  InstallerUrl: https://files.vovsoft.com/domain-checker.exe
+  InstallerSha256: 10D48FBA31B57AE60FCFB40604D5003B1E0884EA3170FFFAFDBDEDB5681F68E4
   InstallModes:
   - interactive
   - silent

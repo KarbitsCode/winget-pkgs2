@@ -6,10 +6,10 @@ PackageVersion: 9.7.0.0
 InstallerLocale: en-US
 Installers:
 - Architecture: x86
-  InstallerUrl: https://files.vovsoft.com/hide-files.exe
-  InstallerSha256: BB4A2F1CCC5746FF51238693D56C0219E2082633A11363E8EBC16F460E8FD6B8
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/hide-files.exe
+  InstallerSha256: BB4A2F1CCC5746FF51238693D56C0219E2082633A11363E8EBC16F460E8FD6B8
   InstallModes:
   - interactive
   - silent

@@ -1,26 +1,20 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.ConvertVideoToAudio
 PackageVersion: 2.4.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/convert-video-to-audio.exe
-  Architecture: x86
-  InstallerSha256: 45E78B35C82F70C784DC6ABF3E248697190DC73ABB0A2BFBA55408A0A5E58F50
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/convert-video-to-audio.exe
+  InstallerSha256: 45E78B35C82F70C784DC6ABF3E248697190DC73ABB0A2BFBA55408A0A5E58F50
   InstallModes:
   - interactive
   - silent
   - silentWithProgress
   UpgradeBehavior: install
-  ProductCode: Convert Video to Audio_is1
-  AppsAndFeaturesEntries:
-  - ProductCode: Convert Video to Audio_is1
-  ElevationRequirement: elevatesSelf
-  InstallationMetadata:
-    DefaultInstallLocation: '%ProgramFiles%\VOVSOFT\Convert Video to Audio'
   FileExtensions:
   - AAC
   - AC3
@@ -42,6 +36,12 @@ Installers:
   - WEBM
   - WMA
   - WMV
+  ProductCode: Convert Video to Audio_is1
+  AppsAndFeaturesEntries:
+  - ProductCode: Convert Video to Audio_is1
+  ElevationRequirement: elevatesSelf
+  InstallationMetadata:
+    DefaultInstallLocation: '%ProgramFiles%\VOVSOFT\Convert Video to Audio'
 - Architecture: x86
   InstallerType: zip
   NestedInstallerType: portable

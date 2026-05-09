@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.CryptocurrencyTracker
 PackageVersion: 2.4.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/cryptocurrency-tracker.exe
-  Architecture: x86
-  InstallerSha256: 0F6B5DBB0EA239E1D02FC9912F05EC9732F5D0D68CFC295D65018DE013A798FC
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/cryptocurrency-tracker.exe
+  InstallerSha256: 0F6B5DBB0EA239E1D02FC9912F05EC9732F5D0D68CFC295D65018DE013A798FC
   InstallModes:
   - interactive
   - silent

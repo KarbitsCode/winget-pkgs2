@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.NoiseDetector
 PackageVersion: 1.1.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/noise-detector.exe
-  Architecture: x86
-  InstallerSha256: 1D885DB8B983BF69402A7C6B007A331A816A4343095CA0BCAE800D84B9C43091
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/noise-detector.exe
+  InstallerSha256: 1D885DB8B983BF69402A7C6B007A331A816A4343095CA0BCAE800D84B9C43091
   InstallModes:
   - interactive
   - silent

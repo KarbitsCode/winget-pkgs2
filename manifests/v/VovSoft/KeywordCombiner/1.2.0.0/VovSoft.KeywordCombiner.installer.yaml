@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.KeywordCombiner
 PackageVersion: 1.2.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/keyword-combiner.exe
-  Architecture: x64
-  InstallerSha256: B2036D296C7963B0AEA13682405825F1C96F7ED16CC3C44066F223893E48942C
+- Architecture: x64
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/keyword-combiner.exe
+  InstallerSha256: B2036D296C7963B0AEA13682405825F1C96F7ED16CC3C44066F223893E48942C
   InstallModes:
   - interactive
   - silent
