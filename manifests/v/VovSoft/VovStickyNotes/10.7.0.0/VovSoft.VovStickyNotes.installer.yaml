@@ -5,11 +5,11 @@ PackageIdentifier: VovSoft.VovStickyNotes
 PackageVersion: 10.7.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/vov-sticky-notes.exe
-  Architecture: x86
-  InstallerSha256: EEB47CEAA63BB5F1C2614B98654A5294987CA7AD6BBF736D2427AC0D83E60818
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/vov-sticky-notes.exe
+  InstallerSha256: EEB47CEAA63BB5F1C2614B98654A5294987CA7AD6BBF736D2427AC0D83E60818
   InstallModes:
   - interactive
   - silent

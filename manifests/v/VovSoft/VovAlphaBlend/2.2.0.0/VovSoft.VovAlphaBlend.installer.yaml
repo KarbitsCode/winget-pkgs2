@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.VovAlphaBlend
 PackageVersion: 2.2.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/vov-alpha-blend.exe
-  Architecture: x86
-  InstallerSha256: 85628C1F82FE0A909849AFC5B7B0BB0C77829502B8F752CDF8C8675A062C1026
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/vov-alpha-blend.exe
+  InstallerSha256: 85628C1F82FE0A909849AFC5B7B0BB0C77829502B8F752CDF8C8675A062C1026
   InstallModes:
   - interactive
   - silent

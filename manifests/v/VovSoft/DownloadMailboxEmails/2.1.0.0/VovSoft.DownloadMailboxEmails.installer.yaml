@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.DownloadMailboxEmails
 PackageVersion: 2.1.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/download-mailbox-emails.exe
-  Architecture: x86
-  InstallerSha256: 8C4ABF9D214BFD1FA792E6A1B447AD294C1A4C153BF9DD577C563A1EC31071ED
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/download-mailbox-emails.exe
+  InstallerSha256: 8C4ABF9D214BFD1FA792E6A1B447AD294C1A4C153BF9DD577C563A1EC31071ED
   InstallModes:
   - interactive
   - silent

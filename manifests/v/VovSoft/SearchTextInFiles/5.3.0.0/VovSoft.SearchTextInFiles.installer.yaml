@@ -5,22 +5,16 @@ PackageIdentifier: VovSoft.SearchTextInFiles
 PackageVersion: 5.3.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/search-text-in-files.exe
-  Architecture: x86
-  InstallerSha256: 2E94D3F3D1A35D6C5DDA157D398A6945D02170AE20C03BE9EB26ECCD76B97915
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/search-text-in-files.exe
+  InstallerSha256: 2E94D3F3D1A35D6C5DDA157D398A6945D02170AE20C03BE9EB26ECCD76B97915
   InstallModes:
   - interactive
   - silent
   - silentWithProgress
   UpgradeBehavior: install
-  ProductCode: Search Text In Files_is1
-  AppsAndFeaturesEntries:
-  - ProductCode: Search Text In Files_is1
-  ElevationRequirement: elevatesSelf
-  InstallationMetadata:
-    DefaultInstallLocation: '%ProgramFiles%\VOVSOFT\Search Text In Files'
   FileExtensions:
   - DOC
   - DOCX
@@ -34,6 +28,12 @@ Installers:
   - XLS
   - XLSX
   - TXT
+  ProductCode: Search Text In Files_is1
+  AppsAndFeaturesEntries:
+  - ProductCode: Search Text In Files_is1
+  ElevationRequirement: elevatesSelf
+  InstallationMetadata:
+    DefaultInstallLocation: '%ProgramFiles%\VOVSOFT\Search Text In Files'
 - Architecture: x86
   InstallerType: zip
   NestedInstallerType: portable

@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.RandomWordlistGenerator
 PackageVersion: 2.0.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/random-wordlist-generator.exe
-  Architecture: x86
-  InstallerSha256: F9FAB38C0F367F7774F88724805DA7992233113E204C426D56779FEF8760C049
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/random-wordlist-generator.exe
+  InstallerSha256: F9FAB38C0F367F7774F88724805DA7992233113E204C426D56779FEF8760C049
   InstallModes:
   - interactive
   - silent

@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.BrokenLinkDetector
 PackageVersion: 4.3.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/broken-link-detector.exe
-  Architecture: x86
-  InstallerSha256: EF867DECB954BCCC1C42DA2F58C823597B4E392A79CD92FAB3145F206884CD08
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/broken-link-detector.exe
+  InstallerSha256: EF867DECB954BCCC1C42DA2F58C823597B4E392A79CD92FAB3145F206884CD08
   InstallModes:
   - interactive
   - silent

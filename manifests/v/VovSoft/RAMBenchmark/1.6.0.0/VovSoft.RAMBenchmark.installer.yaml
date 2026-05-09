@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.RAMBenchmark
 PackageVersion: 1.6.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/ram-benchmark.exe
-  Architecture: x64
-  InstallerSha256: B330B3CEDCEE941D1A9DE7F93A81E2E28BBFB3275EE01D122A2830F831A78FDD
+- Architecture: x64
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/ram-benchmark.exe
+  InstallerSha256: B330B3CEDCEE941D1A9DE7F93A81E2E28BBFB3275EE01D122A2830F831A78FDD
   InstallModes:
   - interactive
   - silent

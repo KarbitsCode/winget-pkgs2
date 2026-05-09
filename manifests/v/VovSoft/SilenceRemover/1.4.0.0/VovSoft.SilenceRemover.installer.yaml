@@ -5,26 +5,26 @@ PackageIdentifier: VovSoft.SilenceRemover
 PackageVersion: 1.4.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/silence-remover.exe
-  Architecture: x64
-  InstallerSha256: 6CDD25578D9252F73CE3CCF6988ADD675F9E88BDE8FE0B9AD672B1B9F0547C9F
+- Architecture: x64
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/silence-remover.exe
+  InstallerSha256: 6CDD25578D9252F73CE3CCF6988ADD675F9E88BDE8FE0B9AD672B1B9F0547C9F
   InstallModes:
   - interactive
   - silent
   - silentWithProgress
   UpgradeBehavior: install
+  FileExtensions:
+  - MP3
+  - WAV
+  - WMA
   ProductCode: Silence Remover_is1
   AppsAndFeaturesEntries:
   - ProductCode: Silence Remover_is1
   ElevationRequirement: elevatesSelf
   InstallationMetadata:
     DefaultInstallLocation: '%ProgramFiles%\VOVSOFT\Silence Remover'
-  FileExtensions:
-  - MP3
-  - WAV
-  - WMA
 - Architecture: x64
   InstallerType: zip
   NestedInstallerType: portable

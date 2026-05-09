@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.WebsiteFileCollector
 PackageVersion: 1.6.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/website-file-collector.exe
-  Architecture: x86
-  InstallerSha256: 0A6F8CFFE89D56AE2CDB6C146AEF6244DF3CF31D6E5B0AC5581335398D805EF3
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/website-file-collector.exe
+  InstallerSha256: 0A6F8CFFE89D56AE2CDB6C146AEF6244DF3CF31D6E5B0AC5581335398D805EF3
   InstallModes:
   - interactive
   - silent

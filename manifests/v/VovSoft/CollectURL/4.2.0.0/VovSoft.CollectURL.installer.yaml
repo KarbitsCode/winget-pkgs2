@@ -1,29 +1,29 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.CollectURL
 PackageVersion: 4.2.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/collect-url.exe
-  Architecture: x86
-  InstallerSha256: 372FD01C9E404092FC0694C1A0B38D9952C9E06294B0AA7EC72D920E2F787976
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/collect-url.exe
+  InstallerSha256: 372FD01C9E404092FC0694C1A0B38D9952C9E06294B0AA7EC72D920E2F787976
   InstallModes:
   - interactive
   - silent
   - silentWithProgress
   UpgradeBehavior: install
+  Protocols:
+  - HTTP
+  - HTTPS
   ProductCode: Collect URL_is1
   AppsAndFeaturesEntries:
   - ProductCode: Collect URL_is1
   ElevationRequirement: elevatesSelf
   InstallationMetadata:
     DefaultInstallLocation: '%ProgramFiles%\VOVSOFT\Collect URL'
-  Protocols:
-  - HTTP
-  - HTTPS
 - Architecture: x86
   InstallerType: zip
   NestedInstallerType: portable

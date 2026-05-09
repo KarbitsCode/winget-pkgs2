@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.TextStatisticsAnalyzer
 PackageVersion: 3.7.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/text-statistics-analyzer.exe
-  Architecture: x64
-  InstallerSha256: ba8c34ddba902d6f35bfabf8db2066476b6c073a25771c5cf83ee7eec16b2fd0
+- Architecture: x64
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/text-statistics-analyzer.exe
+  InstallerSha256: ba8c34ddba902d6f35bfabf8db2066476b6c073a25771c5cf83ee7eec16b2fd0
   InstallModes:
   - interactive
   - silent

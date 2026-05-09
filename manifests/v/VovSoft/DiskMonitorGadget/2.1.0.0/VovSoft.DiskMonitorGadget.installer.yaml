@@ -5,11 +5,11 @@ PackageIdentifier: VovSoft.DiskMonitorGadget
 PackageVersion: 2.1.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/disk-monitor-gadget.exe
-  Architecture: x86
-  InstallerSha256: 0EF8A5E186949A7AAFAC03BCE4CE964064BB39BF43DEC210E94505CEA466437C
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/disk-monitor-gadget.exe
+  InstallerSha256: 0EF8A5E186949A7AAFAC03BCE4CE964064BB39BF43DEC210E94505CEA466437C
   InstallModes:
   - interactive
   - silent

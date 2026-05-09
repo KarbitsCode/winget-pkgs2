@@ -5,11 +5,11 @@ PackageIdentifier: VovSoft.VovSystemUptime
 PackageVersion: 1.8.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/vov-system-uptime.exe
-  Architecture: x86
-  InstallerSha256: A2D424C9E050A76D5B217E25E3D975BC41B1B2F9EA1DF4C9228ED69111E2E6AB
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/vov-system-uptime.exe
+  InstallerSha256: A2D424C9E050A76D5B217E25E3D975BC41B1B2F9EA1DF4C9228ED69111E2E6AB
   InstallModes:
   - interactive
   - silent

@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.WebcamCapture
 PackageVersion: 3.4.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/webcam-capture.exe
-  Architecture: x86
-  InstallerSha256: 33C4156250844627BEC77CDC62A7F1B240600C9A798FD502085A5D5686EB0827
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/webcam-capture.exe
+  InstallerSha256: 33C4156250844627BEC77CDC62A7F1B240600C9A798FD502085A5D5686EB0827
   InstallModes:
   - interactive
   - silent

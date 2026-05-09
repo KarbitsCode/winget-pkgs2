@@ -6,10 +6,10 @@ PackageVersion: 4.3.0.0
 InstallerLocale: en-US
 Installers:
 - Architecture: x86
-  InstallerUrl: https://files.vovsoft.com/ai-requester.exe
-  InstallerSha256: 67DAF5ED1BDC04029618B168F3C44B93DBE1EE66B5255BEBE4341D186FF1C528
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/ai-requester.exe
+  InstallerSha256: 67DAF5ED1BDC04029618B168F3C44B93DBE1EE66B5255BEBE4341D186FF1C528
   InstallModes:
   - interactive
   - silent

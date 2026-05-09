@@ -5,22 +5,16 @@ PackageIdentifier: VovSoft.VovMusicPlayer
 PackageVersion: 12.5.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/vov-music-player.exe
-  Architecture: x86
-  InstallerSha256: 4DFCC70EE4423CB26E69838CB5DBDC1B6FD4C96CBB1921EBA25BF2FBF6B793CA
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/vov-music-player.exe
+  InstallerSha256: 4DFCC70EE4423CB26E69838CB5DBDC1B6FD4C96CBB1921EBA25BF2FBF6B793CA
   InstallModes:
   - interactive
   - silent
   - silentWithProgress
   UpgradeBehavior: install
-  ProductCode: Vov Music Player_is1
-  AppsAndFeaturesEntries:
-  - ProductCode: Vov Music Player_is1
-  ElevationRequirement: elevatesSelf
-  InstallationMetadata:
-    DefaultInstallLocation: '%ProgramFiles%\VOVSOFT\Vov Music Player'
   FileExtensions:
   - AAC
   - AIFF
@@ -41,6 +35,12 @@ Installers:
   - WEBM
   - WMA
   - WV
+  ProductCode: Vov Music Player_is1
+  AppsAndFeaturesEntries:
+  - ProductCode: Vov Music Player_is1
+  ElevationRequirement: elevatesSelf
+  InstallationMetadata:
+    DefaultInstallLocation: '%ProgramFiles%\VOVSOFT\Vov Music Player'
 - Architecture: x86
   InstallerType: zip
   NestedInstallerType: portable

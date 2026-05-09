@@ -1,26 +1,20 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.BatchAudioConverter
 PackageVersion: 1.7.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/batch-audio-converter.exe
-  Architecture: x86
-  InstallerSha256: 0FF96A033AFBA60773086A6C0865A214F0EAC054C6175258DDE0E0D56E7CFC00
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/batch-audio-converter.exe
+  InstallerSha256: 0FF96A033AFBA60773086A6C0865A214F0EAC054C6175258DDE0E0D56E7CFC00
   InstallModes:
   - interactive
   - silent
   - silentWithProgress
   UpgradeBehavior: install
-  ProductCode: Batch Audio Converter_is1
-  AppsAndFeaturesEntries:
-  - ProductCode: Batch Audio Converter_is1
-  ElevationRequirement: elevatesSelf
-  InstallationMetadata:
-    DefaultInstallLocation: '%ProgramFiles%\VOVSOFT\Batch Audio Converter'
   FileExtensions:
   - aac
   - ac3
@@ -36,6 +30,12 @@ Installers:
   - webm
   - wma
   - wv
+  ProductCode: Batch Audio Converter_is1
+  AppsAndFeaturesEntries:
+  - ProductCode: Batch Audio Converter_is1
+  ElevationRequirement: elevatesSelf
+  InstallationMetadata:
+    DefaultInstallLocation: '%ProgramFiles%\VOVSOFT\Batch Audio Converter'
 - Architecture: x86
   InstallerType: zip
   NestedInstallerType: portable

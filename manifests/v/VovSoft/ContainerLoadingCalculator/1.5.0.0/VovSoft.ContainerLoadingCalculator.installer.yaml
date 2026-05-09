@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.ContainerLoadingCalculator
 PackageVersion: 1.5.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/container-loading-calculator.exe
-  Architecture: x86
-  InstallerSha256: B0492C96775575E766002E0FEBF6B2187FC32CBCE790495C89111185B52C2792
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/container-loading-calculator.exe
+  InstallerSha256: B0492C96775575E766002E0FEBF6B2187FC32CBCE790495C89111185B52C2792
   InstallModes:
   - interactive
   - silent

@@ -5,11 +5,11 @@ PackageIdentifier: VovSoft.HealthBreakReminder
 PackageVersion: 2.3.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/health-break-reminder.exe
-  Architecture: x86
-  InstallerSha256: 7A9062AF4F36E0B80EA17E581E6BCFB025E49A291A99C9766FEAFD95AA441F99
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/health-break-reminder.exe
+  InstallerSha256: 7A9062AF4F36E0B80EA17E581E6BCFB025E49A291A99C9766FEAFD95AA441F99
   InstallModes:
   - interactive
   - silent
