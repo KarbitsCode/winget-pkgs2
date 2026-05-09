@@ -5,11 +5,11 @@ PackageIdentifier: VovSoft.PictureDownloader
 PackageVersion: 3.4.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/picture-downloader.exe
-  Architecture: x86
-  InstallerSha256: BB400CE8EAB127EC6E7B5542A9F57DFD83894AF3F3B9310FDF297CF4B7795C28
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/picture-downloader.exe
+  InstallerSha256: BB400CE8EAB127EC6E7B5542A9F57DFD83894AF3F3B9310FDF297CF4B7795C28
   InstallModes:
   - interactive
   - silent

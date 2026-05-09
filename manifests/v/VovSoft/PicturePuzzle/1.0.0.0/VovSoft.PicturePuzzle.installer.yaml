@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.PicturePuzzle
 PackageVersion: 1.0.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/picture-puzzle.exe
-  Architecture: x86
-  InstallerSha256: c991698237801faed258986b03eb2f286720cce3ac7fdd81e37ff0588d2ad779
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/picture-puzzle.exe
+  InstallerSha256: c991698237801faed258986b03eb2f286720cce3ac7fdd81e37ff0588d2ad779
   InstallModes:
   - interactive
   - silent

@@ -5,11 +5,11 @@ PackageIdentifier: VovSoft.CopyFilesIntoMultipleFolders
 PackageVersion: 7.5.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/copy-files-into-multiple-folders.exe
-  Architecture: x86
-  InstallerSha256: 12DC936CB512AA222B8749D0D7EDC65159661AA064A78D8A941E7F5C91331D4E
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/copy-files-into-multiple-folders.exe
+  InstallerSha256: 12DC936CB512AA222B8749D0D7EDC65159661AA064A78D8A941E7F5C91331D4E
   InstallModes:
   - interactive
   - silent

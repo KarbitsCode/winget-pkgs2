@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.VovStopStart
 PackageVersion: 2.0.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/vov-stop-start.exe
-  Architecture: x86
-  InstallerSha256: AC71B72215262CE9A87A8C1E81FEFED4D01299E97836F81E642D21AA56059C82
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/vov-stop-start.exe
+  InstallerSha256: AC71B72215262CE9A87A8C1E81FEFED4D01299E97836F81E642D21AA56059C82
   InstallModes:
   - interactive
   - silent

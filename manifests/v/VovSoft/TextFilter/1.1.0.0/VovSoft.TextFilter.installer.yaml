@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.TextFilter
 PackageVersion: 1.1.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/text-filter.exe
-  Architecture: x86
-  InstallerSha256: 6C21666EE1A4E0C1DA1B431CB4B415C63D9255E13484C2A4EB2BE3F80CE09F56
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/text-filter.exe
+  InstallerSha256: 6C21666EE1A4E0C1DA1B431CB4B415C63D9255E13484C2A4EB2BE3F80CE09F56
   InstallModes:
   - interactive
   - silent

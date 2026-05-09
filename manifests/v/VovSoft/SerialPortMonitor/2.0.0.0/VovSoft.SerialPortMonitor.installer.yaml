@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.SerialPortMonitor
 PackageVersion: 2.0.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/serial-port-monitor.exe
-  Architecture: x86
-  InstallerSha256: 915625BD91B21F11BFD6236B4286F5B9A692C1D4D49A3B4698F2493969A0621B
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/serial-port-monitor.exe
+  InstallerSha256: 915625BD91B21F11BFD6236B4286F5B9A692C1D4D49A3B4698F2493969A0621B
   InstallModes:
   - interactive
   - silent

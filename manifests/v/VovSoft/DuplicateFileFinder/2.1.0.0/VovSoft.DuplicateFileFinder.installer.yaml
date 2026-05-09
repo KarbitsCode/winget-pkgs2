@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.DuplicateFileFinder
 PackageVersion: 2.1.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/duplicate-file-finder.exe
-  Architecture: x86
-  InstallerSha256: A0BA682EF56F2279C5C2F479C7508B620CBC086650601A9850876A98E0F15908
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/duplicate-file-finder.exe
+  InstallerSha256: A0BA682EF56F2279C5C2F479C7508B620CBC086650601A9850876A98E0F15908
   InstallModes:
   - interactive
   - silent

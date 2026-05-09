@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.HexViewer
 PackageVersion: 1.6.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/hex-viewer.exe
-  Architecture: x86
-  InstallerSha256: 892BDF044E1D22BEA1893AB2B59B8E34EFEB4AB4E5ED499AA17F73D392692F69
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/hex-viewer.exe
+  InstallerSha256: 892BDF044E1D22BEA1893AB2B59B8E34EFEB4AB4E5ED499AA17F73D392692F69
   InstallModes:
   - interactive
   - silent

@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.RegExExtractor
 PackageVersion: 3.0.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/regex-extractor.exe
-  Architecture: x86
-  InstallerSha256: 7C78120F09EDC6167E19FE18FC577E923291E8584D2CBB7A3CCE54708ACA574C
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/regex-extractor.exe
+  InstallerSha256: 7C78120F09EDC6167E19FE18FC577E923291E8584D2CBB7A3CCE54708ACA574C
   InstallModes:
   - interactive
   - silent

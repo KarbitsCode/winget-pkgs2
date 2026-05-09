@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.KeystrokeVisualizer
 PackageVersion: 3.4.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/keystroke-visualizer.exe
-  Architecture: x86
-  InstallerSha256: 0CF0D975B9D27A466F23E51BF309447709CD95373A158EC7E3B0F4F51E5198F9
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/keystroke-visualizer.exe
+  InstallerSha256: 0CF0D975B9D27A466F23E51BF309447709CD95373A158EC7E3B0F4F51E5198F9
   InstallModes:
   - interactive
   - silent

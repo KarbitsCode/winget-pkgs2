@@ -1,26 +1,20 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.BatchImageResizer
 PackageVersion: 2.3.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/batch-image-resizer.exe
-  Architecture: x86
-  InstallerSha256: 3B4101FD1BD5A397AE7AFDDFBBF2E214CDBD808121FC83F56974851586004B9D
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/batch-image-resizer.exe
+  InstallerSha256: 3B4101FD1BD5A397AE7AFDDFBBF2E214CDBD808121FC83F56974851586004B9D
   InstallModes:
   - interactive
   - silent
   - silentWithProgress
   UpgradeBehavior: install
-  ProductCode: Batch Image Resizer_is1
-  AppsAndFeaturesEntries:
-  - ProductCode: Batch Image Resizer_is1
-  ElevationRequirement: elevatesSelf
-  InstallationMetadata:
-    DefaultInstallLocation: '%ProgramFiles%\VOVSOFT\Batch Image Resizer'
   FileExtensions:
   - BMP
   - DDS
@@ -30,6 +24,12 @@ Installers:
   - TIFF
   - WEBP
   - WMP
+  ProductCode: Batch Image Resizer_is1
+  AppsAndFeaturesEntries:
+  - ProductCode: Batch Image Resizer_is1
+  ElevationRequirement: elevatesSelf
+  InstallationMetadata:
+    DefaultInstallLocation: '%ProgramFiles%\VOVSOFT\Batch Image Resizer'
 - Architecture: x86
   InstallerType: zip
   NestedInstallerType: portable

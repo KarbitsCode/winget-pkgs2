@@ -1,26 +1,20 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.ExecutableBitScanner
 PackageVersion: 1.0.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/executable-bit-scanner.exe
-  Architecture: x86
-  InstallerSha256: 59E0738F165AC119D501A74DAAFE3AD64A25DD0E83EC9A7D99596BA0CBB5F896
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/executable-bit-scanner.exe
+  InstallerSha256: 59E0738F165AC119D501A74DAAFE3AD64A25DD0E83EC9A7D99596BA0CBB5F896
   InstallModes:
   - interactive
   - silent
   - silentWithProgress
   UpgradeBehavior: install
-  ProductCode: Executable Bit Scanner_is1
-  AppsAndFeaturesEntries:
-  - ProductCode: Executable Bit Scanner_is1
-  ElevationRequirement: elevatesSelf
-  InstallationMetadata:
-    DefaultInstallLocation: '%ProgramFiles%\VOVSOFT\Executable Bit Scanner'
   FileExtensions:
   - exe
   - dll
@@ -32,6 +26,12 @@ Installers:
   - efi
   - acm
   - ax
+  ProductCode: Executable Bit Scanner_is1
+  AppsAndFeaturesEntries:
+  - ProductCode: Executable Bit Scanner_is1
+  ElevationRequirement: elevatesSelf
+  InstallationMetadata:
+    DefaultInstallLocation: '%ProgramFiles%\VOVSOFT\Executable Bit Scanner'
 - Architecture: x86
   InstallerType: zip
   NestedInstallerType: portable

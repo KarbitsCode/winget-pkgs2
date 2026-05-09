@@ -5,24 +5,24 @@ PackageIdentifier: VovSoft.EMLConverter
 PackageVersion: 1.3.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/eml-converter.exe
-  Architecture: x86
-  InstallerSha256: EBDD54FD88EF88DBFEE33120BB1AEB23A2A0BC2E5DB2E194789AA162C0C590D6
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/eml-converter.exe
+  InstallerSha256: EBDD54FD88EF88DBFEE33120BB1AEB23A2A0BC2E5DB2E194789AA162C0C590D6
   InstallModes:
   - interactive
   - silent
   - silentWithProgress
   UpgradeBehavior: install
+  FileExtensions:
+  - EML
   ProductCode: EML Converter_is1
   AppsAndFeaturesEntries:
   - ProductCode: EML Converter_is1
   ElevationRequirement: elevatesSelf
   InstallationMetadata:
     DefaultInstallLocation: '%ProgramFiles%\VOVSOFT\EML Converter'
-  FileExtensions:
-  - EML
 - Architecture: x86
   InstallerType: zip
   NestedInstallerType: portable

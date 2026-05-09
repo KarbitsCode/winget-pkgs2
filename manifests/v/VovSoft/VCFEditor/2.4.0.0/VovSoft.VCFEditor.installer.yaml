@@ -5,16 +5,18 @@ PackageIdentifier: VovSoft.VCFEditor
 PackageVersion: 2.4.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/vcf-editor.exe
-  Architecture: x86
-  InstallerSha256: C1F5CAAB1176C5A846DA519BA6EE0F8F03BC4003D5D8D47C068DFD177A9F0BAB
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/vcf-editor.exe
+  InstallerSha256: C1F5CAAB1176C5A846DA519BA6EE0F8F03BC4003D5D8D47C068DFD177A9F0BAB
   InstallModes:
   - interactive
   - silent
   - silentWithProgress
   UpgradeBehavior: install
+  FileExtensions:
+  - VCF
   ProductCode: VCF Editor_is1
   AppsAndFeaturesEntries:
   - DisplayName: VCF Editor
@@ -22,8 +24,6 @@ Installers:
   ElevationRequirement: elevatesSelf
   InstallationMetadata:
     DefaultInstallLocation: '%ProgramFiles%\VOVSOFT\VCF Editor'
-  FileExtensions:
-  - VCF
 - Architecture: x86
   InstallerType: zip
   NestedInstallerType: portable

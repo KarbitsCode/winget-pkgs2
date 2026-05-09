@@ -1,15 +1,15 @@
-# Created using wingetcreate 1.10.3.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.QRCodeAndBarcodeReader
 PackageVersion: 1.6.0.0
 InstallerLocale: en-US
 Installers:
-- InstallerUrl: https://files.vovsoft.com/qr-code-and-barcode-reader.exe
-  Architecture: x86
-  InstallerSha256: 3649C53041DBE68F1FF20EBEDB736FCCAE2E080DF2E572E3D51E86C9C948B46B
+- Architecture: x86
   InstallerType: inno
   Scope: machine
+  InstallerUrl: https://files.vovsoft.com/qr-code-and-barcode-reader.exe
+  InstallerSha256: 3649C53041DBE68F1FF20EBEDB736FCCAE2E080DF2E572E3D51E86C9C948B46B
   InstallModes:
   - interactive
   - silent
