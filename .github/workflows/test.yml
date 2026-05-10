@@ -200,8 +200,8 @@ jobs:
         with:
           script: |
             const results = {
-              test-links: process.env.LINKS_RESULT,
-              test-install: process.env.INSTALL_RESULT,
+              "test-links": process.env.LINKS_RESULT,
+              "test-install": process.env.INSTALL_RESULT,
             };
             core.info(`Matrix result: ${JSON.stringify(results)}`);
             const failed = Object.entries(results).filter(([_, result]) => result !== "success");
