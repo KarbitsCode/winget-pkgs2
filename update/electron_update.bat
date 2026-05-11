@@ -12,6 +12,7 @@ for /f "tokens=1 delims=." %%A in ("%VERSION%") do set "SHORT_VERSION=%%A"
 
 komac update OpenJS.Electron.%SHORT_VERSION% ^
   --output . ^
+  --skip-pr-check ^
   --version %VERSION% ^
   --urls ^
     "https://github.com/electron/electron/releases/download/v%VERSION%/electron-v%VERSION%-win32-ia32.zip|x86" ^
