@@ -2,7 +2,7 @@
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: 7zip.7zip
-PackageVersion: '26.01'
+PackageVersion: '25.01'
 Scope: machine
 UpgradeBehavior: install
 Commands:
@@ -48,13 +48,13 @@ FileExtensions:
 - z
 - zip
 - zst
-ReleaseDate: 2026-04-27
+ReleaseDate: 2025-08-03
 ElevationRequirement: elevatesSelf
 Installers:
 - Architecture: x86
   InstallerType: exe
-  InstallerUrl: https://7-zip.org/a/7z2601.exe
-  InstallerSha256: 615976598F800C70827C5A47E68C2B0D2B17D048B9721BA071C8AF825D2476BD
+  InstallerUrl: https://7-zip.org/a/7z2501.exe
+  InstallerSha256: B96831EEC5928384F0543D6B57C1F802952A0F2668E662882C0A785A2B52FB3B
   InstallModes:
   - interactive
   - silent
@@ -65,8 +65,8 @@ Installers:
   ProductCode: 7-Zip
 - Architecture: x64
   InstallerType: exe
-  InstallerUrl: https://7-zip.org/a/7z2601-x64.exe
-  InstallerSha256: D64A0468F5B5B0B0FC5B2188450BCD655B70809D97B1C4535F2884635094377D
+  InstallerUrl: https://7-zip.org/a/7z2501-x64.exe
+  InstallerSha256: 78AFA2A1C773CAF3CF7EDF62F857D2A8A5DA55FB0FFF5DA416074C0D28B2B55F
   InstallModes:
   - interactive
   - silent
@@ -77,8 +77,8 @@ Installers:
   ProductCode: 7-Zip
 - Architecture: arm
   InstallerType: exe
-  InstallerUrl: https://7-zip.org/a/7z2601-arm.exe
-  InstallerSha256: CDEA8D9C7C7C6C20D9267EACD529A0FF4423318D1DAD0A0EC0CD74CDB4B87EC0
+  InstallerUrl: https://7-zip.org/a/7z2501-arm.exe
+  InstallerSha256: C14B51D97FF644C49DCFC83AB000537BA806EBC7003359D7AFC362E2AF83F890
   InstallModes:
   - interactive
   - silent
@@ -89,8 +89,8 @@ Installers:
   ProductCode: 7-Zip
 - Architecture: arm64
   InstallerType: exe
-  InstallerUrl: https://7-zip.org/a/7z2601-arm64.exe
-  InstallerSha256: 1FECF4E3407950939C8FFCC3E42E3039821997DEA155301C75369474E5F15175
+  InstallerUrl: https://7-zip.org/a/7z2501-arm64.exe
+  InstallerSha256: 6365C7C44E217B9C1009E065DAF9F9AA37454E64315B4AAA263F7F8F060755DC
   InstallModes:
   - interactive
   - silent
@@ -102,28 +102,28 @@ Installers:
 - InstallerLocale: en-US
   Architecture: x86
   InstallerType: wix
-  InstallerUrl: https://7-zip.org/a/7z2601.msi
-  InstallerSha256: 9643110E10BD0F2F31AFA30D904DA77F91161B95CC9B744D2F58C9167E23C1A7
+  InstallerUrl: https://7-zip.org/a/7z2501.msi
+  InstallerSha256: DCE9E456ACE76B969FE0FE4D228BF096662C11D2376D99A9210F6364428A94C4
   InstallerSwitches:
     InstallLocation: INSTALLDIR="<INSTALLPATH>"
-  ProductCode: '{23170F69-40C1-2701-2601-000001000000}'
+  ProductCode: '{23170F69-40C1-2701-2501-000001000000}'
   AppsAndFeaturesEntries:
-  - DisplayName: 7-Zip 26.01
-    ProductCode: '{23170F69-40C1-2701-2601-000001000000}'
+  - DisplayName: 7-Zip 25.01
+    ProductCode: '{23170F69-40C1-2701-2501-000001000000}'
     UpgradeCode: '{23170F69-40C1-2701-0000-000004000000}'
   InstallationMetadata:
     DefaultInstallLocation: '%ProgramFiles(x86)%\7-Zip'
 - InstallerLocale: en-US
   Architecture: x64
   InstallerType: wix
-  InstallerUrl: https://7-zip.org/a/7z2601-x64.msi
-  InstallerSha256: A47EA8DCF8BC08E6DE474CAE77C828E031FA22CB528F6095DEFFFEBF11CD02F2
+  InstallerUrl: https://7-zip.org/a/7z2501-x64.msi
+  InstallerSha256: E7EB0B7ED5EFA4E087B7B17F191797F7AF5B7F442D1290C66F3A21777005EF57
   InstallerSwitches:
     InstallLocation: INSTALLDIR="<INSTALLPATH>"
-  ProductCode: '{23170F69-40C1-2702-2601-000001000000}'
+  ProductCode: '{23170F69-40C1-2702-2501-000001000000}'
   AppsAndFeaturesEntries:
-  - DisplayName: 7-Zip 26.01 (x64 edition)
-    ProductCode: '{23170F69-40C1-2702-2601-000001000000}'
+  - DisplayName: 7-Zip 25.01 (x64 edition)
+    ProductCode: '{23170F69-40C1-2702-2501-000001000000}'
     UpgradeCode: '{23170F69-40C1-2702-0000-000004000000}'
   InstallationMetadata:
     DefaultInstallLocation: '%ProgramFiles%\7-Zip'
