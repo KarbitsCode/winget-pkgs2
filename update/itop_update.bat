@@ -11,10 +11,10 @@ set "PKGNAME=%~1"
 set "VERSION=%~2"
 
 for /f "usebackq delims=" %%A in (`
-    wingetcreate show iTop.%PKGNAME% ^| powershell -NoProfile -Command ^
-    "$text = $input | Out-String;" ^
-    "if ($text -match 'Architecture:\s*(\S+)') { Write-Output ('ARCH=' + $matches[1]) };" ^
-    "if ($text -match 'InstallerUrl:\s*(\S+)') { Write-Output ('URL=' + $matches[1]) }"
+  wingetcreate show iTop.%PKGNAME% ^| powershell -Command ^
+  "$text = $input | Out-String;" ^
+  "if ($text -match 'Architecture:\s*(\S+)') { Write-Output ('ARCH=' + $matches[1]) };" ^
+  "if ($text -match 'InstallerUrl:\s*(\S+)') { Write-Output ('URL=' + $matches[1]) }"
 `) do set "%%A"
 
 wingetcreate update iTop.%PKGNAME% ^
