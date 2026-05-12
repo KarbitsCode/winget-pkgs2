@@ -13,6 +13,21 @@ set "BASE=https://7-zip.org/a"
 
 for /f "usebackq delims=" %%A in (`
   powershell -Command ^
+    "$url = 'https://github.com/ip7z/7zip/releases/tag/%VERSION%';" ^
+    "try {" ^
+      "Invoke-WebRequest $url;" ^
+      "Write-Output ($url)" ^
+    "} catch {" ^
+      "$url = 'https://7-zip.org/history.txt';" ^
+      "Invoke-WebRequest $url;" ^
+      "Write-Output ($url)" ^
+    "}"
+`) do (
+  set "RURL=%%A"
+)
+
+for /f "usebackq delims=" %%A in (`
+  powershell -Command ^
     "$list = @(" ^
       "@{ File='7z%SHORT_VERSION%.exe'; Arch='x86' }," ^
       "@{ File='7z%SHORT_VERSION%-x64.exe'; Arch='x64' }," ^
@@ -24,11 +39,7 @@ for /f "usebackq delims=" %%A in (`
     "[xml]$res = Invoke-WebRequest https://sourceforge.net/projects/sevenzip/rss?path=/7-Zip/%VERSION%;" ^
     "$remote = [System.Collections.Generic.HashSet[string]]::new();" ^
     "$res.rss.channel.item | ForEach-Object { [void]$remote.Add($(Split-Path -Path $_.title.InnerText -Leaf)) };" ^
-    "foreach ($i in $list) {" ^
-      "if ($remote.Contains($i.File)) {" ^
-        "Write-Output ($i.File + '^|' + $i.Arch)" ^
-      "}" ^
-    "}"
+    "$list | Where-Object { $remote.Contains($_.File) } | ForEach-Object { Write-Output ($_.File + '^|' + $_.Arch) }"
 `) do (
   set "FILES=!FILES! %%A"
 )
@@ -43,8 +54,8 @@ komac update 7zip.7zip ^
   --output . ^
   --skip-pr-check ^
   --version %VERSION% ^
-  --release-notes-url https://github.com/ip7z/7zip/releases/tag/%VERSION% ^
-  --urls !URLS!
+  --release-notes-url %RURL% ^
+  --urls %URLS%
 
 if not "%ERRORLEVEL%"=="0" (
   set "BASE=https://sourceforge.net/projects/sevenzip/files/7-Zip/%VERSION%"
@@ -58,6 +69,6 @@ if not "%ERRORLEVEL%"=="0" (
     --output . ^
     --skip-pr-check ^
     --version %VERSION% ^
-    --release-notes-url https://github.com/ip7z/7zip/releases/tag/%VERSION% ^
-    --urls !URLS!
+    --release-notes-url %RURL% ^
+    --urls %URLS%
 )
