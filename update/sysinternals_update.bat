@@ -12,12 +12,12 @@ set "VERSION=%~2"
 
 for /f "usebackq delims=" %%A in (`
   wingetcreate show Microsoft.Sysinternals.%PKGNAME% ^| powershell -Command ^
-  "$input = $input | Out-String;" ^
-  "$urls  = @([regex]::Matches($input, 'InstallerUrl:\s*(\S+)') | ForEach-Object { $_.Groups[1].Value });" ^
-  "$archs = @([regex]::Matches($input, 'Architecture:\s*(\S+)') | ForEach-Object { $_.Groups[1].Value });" ^
-  "$count = [Math]::Min($urls.Count, $archs.Count);" ^
-  "$pairs = for ($i=0; $i -lt $count; $i++) { \""$($urls[$i])^|$($archs[$i])\"" };" ^
-  "if ($pairs) { Write-Output ($pairs -join ' ') }"
+    "$input = $input | Out-String;" ^
+    "$urls  = @([regex]::Matches($input, 'InstallerUrl:\s*(\S+)') | ForEach-Object { $_.Groups[1].Value });" ^
+    "$archs = @([regex]::Matches($input, 'Architecture:\s*(\S+)') | ForEach-Object { $_.Groups[1].Value });" ^
+    "$count = [Math]::Min($urls.Count, $archs.Count);" ^
+    "$pairs = for ($i=0; $i -lt $count; $i++) { \""$($urls[$i])^|$($archs[$i])\"" };" ^
+    "if ($pairs) { Write-Output ($pairs -join ' ') }"
 `) do set "URL_ARGS=%%A"
 
 wingetcreate update Microsoft.Sysinternals.%PKGNAME% ^
