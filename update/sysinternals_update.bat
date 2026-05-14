@@ -17,9 +17,18 @@ for /f "usebackq delims=" %%A in (`
     "$archs = @([regex]::Matches($input, 'Architecture:\s*(\S+)') | ForEach-Object { $_.Groups[1].Value });" ^
     "$count = [Math]::Min($urls.Count, $archs.Count);" ^
     "$pairs = for ($i=0; $i -lt $count; $i++) { \""$($urls[$i])^|$($archs[$i])\"" };" ^
-    "if ($pairs) { Write-Output ($pairs -join ' ') }"
-`) do set "URL_ARGS=%%A"
+    "if ($pairs) { Write-Output ('URL_ARGS=' + $pairs -join ' ') }"
+`) do set "%%A"
+
+for /f "usebackq delims=" %%B in (`
+  powershell -Command ^
+    "$url = ((('%URL_ARGS%' -replace '\^\|', '|') -split ' ')[0] -split '\|')[0];" ^
+    "$res = Invoke-WebRequest $url -Method Head;" ^
+    "$reldate = [datetime]::Parse($res.Headers['Last-Modified']).ToString('yyyy-MM-dd');" ^
+    "Write-Output ('RELEASE_DATE=' + $reldate)"
+`) do set "%%B"
 
 wingetcreate update Microsoft.Sysinternals.%PKGNAME% ^
   --version %VERSION% ^
+  --release-date %RELEASE_DATE% ^
   --urls %URL_ARGS%
