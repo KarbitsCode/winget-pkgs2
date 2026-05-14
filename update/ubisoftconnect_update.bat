@@ -20,10 +20,10 @@ for /f "usebackq delims=" %%B in (`
   powershell -Command ^
     "$res = Invoke-WebRequest %URL% -Method Head;" ^
     "$reldate = [datetime]::Parse($res.Headers['Last-Modified']).ToString('yyyy-MM-dd');" ^
-    "Write-Output ('RDATE=' + $reldate)"
+    "Write-Output ('RELEASE_DATE=' + $reldate)"
 `) do set "%%B"
 
 wingetcreate update Ubisoft.Connect ^
   --version %VERSION% ^
   --display-version %SHORT_VERSION% ^
-  --release-date %RDATE%
+  --release-date %RELEASE_DATE%

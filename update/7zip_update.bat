@@ -23,7 +23,7 @@ for /f "usebackq delims=" %%A in (`
       "Write-Output ($url)" ^
     "}"
 `) do (
-  set "RURL=%%A"
+  set "RELEASE_NOTES_URL=%%A"
 )
 
 for /f "usebackq delims=" %%A in (`
@@ -54,7 +54,7 @@ komac update 7zip.7zip ^
   --output . ^
   --skip-pr-check ^
   --version %VERSION% ^
-  --release-notes-url %RURL% ^
+  --release-notes-url %RELEASE_NOTES_URL% ^
   --urls %URLS%
 
 if not "%ERRORLEVEL%"=="0" (
@@ -69,6 +69,6 @@ if not "%ERRORLEVEL%"=="0" (
     --output . ^
     --skip-pr-check ^
     --version %VERSION% ^
-    --release-notes-url %RURL% ^
+    --release-notes-url %RELEASE_NOTES_URL% ^
     --urls %URLS%
 )

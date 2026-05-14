@@ -17,6 +17,15 @@ for /f "usebackq delims=" %%A in (`
     "if ($text -match 'InstallerUrl:\s*(\S+)') { Write-Output ('URL=' + $matches[1]) }"
 `) do set "%%A"
 
+for /f "usebackq delims=" %%B in (`
+  powershell -Command ^
+    "$url = ((('%URL%' -replace '\^\|', '|') -split ' ')[0] -split '\|')[0];" ^
+    "$res = Invoke-WebRequest $url -Method Head;" ^
+    "$reldate = [datetime]::Parse($res.Headers['Last-Modified']).ToString('yyyy-MM-dd');" ^
+    "Write-Output ('RELEASE_DATE=' + $reldate)"
+`) do set "%%B"
+
 wingetcreate update IObit.%PKGNAME% ^
   --version %VERSION% ^
+  --release-date %RELEASE_DATE% ^
   --urls "%URL%|%ARCH%"
