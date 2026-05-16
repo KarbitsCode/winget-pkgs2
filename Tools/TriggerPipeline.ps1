@@ -4,7 +4,7 @@ param(
 )
 
 Push-Location .\winget-pkgs\
-if (-not ($(git status) -match 'nothing|clean')) {
+if ($(git status | Out-String) -notmatch 'tree clean') {
 	git reset --hard
 	git clean -d -f
 }
