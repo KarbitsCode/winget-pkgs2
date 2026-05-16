@@ -4,7 +4,10 @@ param(
 )
 
 Push-Location .\winget-pkgs\
-git restore .
+if (-not ($(git status) -match 'nothing|clean')) {
+	git reset --hard
+	git clean -d -f
+}
 
 foreach ($PRNumber in $PRNumbers) {
 	$prNumber = $PRNumber.Trim() -replace '#', ''
