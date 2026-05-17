@@ -55,7 +55,7 @@ komac update 7zip.7zip ^
   --skip-pr-check ^
   --version %VERSION% ^
   --release-notes-url %RELEASE_NOTES_URL% ^
-  --urls %URLS%
+  --urls !URLS!
 
 if not "%ERRORLEVEL%"=="0" (
   set "BASE=https://sourceforge.net/projects/sevenzip/files/7-Zip/%VERSION%"
@@ -70,5 +70,5 @@ if not "%ERRORLEVEL%"=="0" (
     --skip-pr-check ^
     --version %VERSION% ^
     --release-notes-url %RELEASE_NOTES_URL% ^
-    --urls %URLS%
+    --urls !URLS!
 )
