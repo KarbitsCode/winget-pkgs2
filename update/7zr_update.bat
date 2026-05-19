@@ -1,5 +1,5 @@
 @echo off
-setlocal EnableDelayedExpansion
+setlocal
 
 if "%~1"=="" (
   echo Usage: %~nx0 ^<version^>
@@ -8,22 +8,16 @@ if "%~1"=="" (
 )
 
 set "VERSION=%~1"
-set "SHORT_VERSION=%VERSION:.=%"
 
 for /f "usebackq delims=" %%A in (`
   wingetcreate show 7zip.7zr ^| powershell -Command ^
     "$input = $input | Out-String;" ^
     "$pkver = @([regex]::Matches($input, 'PackageVersion:\s*(\S+)') | ForEach-Object { $_.Groups[1].Value })[0];" ^
-    "if ($pkver) { Write-Output ('PUBLISHED_VERSION=' + $pkver) };"
+    "if ($pkver) { Write-Output ('PUBLISHED_VERSION=' + $pkver -replace '""', '') }"
 `) do set "%%A"
 
-for /f "tokens=1,2 delims=." %%A in ("%PUBLISHED_VERSION%") do (
-  set /a PUBLISHED_NUM=%%A*100+%%B
-)
-
-for /f "tokens=1,2 delims=." %%A in ("%VERSION%") do (
-  set /a INPUT_NUM=%%A*100+%%B
-)
+set "INPUT_NUM=%VERSION:.=%"
+set "PUBLISHED_NUM=%PUBLISHED_VERSION:.=%"
 
 if %INPUT_NUM% GEQ %PUBLISHED_NUM% (
   set "BASE=https://7-zip.org/a"
@@ -53,4 +47,4 @@ komac update 7zip.7zr ^
   --skip-pr-check ^
   --version %VERSION% ^
   --release-notes-url %RELEASE_NOTES_URL% ^
-  --urls !URL!
+  --urls %URL%
