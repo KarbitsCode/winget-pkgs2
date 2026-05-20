@@ -15,7 +15,14 @@ if (-not $changes) {
 }
 
 # Extract package names from changed files
-$changedPaths = $changes | ForEach-Object { $_.Substring(3) }
+$changedPaths = $changes | ForEach-Object {
+    $path = $_.Substring(3)
+    # For renamed files, "R  old -> new"
+    if ($path -match '^\s*(.+?)\s+->\s+(.+?)\s*$') {
+        $path = $matches[2]
+    }
+    Write-Output $path
+}
 $packageFolders = $changedPaths | ForEach-Object {
     $path = $_ -replace '/$', ''
     $last = $path.Split('/')[-1]
