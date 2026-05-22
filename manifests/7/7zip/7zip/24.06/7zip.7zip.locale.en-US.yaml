@@ -31,8 +31,7 @@ Tags:
 - unarchiver
 - unzip
 - zip
-ReleaseNotes: |-
-  - The bug was fixed: 7-Zip could not unpack some ZSTD archives.
+ReleaseNotes: '- The bug was fixed: 7-Zip could not unpack some ZSTD archives.'
 ReleaseNotesUrl: https://github.com/ip7z/7zip/releases/tag/24.06
 Documentations:
 - DocumentLabel: FAQ
