@@ -8,9 +8,12 @@ if "%~1"=="" (
 )
 
 set "VERSION=%~1"
+set "FIXED_VERSION=%VERSION:+=.%"
 
-wingetcreate update Wakatime.DesktopWakatime ^
-  --version %VERSION% ^
+komac update Wakatime.DesktopWakatime ^
+  --output . ^
+  --skip-pr-check ^
+  --version %FIXED_VERSION% ^
   --urls ^
     "https://github.com/wakatime/desktop-wakatime/releases/download/v%VERSION%/wakatime-win32-ia32.exe|x86" ^
     "https://github.com/wakatime/desktop-wakatime/releases/download/v%VERSION%/wakatime-win32-x64.exe|x64" ^
