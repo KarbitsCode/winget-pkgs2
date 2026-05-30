@@ -33,6 +33,8 @@ def _flush_buffer():
 def auto_popups(stop_event):
     """Scan for installer popups and auto-close them if exists"""
     user32 = ctypes.windll.user32
+    SMTO_BLOCK = 0x0001
+    SMTO_ABORTIFHUNG = 0x0002
     WM_GETTEXTLENGTH = 0x000E
     WM_GETTEXT = 0x000D
     BM_CLICK = 0x00F5
@@ -60,13 +62,14 @@ def auto_popups(stop_event):
                 buf = ctypes.create_unicode_buffer(512)
                 @ctypes.WINFUNCTYPE(ctypes.c_bool, ctypes.c_void_p, ctypes.c_void_p)
                 def enum_child_callback(child_hwnd, _):
-                    user32.GetClassNameW(child_hwnd, buf, 512)
+                    user32.GetClassNameW(child_hwnd, buf, len(buf))
                     cls = buf.value
                     if cls == "Static":  # only read Static controls
-                        user32.SendMessageW(child_hwnd, WM_GETTEXT, 512, buf)
-                        txt = buf.value.strip()
-                        if txt:
-                            text_parts.append(txt)
+                        result = user32.SendMessageTimeoutW(child_hwnd, WM_GETTEXT, len(buf), ctypes.byref(buf), SMTO_ABORTIFHUNG | SMTO_BLOCK, 5000, None) # timeout in 5s
+                        if result:
+                            txt = buf.value.strip()
+                            if txt:
+                                text_parts.append(txt)
                     return True
                 user32.EnumChildWindows(hwnd, enum_child_callback, 0)
                 return " ".join(text_parts)
@@ -86,9 +89,9 @@ def auto_popups(stop_event):
                     if any(word in msg_text for word in ("restart", "reboot")):
                         # Avoid restarting/rebooting on install/uninstall
                         if any(word in caption for word in ("no", "cancel", "abort")):
-                            user32.SendMessageW(child_hwnd, BM_CLICK, 0, 0)
+                            user32.SendMessageTimeoutW(child_hwnd, BM_CLICK, 0, 0, SMTO_ABORTIFHUNG | SMTO_BLOCK, 5000, None)
                     elif any(word in caption for word in ("ok", "yes", "next", "run", "continue", "uninstall", "close", "finish")):
-                        user32.SendMessageW(child_hwnd, BM_CLICK, 0, 0)
+                        user32.SendMessageTimeoutW(child_hwnd, BM_CLICK, 0, 0, SMTO_ABORTIFHUNG | SMTO_BLOCK, 5000, None)
                 return True
             
             user32.EnumChildWindows(hwnd, EnumWindowsProc(click_buttons), 0)
