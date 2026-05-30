@@ -273,9 +273,15 @@ def main(paths):
                             args.append(f"--installer-type {inst_type}")
                             label.append(inst_type)
                         result = test_install(folder, " ".join(args))
-                        _print(f"\nFolder: {folder}" + (f" ({', '.join(label)})" if label else ""))
+                        pkg_label = f"{folder}" + (f" ({', '.join(label)})" if label else "")
+                        _print(f"\nFolder: {pkg_label}")
                         _print(f"Install succeed: {result['INST']}")
                         _print(f"Uninstall succeed: {result['UNINST']}")
+                        if os.getenv("GITHUB_ACTIONS"):
+                            if not result["INST"]:
+                                print(f"::warning title=Install failed::{pkg_label}")
+                            if not result["UNINST"]:
+                                print(f"::warning title=Uninstall failed::{pkg_label}")
     except KeyboardInterrupt:
         traceback.print_exc()
 
