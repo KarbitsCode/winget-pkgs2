@@ -11,7 +11,7 @@ set "PKGNAME=%~1"
 set "VERSION=%~2"
 
 for /f "usebackq delims=" %%A in (`
-  wingetcreate show NirSoft.%PKGNAME% ^| powershell -Command ^
+  wingetcreate show NirSoft.%PKGNAME% ^| powershell -NoLogo -NoProfile -Command ^
     "$input = $input | Out-String;" ^
     "$urls  = @([regex]::Matches($input, 'InstallerUrl:\s*(\S+)') | ForEach-Object { $_.Groups[1].Value });" ^
     "$archs = @([regex]::Matches($input, 'Architecture:\s*(\S+)') | ForEach-Object { $_.Groups[1].Value });" ^
@@ -23,9 +23,9 @@ for /f "usebackq delims=" %%A in (`
 `) do set "%%A"
 
 for /f "usebackq delims=" %%B in (`
-  powershell -Command ^
+  powershell -NoLogo -NoProfile -Command ^
     "$url = ((('%URL_ARGS%' -replace '\^\|', '|') -split ' ')[0] -split '\|')[0];" ^
-    "$res = Invoke-WebRequest $url -Method Head;" ^
+    "$res = Invoke-WebRequest $url -Method Head -UseBasicParsing;" ^
     "$reldate = [datetime]::Parse($res.Headers['Last-Modified']).ToString('yyyy-MM-dd');" ^
     "Write-Output ('RELEASE_DATE=' + $reldate)"
 `) do set "%%B"
