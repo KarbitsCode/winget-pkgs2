@@ -283,7 +283,7 @@ def main(paths):
                         if os.getenv("GITHUB_ACTIONS"):
                             if not result["INST"]:
                                 print(f"::warning title=Install failed::{pkg_label}")
-                            if not result["UNINST"]:
+                            elif not result["UNINST"]:
                                 print(f"::warning title=Uninstall failed::{pkg_label}")
     except KeyboardInterrupt:
         traceback.print_exc()
