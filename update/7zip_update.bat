@@ -12,14 +12,14 @@ set "SHORT_VERSION=%VERSION:.=%"
 set "BASE=https://7-zip.org/a"
 
 for /f "usebackq delims=" %%A in (`
-  powershell -Command ^
+  powershell -NoLogo -NoProfile -Command ^
     "$url = 'https://github.com/ip7z/7zip/releases/tag/%VERSION%';" ^
     "try {" ^
-      "Invoke-WebRequest $url;" ^
+      "Invoke-WebRequest $url -Method Get -UseBasicParsing;" ^
       "Write-Output ($url)" ^
     "} catch {" ^
       "$url = 'https://7-zip.org/history.txt';" ^
-      "Invoke-WebRequest $url;" ^
+      "Invoke-WebRequest $url -Method Get -UseBasicParsing;" ^
       "Write-Output ($url)" ^
     "}"
 `) do (
@@ -27,7 +27,7 @@ for /f "usebackq delims=" %%A in (`
 )
 
 for /f "usebackq delims=" %%A in (`
-  powershell -Command ^
+  powershell -NoLogo -NoProfile -Command ^
     "$list = @(" ^
       "@{ File='7z%SHORT_VERSION%.exe'; Arch='x86' }," ^
       "@{ File='7z%SHORT_VERSION%-x64.exe'; Arch='x64' }," ^
@@ -36,7 +36,7 @@ for /f "usebackq delims=" %%A in (`
       "@{ File='7z%SHORT_VERSION%.msi'; Arch='x86' }," ^
       "@{ File='7z%SHORT_VERSION%-x64.msi'; Arch='x64' }" ^
     ");" ^
-    "[xml]$res = Invoke-WebRequest https://sourceforge.net/projects/sevenzip/rss?path=/7-Zip/%VERSION%;" ^
+    "[xml]$res = Invoke-WebRequest https://sourceforge.net/projects/sevenzip/rss?path=/7-Zip/%VERSION% -Method Get -UseBasicParsing;" ^
     "$remote = [System.Collections.Generic.HashSet[string]]::new();" ^
     "$res.rss.channel.item | ForEach-Object { [void]$remote.Add($(Split-Path -Path $_.title.InnerText -Leaf)) };" ^
     "$list | Where-Object { $remote.Contains($_.File) } | ForEach-Object { Write-Output ($_.File + '^|' + $_.Arch) }"

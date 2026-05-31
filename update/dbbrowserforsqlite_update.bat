@@ -10,7 +10,7 @@ if "%~1"=="" (
 set "VERSION=%~1"
 
 for /f "usebackq delims=" %%A in (`
-  powershell -Command ^
+  powershell -NoLogo -NoProfile -Command ^
     "$r = Invoke-RestMethod 'https://api.github.com/repos/sqlitebrowser/sqlitebrowser/releases/tags/v%VERSION%';" ^
     "$r.assets | Where-Object { $_.name -match '(win32|x86)\.(msi|exe)$' } | ForEach-Object { Write-Output ('X86=' + $_.browser_download_url) };" ^
     "$r.assets | Where-Object { $_.name -match '(win64|x64)\.(msi|exe)$' } | ForEach-Object { Write-Output ('X64=' + $_.browser_download_url) }"

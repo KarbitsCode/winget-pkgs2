@@ -11,7 +11,7 @@ set "VERSION=%~1"
 for /f "tokens=1-3 delims=." %%A in ("%VERSION%") do if "%%C"=="" (set "FILLED_VERSION=%%A.%%B.0")
 
 for /f "usebackq delims=" %%A in (`
-  komac show SergeyFilippov.RegistryFinder ^| powershell -Command ^
+  komac show SergeyFilippov.RegistryFinder ^| powershell -NoLogo -NoProfile -Command ^
     "$input = $input | Out-String;" ^
     "$rnurl = @([regex]::Matches($input, 'ReleaseNotesUrl:\s*(\S+)') | ForEach-Object { $_.Groups[1].Value });" ^
     "if ($rnurl) { Write-Output ('RELEASE_NOTES_URL=' + $rnurl) }"
