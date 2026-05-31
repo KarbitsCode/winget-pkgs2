@@ -3,7 +3,6 @@
 
 PackageIdentifier: SergeyFilippov.RegistryFinder
 PackageVersion: 2.61.1
-InstallerLocale: en-US
 Installers:
 - InstallerUrl: https://registry-finder.com/bin/2.61.1.0/RegistryFinderSetup2.61.1.exe
   Architecture: x86
