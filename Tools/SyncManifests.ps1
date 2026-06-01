@@ -31,7 +31,7 @@ $packageFolders = $changedPaths | ForEach-Object {
         if ($path -match '^manifests/(.+)/[^/]+/[^/]+$') {
             $matches[1] -replace '/', '.'
         }
-    } elseif ($last -match '^[0-9a-zA-Z]+(?:[.-][0-9a-zA-Z]+)*$') {
+    } elseif ($last -match '^[0-9a-zA-Z]+([.-][0-9a-zA-Z]+)*$' -and $last -match '[0-9]') {
         # Has version-like format, must be directory path with version number
         if ($path -match '^manifests/(.+)/[^/]+$') {
             $matches[1] -replace '/', '.'
