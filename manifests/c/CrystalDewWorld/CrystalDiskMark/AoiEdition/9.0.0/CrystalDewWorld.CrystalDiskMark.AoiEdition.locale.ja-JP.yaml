@@ -26,6 +26,15 @@ Tags:
 - ssd
 - ストレージ
 - ユーティリティ
+ReleaseNotes: |-
+  - 著作権者に「CrystalMark Inc.」を追加
+  - コード署名を「CrystalMark Inc.」に変更
+  - DiskSpd 2.2に更新
+  - デフォルト測定回数を3回に変更
+  - Flash Memory用プロファイル追加
+  - コアライブラリ更新（Project Priscilla）
+  - テーマ追加（AoiLight~TenmuShinryuusai / AoiLightAnimalEars~TenmuShinryuusai / AoiDark~TenmuShinryuusai / AoiDarkAnimalEars~TenmuShinryuusai） [Aoi Edition]
+  - テーマ追加（ShizukuLight~TenmuShinryuusai / ShizukuLightAnimalEars~TenmuShinryuusai / ShizukuDark~TenmuShinryuusai / ShizukuDarkAnimalEars~TenmuShinryuusai）[Shizuku Edition]
 ReleaseNotesUrl: https://crystalmark.info/ja/software/crystaldiskmark/crystaldiskmark-history/
 Documentations:
 - DocumentLabel: FAQ

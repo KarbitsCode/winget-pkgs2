@@ -26,6 +26,10 @@ Tags:
 - ssd
 - ストレージ
 - ユーティリティ
+ReleaseNotes: |-
+  CrystalDiskMark 8.0.0完全互換
+  - Aoi Edition追加
+  - OSバージョン取得機能を改善
 ReleaseNotesUrl: https://crystalmark.info/ja/software/crystaldiskmark/crystaldiskmark-history/
 Documentations:
 - DocumentLabel: FAQ

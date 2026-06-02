@@ -26,6 +26,9 @@ Tags:
 - ssd
 - ストレージ
 - ユーティリティ
+ReleaseNotes: |-
+  CrystalDiskMark 8.0.0完全互換
+  - 言語ファイル更新（Spanish）
 ReleaseNotesUrl: https://crystalmark.info/ja/software/crystaldiskmark/crystaldiskmark-history/
 Documentations:
 - DocumentLabel: FAQ

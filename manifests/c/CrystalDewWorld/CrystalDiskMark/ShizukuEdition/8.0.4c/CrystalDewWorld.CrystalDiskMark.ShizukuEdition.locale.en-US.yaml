@@ -27,6 +27,9 @@ Tags:
 - ssd
 - storage
 - utility
+ReleaseNotes: |-
+  Benchmark results are fully compatible with 8.0.0.
+  - Updated language files (Spanish)
 ReleaseNotesUrl: https://crystalmark.info/ja/software/crystaldiskmark/crystaldiskmark-history/
 Documentations:
 - DocumentLabel: FAQ

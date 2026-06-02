@@ -26,6 +26,12 @@ Tags:
 - ssd
 - ストレージ
 - ユーティリティ
+ReleaseNotes: |-
+  CrystalDiskMark 8.0.0完全互換
+  - ダークモードメニュー対応
+  - コアライブラリ更新（Project Priscilla）
+  - 新テーマ（AoiLight/AoiDark）を追加（Aoi Edition）
+  - 新テーマ（ShizukuLight~nijihashi_sola/ShizukuDark~nijihashi_sola）を追加（Shizuku Edition）
 ReleaseNotesUrl: https://crystalmark.info/ja/software/crystaldiskmark/crystaldiskmark-history/
 Documentations:
 - DocumentLabel: FAQ
