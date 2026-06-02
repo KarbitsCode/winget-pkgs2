@@ -27,6 +27,10 @@ Tags:
 - ssd
 - storage
 - utility
+ReleaseNotes: |-
+  Benchmark results are fully compatible with 8.0.0.
+  - Added Aoi Edition
+  - Improved OS version acquisition function
 ReleaseNotesUrl: https://crystalmark.info/en/software/crystaldiskmark/crystaldiskmark-history/
 Documentations:
 - DocumentLabel: FAQ
