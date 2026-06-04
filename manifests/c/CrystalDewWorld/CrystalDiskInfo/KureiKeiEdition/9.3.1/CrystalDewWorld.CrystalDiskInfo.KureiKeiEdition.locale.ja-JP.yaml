@@ -28,6 +28,10 @@ Tags:
 - smart
 - ssd
 - ユーティリティ
+ReleaseNotes: |-
+  - ADATA Industrial SATA SSD対応
+  - Radeon R7 SATA SSD対応
+  - SanDisk P4 SATA SSD対応改善
 ReleaseNotesUrl: https://crystalmark.info/ja/software/crystaldiskinfo/crystaldiskinfo-history/
 Documentations:
 - DocumentLabel: FAQ

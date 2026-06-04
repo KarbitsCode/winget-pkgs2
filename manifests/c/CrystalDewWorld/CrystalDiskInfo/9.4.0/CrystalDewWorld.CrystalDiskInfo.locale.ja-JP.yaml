@@ -26,6 +26,11 @@ Tags:
 - smart
 - ssd
 - ユーティリティ
+ReleaseNotes: |-
+  - ダークモードメニュー対応
+  - Realtek 9220DP対応
+  - JMicron JMS586 対応（Beta）/ モデル名40文字対応（Alpha）
+  - 言語ファイル更新（Traditional Chinese/Korean）
 ReleaseNotesUrl: https://crystalmark.info/ja/software/crystaldiskinfo/crystaldiskinfo-history/
 Documentations:
 - DocumentLabel: FAQ

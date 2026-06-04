@@ -26,6 +26,13 @@ Tags:
 - smart
 - ssd
 - ユーティリティ
+ReleaseNotes: |-
+  - 設定ファイルの保存方法を変更
+  - Phison USB-NVMe対応
+  - RAIDボリュームを隠すオプションを追加
+  - JMicron USB-NVMe 対応修正
+  - コアライブラリ（Project Priscilla）更新
+  - 言語ファイル更新
 ReleaseNotesUrl: https://crystalmark.info/ja/software/crystaldiskinfo/crystaldiskinfo-history/
 Documentations:
 - DocumentLabel: FAQ

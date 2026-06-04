@@ -29,6 +29,10 @@ Tags:
 - smart
 - ssd
 - utility
+ReleaseNotes: |-
+  - Changed scrollbar to trackbar
+  - Fixed keyboard behavior of trackbar (up for increase, down for decrease)
+  - Updated language file (Traditional Chinese)
 ReleaseNotesUrl: https://crystalmark.info/en/software/crystaldiskinfo/crystaldiskinfo-history/
 Documentations:
 - DocumentLabel: FAQ

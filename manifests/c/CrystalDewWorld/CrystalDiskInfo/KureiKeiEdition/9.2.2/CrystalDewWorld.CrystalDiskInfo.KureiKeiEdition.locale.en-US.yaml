@@ -29,6 +29,9 @@ Tags:
 - smart
 - ssd
 - utility
+ReleaseNotes: |-
+  - Fixed Aoi Edition Japanese voice
+  - Added language file (Abkhazian)
 ReleaseNotesUrl: https://crystalmark.info/en/software/crystaldiskinfo/crystaldiskinfo-history/
 Documentations:
 - DocumentLabel: FAQ

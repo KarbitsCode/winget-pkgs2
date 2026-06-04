@@ -29,6 +29,10 @@ Tags:
 - smart
 - ssd
 - utility
+ReleaseNotes: |-
+  - Fixed settings files
+  - Fixed a bug that prevented proper display of capacity for some NVMe SSDs.
+  - Updated language file (Simplified Chinese/Korean)
 ReleaseNotesUrl: https://crystalmark.info/en/software/crystaldiskinfo/crystaldiskinfo-history/
 Documentations:
 - DocumentLabel: FAQ
