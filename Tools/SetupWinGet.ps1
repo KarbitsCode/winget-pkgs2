@@ -126,8 +126,6 @@ while ($true) {
 			}
 		}
 		Write-Error -ErrorRecord $_ -ErrorAction Continue
-		Write-Warning "Waiting 60 seconds before retry..."
-		Start-Sleep -Seconds 60
-		continue
+		throw $_
 	}
 }
