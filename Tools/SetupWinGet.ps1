@@ -114,6 +114,16 @@ while ($true) {
 			Write-Warning "Timed out. Waiting 60 seconds before retry..."
 			Start-Sleep -Seconds 60
 			continue
+		} elseif ($messageText -match "unable to find repository") {
+			Write-Warning "Try to re-register before retrying..."
+			try {
+				Get-PSRepository
+				Register-PSRepository -Default -ErrorAction Stop
+				Get-PSRepository
+				continue
+			} catch {
+				Write-Warning "Register-PSRepository failed: $($_.Exception.Message)"
+			}
 		}
 		Write-Error -ErrorRecord $_ -ErrorAction Continue
 		Write-Warning "Waiting 60 seconds before retry..."
