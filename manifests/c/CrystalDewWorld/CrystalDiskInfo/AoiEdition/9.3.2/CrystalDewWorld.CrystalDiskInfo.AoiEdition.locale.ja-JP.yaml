@@ -28,6 +28,9 @@ Tags:
 - smart
 - ssd
 - ユーティリティ
+ReleaseNotes: |-
+  - OSバージョン表記不具合を修正
+  - 言語ファイル更新（Korean）
 ReleaseNotesUrl: https://crystalmark.info/ja/software/crystaldiskinfo/crystaldiskinfo-history/
 Documentations:
 - DocumentLabel: FAQ

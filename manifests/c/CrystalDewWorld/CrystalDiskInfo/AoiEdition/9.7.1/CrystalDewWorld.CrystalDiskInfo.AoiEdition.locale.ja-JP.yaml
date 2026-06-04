@@ -28,6 +28,12 @@ Tags:
 - smart
 - ssd
 - ユーティリティ
+ReleaseNotes: |-
+  - 一部SATA SSDで残り寿命0%と誤判定する問題を改善
+  - aigo PSSD P6対応改善
+  - Lexar社製SSD対応改善
+  - SanDisk社製SSD対応改善
+  - 言語ファイル更新（Traditional Chinese、Korean、Dutch）
 ReleaseNotesUrl: https://crystalmark.info/ja/software/crystaldiskinfo/crystaldiskinfo-history/
 Documentations:
 - DocumentLabel: FAQ

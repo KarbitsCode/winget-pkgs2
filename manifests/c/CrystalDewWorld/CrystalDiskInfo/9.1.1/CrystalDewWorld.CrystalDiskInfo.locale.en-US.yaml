@@ -27,6 +27,9 @@ Tags:
 - smart
 - ssd
 - utility
+ReleaseNotes: |-
+  - Fixed bugs
+  - Updated language file (Slovenian)
 ReleaseNotesUrl: https://crystalmark.info/en/software/crystaldiskinfo/crystaldiskinfo-history/
 Documentations:
 - DocumentLabel: FAQ

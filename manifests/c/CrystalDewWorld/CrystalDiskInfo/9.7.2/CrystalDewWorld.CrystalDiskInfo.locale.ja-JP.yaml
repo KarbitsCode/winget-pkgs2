@@ -26,6 +26,9 @@ Tags:
 - smart
 - ssd
 - ユーティリティ
+ReleaseNotes: |-
+  - Seagate社製SSD対応改善
+  - 通常版のリストヘッダーを透過に変更
 ReleaseNotesUrl: https://crystalmark.info/ja/software/crystaldiskinfo/crystaldiskinfo-history/
 Documentations:
 - DocumentLabel: FAQ

@@ -29,6 +29,9 @@ Tags:
 - smart
 - ssd
 - utility
+ReleaseNotes: |-
+  - Added JMicron JMS586 support (Alpha)
+  - Improved Silicon Motion SATA SSD support
 ReleaseNotesUrl: https://crystalmark.info/en/software/crystaldiskinfo/crystaldiskinfo-history/
 Documentations:
 - DocumentLabel: FAQ
