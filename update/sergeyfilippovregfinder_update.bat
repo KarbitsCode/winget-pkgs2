@@ -8,7 +8,7 @@ if "%~1"=="" (
 )
 
 set "VERSION=%~1"
-for /f "tokens=1-3 delims=." %%A in ("%VERSION%") do if "%%C"=="" (set "FILLED_VERSION=%%A.%%B.0")
+for /f "tokens=1-3 delims=." %%A in ("%VERSION%") do @if "%%C"=="" (set "FILLED_VERSION=%%A.%%B.0.0") else set "FILLED_VERSION=%%A.%%B.%%C.0"
 
 for /f "usebackq delims=" %%A in (`
   komac show SergeyFilippov.RegistryFinder ^| powershell -NoLogo -NoProfile -Command ^
@@ -23,7 +23,7 @@ komac update SergeyFilippov.RegistryFinder ^
   --version %VERSION% ^
   --release-notes-url %RELEASE_NOTES_URL% ^
   --urls ^
-    "https://registry-finder.com/bin/%FILLED_VERSION%.0/RegistryFinderSetup%VERSION%.exe|x86" ^
-    "https://registry-finder.com/bin/%FILLED_VERSION%.0/RegistryFinderSetup%VERSION%.exe|x64" ^
-    "https://registry-finder.com/bin/%FILLED_VERSION%.0/RegistryFinder.zip|x86" ^
-    "https://registry-finder.com/bin/%FILLED_VERSION%.0/RegistryFinder64.zip|x64"
+    "https://registry-finder.com/bin/%FILLED_VERSION%/RegistryFinderSetup%VERSION%.exe|x86" ^
+    "https://registry-finder.com/bin/%FILLED_VERSION%/RegistryFinderSetup%VERSION%.exe|x64" ^
+    "https://registry-finder.com/bin/%FILLED_VERSION%/RegistryFinder.zip|x86" ^
+    "https://registry-finder.com/bin/%FILLED_VERSION%/RegistryFinder64.zip|x64"

@@ -28,8 +28,8 @@ jobs:
         id: detect
         shell: powershell
         continue-on-error: true
+        working-directory: ./upstream
         run: |
-          cd upstream
           Write-Host "`n===== CheckDependencies (Online) =====`n"
           .\Tools\CheckDependencies.ps1 -Verbose
           
