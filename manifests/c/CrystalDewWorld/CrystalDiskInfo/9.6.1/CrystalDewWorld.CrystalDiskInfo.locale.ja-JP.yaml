@@ -26,6 +26,10 @@ Tags:
 - smart
 - ssd
 - ユーティリティ
+ReleaseNotes: |-
+  - スクロールバーをトラックバーに変更
+  - トラックバーのキーボード挙動を修正（↑で増加、↓で減少）
+  - 言語ファイル更新（Traditional Chinese）
 ReleaseNotesUrl: https://crystalmark.info/ja/software/crystaldiskinfo/crystaldiskinfo-history/
 Documentations:
 - DocumentLabel: FAQ
