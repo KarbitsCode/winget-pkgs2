@@ -106,19 +106,15 @@ while ($true) {
 					Write-Warning "Could not retrieve AppX log for $activityId"
 				}
 			}
-		} elseif ($messageText -match "rate limit") {
-			Write-Warning "Rate limited. Waiting 60 seconds before retry..."
-			Start-Sleep -Seconds 60
-			continue
-		} elseif ($messageText -match "timeout") {
-			Write-Warning "Timed out. Waiting 60 seconds before retry..."
+		} elseif ($messageText -match "rate limit|429|timeout|timed out|failed to respond|connection attempt failed") {
+			Write-Warning "Transient network error. Waiting 60 seconds before retry..."
 			Start-Sleep -Seconds 60
 			continue
 		} elseif ($messageText -match "unable to find repository") {
 			Write-Warning "Try to re-register before retrying..."
 			try {
 				Get-PSRepository
-				Register-PSRepository -Default -ErrorAction Stop
+				Register-PSRepository -Name PSGallery -SourceLocation 'https://www.powershellgallery.com/api/v2' -ScriptSourceLocation 'https://www.powershellgallery.com/api/v2/items/psscript' -InstallationPolicy Trusted
 				Get-PSRepository
 				continue
 			} catch {
