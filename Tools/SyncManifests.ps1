@@ -81,6 +81,7 @@ Set-Content -Path $prBodyFile -Value $prBody -Encoding UTF8
 
 git checkout main
 git pull -v --prune
+git push -v
 git checkout -b $branchName
 
 if ($LASTEXITCODE -ne 0) {
