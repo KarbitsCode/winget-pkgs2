@@ -4,7 +4,9 @@ param(
     [Parameter(Position = 1)]
     [int]$Count = 1,
     [Parameter()]
-    [string]$PR
+    [string]$PR,
+    [Parameter()]
+    [string]$Except
 )
 
 Push-Location .\winget-pkgs\
@@ -12,11 +14,22 @@ Push-Location .\winget-pkgs\
 if ($PR) {
     # Use specified PR numbers
     $prNumbers = $PR -split ',' | ForEach-Object {
-                     $_.Trim() -replace '#', ''
-                 }
+        $_.Trim() -replace '#', ''
+    }
 } else {
     # Get the latest open PR
     $prNumbers = gh pr list --author "@me" --state open --limit $Count --json number --jq ".[].number"
+}
+
+# Remove excluded PRs
+if ($Except) {
+    $excludedNumbers = $Except -split ',' | ForEach-Object {
+        $_.Trim() -replace '#', ''
+    }
+    Write-Host "Ignoring PR: $excludedNumbers" -ForegroundColor Yellow
+    $prNumbers = $prNumbers | Where-Object {
+        $_ -notin $excludedNumbers
+    }
 }
 
 if (-not $prNumbers) {
