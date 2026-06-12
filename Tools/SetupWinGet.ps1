@@ -114,9 +114,21 @@ while ($true) {
             Write-Warning "Try to re-register before retrying..."
             try {
                 Get-PSRepository
-                Register-PSRepository -Name PSGallery -SourceLocation 'https://www.powershellgallery.com/api/v2' -ScriptSourceLocation 'https://www.powershellgallery.com/api/v2/items/psscript' -InstallationPolicy Trusted
-                Get-PSRepository
-                continue
+                Register-PSRepository -Default
+                Write-Host "`nRepositories"
+                Get-PSRepository | Format-List * | Out-String | Write-Host
+                Write-Host "`nInstall-Module Command"
+                Get-Command Install-Module | Format-List Name,Source,Version | Out-String | Write-Host
+                Write-Host "`nModule Versions"
+                Get-Module PowerShellGet,PackageManagement,Microsoft.PowerShell.PSResourceGet -ListAvailable |
+                    Sort-Object Name,Version |
+                    Format-Table Name,Version,Path -AutoSize |
+                    Out-String | Write-Host
+                Write-Host "`nError Details"
+                $Error[0] | Format-List * -Force | Out-String | Write-Host
+                if ($(Get-PSRepository).Name -in "PSGallery") {
+                    continue
+                }
             } catch {
                 Write-Warning "Register-PSRepository failed: $($_.Exception.Message)"
             }
