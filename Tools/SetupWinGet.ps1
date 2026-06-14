@@ -88,6 +88,14 @@ function Get-ReleaseTag {
 while ($true) {
     try {
         Get-GitHubRateLimit
+        Write-Host "=== Loaded Repository Modules ==="
+        Get-Module PowerShellGet,PackageManagement,Microsoft.PowerShell.PSResourceGet |
+            Format-Table Name,Version,Path -AutoSize |
+            Out-String | Write-Host
+        Write-Host "=== Import PowerShellGet ==="
+        Import-Module PowerShellGet -Force -Verbose
+        Write-Host "=== Repositories ==="
+        Get-PSRepository | Format-List * | Out-String | Write-Host
         Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery -Verbose -AllowClobber
         Repair-WinGetPackageManager -Version $(Get-ReleaseTag -Verbose) -Force -Verbose
         Get-GitHubRateLimit
@@ -115,17 +123,6 @@ while ($true) {
             try {
                 Get-PSRepository
                 Register-PSRepository -Default
-                Write-Host "`nRepositories"
-                Get-PSRepository | Format-List * | Out-String | Write-Host
-                Write-Host "`nInstall-Module Command"
-                Get-Command Install-Module | Format-List Name,Source,Version | Out-String | Write-Host
-                Write-Host "`nModule Versions"
-                Get-Module PowerShellGet,PackageManagement,Microsoft.PowerShell.PSResourceGet -ListAvailable |
-                    Sort-Object Name,Version |
-                    Format-Table Name,Version,Path -AutoSize |
-                    Out-String | Write-Host
-                Write-Host "`nError Details"
-                $Error[0] | Format-List * -Force | Out-String | Write-Host
                 if ($(Get-PSRepository).Name -in "PSGallery") {
                     continue
                 }
