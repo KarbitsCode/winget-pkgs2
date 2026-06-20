@@ -120,6 +120,8 @@ while ($true) {
             Write-Warning "Try to re-register before retrying..."
             try {
                 Get-PSRepository
+                Import-Module PackageManagement -Force
+                Import-Module PowerShellGet -Force
                 Register-PSRepository -Default
                 if ($(Get-PSRepository).Name -in "PSGallery") {
                     continue
