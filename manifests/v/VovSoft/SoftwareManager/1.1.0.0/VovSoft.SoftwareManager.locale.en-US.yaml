@@ -1,4 +1,4 @@
-# Created with komac v2.16.0
+# Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.SoftwareManager
@@ -17,7 +17,7 @@ Copyright: VOVSOFT.COM © 2015 - 2026
 ShortDescription: Vovsoft Software Manager is a utility designed to help users conveniently keep track of and manage their installed Vovsoft applications from a single, centralized interface.
 Description: |-
   Vovsoft Software Manager is a utility designed to help users conveniently keep track of and manage their installed Vovsoft applications from a single, centralized interface.
-  
+
   - Comprehensive Overview: It displays a detailed list of all installed Vovsoft programs, showing the application name, the currently installed version, the latest available version, and the local installation path.
   - Update Tracking: The manager helps identify which applications are out of date by comparing the installed version with the latest release, highlighting newer available versions in bold text.
   - Installation & Uninstallation Controls: A right-click context menu allows users to manage the software directly. You can install updates or uninstall programs using standard, "Silent," or "Very Silent" execution modes.
