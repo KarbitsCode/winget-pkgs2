@@ -39,7 +39,7 @@ jobs:
       folder: ${{ steps.detect.outputs.folder }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6.0.3
+        uses: actions/checkout@v7.0.0
         with:
           fetch-depth: 0
 
@@ -93,7 +93,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6.0.3
+        uses: actions/checkout@v7.0.0
 
       - name: Set up python packages
         shell: pwsh
@@ -136,7 +136,7 @@ jobs:
         folders: ${{ fromJson(needs.detect.outputs.folder) }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6.0.3
+        uses: actions/checkout@v7.0.0
 
       - name: Set up python packages
         shell: pwsh
