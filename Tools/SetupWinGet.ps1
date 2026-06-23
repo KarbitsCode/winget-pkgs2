@@ -98,7 +98,7 @@ while ($true) {
             Install-PackageProvider NuGet -MinimumVersion 2.8.5.201 -Force -Scope AllUsers -Confirm:$false
         }
         Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery -Verbose -AllowClobber
-        Repair-WinGetPackageManager -Version $(Get-ReleaseTag -Verbose) -Force -Verbose
+        Repair-WinGetPackageManager -Version $(Get-ReleaseTag -Verbose) -Force -Verbose -AllUsers
         Get-GitHubRateLimit
         break
     } catch {
