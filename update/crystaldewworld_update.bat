@@ -9,18 +9,21 @@ if "%~1"=="" (
 
 set "PKGNAME=%~1"
 set "VERSION=%~2"
+for /f "delims=." %%A in ("%PKGNAME%") do set "PKGBASE=%%A"
 
 for /f "usebackq delims=" %%A in (`
   wingetcreate show CrystalDewWorld.%PKGNAME% ^| powershell -NoLogo -NoProfile -Command ^
     "$input = $input | Out-String;" ^
+    "$ogurl = @([regex]::Match($input, 'InstallerUrl:\s*(\S+)') | ForEach-Object { $_.Groups[1].Value });" ^
+    "$rnurl = @([regex]::Matches($input, 'ReleaseNotesUrl:\s*(\S+)') | ForEach-Object { $_.Groups[1].Value });" ^
+    "$suffix = if ($ogurl[0] -match '%PKGBASE%\d+(?:_\d+)*(?<Suffix>[A-Za-z]*)\.exe$') { $Matches['Suffix'] };" ^
     "$list = @(" ^
-      "@{ Url='https://sourceforge.net/projects/crystalmarkretro/files/%VERSION%/CrystalMarkRetro' + $('%VERSION%' -replace '\.', '_') + '.exe'; Arch='x86' }," ^
-      "@{ Url='https://sourceforge.net/projects/crystalmarkretro/files/%VERSION%/CrystalMarkRetro' + $('%VERSION%' -replace '\.', '_') + '.exe'; Arch='x64' }," ^
-      "@{ Url='https://sourceforge.net/projects/crystalmarkretro/files/%VERSION%/CrystalMarkRetro' + $('%VERSION%' -replace '\.', '_') + '.exe'; Arch='arm64' }" ^
+      "@{ Url='https://sourceforge.net/projects/crystalmarkretro/files/%VERSION%/CrystalMarkRetro' + $('%VERSION%' -replace '\.', '_') + $suffix + '.exe'; Arch='x86' }," ^
+      "@{ Url='https://sourceforge.net/projects/crystalmarkretro/files/%VERSION%/CrystalMarkRetro' + $('%VERSION%' -replace '\.', '_') + $suffix + '.exe'; Arch='x64' }," ^
+      "@{ Url='https://sourceforge.net/projects/crystalmarkretro/files/%VERSION%/CrystalMarkRetro' + $('%VERSION%' -replace '\.', '_') + $suffix + '.exe'; Arch='arm64' }" ^
     ");" ^
     "$urls  = $list | ForEach-Object { $_.Url };" ^
     "$archs = $list | ForEach-Object { $_.Arch };" ^
-    "$rnurl = @([regex]::Matches($input, 'ReleaseNotesUrl:\s*(\S+)') | ForEach-Object { $_.Groups[1].Value });" ^
     "$count = [Math]::Min($urls.Count, $archs.Count);" ^
     "$pairs = for ($i=0; $i -lt $count; $i++) { \""$($urls[$i])^|$($archs[$i])\"" };" ^
     "if ($pairs) { Write-Output ('URL_ARGS=' + '--urls ' + $pairs -join ' ') };"
