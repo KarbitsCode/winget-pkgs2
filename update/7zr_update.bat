@@ -13,7 +13,7 @@ for /f "usebackq delims=" %%A in (`
   komac show 7zip.7zr ^| powershell -NoLogo -NoProfile -Command ^
     "$input = $input | Out-String;" ^
     "$pkver = @([regex]::Matches($input, 'PackageVersion:\s*(\S+)') | ForEach-Object { $_.Groups[1].Value })[0];" ^
-    "if ($pkver) { Write-Output ('PUBLISHED_VERSION=' + $pkver -replace '""', '') }"
+    "if ($pkver) { Write-Output ('PUBLISHED_VERSION=' + $pkver.Trim([char[]](39,34))) }"
 `) do set "%%A"
 
 set "INPUT_NUM=%VERSION:.=%"
