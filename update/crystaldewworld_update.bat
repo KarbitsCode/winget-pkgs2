@@ -15,7 +15,6 @@ for /f "usebackq delims=" %%A in (`
   wingetcreate show CrystalDewWorld.%PKGNAME% ^| powershell -NoLogo -NoProfile -Command ^
     "$input = $input | Out-String;" ^
     "$ogurl = @([regex]::Match($input, 'InstallerUrl:\s*(\S+)') | ForEach-Object { $_.Groups[1].Value });" ^
-    "$rnurl = @([regex]::Matches($input, 'ReleaseNotesUrl:\s*(\S+)') | ForEach-Object { $_.Groups[1].Value });" ^
     "$suffix = if ($ogurl[0] -match '%PKGBASE%\d+(?:_\d+)*(?<Suffix>[A-Za-z]*)\.exe$') { $Matches['Suffix'] };" ^
     "$list = @(" ^
       "@{ Url='https://sourceforge.net/projects/crystalmarkretro/files/%VERSION%/CrystalMarkRetro' + $('%VERSION%' -replace '\.', '_') + $suffix + '.exe'; Arch='x86' }," ^
@@ -26,13 +25,12 @@ for /f "usebackq delims=" %%A in (`
     "$archs = $list | ForEach-Object { $_.Arch };" ^
     "$count = [Math]::Min($urls.Count, $archs.Count);" ^
     "$pairs = for ($i=0; $i -lt $count; $i++) { \""$($urls[$i])^|$($archs[$i])\"" };" ^
-    "if ($pairs) { Write-Output ('URL_ARGS=' + '--urls ' + $pairs -join ' ') };"
-    "if ($rnurl) { Write-Output ('RNURL_ARGS=' + (($rnurl | ForEach-Object { '--release-notes-url "' + $_ + '"' }) -join ' ')) }"
+    "if ($pairs) { Write-Output ('URL_ARGS=' + $pairs -join ' ') };"
 `) do set "%%A"
 
 for /f "usebackq delims=" %%B in (`
   powershell -NoLogo -NoProfile -Command ^
-    "$url = (((('%URL_ARGS%'.Substring(7)) -replace '\^\|', '|') -split ' ')[0] -split '\|')[0];" ^
+    "$url = ((('%URL_ARGS%' -replace '\^\|', '|') -split ' ')[0] -split '\|')[0];" ^
     "$res = curl.exe -s -I -L $url;" ^
     "$lastm = (($res | Select-String '^^Last-Modified:').Line -replace '^^Last-Modified:\s*', '').Trim();" ^
     "$reldate = [datetime]::Parse($lastm).ToString('yyyy-MM-dd');" ^
@@ -42,4 +40,4 @@ for /f "usebackq delims=" %%B in (`
 wingetcreate update CrystalDewWorld.%PKGNAME% ^
   --version %VERSION% ^
   --release-date %RELEASE_DATE% ^
-  %URL_ARGS%
+  --urls %URL_ARGS%
