@@ -94,6 +94,9 @@ while ($true) {
         Get-PackageSource | Format-List * | Out-String | Write-Host
         Write-Host "=== Package Providers ==="
         Get-PackageProvider | Format-List * | Out-String | Write-Host
+        if ($PSVersionTable.PSVersion.Major -lt 7) {
+            Install-PackageProvider NuGet -MinimumVersion 2.8.5.201 -Force -Scope AllUsers -Confirm:$false
+        }
         Install-Module -Name Microsoft.WinGet.Client -Force -Repository PSGallery -Verbose -AllowClobber
         Repair-WinGetPackageManager -Version $(Get-ReleaseTag -Verbose) -Force -Verbose
         Get-GitHubRateLimit
@@ -101,16 +104,14 @@ while ($true) {
     } catch {
         $messageText = $_.Exception.Message
         Write-Warning "Repair failed: $($messageText)"
-        if ($messageText -match "0x80073D02") {
-            if ($messageText -match "ActivityId\]\s+([0-9a-fA-F-]+)") {
-                $activityId = $matches[1]
-                Write-Output "Found ActivityId: $activityId"
-                try {
-                    Write-Output "Retrieving AppX logs..."
-                    Get-AppPackageLog -ActivityId $activityId | Format-List
-                } catch {
-                    Write-Warning "Could not retrieve AppX log for $activityId"
-                }
+        if ($messageText -match "ActivityId\]\s+([0-9a-fA-F-]+)") {
+            $activityId = $matches[1]
+            Write-Output "Found ActivityId: $activityId"
+            try {
+                Write-Output "Retrieving AppX logs..."
+                Get-AppPackageLog -ActivityId $activityId | Format-List
+            } catch {
+                Write-Warning "Could not retrieve AppX log for $activityId"
             }
         } elseif ($messageText -match "rate limit|429|timeout|timed out|failed to respond|connection attempt failed") {
             Write-Warning "Transient network error. Waiting 60 seconds before retry..."
