@@ -4,7 +4,7 @@ param(
     [switch]$Once
 )
 
-$targetLabels = @("Internal-Error", "Defender-Error", "SmartScreen-Error")
+$targetLabels = @("Internal-Error", "Defender-Error", "SmartScreen-Error", "Installation-Error")
 
 while ($true) {
     # Get the latest open PR
