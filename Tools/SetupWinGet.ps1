@@ -124,6 +124,8 @@ while ($true) {
                 Import-Module PackageManagement -Force
                 Import-Module PowerShellGet -Force
                 Register-PSRepository -Default
+                Register-PackageSource -Name PSGallery -ProviderName PowerShellGet -Location https://www.powershellgallery.com/api/v2 -Trusted -Force
+                Get-PackageSource | Format-Table Name,ProviderName,Location
                 if ($(Get-PSRepository).Name -in "PSGallery") {
                     continue
                 }
