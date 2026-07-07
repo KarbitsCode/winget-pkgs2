@@ -2,7 +2,7 @@
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.12.0.schema.json
 
 PackageIdentifier: CodeSector.TeraCopy
-PackageVersion: 4.0.0.27
+PackageVersion: 4.0.0.28
 PackageLocale: en-US
 Publisher: Code Sector
 PublisherUrl: https://codesector.com/
@@ -36,7 +36,9 @@ ReleaseNotes: |-
   - Improved exception handling and automated bug report upload.
 
   Fixed Bugs
-  - Fixed a rare exception when a transfer completed.
+  - Resolved an issue importing file lists from text files containing UNC paths.
+  - Fixed a bug where Overwrite behaved as Overwrite All during same-drive move operations.
+  - AdvancedInstaller fixed the installer's security vulnerability: EXE Bootstrapper resolved the %appdata% location incorrectly for the System account.
 ReleaseNotesUrl: https://blog.codesector.com/2026/06/20/teracopy-4/
 PurchaseUrl: https://codesector.com/purchase
 ManifestType: defaultLocale

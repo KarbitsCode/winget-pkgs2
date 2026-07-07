@@ -1,4 +1,4 @@
-# Created with komac v2.16.0
+# Created by Anthelion using komac v2.16.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.12.0.schema.json
 
 PackageIdentifier: 7zip.7zr
@@ -28,6 +28,9 @@ Tags:
 - unarchiver
 - unpacking
 - unzip
+ReleaseNotes: |-
+  7-Zip 26.02
+  - Some bugs and vulnerabilities were fixed.
 ReleaseNotesUrl: https://github.com/ip7z/7zip/releases/tag/26.02
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
