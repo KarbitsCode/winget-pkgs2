@@ -1,4 +1,4 @@
-# Created using wingetcreate 1.12.8.0
+# Created with komac v2.16.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: CrystalDewWorld.CrystalMarkRetro
@@ -8,6 +8,7 @@ InstallerType: inno
 Scope: machine
 UpgradeBehavior: install
 ProductCode: CrystalMarkRetro_is1
+ReleaseDate: 2024-03-31
 ElevationRequirement: elevatesSelf
 InstallationMetadata:
   DefaultInstallLocation: '%ProgramFiles%\CrystalMark Retro'
@@ -23,4 +24,3 @@ Installers:
   InstallerSha256: 70C6EF3A62807F95BE5D5C614AFB25B2F4A0F483D7C26B9B8995FC0AB1CCC410
 ManifestType: installer
 ManifestVersion: 1.12.0
-ReleaseDate: 2024-03-31
