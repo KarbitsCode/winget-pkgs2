@@ -2,7 +2,7 @@
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.12.0.schema.json
 
 PackageIdentifier: IObit.Uninstaller
-PackageVersion: 15.4.0.1
+PackageVersion: 15.5.0.11
 PackageLocale: en-US
 Publisher: IObit
 PublisherUrl: https://www.iobit.com/
@@ -22,9 +22,9 @@ Tags:
 - cleaner
 - uninstaller
 ReleaseNotes: |-
-  v15.4 (2026-04-14)
+  v15.5 (2026-07-07)
   - Improved scanning algorithms to detect and clean more leftovers
-  - Enlarged database to remove more stubborn programs
+  - Optimized Bundleware to detect more bundleware more accurately
   - Fixed all known bugs
 Documentations:
 - DocumentLabel: FAQ
