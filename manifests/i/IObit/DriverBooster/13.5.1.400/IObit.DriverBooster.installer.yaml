@@ -1,8 +1,8 @@
 # Created using wingetcreate 1.12.8.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
-PackageIdentifier: IObit.MalwareFighter
-PackageVersion: 13.4.0.1669
+PackageIdentifier: IObit.DriverBooster
+PackageVersion: 13.5.1.400
 InstallerLocale: en-US
 InstallerType: inno
 Scope: machine
@@ -11,16 +11,20 @@ InstallModes:
 - silent
 - silentWithProgress
 UpgradeBehavior: install
-ProductCode: IObit Malware Fighter_is1
+FileExtensions:
+- dbd
+- dbop
+ProductCode: Driver Booster_is1
 AppsAndFeaturesEntries:
-- DisplayName: IObit Malware Fighter 12
+- DisplayName: Driver Booster 13
   Publisher: IObit
-  ProductCode: IObit Malware Fighter_is1
+  DisplayVersion: 13.5.1
+  ProductCode: Driver Booster_is1
 ElevationRequirement: elevatesSelf
 Installers:
 - Architecture: x86
-  InstallerUrl: https://cdn.iobit.com/dl/iobit_malware_fighter_setup.exe
-  InstallerSha256: 7833C160E06BE4A016281E4C926FCCE4019929286E686AA55ABF6E3B0C208C47
+  InstallerUrl: https://cdn.iobit.com/dl/driver_booster_setup.exe
+  InstallerSha256: 9A3A1F07BCEC727633CC3B26800631C7BF06BDA5C24D5AA5DA9A943853226626
 ManifestType: installer
 ManifestVersion: 1.12.0
-ReleaseDate: 2026-07-13
+ReleaseDate: 2026-07-15
