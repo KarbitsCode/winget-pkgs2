@@ -43,8 +43,8 @@ def check_hash(file_path, url, response):
 
 def dump_response(prefix, response):
     """Dump response to %TEMP% with random filename"""
-    # If NO_DUMP is false and we're not in CI and args being only "manifests"
-    if os.getenv("NO_DUMP", "0").lower() not in ("true", "1") and not os.getenv("GITHUB_ACTIONS") and sys.argv[1] != "manifests":
+    # If WITH_DUMP is true and we're not in CI and args being only "manifests"
+    if os.getenv("WITH_DUMP", "0").lower() in ("true", "1") and not os.getenv("GITHUB_ACTIONS") and sys.argv[1] != "manifests":
         temp_dir = Path(tempfile.gettempdir())
         base_name = f"{prefix}_{uuid.uuid4().hex}"
         body_file = temp_dir / f"{base_name}.bin"
@@ -151,7 +151,7 @@ if __name__ == "__main__":
         else:
             print(f"Usage: {Path(sys.executable).with_suffix('').name} {os.path.basename(sys.argv[0])} <directory>")
     else:
-        if "--no-dump" in sys.argv:
-            os.environ["NO_DUMP"] = "true"
-            sys.argv.remove("--no-dump")
+        if "--with-dump" in sys.argv:
+            os.environ["WITH_DUMP"] = str(True)
+            sys.argv.remove("--with-dump")
         main(sys.argv[1:])
