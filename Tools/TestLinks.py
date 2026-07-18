@@ -9,6 +9,7 @@ import requests
 import tempfile
 from glob import glob
 from pathlib import Path
+from collections import defaultdict
 
 def extract_urls_from_file(file_path):
     """Extract all URLs from a YAML file (raw text scan)"""
@@ -98,6 +99,8 @@ def test_links(url, file_path):
 
 def main(paths):
     seen = set()
+    fails = defaultdict(int)
+    max_retries = 3
     sort_key = lambda p: (
         2 if ".installer." in p.name.lower()
         else 1 if ".locale." in p.name.lower()
@@ -137,7 +140,9 @@ def main(paths):
                         print(f"HEAD: {result['HEAD']}")
                         print(f"GET:  {result['GET']}")
                         if any(str(result[i]).startswith("Error:") for i in ("HEAD", "GET")):
-                            seen.discard(url)
+                            fails[url] += 1
+                            if fails[url] < max_retries:
+                                seen.discard(url)
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
