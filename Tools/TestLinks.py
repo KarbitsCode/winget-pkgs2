@@ -7,6 +7,7 @@ import hashlib
 import platform
 import requests
 import tempfile
+from glob import glob
 from pathlib import Path
 
 def extract_urls_from_file(file_path):
@@ -104,28 +105,39 @@ def main(paths):
         p.name.lower()
     )
     
-    for path in paths:
-        path = Path(path)
-        if not path.exists():
-            print(f"Path doesn't exist: {path}")
-        if path.is_file() and path.suffix.lower() in [".yml", ".yaml"]:
-            file_paths = [path]
-        elif path.is_dir():
-            file_paths = sorted(path.rglob("*.y*ml"), key=sort_key)
-        else:
+    for path_raw in paths:
+        paths_resolved = glob(path_raw)
+        if not paths_resolved:
+            if "*" in path_raw:
+                parts = path_raw.rsplit("\\", 1)
+                if len(parts) == 2:
+                    path_raw_rs = str(Path(parts[0]) / "**" / parts[1])
+                    paths_resolved = glob(path_raw_rs, recursive=True)
+        if not paths_resolved:
+            print(f"Path doesn't exist: {path_raw}")
             continue
-        for file_path in file_paths:
-            urls = extract_urls_from_file(file_path)
-            for url in urls:
-                if url not in seen:
-                    seen.add(url)
-                    print(f"\nFile: {file_path}")
-                    print(f"URL:  {url}")
-                    result = test_links(url, file_path)
-                    print(f"HEAD: {result['HEAD']}")
-                    print(f"GET:  {result['GET']}")
-                    if any(str(result[i]).startswith("Error:") for i in ("HEAD", "GET")):
-                        seen.discard(url)
+        for path_each in paths_resolved:
+            path = Path(path_each)
+            if not path.exists():
+                print(f"Path doesn't exist: {path}")
+            if path.is_file() and path.suffix.lower() in [".yml", ".yaml"]:
+                file_paths = [path]
+            elif path.is_dir():
+                file_paths = sorted(path.rglob("*.y*ml"), key=sort_key)
+            else:
+                continue
+            for file_path in file_paths:
+                urls = extract_urls_from_file(file_path)
+                for url in urls:
+                    if url not in seen:
+                        seen.add(url)
+                        print(f"\nFile: {file_path}")
+                        print(f"URL:  {url}")
+                        result = test_links(url, file_path)
+                        print(f"HEAD: {result['HEAD']}")
+                        print(f"GET:  {result['GET']}")
+                        if any(str(result[i]).startswith("Error:") for i in ("HEAD", "GET")):
+                            seen.discard(url)
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:

@@ -14,6 +14,7 @@ import traceback
 import threading
 import subprocess
 from mss import MSS
+from glob import glob
 from pathlib import Path
 from ctypes import wintypes
 from datetime import datetime
@@ -248,43 +249,54 @@ def main(paths):
     )
     
     try:
-        for path in paths:
-            path = Path(path)
-            if not path.exists():
-                print(f"Path doesn't exist: {path}")
-            if path.is_file() and path.suffix.lower() in [".yml", ".yaml"]:
-                file_paths = [path]
-            elif path.is_dir():
-                file_paths = sorted(path.rglob("*.y*ml"), key=sort_key)
-            else:
+        for path_raw in paths:
+            paths_resolved = glob(path_raw)
+            if not paths_resolved:
+                if "*" in path_raw:
+                    parts = path_raw.rsplit("\\", 1)
+                    if len(parts) == 2:
+                        path_raw_rs = str(Path(parts[0]) / "**" / parts[1])
+                        paths_resolved = glob(path_raw_rs, recursive=True)
+            if not paths_resolved:
+                print(f"Path doesn't exist: {path_raw}")
                 continue
-            for file_path in file_paths:
-                folder = file_path.parent
-                if folder not in seen:
-                    seen.add(folder)
-                    for arch, inst_type in get_installers(folder):
-                        if (arch.lower() != "neutral") and ((platform.machine().lower() in ("arm", "arm64")) != (arch.lower() in ("arm", "arm64"))):
-                            # Skip arm if machine is not arm-based (and otherwise)
-                            # Neutral should always pass (aka is not supposed to get into this scope)
-                            continue
-                        args = []
-                        label = []
-                        if arch:
-                            args.append(f"-a {arch}")
-                            label.append(arch)
-                        if inst_type:
-                            args.append(f"--installer-type {inst_type}")
-                            label.append(inst_type)
-                        result = test_install(folder, " ".join(args))
-                        pkg_label = f"{folder}" + (f" ({', '.join(label)})" if label else "")
-                        _print(f"\nFolder: {pkg_label}")
-                        _print(f"Install succeed: {result['INST']}")
-                        _print(f"Uninstall succeed: {result['UNINST']}")
-                        if os.getenv("GITHUB_ACTIONS"):
-                            if not result["INST"]:
-                                print(f"::warning title=Install failed::{pkg_label}")
-                            elif not result["UNINST"]:
-                                print(f"::warning title=Uninstall failed::{pkg_label}")
+            for path_each in paths_resolved:
+                path = Path(path_each)
+                if not path.exists():
+                    print(f"Path doesn't exist: {path}")
+                if path.is_file() and path.suffix.lower() in [".yml", ".yaml"]:
+                    file_paths = [path]
+                elif path.is_dir():
+                    file_paths = sorted(path.rglob("*.y*ml"), key=sort_key)
+                else:
+                    continue
+                for file_path in file_paths:
+                    folder = file_path.parent
+                    if folder not in seen:
+                        seen.add(folder)
+                        for arch, inst_type in get_installers(folder):
+                            if (arch.lower() != "neutral") and ((platform.machine().lower() in ("arm", "arm64")) != (arch.lower() in ("arm", "arm64"))):
+                                # Skip arm if machine is not arm-based (and otherwise)
+                                # Neutral should always pass (aka is not supposed to get into this scope)
+                                continue
+                            args = []
+                            label = []
+                            if arch:
+                                args.append(f"-a {arch}")
+                                label.append(arch)
+                            if inst_type:
+                                args.append(f"--installer-type {inst_type}")
+                                label.append(inst_type)
+                            result = test_install(folder, " ".join(args))
+                            pkg_label = f"{folder}" + (f" ({', '.join(label)})" if label else "")
+                            _print(f"\nFolder: {pkg_label}")
+                            _print(f"Install succeed: {result['INST']}")
+                            _print(f"Uninstall succeed: {result['UNINST']}")
+                            if os.getenv("GITHUB_ACTIONS"):
+                                if not result["INST"]:
+                                    print(f"::warning title=Install failed::{pkg_label}")
+                                elif not result["UNINST"]:
+                                    print(f"::warning title=Uninstall failed::{pkg_label}")
     except KeyboardInterrupt:
         traceback.print_exc()
 
