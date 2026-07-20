@@ -2,7 +2,7 @@
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.12.0.schema.json
 
 PackageIdentifier: TortoiseSVN.TortoiseSVN
-PackageVersion: 1.14.5.29465
+PackageVersion: 1.14.8.29723
 PackageLocale: en-US
 Publisher: TortoiseSVN
 PublisherUrl: https://tortoisesvn.net/
