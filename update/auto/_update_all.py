@@ -45,7 +45,7 @@ def check_mismatches(package_folder):
         if "Installer hash mismatch!" not in block:
             continue
         
-        file = re.search(r"^File:\s+(.+)$", block, re.MULTILINE).group(1)
+        file = re.search(r"^File:\s+(\S+)$", block, re.MULTILINE).group(1)
         url = re.search(r"^URL:\s+(\S+)$", block, re.MULTILINE).group(1)
         
         if not url.endswith(".exe"):
@@ -63,38 +63,39 @@ def check_mismatches(package_folder):
     
     return files, urls, packages
 
-def update_package_local(updater, package_folder, package_name, new_version, _skipdiff=False):
+def update_package_local(updater, old_version_folder, package_name, new_version, replace=False):
+    package_folder = old_version_folder.parent
     new_version_folder = package_folder / new_version
     run_with_stream(
         f"update\\{updater}.bat {package_name.split(".")[1]} {new_version}"
     )
-    if not _skipdiff:
-        run_with_stream(
-            f"git add {package_folder} && git --no-pager diff HEAD"
-        )
-    return new_version_folder
-
-def update_and_replace(updater, old_version_folder, package_name, new_version):
-    package_folder = old_version_folder.parent
-    new_version_folder = update_package_local(updater, package_folder, package_name, new_version, _skipdiff=True)
-    shutil.rmtree(old_version_folder)
+    if replace:
+        shutil.rmtree(old_version_folder)
     run_with_stream(
-        f"git add {package_folder} && git --no-pager diff HEAD"
+        f"git add {package_folder} && git --no-pager diff HEAD {package_folder}"
     )
     return new_version_folder
 
+def update_and_replace(updater, old_version_folder, package_name, new_version):
+    return update_package_local(updater, old_version_folder, package_name, new_version, replace=True)
+
 def submit_package(tool, version_folder, options):
     if tool == "wingetcreate":
-        command = "wingetcreate submit"
+        command = "wingetcreate submit --no-open"
     elif tool == "komac":
         command = "komac submit --submit"
     
     submit_output = run_with_stream(
         f"{command} {version_folder} {options}"
     )
-    pr_url = re.search(r"^Pull request can be found here:\s*(.+)$", submit_output, re.MULTILINE).group(1).strip()
+    pr_url = re.search(r"^Pull request can be found here:\s*(\S+)$", submit_output, re.MULTILINE).group(1)
     run_with_stream(
         f"powershell -ExecutionPolicy Bypass -File Tools\\UpdatePRBody.ps1 Tools\\PRBodyTemplate\\PRBodyModify.md -pr {pr_url.split('/')[-1]}"
+    )
+
+def sync_manifests():
+    run_with_stream(
+        f"powershell -ExecutionPolicy Bypass -File Tools\\SyncManifests.ps1"
     )
 
 
@@ -107,3 +108,4 @@ if __name__ == "__main__":
         inject_context(module.__dict__)
         spec.loader.exec_module(module)
         module.run()
+    sync_manifests()
