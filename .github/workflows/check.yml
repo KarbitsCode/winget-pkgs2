@@ -12,12 +12,12 @@ jobs:
       contents: read
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7.0.0
+        uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
 
       - name: Checkout upstream repository
-        uses: actions/checkout@v7.0.0
+        uses: actions/checkout@v7.0.1
         with:
           repository: KarbitsCode/winget-pkgs
           ref: ${{ github.event.client_payload.branch }}
