@@ -56,6 +56,9 @@ jobs:
 
       - name: Run python scripts
         shell: pwsh
+        env:
+          # https://github.com/PowerShell/PowerShell/issues/14100
+          PSModulePath: C:\Windows\System32\WindowsPowerShell\v1.0\Modules
         run: |
           Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
           Update-SessionEnvironment
