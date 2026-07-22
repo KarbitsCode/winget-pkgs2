@@ -1,4 +1,9 @@
 def run():
+    # https://github.com/PowerShell/PowerShell/issues/14100
+    run_with_stream(
+        'powershell -ExecutionPolicy Bypass -Command "Get-Command New-TemporaryFile"'
+    )
+    
     files, urls, packages = check_mismatches("manifests\\r\\RootsMagic\\RootsMagic")
     print(files)
     print(urls)
