@@ -1,0 +1,60 @@
+name: winget-pkgs auto
+on:
+  workflow_dispatch:
+
+jobs:
+  updater:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Set up git config
+        shell: pwsh
+        env:
+          GIT_NAME: ${{ env.GIT_NAME }}
+          GIT_EMAIL: ${{ env.GIT_EMAIL }}
+        run: |
+          git config --global user.name $env:GIT_NAME
+          git config --global user.email $env:GIT_EMAIL
+
+      - name: Set up python packages
+        shell: pwsh
+        run: |
+          python --version
+          & {
+            python -m pip install --upgrade pip -vvv
+            pip install regex requests psutil pyyaml mss -vvv
+          } | Select-String -NotMatch "Found|Skipping link"
+
+      - name: Set up winget tools
+        shell: pwsh
+        env:
+          WINGET_TOKEN: ${{ secrets.WINGET_TOKEN }}
+        run: |
+          New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\AppHost" -Force -Verbose | Out-Null
+          Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\AppHost" -Name "EnableWebContentEvaluation" -Value 0 -Force -Verbose
+          New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Force -Verbose | Out-Null
+          Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "EnableSmartScreen" -Value 0 -Force -Verbose
+          New-Item "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments" -Force -Verbose | Out-Null
+          Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments" -Name "SaveZoneInformation" -Value 1 -Force -Verbose
+          
+          .\Tools\SetupWinGet.ps1
+          winget --info
+          winget source reset --force
+          winget source list
+          
+          winget install wingetcreate komac --accept-package-agreements --accept-source-agreements --disable-interactivity
+          wingetcreate token --store --token $env:WINGET_TOKEN
+          komac token new --token $env:WINGET_TOKEN
+
+      - name: Run python scripts
+        shell: pwsh
+        run: |
+          python .\update\auto\_update_all.py
