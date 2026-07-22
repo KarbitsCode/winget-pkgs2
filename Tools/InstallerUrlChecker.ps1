@@ -2,7 +2,9 @@ param(
     [Parameter(Mandatory = $true, Position = 0, ValueFromRemainingArguments = $true)]
     [string[]]$Urls
 )
-
+$PSVersionTable
+Get-Command New-TemporaryFile -ErrorAction Continue
+Get-Command powershell,pwsh -ErrorAction Continue
 foreach ($Url in $Urls) {
     Write-Host "Checking $($Url)..." -ForegroundColor Yellow
     $fn = New-TemporaryFile
