@@ -57,5 +57,6 @@ jobs:
       - name: Run python scripts
         shell: pwsh
         run: |
+          Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
           Update-SessionEnvironment
           python .\update\auto\_update_all.py
