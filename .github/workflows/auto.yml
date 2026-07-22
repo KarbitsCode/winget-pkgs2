@@ -9,6 +9,16 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: Debug
+        shell: powershell
+        run: |
+          # https://github.com/PowerShell/PowerShell/issues/14100
+          Select-String "$PSHOME\Modules\Microsoft.PowerShell.Utility\Microsoft.PowerShell.Utility.psm1" "New-TemporaryFile"
+          Import-Module Microsoft.PowerShell.Utility -Force
+          Get-Command New-TemporaryFile
+          (Get-Module Microsoft.PowerShell.Utility).ExportedFunctions.ContainsKey("New-TemporaryFile")
+          throw
+    
       - name: Checkout repository
         uses: actions/checkout@v7.0.1
         with:
@@ -44,10 +54,6 @@ jobs:
           Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "EnableSmartScreen" -Value 0 -Force -Verbose
           New-Item "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments" -Force -Verbose | Out-Null
           Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments" -Name "SaveZoneInformation" -Value 1 -Force -Verbose
-
-          # https://github.com/PowerShell/PowerShell/issues/14100
-          New-Item -ItemType Directory -Force -Path $(Split-Path -Parent $PROFILE) | Out-Null
-          Set-Content $PROFILE 'function New-TemporaryFile { Get-Item ([System.IO.Path]::GetTempFileName()) }'
           
           .\Tools\SetupWinGet.ps1
           winget --info
@@ -60,8 +66,6 @@ jobs:
 
       - name: Run python scripts
         shell: pwsh
-        env:
-          PSModulePath:
         run: |
           Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
           Update-SessionEnvironment
