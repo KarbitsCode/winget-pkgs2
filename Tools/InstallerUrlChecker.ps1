@@ -5,6 +5,7 @@ param(
 $PSVersionTable
 Get-Command New-TemporaryFile -ErrorAction Continue
 Get-Command powershell,pwsh -ErrorAction Continue
+Get-Module Microsoft.PowerShell.Utility -ListAvailable | Select-Object Name, Version, Path
 foreach ($Url in $Urls) {
     Write-Host "Checking $($Url)..." -ForegroundColor Yellow
     $fn = New-TemporaryFile
