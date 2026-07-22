@@ -18,8 +18,8 @@ jobs:
       - name: Set up git config
         shell: pwsh
         env:
-          GIT_NAME: ${{ env.GIT_NAME }}
-          GIT_EMAIL: ${{ env.GIT_EMAIL }}
+          GIT_NAME: ${{ vars.GIT_NAME }}
+          GIT_EMAIL: ${{ vars.GIT_EMAIL }}
         run: |
           git config --global user.name $env:GIT_NAME
           git config --global user.email $env:GIT_EMAIL
