@@ -53,7 +53,6 @@ jobs:
           winget install wingetcreate komac --accept-package-agreements --accept-source-agreements --disable-interactivity
           wingetcreate token --store --token $env:WINGET_TOKEN
           komac token new --token $env:WINGET_TOKEN
-          powershell -NoProfile -Command "$PSVersionTable; Get-Command New-TemporaryFile -ErrorAction Continue; Get-Command powershell,pwsh -ErrorAction Continue"
 
       - name: Run python scripts
         shell: pwsh
