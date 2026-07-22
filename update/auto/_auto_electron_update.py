@@ -22,7 +22,7 @@ def run():
     print(new_versions)
     
     for new_version in new_versions:
-        updater = Path(__file__).stem.removeprefix("auto_")
+        updater = Path(__file__).stem.lstrip("_").removeprefix("auto_")
         package_folder = electron_dir / new_version.split(".", 1)[0]
         new_version_folder = package_folder / new_version
         update_package_local(

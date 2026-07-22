@@ -93,7 +93,7 @@ def submit_package(tool, version_folder, options=""):
     submit_output = run_with_stream(
         f"{command} {version_folder} {options}"
     )
-    pr_url = re.search(r"^Pull request can be found here:\s*(\S+)$", submit_output, re.MULTILINE).group(1)
+    pr_url = re.search(r"https://github\.com/microsoft/winget-pkgs/pull/\d+", submit_output).group(0)
     run_with_stream(
         f"powershell -ExecutionPolicy Bypass -File Tools\\UpdatePRBody.ps1 Tools\\PRBodyTemplate\\PRBodyModify.md -pr {pr_url.split('/')[-1]} -auto"
     )
