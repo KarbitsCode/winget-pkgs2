@@ -27,6 +27,7 @@ jobs:
         env:
           GIT_NAME: ${{ vars.GIT_NAME }}
           GIT_EMAIL: ${{ vars.GIT_EMAIL }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           git config --global user.name $env:GIT_NAME
           git config --global user.email $env:GIT_EMAIL
