@@ -4,6 +4,8 @@ param(
 )
 $PSVersionTable
 (Get-Module Microsoft.PowerShell.Utility -ListAvailable | Where-Object Version -EQ '3.1.0.0').ExportedCommands.Keys | Sort-Object | Select-String '^New-'
+Get-Command Microsoft.PowerShell.Utility\New-TemporaryFile
+$PSModuleAutoLoadingPreference
 foreach ($Url in $Urls) {
     Write-Host "Checking $($Url)..." -ForegroundColor Yellow
     $fn = New-TemporaryFile
