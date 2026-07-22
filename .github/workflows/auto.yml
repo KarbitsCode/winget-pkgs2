@@ -9,6 +9,15 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: Debug
+        shell: pwsh
+        env:
+          PSModulePath: C:\Windows\System32\WindowsPowerShell\v1.0\Modules
+        run: |
+          echo "pwsh: $env:PSModulePath"
+          python -c "import os; print('python:', os.environ.get('PSModulePath'))"
+          throw
+    
       - name: Checkout repository
         uses: actions/checkout@v7.0.1
         with:
