@@ -13,7 +13,8 @@ jobs:
         shell: powershell
         run: |
           # https://github.com/PowerShell/PowerShell/issues/14100
-          Select-String "$PSHOME\Modules\Microsoft.PowerShell.Utility\Microsoft.PowerShell.Utility.psm1" "New-TemporaryFile"
+          Select-String -Path "$PSHOME\Modules\Microsoft.PowerShell.Utility\Microsoft.PowerShell.Utility.psm1" -Pattern "New-TemporaryFile"
+          Get-Command New-TemporaryFile
           Import-Module Microsoft.PowerShell.Utility -Force
           Get-Command New-TemporaryFile
           (Get-Module Microsoft.PowerShell.Utility).ExportedFunctions.ContainsKey("New-TemporaryFile")
