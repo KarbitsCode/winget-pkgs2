@@ -9,17 +9,6 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Debug
-        shell: powershell
-        run: |
-          # https://github.com/PowerShell/PowerShell/issues/14100
-          Select-String -Path "$PSHOME\Modules\Microsoft.PowerShell.Utility\Microsoft.PowerShell.Utility.psm1" -Pattern "New-TemporaryFile"
-          Get-Command New-TemporaryFile
-          Import-Module Microsoft.PowerShell.Utility -Force
-          Get-Command New-TemporaryFile
-          (Get-Module Microsoft.PowerShell.Utility).ExportedFunctions.ContainsKey("New-TemporaryFile")
-          throw
-    
       - name: Checkout repository
         uses: actions/checkout@v7.0.1
         with:
@@ -55,12 +44,12 @@ jobs:
           Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "EnableSmartScreen" -Value 0 -Force -Verbose
           New-Item "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments" -Force -Verbose | Out-Null
           Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments" -Name "SaveZoneInformation" -Value 1 -Force -Verbose
-          
+
           .\Tools\SetupWinGet.ps1
           winget --info
           winget source reset --force
           winget source list
-          
+
           winget install wingetcreate komac --accept-package-agreements --accept-source-agreements --disable-interactivity
           wingetcreate token --store --token $env:WINGET_TOKEN
           komac token new --token $env:WINGET_TOKEN
