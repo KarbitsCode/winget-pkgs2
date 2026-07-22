@@ -8,7 +8,9 @@ param(
     [Parameter()]
     [string]$PR,
     [Parameter()]
-    [string]$Except
+    [string]$Except,
+    [Parameter()]
+    [switch]$Auto
 )
 
 $BodyFile = Join-Path -Path $(Get-Location).Path -ChildPath $BodyFile
