@@ -1,5 +1,5 @@
 def run():
-    files, urls, packages = check_mismatches("manifests\\v\\VovSoft")
+    files, urls, packages = check_mismatches("manifests\\r\\RootsMagic\\RootsMagic")
     print(files)
     print(urls)
     print(packages)
@@ -21,7 +21,7 @@ def run():
         update_and_replace(
             updater,
             package_folder,
-            f"{package_name.split(".")[1]} {new_version}",
+            f"{new_version}",
             replace=old_version_folder
         )
         submit_package("wingetcreate", new_version_folder, "--replace")

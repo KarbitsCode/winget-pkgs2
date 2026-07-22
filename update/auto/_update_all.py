@@ -1,6 +1,7 @@
 import re
 import sys
 import shutil
+import requests
 import subprocess
 import importlib.util
 from pathlib import Path
@@ -52,32 +53,36 @@ def check_mismatches(package_folder):
             continue
         
         package = file.rsplit("\\", 1)[1].replace(".installer.yaml", "")
-        key = (file, url, package)
-        if key in seen:
+        if package in seen:
             continue
-        
-        seen.add(key)
+
+        seen.add(package)
         files.append(file)
         urls.append(url)
         packages.append(package)
     
     return files, urls, packages
 
-def update_package_local(updater, old_version_folder, package_name, new_version, replace=False):
-    package_folder = old_version_folder.parent
-    new_version_folder = package_folder / new_version
+def check_releases(url):
+    releases = requests.get(url, params={"per_page": 100}, timeout=10).json()
+    return [
+        release["tag_name"].removeprefix("v")
+        for release in releases
+        if not release["draft"] and not release["prerelease"]
+    ]
+
+def update_package_local(updater, package_folder, batch_args, replace_folder=""):
     run_with_stream(
-        f"update\\{updater}.bat {package_name.split(".")[1]} {new_version}"
+        f"update\\{updater}.bat {batch_args}"
     )
-    if replace:
-        shutil.rmtree(old_version_folder)
+    if replace_folder:
+        shutil.rmtree(replace_folder)
     run_with_stream(
         f"git add {package_folder} && git --no-pager diff HEAD {package_folder}"
     )
-    return new_version_folder
 
-def update_and_replace(updater, old_version_folder, package_name, new_version):
-    return update_package_local(updater, old_version_folder, package_name, new_version, replace=True)
+def update_and_replace(updater, package_folder, batch_args, replace):
+    return update_package_local(updater, package_folder, batch_args, replace)
 
 def submit_package(tool, version_folder, options):
     if tool == "wingetcreate":
@@ -90,7 +95,7 @@ def submit_package(tool, version_folder, options):
     )
     pr_url = re.search(r"^Pull request can be found here:\s*(\S+)$", submit_output, re.MULTILINE).group(1)
     run_with_stream(
-        f"powershell -ExecutionPolicy Bypass -File Tools\\UpdatePRBody.ps1 Tools\\PRBodyTemplate\\PRBodyModify.md -pr {pr_url.split('/')[-1]}"
+        f"powershell -ExecutionPolicy Bypass -File Tools\\UpdatePRBody.ps1 Tools\\PRBodyTemplate\\PRBodyModify.md -pr {pr_url.split('/')[-1]} -auto"
     )
 
 def sync_manifests():
