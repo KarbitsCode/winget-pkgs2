@@ -1,7 +1,7 @@
 def run():
     # https://github.com/PowerShell/PowerShell/issues/14100
     run_with_stream(
-        'powershell -Command "$PSVersionTable; $env:PSModulePath; Get-Command New-TemporaryFile -ErrorAction Continue"'
+        'powershell -Command "Import-Module Microsoft.PowerShell.Utility -Force -Verbose; Get-Command New-TemporaryFile"'
     )
     
     files, urls, packages = check_mismatches("manifests\\r\\RootsMagic\\RootsMagic")
