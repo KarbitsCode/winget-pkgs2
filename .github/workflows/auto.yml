@@ -9,16 +9,6 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Debug
-        shell: pwsh
-        env:
-          PSModulePath: C:\Windows\System32\WindowsPowerShell\v1.0\Modules
-        run: |
-          echo "pwsh: $env:PSModulePath"
-          $env:PSModulePath = 'C:\Windows\System32\WindowsPowerShell\v1.0\Modules'
-          python -c "import os; print('python:', os.environ.get('PSModulePath'))"
-          throw
-    
       - name: Checkout repository
         uses: actions/checkout@v7.0.1
         with:
@@ -66,10 +56,9 @@ jobs:
 
       - name: Run python scripts
         shell: pwsh
-        env:
-          # https://github.com/PowerShell/PowerShell/issues/14100
-          PSModulePath: C:\Windows\System32\WindowsPowerShell\v1.0\Modules
         run: |
+          # https://github.com/PowerShell/PowerShell/issues/14100
+          $env:PSModulePath = 'C:\Windows\System32\WindowsPowerShell\v1.0\Modules'
           Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
           Update-SessionEnvironment
           python .\update\auto\_update_all.py
