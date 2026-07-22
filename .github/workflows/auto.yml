@@ -57,4 +57,5 @@ jobs:
       - name: Run python scripts
         shell: pwsh
         run: |
+          Update-SessionEnvironment
           python .\update\auto\_update_all.py
