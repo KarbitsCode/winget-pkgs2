@@ -44,6 +44,10 @@ jobs:
           Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "EnableSmartScreen" -Value 0 -Force -Verbose
           New-Item "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments" -Force -Verbose | Out-Null
           Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments" -Name "SaveZoneInformation" -Value 1 -Force -Verbose
+
+          # https://github.com/PowerShell/PowerShell/issues/14100
+          New-Item -ItemType Directory -Force -Path $(Split-Path -Parent $PROFILE) | Out-Null
+          Set-Content $PROFILE 'function New-TemporaryFile { Get-Item ([System.IO.Path]::GetTempFileName()) }'
           
           .\Tools\SetupWinGet.ps1
           winget --info
