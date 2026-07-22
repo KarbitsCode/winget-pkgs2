@@ -84,7 +84,7 @@ def update_package_local(updater, package_folder, batch_args, replace_folder="")
 def update_and_replace(updater, package_folder, batch_args, replace):
     return update_package_local(updater, package_folder, batch_args, replace)
 
-def submit_package(tool, version_folder, options):
+def submit_package(tool, version_folder, options=""):
     if tool == "wingetcreate":
         command = "wingetcreate submit --no-open"
     elif tool == "komac":
