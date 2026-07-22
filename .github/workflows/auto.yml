@@ -15,6 +15,7 @@ jobs:
           PSModulePath: C:\Windows\System32\WindowsPowerShell\v1.0\Modules
         run: |
           echo "pwsh: $env:PSModulePath"
+          $env:PSModulePath = 'C:\Windows\System32\WindowsPowerShell\v1.0\Modules'
           python -c "import os; print('python:', os.environ.get('PSModulePath'))"
           throw
     
