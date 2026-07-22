@@ -14,7 +14,7 @@ if not "%~2"=="" (
 )
 
 for /f "usebackq delims=" %%A in (`
-  powershell -NoLogo -NoProfile -Command ^
+  powershell -NoLogo -Command ^
     "$r = Invoke-RestMethod 'https://api.github.com/repos/Yutaka-Sawada/MultiPar/releases/tags/v%VERSION%';" ^
     "$r.assets | Where-Object { $_.name -match '\.(exe)$' } | ForEach-Object { Write-Output ('URL=' + $_.browser_download_url) }"
 `) do set "%%A"

@@ -11,7 +11,7 @@ set "VERSION=%~1"
 for /f "tokens=1 delims=." %%A in ("%VERSION%") do set "SHORT_VERSION=%%A"
 
 for /f "usebackq delims=" %%A in (`
-  komac show RootsMagic.RootsMagic.%SHORT_VERSION% ^| powershell -NoLogo -NoProfile -Command ^
+  komac show RootsMagic.RootsMagic.%SHORT_VERSION% ^| powershell -NoLogo -Command ^
     "$input = $input | Out-String;" ^
     "$urls  = @([regex]::Matches($input, 'InstallerUrl:\s*(\S+)') | ForEach-Object { $_.Groups[1].Value });" ^
     "$archs = @([regex]::Matches($input, 'Architecture:\s*(\S+)') | ForEach-Object { $_.Groups[1].Value });" ^
@@ -23,7 +23,7 @@ for /f "usebackq delims=" %%A in (`
 `) do set "%%A"
 
 for /f "usebackq delims=" %%B in (`
-  powershell -NoLogo -NoProfile -Command ^
+  powershell -NoLogo -Command ^
     "$url = ((('%URL_ARGS%' -replace '\^\|', '|') -split ' ')[0] -split '\|')[0];" ^
     "$res = Invoke-WebRequest $url -Method Head -UseBasicParsing;" ^
     "$reldate = [datetime]::Parse($res.Headers['Last-Modified']).ToString('yyyy-MM-dd');" ^

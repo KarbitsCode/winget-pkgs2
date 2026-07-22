@@ -10,7 +10,7 @@ if "%~1"=="" (
 set "VERSION=%~1"
 
 for /f "usebackq delims=" %%A in (`
-  komac show 7zip.7zr ^| powershell -NoLogo -NoProfile -Command ^
+  komac show 7zip.7zr ^| powershell -NoLogo -Command ^
     "$input = $input | Out-String;" ^
     "$pkver = @([regex]::Matches($input, 'PackageVersion:\s*(\S+)') | ForEach-Object { $_.Groups[1].Value })[0];" ^
     "if ($pkver) { Write-Output ('PUBLISHED_VERSION=' + $pkver.Trim([char[]](39,34))) }"
@@ -28,7 +28,7 @@ if %INPUT_NUM% GEQ %PUBLISHED_NUM% (
 set URL=%BASE%/7zr.exe
 
 for /f "usebackq delims=" %%A in (`
-  powershell -NoLogo -NoProfile -Command ^
+  powershell -NoLogo -Command ^
     "$url = 'https://github.com/ip7z/7zip/releases/tag/%VERSION%';" ^
     "try {" ^
       "Invoke-WebRequest $url -Method Get -UseBasicParsing;" ^

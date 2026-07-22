@@ -12,7 +12,7 @@ set "SHORT_VERSION=%VERSION:.=%"
 set "BASE=https://7-zip.org/a"
 
 for /f "usebackq delims=" %%A in (`
-  powershell -NoLogo -NoProfile -Command ^
+  powershell -NoLogo -Command ^
     "$url = 'https://github.com/ip7z/7zip/releases/tag/%VERSION%';" ^
     "try {" ^
       "Invoke-WebRequest $url -Method Get -UseBasicParsing;" ^
@@ -27,7 +27,7 @@ for /f "usebackq delims=" %%A in (`
 )
 
 for /f "usebackq delims=" %%A in (`
-  powershell -NoLogo -NoProfile -Command ^
+  powershell -NoLogo -Command ^
     "$list = @(" ^
       "@{ File='7z%SHORT_VERSION%.exe'; Arch='x86' }," ^
       "@{ File='7z%SHORT_VERSION%-x64.exe'; Arch='x64' }," ^

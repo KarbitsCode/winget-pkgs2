@@ -12,7 +12,7 @@ set "VERSION=%~2"
 for /f "delims=." %%A in ("%PKGNAME%") do set "PKGBASE=%%A"
 
 for /f "usebackq delims=" %%A in (`
-  wingetcreate show CrystalDewWorld.%PKGNAME% ^| powershell -NoLogo -NoProfile -Command ^
+  wingetcreate show CrystalDewWorld.%PKGNAME% ^| powershell -NoLogo -Command ^
     "$input = $input | Out-String;" ^
     "$ogurl = @([regex]::Match($input, 'InstallerUrl:\s*(\S+)') | ForEach-Object { $_.Groups[1].Value });" ^
     "$suffix = if ($ogurl[0] -match '%PKGBASE%\d+(?:_\d+)*(?<Suffix>[A-Za-z]*)\.exe$') { $Matches['Suffix'] };" ^
@@ -29,7 +29,7 @@ for /f "usebackq delims=" %%A in (`
 `) do set "%%A"
 
 for /f "usebackq delims=" %%B in (`
-  powershell -NoLogo -NoProfile -Command ^
+  powershell -NoLogo -Command ^
     "$url = ((('%URL_ARGS%' -replace '\^\|', '|') -split ' ')[0] -split '\|')[0];" ^
     "$res = curl.exe -s -I -L $url;" ^
     "$lastm = (($res | Select-String '^^Last-Modified:').Line -replace '^^Last-Modified:\s*', '').Trim();" ^

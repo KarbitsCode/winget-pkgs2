@@ -12,7 +12,7 @@ set "VERSION=%~2"
 for /f "tokens=1,2,3 delims=." %%A in ("%VERSION%") do set "SHORT_VERSION=%%A.%%B.%%C"
 
 for /f "usebackq delims=" %%A in (`
-  wingetcreate show IObit.%PKGNAME% ^| powershell -NoLogo -NoProfile -Command ^
+  wingetcreate show IObit.%PKGNAME% ^| powershell -NoLogo -Command ^
     "$text = $input | Out-String;" ^
     "if ($text -match 'Architecture:\s*(\S+)') { Write-Output ('ARCH=' + $matches[1]) };" ^
     "if ($text -match 'InstallerUrl:\s*(\S+)') { Write-Output ('URL=' + $matches[1]) }" ^
@@ -20,7 +20,7 @@ for /f "usebackq delims=" %%A in (`
 `) do set "%%A"
 
 for /f "usebackq delims=" %%B in (`
-  powershell -NoLogo -NoProfile -Command ^
+  powershell -NoLogo -Command ^
     "$url = ((('%URL%' -replace '\^\|', '|') -split ' ')[0] -split '\|')[0];" ^
     "$res = Invoke-WebRequest $url -Method Head -UseBasicParsing;" ^
     "$reldate = [datetime]::Parse($res.Headers['Last-Modified']).ToString('yyyy-MM-dd');" ^
