@@ -1,5 +1,6 @@
 def run():
     # https://github.com/PowerShell/PowerShell/issues/14100
+    print(os.environ["PSModulePath"])
     run_with_stream(
         'powershell -Command "Import-Module Microsoft.PowerShell.Utility -Force -Verbose; Get-Command New-TemporaryFile"'
     )
