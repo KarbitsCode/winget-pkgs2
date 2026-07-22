@@ -14,7 +14,7 @@ def run():
     print(new_versions)
     
     for package_name, new_version, file in zip(packages, new_versions, files):
-        updater = Path(__file__).stem.removeprefix("auto_")
+        updater = Path(__file__).stem.lstrip("_").removeprefix("auto_")
         old_version_folder = Path(file).parent
         package_folder = old_version_folder.parent
         new_version_folder = package_folder / new_version
