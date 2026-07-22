@@ -3,9 +3,8 @@ param(
     [string[]]$Urls
 )
 $PSVersionTable
-Get-Command New-TemporaryFile -ErrorAction Continue
-Get-Command powershell,pwsh -ErrorAction Continue
-Get-Module Microsoft.PowerShell.Utility -ListAvailable | Select-Object Name, Version, Path
+(Get-Module Microsoft.PowerShell.Utility -ListAvailable | Select-Object -First 1 | Import-Module -PassThru).ExportedCommands["New-TemporaryFile"]
+Import-Module Microsoft.PowerShell.Utility -Force; Get-Command New-TemporaryFile -ErrorAction Continue
 foreach ($Url in $Urls) {
     Write-Host "Checking $($Url)..." -ForegroundColor Yellow
     $fn = New-TemporaryFile
