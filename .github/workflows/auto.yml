@@ -15,14 +15,25 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
 
+      - name: Checkout upstream repository
+        uses: actions/checkout@v7.0.1
+        with:
+          repository: microsoft/winget-pkgs
+          path: winget-pkgs
+          fetch-depth: 0
+
       - name: Set up git config
         shell: pwsh
         env:
           GIT_NAME: ${{ vars.GIT_NAME }}
           GIT_EMAIL: ${{ vars.GIT_EMAIL }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           git config --global user.name $env:GIT_NAME
           git config --global user.email $env:GIT_EMAIL
+          Push-Location winget-pkgs
+          gh repo set-default microsoft/winget-pkgs
+          Pop-Location
 
       - name: Set up python packages
         shell: pwsh
@@ -56,6 +67,8 @@ jobs:
 
       - name: Run python scripts
         shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.WINGET_TOKEN }}
         run: |
           # https://github.com/PowerShell/PowerShell/issues/14100
           $env:PSModulePath = 'C:\Windows\System32\WindowsPowerShell\v1.0\Modules'
