@@ -68,7 +68,7 @@ jobs:
       - name: Run python scripts
         shell: pwsh
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.WINGET_TOKEN }}
         run: |
           # https://github.com/PowerShell/PowerShell/issues/14100
           $env:PSModulePath = 'C:\Windows\System32\WindowsPowerShell\v1.0\Modules'
