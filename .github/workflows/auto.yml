@@ -28,7 +28,17 @@ jobs:
           GIT_NAME: ${{ vars.GIT_NAME }}
           GIT_EMAIL: ${{ vars.GIT_EMAIL }}
           GH_TOKEN: ${{ github.token }}
+          GPG_TOKEN: ${{ secrets.GPG_TOKEN }}
         run: |
+          $env:GPG_TOKEN | gpg --batch --import
+          git config --global commit.gpgsign true
+          git config --global user.signingkey (
+              gpg --list-secret-keys --with-colons |
+              Select-String '^sec:' |
+              ForEach-Object { ($_ -split ':')[4] } |
+              Select-Object -First 1
+          )
+          git config --global gpg.program gpg
           git config --global user.name $env:GIT_NAME
           git config --global user.email $env:GIT_EMAIL
           Push-Location winget-pkgs
