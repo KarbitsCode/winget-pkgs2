@@ -27,6 +27,7 @@ jobs:
         env:
           GIT_NAME: ${{ vars.GIT_NAME }}
           GIT_EMAIL: ${{ vars.GIT_EMAIL }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           git config --global user.name $env:GIT_NAME
           git config --global user.email $env:GIT_EMAIL
@@ -66,6 +67,8 @@ jobs:
 
       - name: Run python scripts
         shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.WINGET_TOKEN }}
         run: |
           # https://github.com/PowerShell/PowerShell/issues/14100
           $env:PSModulePath = 'C:\Windows\System32\WindowsPowerShell\v1.0\Modules'
