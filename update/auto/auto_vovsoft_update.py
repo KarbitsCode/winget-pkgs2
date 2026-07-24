@@ -24,7 +24,7 @@ def run():
             f"{package_name.split(".")[1]} {new_version}",
             replace=old_version_folder
         )
-        submit_package("wingetcreate", new_version_folder, "--replace")
+        #submit_package("wingetcreate", new_version_folder, "--replace")
 
 
 if __name__ == "__main__":
