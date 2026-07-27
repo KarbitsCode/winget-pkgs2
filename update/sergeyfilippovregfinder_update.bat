@@ -19,6 +19,7 @@ for /f "usebackq delims=" %%A in (`
 
 komac update SergeyFilippov.RegistryFinder ^
   --output . ^
+  --dry-run ^
   --skip-pr-check ^
   --version %VERSION% ^
   --release-notes-url %RELEASE_NOTES_URL% ^

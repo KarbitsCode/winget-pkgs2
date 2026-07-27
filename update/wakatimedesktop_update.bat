@@ -12,6 +12,7 @@ set "FIXED_VERSION=%VERSION:+=.%"
 
 komac update Wakatime.DesktopWakatime ^
   --output . ^
+  --dry-run ^
   --skip-pr-check ^
   --version %FIXED_VERSION% ^
   --urls ^
