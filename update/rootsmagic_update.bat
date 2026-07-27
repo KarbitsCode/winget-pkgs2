@@ -32,6 +32,7 @@ for /f "usebackq delims=" %%B in (`
 
 komac update RootsMagic.RootsMagic.%SHORT_VERSION% ^
   --output . ^
+  --dry-run ^
   --skip-pr-check ^
   --version %VERSION% ^
   --release-notes-url %RELEASE_NOTES_URL% ^

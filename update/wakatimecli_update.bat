@@ -11,6 +11,7 @@ set "VERSION=%~1"
 
 komac update Wakatime.CLIWakatime ^
   --output . ^
+  --dry-run ^
   --skip-pr-check ^
   --version %VERSION% ^
   --urls ^

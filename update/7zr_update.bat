@@ -44,6 +44,7 @@ for /f "usebackq delims=" %%A in (`
 
 komac update 7zip.7zr ^
   --output . ^
+  --dry-run ^
   --skip-pr-check ^
   --version %VERSION% ^
   --release-notes-url %RELEASE_NOTES_URL% ^
