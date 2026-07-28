@@ -1,8 +1,10 @@
 import re
 import os
 import sys
+import json
 import shutil
 import requests
+import threading
 import subprocess
 import importlib.util
 from pathlib import Path
@@ -15,18 +17,26 @@ def inject_context(target):
     })
 
 def run_with_stream(*args, **kwargs):
+    def pump(stream, collect=False):
+        for line in stream:
+            print(line, end="")
+            if collect:
+                output.append(line)
     output = []
     proc = subprocess.Popen(
         *args,
         stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
+        stderr=subprocess.PIPE,
         text=True,
         shell=True,
         **kwargs,
     )
-    for line in proc.stdout:
-        print(line, end="")
-        output.append(line)
+    t1 = threading.Thread(target=pump, args=(proc.stdout, True))
+    t2 = threading.Thread(target=pump, args=(proc.stderr, False))
+    t1.start()
+    t2.start()
+    t1.join()
+    t2.join()
     proc.wait()
     if proc.returncode:
         raise subprocess.CalledProcessError(proc.returncode, proc.args)
@@ -91,13 +101,19 @@ def submit_package(tool, version_folder, options=""):
     elif tool == "komac":
         command = "komac submit --submit"
     
-    submit_output = run_with_stream(
-        f"{command} {version_folder} {options}"
-    )
-    pr_url = re.search(r"https://github\.com/microsoft/winget-pkgs/pull/\d+", submit_output).group(0)
-    run_with_stream(
-        f"powershell -ExecutionPolicy Bypass -File Tools\\UpdatePRBody.ps1 Tools\\PRBodyTemplate\\PRBodyModify.md -pr {pr_url.split('/')[-1]} -auto"
-    )
+    found_pr = json.loads(run_with_stream(
+        f"powershell -ExecutionPolicy Bypass -File Tools\\GitHubPRSearch.ps1 {version_folder}"
+    ))
+    print(f"{"::warning title=Duplicate PR::" if os.getenv("GITHUB_ACTIONS") else ""}{version_folder} found in already opened PR(s): {", ".join(str(i["number"]) for i in found_pr)}")
+    
+    if not found_pr:
+        submit_output = run_with_stream(
+            f"{command} {version_folder} {options}"
+        )
+        pr_url = re.search(r"https://github\.com/microsoft/winget-pkgs/pull/\d+", submit_output).group(0)
+        run_with_stream(
+            f"powershell -ExecutionPolicy Bypass -File Tools\\UpdatePRBody.ps1 Tools\\PRBodyTemplate\\PRBodyModify.md -pr {pr_url.split('/')[-1]} -auto"
+        )
 
 def sync_manifests():
     run_with_stream(
