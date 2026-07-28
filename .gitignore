@@ -5,3 +5,4 @@
 !.gitattributes
 !README.md
 winget-pkgs/
+__pycache__/
