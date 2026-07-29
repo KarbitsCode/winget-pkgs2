@@ -86,7 +86,7 @@ jobs:
           BOT_TOKEN: ${{ steps.github-app.outputs.token }}
         run: |
           # https://github.com/PowerShell/PowerShell/issues/14100
-          $env:PSModulePath = 'C:\Windows\System32\WindowsPowerShell\v1.0\Modules'
+          $env:PSModulePath = "C:\Windows\System32\WindowsPowerShell\v1.0\Modules"
           Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
           Update-SessionEnvironment
           python .\update\auto\_update_all.py
@@ -95,5 +95,7 @@ jobs:
         if: always()
         shell: pwsh
         run: |
+          Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+          Update-SessionEnvironment
           wingetcreate token --clear
           komac token remove --yes
