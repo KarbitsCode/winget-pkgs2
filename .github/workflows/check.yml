@@ -41,3 +41,8 @@ jobs:
           
           Write-Host "`n===== CheckMonikers =====`n"
           .\Tools\CheckMonikers.ps1 -Verbose
+
+      - name: Delegate workflow
+        uses: benc-uk/workflow-dispatch@v1.3.1
+        with:
+          workflow: auto.yml
