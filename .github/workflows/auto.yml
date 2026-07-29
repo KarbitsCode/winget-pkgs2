@@ -82,10 +82,18 @@ jobs:
       - name: Run python scripts
         shell: pwsh
         env:
-          GH_TOKEN: ${{ steps.github-app.outputs.token }}
+          GH_TOKEN: ${{ secrets.WINGET_TOKEN }}
+          BOT_TOKEN: ${{ steps.github-app.outputs.token }}
         run: |
           # https://github.com/PowerShell/PowerShell/issues/14100
           $env:PSModulePath = 'C:\Windows\System32\WindowsPowerShell\v1.0\Modules'
           Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
           Update-SessionEnvironment
           python .\update\auto\_update_all.py
+
+      - name: Post cleanup winget token
+        if: always()
+        shell: pwsh
+        run: |
+          wingetcreate token --clear
+          komac token remove --yes
