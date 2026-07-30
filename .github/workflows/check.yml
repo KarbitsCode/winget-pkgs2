@@ -43,6 +43,6 @@ jobs:
           .\Tools\CheckMonikers.ps1 -Verbose
 
       - name: Delegate workflow
-        uses: benc-uk/workflow-dispatch@v1.3.1
+        uses: benc-uk/workflow-dispatch@v1.3.2
         with:
           workflow: auto.yml
