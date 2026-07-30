@@ -88,12 +88,6 @@ function Get-ReleaseTag {
 while ($true) {
     try {
         Get-GitHubRateLimit
-        Write-Host "=== Repositories ==="
-        Get-PSRepository | Format-List * | Out-String | Write-Host
-        Write-Host "=== Package Sources ==="
-        Get-PackageSource | Format-List * | Out-String | Write-Host
-        Write-Host "=== Package Providers ==="
-        Get-PackageProvider | Format-List * | Out-String | Write-Host
         if ($PSVersionTable.PSVersion.Major -lt 7) {
             Install-PackageProvider NuGet -MinimumVersion 2.8.5.201 -Force -Scope AllUsers -Confirm:$false
         }
