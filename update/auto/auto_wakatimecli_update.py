@@ -1,4 +1,4 @@
-def run():
+def run(*, is_main=(__name__ == "__main__")):
     versions = check_releases("https://api.github.com/repos/wakatime/wakatime-cli/releases")
     wakatime_dir = Path("manifests\\w\\Wakatime\\CLIWakatime")
     existing = {
@@ -23,6 +23,9 @@ def run():
             f"{new_version}"
         )
         submit_package("komac", new_version_folder)
+    
+    if is_main:
+        submit_flush()
 
 
 if __name__ == "__main__":

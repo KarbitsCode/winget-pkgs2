@@ -9,6 +9,8 @@ import subprocess
 import importlib.util
 from pathlib import Path
 
+submit_q = []
+
 def inject_context(target):
     target.update({
         k: v
@@ -104,18 +106,29 @@ def submit_package(tool, version_folder, options=""):
     found_pr = json.loads(run_with_stream(
         f"powershell -ExecutionPolicy Bypass -File Tools\\GitHubPRSearch.ps1 {version_folder}"
     ))
-    print(f"{"::warning title=Duplicate PR::" if os.getenv("GITHUB_ACTIONS") else ""}{version_folder} found in already opened PR(s): {", ".join(str(i["number"]) for i in found_pr)}")
     
-    if not found_pr:
-        submit_output = run_with_stream(
-            f"{command} {version_folder} {options}"
-        )
-        pr_url = re.search(r"https://github\.com/microsoft/winget-pkgs/pull/\d+", submit_output).group(0)
-        run_with_stream(
-            f"powershell -ExecutionPolicy Bypass -File Tools\\UpdatePRBody.ps1 Tools\\PRBodyTemplate\\PRBodyModify.md -pr {pr_url.split('/')[-1]} -auto"
-        )
+    if found_pr:
+        print(f"{"::warning title=Duplicate PR::" if os.getenv("GITHUB_ACTIONS") else ""}{version_folder} found in already opened PR(s): {", ".join(str(i["number"]) for i in found_pr)}")
+    else:
+        submit_q.append((f"{command} {version_folder} {options}", version_folder))
+
+def submit_flush():
+    for command, version_folder in submit_q:
+        try:
+            print(f"Submitting {version_folder}...")
+            submit_output = run_with_stream(
+                f"{command} {version_folder} {options}"
+            )
+            pr_url = re.search(r"https://github\.com/microsoft/winget-pkgs/pull/\d+", submit_output).group(0)
+            run_with_stream(
+                f"powershell -ExecutionPolicy Bypass -File Tools\\UpdatePRBody.ps1 Tools\\PRBodyTemplate\\PRBodyModify.md -pr {pr_url.split('/')[-1]} -auto"
+            )
+        except Exception as e:
+            print(f"{"::error title=Failed submission::" if os.getenv("GITHUB_ACTIONS") else ""}Failed to submit {version_folder}: {type(e).__name__}: {e}")
+    submit_q.clear()
 
 def sync_manifests():
+    submit_flush()
     run_with_stream(
         f"powershell -ExecutionPolicy Bypass -File Tools\\SyncManifests.ps1"
     )

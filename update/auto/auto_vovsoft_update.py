@@ -1,4 +1,4 @@
-def run():
+def run(*, is_main=(__name__ == "__main__")):
     files, urls, packages = check_mismatches("manifests\\v\\VovSoft")
     print(files)
     print(urls)
@@ -25,6 +25,9 @@ def run():
             replace=old_version_folder
         )
         submit_package("wingetcreate", new_version_folder, "--replace")
+    
+    if is_main:
+        submit_flush()
 
 
 if __name__ == "__main__":
