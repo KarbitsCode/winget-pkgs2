@@ -10,6 +10,7 @@ jobs:
     timeout-minutes: 360
     permissions:
       contents: read
+      actions: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7.0.1
@@ -44,5 +45,6 @@ jobs:
 
       - name: Delegate workflow
         uses: benc-uk/workflow-dispatch@v1.3.2
+        if: always()
         with:
           workflow: auto.yml
