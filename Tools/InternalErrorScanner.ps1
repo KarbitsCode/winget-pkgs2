@@ -24,7 +24,7 @@ while ($true) {
     }
 
     if ($targetprs.Count -gt 0) {
-        powershell -file $(Join-Path $(Split-Path $PSCommandPath -Parent) "TriggerPipeline.ps1") @targetprs
+        powershell -ExecutionPolicy Bypass -File "$PSScriptRoot\TriggerPipeline.ps1" @targetprs
     }
 
     if (-not $Once) {

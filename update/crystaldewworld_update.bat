@@ -25,7 +25,7 @@ for /f "usebackq delims=" %%A in (`
     "$archs = $list | ForEach-Object { $_.Arch };" ^
     "$count = [Math]::Min($urls.Count, $archs.Count);" ^
     "$pairs = for ($i=0; $i -lt $count; $i++) { \""$($urls[$i])^|$($archs[$i])\"" };" ^
-    "if ($pairs) { Write-Output ('URL_ARGS=' + $pairs -join ' ') };"
+    "if ($pairs) { Write-Output ('URL_ARGS=' + $pairs -join ' ') };" 2^>con
 `) do set "%%A"
 
 for /f "usebackq delims=" %%B in (`
@@ -34,7 +34,7 @@ for /f "usebackq delims=" %%B in (`
     "$res = curl.exe -s -I -L $url;" ^
     "$lastm = (($res | Select-String '^^Last-Modified:').Line -replace '^^Last-Modified:\s*', '').Trim();" ^
     "$reldate = [datetime]::Parse($lastm).ToString('yyyy-MM-dd');" ^
-    "Write-Output ('RELEASE_DATE=' + $reldate)"
+    "Write-Output ('RELEASE_DATE=' + $reldate)" 2^>con
 `) do set "%%B"
 
 wingetcreate update CrystalDewWorld.%PKGNAME% ^

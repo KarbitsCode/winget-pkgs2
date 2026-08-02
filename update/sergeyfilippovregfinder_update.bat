@@ -14,7 +14,7 @@ for /f "usebackq delims=" %%A in (`
   komac show SergeyFilippov.RegistryFinder ^| powershell -NoLogo -Command ^
     "$input = $input | Out-String;" ^
     "$rnurl = @([regex]::Matches($input, 'ReleaseNotesUrl:\s*(\S+)') | ForEach-Object { $_.Groups[1].Value });" ^
-    "if ($rnurl) { Write-Output ('RELEASE_NOTES_URL=' + $rnurl) }"
+    "if ($rnurl) { Write-Output ('RELEASE_NOTES_URL=' + $rnurl) }" 2^>con
 `) do set "%%A"
 
 komac update SergeyFilippov.RegistryFinder ^

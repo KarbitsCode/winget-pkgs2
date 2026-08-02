@@ -13,14 +13,14 @@ for /f "tokens=1,2,4 delims=." %%A in ("%VERSION%") do set "SHORT_VERSION=%%A.%%
 for /f "usebackq delims=" %%A in (`
   wingetcreate show Ubisoft.Connect ^| powershell -NoLogo -Command ^
     "$text = $input | Out-String;" ^
-    "if ($text -match 'InstallerUrl:\s*(\S+)') { Write-Output ('URL=' + $matches[1]) }"
+    "if ($text -match 'InstallerUrl:\s*(\S+)') { Write-Output ('URL=' + $matches[1]) }" 2^>con
 `) do set "%%A"
 
 for /f "usebackq delims=" %%B in (`
   powershell -NoLogo -Command ^
     "$res = Invoke-WebRequest %URL% -Method Head -UseBasicParsing;" ^
     "$reldate = [datetime]::Parse($res.Headers['Last-Modified']).ToString('yyyy-MM-dd');" ^
-    "Write-Output ('RELEASE_DATE=' + $reldate)"
+    "Write-Output ('RELEASE_DATE=' + $reldate)" 2^>con
 `) do set "%%B"
 
 wingetcreate update Ubisoft.Connect ^

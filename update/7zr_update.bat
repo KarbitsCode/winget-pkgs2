@@ -13,7 +13,7 @@ for /f "usebackq delims=" %%A in (`
   komac show 7zip.7zr ^| powershell -NoLogo -Command ^
     "$input = $input | Out-String;" ^
     "$pkver = @([regex]::Matches($input, 'PackageVersion:\s*(\S+)') | ForEach-Object { $_.Groups[1].Value })[0];" ^
-    "if ($pkver) { Write-Output ('PUBLISHED_VERSION=' + $pkver.Trim([char[]](39,34))) }"
+    "if ($pkver) { Write-Output ('PUBLISHED_VERSION=' + $pkver.Trim('""''')) }" 2^>con
 `) do set "%%A"
 
 set "INPUT_NUM=%VERSION:.=%"
@@ -37,7 +37,7 @@ for /f "usebackq delims=" %%A in (`
       "$url = 'https://7-zip.org/history.txt';" ^
       "Invoke-WebRequest $url -Method Get -UseBasicParsing;" ^
       "Write-Output ($url)" ^
-    "}"
+    "}" 2^>con
 `) do (
   set "RELEASE_NOTES_URL=%%A"
 )

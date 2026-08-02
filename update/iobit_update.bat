@@ -16,7 +16,7 @@ for /f "usebackq delims=" %%A in (`
     "$text = $input | Out-String;" ^
     "if ($text -match 'Architecture:\s*(\S+)') { Write-Output ('ARCH=' + $matches[1]) };" ^
     "if ($text -match 'InstallerUrl:\s*(\S+)') { Write-Output ('URL=' + $matches[1]) }" ^
-    "if ($text -match 'DisplayVersion:\s*(\S+)') { Write-Output ('DISPLAY_VERSION=' + $matches[1]) }"
+    "if ($text -match 'DisplayVersion:\s*(\S+)') { Write-Output ('DISPLAY_VERSION=' + $matches[1]) }" 2^>con
 `) do set "%%A"
 
 for /f "usebackq delims=" %%B in (`
@@ -24,7 +24,7 @@ for /f "usebackq delims=" %%B in (`
     "$url = ((('%URL%' -replace '\^\|', '|') -split ' ')[0] -split '\|')[0];" ^
     "$res = Invoke-WebRequest $url -Method Head -UseBasicParsing;" ^
     "$reldate = [datetime]::Parse($res.Headers['Last-Modified']).ToString('yyyy-MM-dd');" ^
-    "Write-Output ('RELEASE_DATE=' + $reldate)"
+    "Write-Output ('RELEASE_DATE=' + $reldate)" 2^>con
 `) do set "%%B"
 
 set "OTHER_ARGS="
