@@ -92,6 +92,9 @@ function Add-NestedJsonValue {
   }
 }
 
+if (-not (New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+  throw "Runner has to be in elevated session."
+}
 
 Write-Host @'
 --> Installing WinGet
@@ -187,7 +190,15 @@ Write-Host @"
   foreach ($item in $diff) {
     $code = $item.ProductCode
     if ($code) {
-      $scriptBlock = { winget uninstall --product-code $code --verbose-logs --accept-source-agreements --disable-interactivity }
+      if ($item.Scope -eq "User") {
+        $scriptBlock = {
+          powershell -ExecutionPolicy Bypass -File "$PSScriptRoot\UserProcess.ps1" -Command "winget uninstall --product-code $code --verbose-logs --accept-source-agreements --disable-interactivity"
+        }.GetNewClosure()
+      } else {
+        $scriptBlock = {
+          winget uninstall --product-code $code --verbose-logs --accept-source-agreements --disable-interactivity
+        }.GetNewClosure()
+      }
       if ($StripProgress) {
         Strip-Progress -ScriptBlock $scriptBlock
       } else {
