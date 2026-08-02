@@ -21,7 +21,7 @@ for /f "usebackq delims=" %%A in (`
       "$url = 'https://7-zip.org/history.txt';" ^
       "Invoke-WebRequest $url -Method Get -UseBasicParsing;" ^
       "Write-Output ($url)" ^
-    "}"
+    "}" 2^>con
 `) do (
   set "RELEASE_NOTES_URL=%%A"
 )
@@ -39,7 +39,7 @@ for /f "usebackq delims=" %%A in (`
     "[xml]$res = Invoke-WebRequest https://sourceforge.net/projects/sevenzip/rss?path=/7-Zip/%VERSION% -Method Get -UseBasicParsing;" ^
     "$remote = [System.Collections.Generic.HashSet[string]]::new();" ^
     "$res.rss.channel.item | ForEach-Object { [void]$remote.Add($(Split-Path -Path $_.title.InnerText -Leaf)) };" ^
-    "$list | Where-Object { $remote.Contains($_.File) } | ForEach-Object { Write-Output ($_.File + '^|' + $_.Arch) }"
+    "$list | Where-Object { $remote.Contains($_.File) } | ForEach-Object { Write-Output ($_.File + '^|' + $_.Arch) }" 2^>con
 `) do (
   set "FILES=!FILES! %%A"
 )

@@ -18,8 +18,8 @@ for /f "usebackq delims=" %%A in (`
     "$rnurl = @([regex]::Matches($input, 'ReleaseNotesUrl:\s*(\S+)') | ForEach-Object { $_.Groups[1].Value });" ^
     "$count = [Math]::Min($urls.Count, $archs.Count);" ^
     "$pairs = for ($i=0; $i -lt $count; $i++) { \""$($urls[$i])^|$($archs[$i])\"" };" ^
-    "if ($pairs) { Write-Output ('URL_ARGS=' + $pairs -join ' ') };"
-    "if ($rnurl) { Write-Output ('RELEASE_NOTES_URL=' + $rnurl) }"
+    "if ($pairs) { Write-Output ('URL_ARGS=' + $pairs -join ' ') };" ^
+    "if ($rnurl) { Write-Output ('RELEASE_NOTES_URL=' + $rnurl) }" 2^>con
 `) do set "%%A"
 
 for /f "usebackq delims=" %%B in (`
@@ -27,7 +27,7 @@ for /f "usebackq delims=" %%B in (`
     "$url = ((('%URL_ARGS%' -replace '\^\|', '|') -split ' ')[0] -split '\|')[0];" ^
     "$res = Invoke-WebRequest $url -Method Head -UseBasicParsing;" ^
     "$reldate = [datetime]::Parse($res.Headers['Last-Modified']).ToString('yyyy-MM-dd');" ^
-    "Write-Output ('RELEASE_DATE=' + $reldate)"
+    "Write-Output ('RELEASE_DATE=' + $reldate)" 2^>con
 `) do set "%%B"
 
 wingetcreate update NirSoft.%PKGNAME% ^
