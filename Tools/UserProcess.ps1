@@ -71,7 +71,7 @@ if (-not [Win32]::GetTokenInformation($hToken, 20 <# TokenElevation #>, [ref]$el
 if (-not [Win32]::GetTokenInformation($hToken, 18 <# TokenElevationType #>, [ref]$elevationType, 4, [ref]$returnLength)) {
     throw "GetTokenInformation2 failed: $([Runtime.InteropServices.Marshal]::GetLastWin32Error())"
 }
-Write-Host "Explorer elevated: $([bool]$elevation.TokenIsElevated) $(switch ($elevationType) {
+Write-Output "Explorer elevated: $([bool]$elevation.TokenIsElevated) $(switch ($elevationType) {
     1 { 'Default' }
     2 { 'Full' }
     3 { 'Limited' }
@@ -126,7 +126,7 @@ $fs = New-Object System.IO.FileStream($safe, [System.IO.FileAccess]::Read)
 $reader = New-Object System.IO.StreamReader($fs)
 while ($null -ne ($line = $reader.ReadLine())) {
     # Stream the outputs
-    Write-Host $line
+    Write-Output $line
 }
 
 [Win32]::WaitForSingleObject($pi.hProcess, [uint32]::MaxValue <# INFINITE #>) | Out-Null
