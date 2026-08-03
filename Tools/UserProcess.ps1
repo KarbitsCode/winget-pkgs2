@@ -71,7 +71,6 @@ if (-not [Win32]::GetTokenInformation($hToken, 20 <# TokenElevation #>, [ref]$el
 if (-not [Win32]::GetTokenInformation($hToken, 18 <# TokenElevationType #>, [ref]$elevationType, 4, [ref]$returnLength)) {
     throw "GetTokenInformation2 failed: $([Runtime.InteropServices.Marshal]::GetLastWin32Error())"
 }
-whoami /all
 Write-Host "Explorer elevated: $([bool]$elevation.TokenIsElevated) $(switch ($elevationType) {
     1 { 'Default' }
     2 { 'Full' }
