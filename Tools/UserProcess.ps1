@@ -29,14 +29,19 @@ public static class Win32 {
         public IntPtr hProcess, hThread;
         public int dwProcessId, dwThreadId;
     }
-    [DllImport("kernel32.dll", SetLastError = true)] public static extern IntPtr OpenProcess(int access, bool inherit, int pid);
+    [StructLayout(LayoutKind.Sequential)] public struct TE {
+        public int TokenIsElevated;
+    }
     [DllImport("kernel32.dll")] public static extern IntPtr GetStdHandle(int h);
     [DllImport("kernel32.dll")] public static extern bool CloseHandle(IntPtr h);
     [DllImport("kernel32.dll")] public static extern uint WaitForSingleObject(IntPtr h, uint ms);
     [DllImport("kernel32.dll")] public static extern bool GetExitCodeProcess(IntPtr h, out int code);
+    [DllImport("kernel32.dll", SetLastError = true)] public static extern IntPtr OpenProcess(int access, bool inherit, int pid);
     [DllImport("kernel32.dll", SetLastError = true)] public static extern bool CreatePipe( out IntPtr hReadPipe, out IntPtr hWritePipe, ref SA lpPipeAttributes, uint nSize);
     [DllImport("kernel32.dll", SetLastError = true)] public static extern bool SetHandleInformation(IntPtr hObject, uint dwMask, uint dwFlags);
     [DllImport("advapi32.dll", SetLastError = true)] public static extern bool OpenProcessToken(IntPtr proc, int access, out IntPtr token);
+    [DllImport("advapi32.dll", SetLastError = true)] public static extern bool GetTokenInformation(IntPtr token, int infoClass, out TE info, int infoLength, out int returnLength);
+    [DllImport("advapi32.dll", SetLastError = true)] public static extern bool GetTokenInformation(IntPtr token, int infoClass, out int info, int infoLength, out int returnLength);
     [DllImport("advapi32.dll", SetLastError = true)] public static extern bool DuplicateTokenEx(IntPtr tok, int access, ref SA sa, int impLevel, int tokType, out IntPtr newTok);
     [DllImport("advapi32.dll", SetLastError = true, CharSet = CharSet.Unicode)] public static extern bool CreateProcessWithTokenW(IntPtr token, int logonFlags, string appName, string cmdLine, int creationFlags, IntPtr env, string curDir, ref SI si, out PI pi);
     [DllImport("userenv.dll", SetLastError = true)] public static extern bool CreateEnvironmentBlock(out IntPtr env, IntPtr token, bool inherit);
@@ -57,6 +62,21 @@ $hToken = [IntPtr]::Zero
 if (-not [Win32]::OpenProcessToken($hExplorer, 0x0002 -bor 0x0008 <# TOKEN_DUPLICATE | TOKEN_QUERY #>, [ref]$hToken)) {
     throw "OpenProcessToken failed: $([Runtime.InteropServices.Marshal]::GetLastWin32Error())"
 }
+$elevation = New-Object Win32+TE
+$elevationType = 0
+$returnLength = 0
+if (-not [Win32]::GetTokenInformation($hToken, 20 <# TokenElevation #>, [ref]$elevation, [Runtime.InteropServices.Marshal]::SizeOf($elevation), [ref]$returnLength)) {
+    throw "GetTokenInformation failed: $([Runtime.InteropServices.Marshal]::GetLastWin32Error())"
+}
+if (-not [Win32]::GetTokenInformation($hToken, 18 <# TokenElevationType #>, [ref]$elevationType, 4, [ref]$returnLength)) {
+    throw "GetTokenInformation2 failed: $([Runtime.InteropServices.Marshal]::GetLastWin32Error())"
+}
+Write-Host "Explorer elevated: $([bool]$elevation.TokenIsElevated) $(switch ($elevationType) {
+    1 { 'Default' }
+    2 { 'Full' }
+    3 { 'Limited' }
+    default { `"Unknown ($type)`" }
+})"
 $sa = New-Object Win32+SA;
 $sa.nLength = [Runtime.InteropServices.Marshal]::SizeOf($sa)
 $sa.bInheritHandle = $true
@@ -104,7 +124,7 @@ if (-not [Win32]::CreateProcessWithTokenW($hTokenCopy, 0, $psExe, $cmdLine, $cre
 $safe = New-Object Microsoft.Win32.SafeHandles.SafeFileHandle($outRead, $true)
 $fs = New-Object System.IO.FileStream($safe, [System.IO.FileAccess]::Read)
 $reader = New-Object System.IO.StreamReader($fs)
-while (($line = $reader.ReadLine()) -ne $null) {
+while ($null -ne ($line = $reader.ReadLine())) {
     # Stream the outputs
     Write-Host $line
 }
