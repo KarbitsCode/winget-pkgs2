@@ -117,7 +117,7 @@ def submit_flush():
         try:
             print(f"Submitting {version_folder}...")
             submit_output = run_with_stream(
-                f"{command} {version_folder} {options}"
+                f"{command}"
             )
             pr_url = re.search(r"https://github\.com/microsoft/winget-pkgs/pull/\d+", submit_output).group(0)
             run_with_stream(
@@ -128,7 +128,6 @@ def submit_flush():
     submit_q.clear()
 
 def sync_manifests():
-    submit_flush()
     run_with_stream(
         f"powershell -ExecutionPolicy Bypass -File Tools\\SyncManifests.ps1"
     )
@@ -143,4 +142,5 @@ if __name__ == "__main__":
         inject_context(module.__dict__)
         spec.loader.exec_module(module)
         module.run()
+    submit_flush()
     sync_manifests()
