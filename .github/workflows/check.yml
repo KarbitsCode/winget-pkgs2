@@ -45,6 +45,6 @@ jobs:
 
       - name: Delegate workflow
         uses: benc-uk/workflow-dispatch@v1.3.2
-        if: always()
+        if: always() && github.event_name != 'workflow_dispatch'
         with:
           workflow: auto.yml
