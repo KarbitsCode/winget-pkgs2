@@ -86,6 +86,17 @@ foreach ($prNumber in ($prNumbers | Sort-Object {[int]$_})) {
         Write-Host "Added resolves line to markdown template ($(Split-Path $tempFile -Leaf))" -ForegroundColor Yellow
     }
 
+    if ($Auto) {
+        if ($env:GITHUB_ACTIONS) {
+            # If ran inside a GitHub workflow
+            $autoMessage = "> *Automatic sumbission from run: $($env:GITHUB_RUN_ID)$($env:GITHUB_RUN_NUMBER)$($env:GITHUB_RUN_ATTEMPT)*"
+            $bodyContent = Get-Content $tempFile -Raw -Encoding utf8
+            $bodyContent = $bodyContent -replace "(##\s+.*?Description\s*<!--.*?-->)", "`$1`n`n$autoMessage"
+            Set-Content $tempFile $bodyContent -Encoding utf8
+            Write-Host "Added automatic notice message to markdown template ($(Split-Path $tempFile -Leaf))" -ForegroundColor Yellow
+        }
+    }
+
     # Update PR body
     gh pr edit $prNumber --body-file "$tempFile"
     Write-Host "Updated PR #$prNumber body with contents of $(Split-Path $BodyFile -Leaf)" -ForegroundColor Green
