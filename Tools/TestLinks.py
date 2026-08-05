@@ -71,7 +71,7 @@ def dump_response(prefix, response):
 def test_links(url, file_path):
     """Test a URL with HEAD and GET requests"""
     result = {"url": url}
-    timeout = (3, 10)
+    timeout = (5, 10)
     headers = {
         "User-Agent": (
             f"Python/{'.'.join((platform.python_version_tuple()[:2]))} "
