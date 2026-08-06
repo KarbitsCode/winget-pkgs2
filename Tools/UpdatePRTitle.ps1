@@ -6,9 +6,7 @@ param(
     [Parameter()]
     [string]$PR,
     [Parameter()]
-    [string]$Except,
-    [Parameter()]
-    [switch]$Auto
+    [string]$Except
 )
 
 Push-Location .\winget-pkgs\
