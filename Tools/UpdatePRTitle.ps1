@@ -6,7 +6,9 @@ param(
     [Parameter()]
     [string]$PR,
     [Parameter()]
-    [string]$Except
+    [string]$Except,
+    [Parameter()]
+    [switch]$Replace
 )
 
 Push-Location .\winget-pkgs\
@@ -47,7 +49,12 @@ foreach ($prNumber in ($prNumbers | Sort-Object {[int]$_})) {
     if ($oldTitle -match "^(?<prefix>[^:]+):\s") {
         $existingPrefix = $matches["prefix"]
         Write-Host "Title already has a prefix: $existingPrefix" -ForegroundColor Yellow
-        continue
+        if ($Replace) {
+            Write-Host "Replacing anyway..." -ForegroundColor Yellow
+            $oldTitle = $oldTitle -replace "^$($existingPrefix):\s+", ""
+        } else {
+            continue
+        }
     }
 
     # Edit the PR title and get the result
