@@ -192,7 +192,7 @@ Write-Host @"
     if ($code) {
       if ($item.Scope -eq "User") {
         $scriptBlock = {
-          powershell -ExecutionPolicy Bypass -File "$PSScriptRoot\UserProcess.ps1" -Command "winget uninstall --product-code $code --verbose-logs --accept-source-agreements --disable-interactivity"
+          powershell -ExecutionPolicy Bypass -File "$PSScriptRoot\UserProcess.ps1" -Command "winget uninstall --product-code '$code' --verbose-logs --accept-source-agreements --disable-interactivity"
         }.GetNewClosure()
       } else {
         $scriptBlock = {
