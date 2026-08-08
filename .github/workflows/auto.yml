@@ -79,6 +79,17 @@ jobs:
           wingetcreate token --store --token $env:WINGET_TOKEN
           komac token new --token $env:WINGET_TOKEN
 
+      - name: Refresh environment
+        shell: pwsh
+        run: |
+          Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+          Update-SessionEnvironment
+          $env:PATH -split ';' |
+            Where-Object { $_ } |
+            ForEach-Object {
+              $_ >> $env:GITHUB_PATH
+            }
+
       - name: Run python scripts
         shell: pwsh
         env:
@@ -87,16 +98,12 @@ jobs:
         run: |
           # https://github.com/PowerShell/PowerShell/issues/14100
           $env:PSModulePath = "C:\Windows\System32\WindowsPowerShell\v1.0\Modules"
-          Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-          Update-SessionEnvironment
           python .\update\auto\_update_all.py
 
       - name: Post cleanup winget token
         if: always()
         shell: pwsh
         run: |
-          Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-          Update-SessionEnvironment
           wingetcreate cache --clean
           wingetcreate token --clear
           komac token remove --yes
