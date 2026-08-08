@@ -31,7 +31,8 @@ jobs:
         continue-on-error: true
         working-directory: ./upstream
         run: |
-          Install-PSResource -Name powershell-yaml -Scope CurrentUser -TrustRepository
+          Install-PSResource -Name powershell-yaml -Scope CurrentUser -TrustRepository -Verbose
+          Install-PSResource -Name Microsoft.WinGet.Client -Scope CurrentUser -TrustRepository -Verbose
           
           Write-Host "`n===== CheckDependencies (Online) =====`n"
           .\Tools\CheckDependencies.ps1 -Verbose
