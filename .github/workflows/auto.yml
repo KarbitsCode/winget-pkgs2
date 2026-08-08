@@ -84,13 +84,13 @@ jobs:
         run: |
           Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
           $oldPath = $env:PATH -split ';'
+          Write-Output "Old path: $oldPath"
           Update-SessionEnvironment
-          $newPath = $env:PATH -split ';'
-          $newPath |
-            Where-Object { $_ -and $_ -notin $oldPath } |
-            ForEach-Object {
-              $_ >> $env:GITHUB_PATH
-            }
+          $newPath = $env:PATH -split ';' | Where-Object { $_ -and $_ -notin $oldPath }
+          Write-Output "New path: $newPath"
+          $newPath | ForEach-Object {
+            $_ >> $env:GITHUB_PATH
+          }
 
       - name: Run python scripts
         shell: pwsh
