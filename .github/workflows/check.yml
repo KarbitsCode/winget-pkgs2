@@ -27,7 +27,7 @@ jobs:
 
       - name: Check manifests
         id: detect
-        shell: powershell
+        shell: pwsh
         continue-on-error: true
         working-directory: ./upstream
         run: |
