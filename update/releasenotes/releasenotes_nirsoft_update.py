@@ -1,12 +1,13 @@
 import re
 import sys
-import yaml
 import shutil
 import requests
 from pathlib import Path
 from bs4 import BeautifulSoup
+from ruamel.yaml import YAML
 
 target = Path(sys.argv[1])
+yaml = YAML(typ='rt')
 
 if (target.is_file() and target.name.endswith(".locale.en-US.yaml")):
     file_path = target
@@ -15,17 +16,23 @@ elif target.is_dir():
 else:
     raise RuntimeError("Not a file")
 
-with open(file_path.resolve(), "r", encoding="utf-8") as f:
-    data = yaml.safe_load(f)
+if "--no-backup" not in sys.argv:
+    print(f"Creating backup...")
+    shutil.copy2(file_path, file_path.with_name(file_path.name + ".rnbak"))
+
+print(f"Loading {file_path.name}...")
+output = file_path.resolve()
+with open(output, "r", encoding="utf-8") as f:
+    data = yaml.load(f)
     url = data.get("PackageUrl")
     version = data.get("PackageVersion")
 
-shutil.copy2(file_path, file_path.with_name(file_path.name + ".rnbak"))
-output = file_path
-
+print(f"Fetching {url}...")
 response = requests.get(url, timeout=30)
 response.raise_for_status()
-soup = BeautifulSoup(response.text, "html.parser")
+
+print(f"Parsing page...")
+soup = BeautifulSoup(response.text, "lxml")
 history_heading = soup.find(
     "h4",
     class_="utilsubject",
@@ -50,12 +57,20 @@ for entry in history.find_all("li", recursive=False):
     if notes is None:
         raise RuntimeError(f"No release notes found for {target_version}")
 
-    with open(output, "a", encoding="utf-8", newline="\n") as file:
-        file.write("ReleaseNotes: |-\n")
-        file.write(f"  - {target_version}:\n")
+    print(f"Found release notes for version {version}:\n'{' '.join(str(notes or '').split())}'")
+    print(f"Deleting existing release notes...")
+    data.pop("ReleaseNotes", None)
+    with open(output, "w", encoding="utf-8") as f:
+        yaml.dump(data, f)
+
+    print(f"Writing new release notes...")
+    with open(output, "a", encoding="utf-8") as f:
+        f.write("ReleaseNotes: |-\n")
+        f.write(f"  - {target_version}:\n")
         for note in notes.find_all("li", recursive=False):
-            text = note.get_text(" ", strip=True)
-            file.write(f"    - {text}\n")
+            text = re.sub(r"\s+", " ", note.get_text(" ", strip=True))
+            f.write(f"    - {text}\n")
+    print("Done.")
     break
 else:
     raise RuntimeError(f"{target_version} was not found.")
