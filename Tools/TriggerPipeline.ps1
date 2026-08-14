@@ -52,7 +52,7 @@ foreach ($PRNumber in $PRNumbers) {
             Write-Host "With:" -ForegroundColor Yellow
             Write-Host "- message '$commitMessage'" -ForegroundColor Yellow
 
-            git pull -v --prune
+            git pull -v --prune --no-edit
             git fetch origin $prBranch -v
             git checkout $prBranch
             git commit --allow-empty -m "$commitMessage"
