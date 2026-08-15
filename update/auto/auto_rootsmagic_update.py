@@ -1,5 +1,13 @@
 def run(*, is_main=(__name__ == "__main__")):
+    selfname = Path(__file__).stem.lstrip("_").removeprefix("auto_")
     files, urls, packages = check_mismatches("manifests\\r\\RootsMagic\\RootsMagic")
+    
+    for i in range(len(urls) - 1, -1, -1):
+    if not urls[i].endswith(".exe"):
+        del files[i]
+        del urls[i]
+        del packages[i]
+    
     print(files)
     print(urls)
     print(packages)
@@ -14,7 +22,7 @@ def run(*, is_main=(__name__ == "__main__")):
     print(new_versions)
     
     for package_name, new_version, file in zip(packages, new_versions, files):
-        updater = Path(__file__).stem.lstrip("_").removeprefix("auto_")
+        updater = selfname
         old_version_folder = Path(file).parent
         package_folder = old_version_folder.parent
         new_version_folder = package_folder / new_version

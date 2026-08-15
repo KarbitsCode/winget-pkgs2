@@ -62,9 +62,6 @@ def check_mismatches(package_folder):
         file = re.search(r"^File:\s+(\S+)$", block, re.MULTILINE).group(1)
         url = re.search(r"^URL:\s+(\S+)$", block, re.MULTILINE).group(1)
         
-        if not url.endswith(".exe"):
-            continue
-        
         package = file.rsplit("\\", 1)[1].replace(".installer.yaml", "")
         if package in seen:
             continue

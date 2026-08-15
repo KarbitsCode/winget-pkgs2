@@ -1,4 +1,5 @@
 def run(*, is_main=(__name__ == "__main__")):
+    selfname = Path(__file__).stem.lstrip("_").removeprefix("auto_")
     versions = check_releases("https://api.github.com/repos/wakatime/wakatime-cli/releases")
     wakatime_dir = Path("manifests\\w\\Wakatime\\CLIWakatime")
     existing = {
@@ -14,7 +15,7 @@ def run(*, is_main=(__name__ == "__main__")):
     print(new_versions)
     
     for new_version in new_versions:
-        updater = Path(__file__).stem.lstrip("_").removeprefix("auto_")
+        updater = selfname
         package_folder = wakatime_dir
         new_version_folder = package_folder / new_version
         update_package_local(
