@@ -16,10 +16,6 @@ elif target.is_dir():
 else:
     raise RuntimeError("Not a file")
 
-if "--no-backup" not in sys.argv:
-    print(f"Creating backup...")
-    shutil.copy2(file_path, file_path.with_name(file_path.name + ".rnbak"))
-
 print(f"Loading {file_path.name}...")
 output = file_path.resolve()
 with open(output, "r", encoding="utf-8") as f:
@@ -45,6 +41,19 @@ history = history_heading.find_next("ul")
 if history is None:
     raise RuntimeError("Versions History list was not found.")
 
+if "--latest-version" in sys.argv:
+    latest_entry = history.find("li", recursive=False)
+    if latest_entry is None:
+        raise RuntimeError("No versions found.")
+    latest_label = next((text.strip() for text in latest_entry.find_all(string=True, recursive=False)), "")
+    new_version = re.sub(r"^Version\s+", "", latest_label).rstrip(":")
+    print(f"Latest version: {new_version}")
+    sys.exit()
+
+if "--no-backup" not in sys.argv:
+    print(f"Creating backup...")
+    shutil.copy2(output, output.with_name(output.name + ".rnbak"))
+
 target_version = f"Version {version}"
 for entry in history.find_all("li", recursive=False):
     # The text directly inside the outer <li> is the version label.
@@ -52,17 +61,17 @@ for entry in history.find_all("li", recursive=False):
     match = re.fullmatch(rf"{re.escape(target_version)}:?", label)
     if not match:
         continue
-
+    
     notes = entry.find("ul", recursive=False)
     if notes is None:
         raise RuntimeError(f"No release notes found for {target_version}")
-
+    
     print(f"Found release notes for version {version}:\n'{' '.join(str(notes or '').split())}'")
     print(f"Deleting existing release notes...")
     data.pop("ReleaseNotes", None)
     with open(output, "w", encoding="utf-8") as f:
         yaml.dump(data, f)
-
+    
     print(f"Writing new release notes...")
     with open(output, "a", encoding="utf-8") as f:
         f.write("ReleaseNotes: |-\n")
