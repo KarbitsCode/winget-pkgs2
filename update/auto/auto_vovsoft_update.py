@@ -3,10 +3,10 @@ def run(*, is_main=(__name__ == "__main__")):
     files, urls, packages = check_mismatches("manifests\\v\\VovSoft")
     
     for i in range(len(urls) - 1, -1, -1):
-    if not urls[i].endswith(".exe"):
-        del files[i]
-        del urls[i]
-        del packages[i]
+        if not urls[i].endswith(".exe"):
+            del files[i]
+            del urls[i]
+            del packages[i]
     
     print(files)
     print(urls)
