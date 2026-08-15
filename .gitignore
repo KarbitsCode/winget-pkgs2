@@ -4,5 +4,6 @@
 !.gitignore
 !.gitattributes
 !README.md
+!requirements.txt
 winget-pkgs/
 __pycache__/
