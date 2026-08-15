@@ -12,3 +12,10 @@ updates:
       time: "08:00"
       timezone: "Asia/Makassar"
     open-pull-requests-limit: 10
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "08:00"
+      timezone: "Asia/Makassar"
+    open-pull-requests-limit: 10
