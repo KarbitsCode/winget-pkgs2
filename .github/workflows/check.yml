@@ -23,7 +23,7 @@ jobs:
           repository: KarbitsCode/winget-pkgs
           ref: ${{ github.event.client_payload.branch }}
           path: upstream
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: Check manifests
         id: detect
