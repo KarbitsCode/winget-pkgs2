@@ -100,10 +100,8 @@ jobs:
         shell: pwsh
         run: |
           python --version
-          & {
-            python -m pip install --upgrade pip -vvv
-            pip install -r requirements.txt -vvv
-          } | Select-String -NotMatch "Found|Skipping link"
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
       - name: Prepare manifests list
         id: prepare
@@ -143,10 +141,8 @@ jobs:
         shell: pwsh
         run: |
           python --version
-          & {
-            python -m pip install --upgrade pip -vvv
-            pip install -r requirements.txt -vvv
-          } | Select-String -NotMatch "Found|Skipping link"
+          python -m pip install --upgrade pip -vvv
+          pip install -r requirements.txt -vvv
 
       - name: Set up winget
         shell: pwsh
