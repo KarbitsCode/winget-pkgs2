@@ -16,22 +16,22 @@ LicenseUrl: https://crystalmark.info/ja/software/crystaldiskinfo/crystaldiskinfo
 Copyright: © 2008-2026 hiyohiyo
 ShortDescription: 一部の USB 接続、Intel RAID、NVMe をサポートするディスク (HDD/SSD) ユーティリティです。
 Tags:
-- クリスタルディスクマーク
-- くりすたるでぃすくまーく
 - hdd
 - nvme
 - s.m.a.r.t.
 - ssd
-- ディスクユーティリティー
-- でぃすくゆーてぃりてぃー
-- ディスク診断
-- でぃすく診斷
-- ハードドライブ
-- はーどどらいぶ
-- ディスク健康
-- ディスクケンコウ
-- でぃすくけんこう
 - xp8k4rgx25g3gm
+- くりすたるでぃすくまーく
+- でぃすくけんこう
+- でぃすくゆーてぃりてぃー
+- でぃすく診斷
+- はーどどらいぶ
+- クリスタルディスクマーク
+- ディスクケンコウ
+- ディスクユーティリティー
+- ディスク健康
+- ディスク診断
+- ハードドライブ
 ReleaseNotes: |-
   - 修正：TOSHIBA SATA SSD サポート
   - 更新：言語ファイル (Traditional Chinese, Simplified Chinese, French)
