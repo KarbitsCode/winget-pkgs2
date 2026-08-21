@@ -1,4 +1,4 @@
-# Created with YamlCreate.ps1 Dumplings Mod
+# Created with komac v2.16.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.locale.1.12.0.schema.json
 
 PackageIdentifier: CrystalDewWorld.CrystalDiskInfo
@@ -22,15 +22,15 @@ Tags:
 - ssd
 - xp8k4rgx25g3gm
 - くりすたるでぃすくまーく
-- クリスタルディスクマーク
 - でぃすくけんこう
 - でぃすくゆーてぃりてぃー
 - でぃすく診斷
+- はーどどらいぶ
+- クリスタルディスクマーク
 - ディスクケンコウ
 - ディスクユーティリティー
 - ディスク健康
 - ディスク診断
-- はーどどらいぶ
 - ハードドライブ
 ReleaseNotes: |-
   - 修正：AMD RAID 環境において Samsung SSD に誤って[FAKE]ラベルを設定する不具合
