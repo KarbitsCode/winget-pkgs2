@@ -22,7 +22,7 @@ if ($botComment) {
     $buildId = [regex]::Match($botComment.body, "buildId=(\d+)").Groups[1].Value
     Write-Host "Found projectId: $projectId" -ForegroundColor Yellow
     Write-Host "Found buildId: $buildId" -ForegroundColor Yellow
-    
+
     # Download using public azure api
     Write-Host "Downloading artifacts..." -ForegroundColor Yellow
     try {
