@@ -88,7 +88,7 @@ def update_package_local(updater, package_folder, batch_args, replace_folder="")
     if replace_folder:
         shutil.rmtree(replace_folder)
     run_with_stream(
-        f"git add {package_folder} && git --no-pager diff HEAD {package_folder}"
+        f"git add {package_folder} && git --no-pager diff --color=always HEAD {package_folder}"
     )
 
 def update_and_replace(updater, package_folder, batch_args, replace):
