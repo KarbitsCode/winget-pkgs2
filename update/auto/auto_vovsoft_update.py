@@ -1,5 +1,6 @@
 def run(*, is_main=(__name__ == "__main__")):
     selfname = Path(__file__).stem.lstrip("_").removeprefix("auto_")
+    log("Checking installer mismatches...")
     files, urls, packages = check_mismatches("manifests\\v\\VovSoft")
     
     for i in range(len(urls) - 1, -1, -1):
@@ -8,9 +9,7 @@ def run(*, is_main=(__name__ == "__main__")):
             del urls[i]
             del packages[i]
     
-    print(files)
-    print(urls)
-    print(packages)
+    log(f"Found {len(packages)} VovSoft installer hash mismatch(es) to inspect.")
     
     new_versions = []
     for url in urls:
@@ -19,7 +18,7 @@ def run(*, is_main=(__name__ == "__main__")):
         )
         new_product_version = re.search(r"^ProductVersion:\s*(\S+)\s*$", new_version_check_output, re.MULTILINE).group(1)
         new_versions.append(new_product_version)
-    print(new_versions)
+    log(f"Resolved {len(new_versions)} VovSoft version(s).")
     
     for package_name, new_version, file in zip(packages, new_versions, files):
         updater = selfname
@@ -32,10 +31,13 @@ def run(*, is_main=(__name__ == "__main__")):
             f"{package_name.split(".")[1]} {new_version}",
             replace=old_version_folder
         )
+        log(f"Queueing package submission for VovSoft version: {new_version}")
         submit_package("wingetcreate", new_version_folder, "--replace")
     
     if is_main:
         submit_flush()
+    
+    return len(new_versions)
 
 
 if __name__ == "__main__":
