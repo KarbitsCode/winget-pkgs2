@@ -25,7 +25,12 @@ def run(*, is_main=(__name__ == "__main__")):
             package_folder,
             f"{new_version}"
         )
-        changes.append({"package": "Wakatime.CLIWakatime", "before": max(existing, key=version_key, default="—"), "after": new_version, "updater": selfname})
+        previous_version = max(
+            existing,
+            key=version_key,
+            default="—",
+        )
+        changes.append({"package": "Wakatime.CLIWakatime", "before": previous_version, "after": new_version, "submission_key": str(new_version_folder)})
         log(f"Queueing package submission for WakaTime CLI version: {new_version}")
         submit_package("komac", new_version_folder)
     

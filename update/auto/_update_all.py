@@ -14,6 +14,7 @@ from contextlib import contextmanager
 
 submit_q = []
 update_results = []
+submission_urls = {}
 
 def log(message):
     print(message, flush=True)
@@ -56,12 +57,14 @@ def write_summary():
         if changes:
             lines.extend([
                 "\n### package updated\n",
-                "| package | before | after | updater |",
+                "| package | before | after | pr |",
                 "| --- | --- | --- | --- |",
             ])
             for change in changes:
+                pr_url = submission_urls.get(change["submission_key"])
+                pr_link = f"[PR #{pr_url.rsplit('/', 1)[-1]}]({pr_url})" if pr_url else "—"
                 lines.append(
-                    f"| {change['package']} | {change['before']} | {change['after']} | {change['updater']} |"
+                    f"| {change['package']} | {change['before']} | {change['after']} | {pr_link} |"
                 )
         with open(path, "a", encoding="utf-8") as summary:
             summary.write("\n".join(lines) + "\n")
@@ -187,6 +190,7 @@ def submit_package(tool, version_folder, options=""):
     ))
     
     if found_pr:
+        # submission_urls[str(version_folder)] = f"https://github.com/microsoft/winget-pkgs/pull/{found_pr[0]['number']}"
         log(f"{"::warning title=Duplicate PR::" if os.getenv("GITHUB_ACTIONS") else ""}{version_folder} found in already opened PR(s): {", ".join(str(i["number"]) for i in found_pr)}")
     else:
         submit_q.append((f"{command} {version_folder} {options}", version_folder))
@@ -199,6 +203,7 @@ def submit_flush():
                 f"{command}"
             )
             pr_url = re.search(r"https://github\.com/microsoft/winget-pkgs/pull/\d+", submit_output).group(0)
+            submission_urls[str(version_folder)] = pr_url
             run_with_stream(
                 f"powershell -ExecutionPolicy Bypass -File Tools\\UpdatePRBody.ps1 Tools\\PRBodyTemplate\\PRBodyModify.md -pr {pr_url.split("/")[-1]}"
             )

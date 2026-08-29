@@ -42,7 +42,7 @@ def run(*, is_main=(__name__ == "__main__")):
         run_with_stream(
             f"\"{sys.executable}\" update\\releasenotes\\releasenotes_{selfname}.py {new_version_folder} --no-backup"
         )
-        changes.append({"package": package_name, "before": old_version_folder.name, "after": new_version, "updater": selfname})
+        changes.append({"package": package_name, "before": old_version_folder.name, "after": new_version, "submission_key": str(new_version_folder)})
         log(f"Queueing package submission for NirSoft version: {new_version}")
         submit_package("wingetcreate", new_version_folder, "--replace")
     
