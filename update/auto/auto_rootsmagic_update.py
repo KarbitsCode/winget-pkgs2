@@ -1,5 +1,5 @@
 def run(*, is_main=(__name__ == "__main__")):
-    selfname = Path(__file__).stem.lstrip("_").removeprefix("auto_")
+    selfname = Path(__file__).stem
     log("Checking installer mismatches...")
     files, urls, packages = check_mismatches("manifests\\r\\RootsMagic\\RootsMagic")
     
@@ -10,6 +10,7 @@ def run(*, is_main=(__name__ == "__main__")):
             del packages[i]
     
     log(f"Found {len(packages)} RootsMagic installer hash mismatch(es) to inspect.")
+    changes = []
     
     new_versions = []
     for url in urls:
@@ -21,7 +22,7 @@ def run(*, is_main=(__name__ == "__main__")):
     log(f"Resolved {len(new_versions)} RootsMagic version(s).")
     
     for package_name, new_version, file in zip(packages, new_versions, files):
-        updater = selfname
+        updater = selfname.lstrip("_").removeprefix("auto_")
         old_version_folder = Path(file).parent
         package_folder = old_version_folder.parent
         new_version_folder = package_folder / new_version
@@ -31,13 +32,14 @@ def run(*, is_main=(__name__ == "__main__")):
             f"{new_version}",
             replace=old_version_folder
         )
+        changes.append({"package": package_name, "before": old_version_folder.name, "after": new_version, "updater": selfname})
         log(f"Queueing package submission for RootsMagic version: {new_version}")
         submit_package("wingetcreate", new_version_folder, "--replace")
     
     if is_main:
         submit_flush()
     
-    return len(new_versions)
+    return changes
 
 if __name__ == "__main__":
     from _update_all import inject_context

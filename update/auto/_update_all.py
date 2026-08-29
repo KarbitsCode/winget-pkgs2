@@ -18,6 +18,9 @@ update_results = []
 def log(message):
     print(message, flush=True)
 
+def version_key(version):
+    return tuple(int(part) for part in re.findall(r"\d+", version))
+
 @contextmanager
 def log_group(title):
     if os.getenv("GITHUB_ACTIONS"):
@@ -37,14 +40,29 @@ def write_summary():
         failed = sum(bool(item.get("failed")) for item in update_results)
         unchanged = len(update_results) - updated - failed
         lines = [
-            "## Automated updater summary\n",
+            "## autoupdater summary\n",
             f"**{updated} updated** · **{unchanged} unchanged** · **{failed} failed**\n",
-            "| Updater | Result | Updates | Duration |",
+            "| updater | result | number of updates | execution time |",
             "| --- | --- | ---: | ---: |",
         ]
         for item in update_results:
-            status = "Failed" if item.get("failed") else "Updated" if item["updates"] else "No updates"
-            lines.append(f"| {item["name"]} | {status} | {item["updates"]} | {item["duration"]:.1f}s |")
+            status = "some failed" if item.get("failed") else "updated" if item["updates"] else "no updates"
+            lines.append(f"| {item['name']} | {status} | {item['updates']} | {item['duration']:.1f}s |")
+        changes = [
+            change
+            for item in update_results
+            for change in item.get("changes", [])
+        ]
+        if changes:
+            lines.extend([
+                "\n### package updated\n",
+                "| package | before | after | updater |",
+                "| --- | --- | --- | --- |",
+            ])
+            for change in changes:
+                lines.append(
+                    f"| {change['package']} | {change['before']} | {change['after']} | {change['updater']} |"
+                )
         with open(path, "a", encoding="utf-8") as summary:
             summary.write("\n".join(lines) + "\n")
 atexit.register(write_summary)
@@ -205,16 +223,17 @@ if __name__ == "__main__":
         started = time.monotonic()
         with log_group(path.stem.removeprefix("auto_")):
             try:
-                updates = module.run()
+                changes = module.run()
+                updates = len(changes)
             except Exception as error:
                 elapsed = time.monotonic() - started
-                update_results.append({"name": path.stem, "updates": 0, "duration": elapsed, "failed": True})
+                update_results.append({"name": path.stem, "updates": 0, "duration": elapsed, "changes": [], "failed": True})
                 message = f"{type(error).__name__}: {error}"
                 log(f"::error title={path.stem} failed::{message}" if os.getenv("GITHUB_ACTIONS") else f"{path.stem} failed: {message}")
                 continue
         elapsed = time.monotonic() - started
-        update_results.append({"name": path.stem, "updates": updates, "duration": elapsed})
-        message = f"{path.stem}: {"updated" if updates else "no updates"} ({updates}) in {elapsed:.1f}s"
+        update_results.append({"name": path.stem, "updates": updates, "duration": elapsed, "changes": changes})
+        message = f"{path.stem}: {'updated' if updates else 'no updates'} ({updates}) in {elapsed:.1f}s"
         log(f"::notice::{message}" if os.getenv("GITHUB_ACTIONS") else message)
     submit_flush()
     sync_manifests()

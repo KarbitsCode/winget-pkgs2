@@ -1,5 +1,5 @@
 def run(*, is_main=(__name__ == "__main__")):
-    selfname = Path(__file__).stem.lstrip("_").removeprefix("auto_")
+    selfname = Path(__file__).stem
     log("Checking installer mismatches...")
     files, urls, packages = check_mismatches("manifests\\n\\NirSoft")
     
@@ -10,6 +10,7 @@ def run(*, is_main=(__name__ == "__main__")):
             del packages[i]
     
     log(f"Found {len(packages)} NirSoft installer hash mismatch(es) to inspect.")
+    changes = []
     
     new_versions = []
     for file in files:
@@ -28,7 +29,7 @@ def run(*, is_main=(__name__ == "__main__")):
     for package_name, new_version, file in zip(packages, new_versions, files):
         if new_version is None:
             continue
-        updater = selfname
+        updater = selfname.lstrip("_").removeprefix("auto_")
         old_version_folder = Path(file).parent
         package_folder = old_version_folder.parent
         new_version_folder = package_folder / new_version
@@ -41,13 +42,14 @@ def run(*, is_main=(__name__ == "__main__")):
         run_with_stream(
             f"\"{sys.executable}\" update\\releasenotes\\releasenotes_{selfname}.py {new_version_folder} --no-backup"
         )
+        changes.append({"package": package_name, "before": old_version_folder.name, "after": new_version, "updater": selfname})
         log(f"Queueing package submission for NirSoft version: {new_version}")
         submit_package("wingetcreate", new_version_folder, "--replace")
     
     if is_main:
         submit_flush()
     
-    return sum(version is not None for version in new_versions)
+    return changes
 
 
 if __name__ == "__main__":
