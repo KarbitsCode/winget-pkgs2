@@ -32,24 +32,21 @@ def log_group(title):
 
 def write_summary():
     path = os.getenv("GITHUB_STEP_SUMMARY")
-    if not path:
-        return
-    
-    updated = sum(item["updates"] > 0 and not item.get("failed") for item in update_results)
-    failed = sum(item.get("failed") for item in update_results)
-    unchanged = len(update_results) - updated - failed
-    lines = [
-        "## Automated updater summary\n",
-        f"**{updated} updated** · **{unchanged} unchanged** · **{failed} failed**\n",
-        "| Updater | Result | Updates | Duration |",
-        "| --- | --- | ---: | ---: |",
-    ]
-    for item in update_results:
-        status = "Failed" if item.get("failed") else "Updated" if item["updates"] else "No updates"
-        lines.append(f"| {item["name"]} | {status} | {item["updates"]} | {item["duration"]:.1f}s |")
-    
-    with open(path, "a", encoding="utf-8") as summary:
-        summary.write("\n".join(lines) + "\n")
+    if path:
+        updated = sum(item["updates"] > 0 and not item.get("failed") for item in update_results)
+        failed = sum(bool(item.get("failed")) for item in update_results)
+        unchanged = len(update_results) - updated - failed
+        lines = [
+            "## Automated updater summary\n",
+            f"**{updated} updated** · **{unchanged} unchanged** · **{failed} failed**\n",
+            "| Updater | Result | Updates | Duration |",
+            "| --- | --- | ---: | ---: |",
+        ]
+        for item in update_results:
+            status = "Failed" if item.get("failed") else "Updated" if item["updates"] else "No updates"
+            lines.append(f"| {item["name"]} | {status} | {item["updates"]} | {item["duration"]:.1f}s |")
+        with open(path, "a", encoding="utf-8") as summary:
+            summary.write("\n".join(lines) + "\n")
 atexit.register(write_summary)
 
 def inject_context(target):
