@@ -1,14 +1,14 @@
 def run(*, is_main=(__name__ == "__main__")):
     selfname = Path(__file__).stem
+    updater = selfname.lstrip("_").removeprefix("auto_")
+    
     log("Checking installer mismatches...")
     files, urls, packages = check_mismatches("manifests\\r\\RootsMagic\\RootsMagic")
-    
     for i in range(len(urls) - 1, -1, -1):
         if not urls[i].endswith(".exe"):
             del files[i]
             del urls[i]
             del packages[i]
-    
     log(f"Found {len(packages)} RootsMagic installer hash mismatch(es) to inspect.")
     changes = []
     
@@ -22,7 +22,6 @@ def run(*, is_main=(__name__ == "__main__")):
     log(f"Resolved {len(new_versions)} RootsMagic version(s).")
     
     for package_name, new_version, file in zip(packages, new_versions, files):
-        updater = selfname.lstrip("_").removeprefix("auto_")
         old_version_folder = Path(file).parent
         package_folder = old_version_folder.parent
         new_version_folder = package_folder / new_version

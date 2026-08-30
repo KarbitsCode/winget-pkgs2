@@ -1,5 +1,7 @@
 def run(*, is_main=(__name__ == "__main__")):
     selfname = Path(__file__).stem
+    updater = selfname.lstrip("_").removeprefix("auto_")
+    
     log("Checking releases...")
     versions = check_releases("https://api.github.com/repos/electron/electron/releases")
     electron_dir = Path("manifests\\o\\OpenJS\\Electron")
@@ -25,7 +27,6 @@ def run(*, is_main=(__name__ == "__main__")):
     changes = []
     
     for new_version in new_versions:
-        updater = selfname.lstrip("_").removeprefix("auto_")
         package_folder = electron_dir / new_version.split(".", 1)[0]
         new_version_folder = package_folder / new_version
         update_package_local(

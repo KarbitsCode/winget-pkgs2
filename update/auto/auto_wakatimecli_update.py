@@ -1,5 +1,7 @@
 def run(*, is_main=(__name__ == "__main__")):
     selfname = Path(__file__).stem
+    updater = selfname.lstrip("_").removeprefix("auto_")
+    
     log("Checking releases...")
     versions = check_releases("https://api.github.com/repos/wakatime/wakatime-cli/releases")
     wakatime_dir = Path("manifests\\w\\Wakatime\\CLIWakatime")

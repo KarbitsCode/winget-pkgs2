@@ -145,11 +145,10 @@ def check_mismatches(package_folder):
         log(block)
         file = re.search(r"^File:\s+(\S+)$", block, re.MULTILINE).group(1)
         url = re.search(r"^URL:\s+(\S+)$", block, re.MULTILINE).group(1)
-        
         package = file.rsplit("\\", 1)[1].replace(".installer.yaml", "")
         if package in seen:
             continue
-
+        
         seen.add(package)
         files.append(file)
         urls.append(url)
