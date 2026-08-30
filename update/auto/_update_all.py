@@ -43,12 +43,12 @@ def write_summary():
         lines = [
             "## autoupdater summary\n",
             f"**{updated} updated** · **{unchanged} unchanged** · **{failed} failed**\n",
-            "| updater | result | number of updates | execution time |",
+            "| updater | result | updates | execution time |",
             "| --- | --- | ---: | ---: |",
         ]
         for item in update_results:
             status = "some failed" if item.get("failed") else "updated" if item["updates"] else "no updates"
-            lines.append(f"| {item['name']} | {status} | {item['updates']} | {item['duration']:.1f}s |")
+            lines.append(f"| {item["name"]} | {status} | {item["updates"]} | {item["duration"]:.1f}s |")
         changes = [
             change
             for item in update_results
@@ -56,15 +56,14 @@ def write_summary():
         ]
         if changes:
             lines.extend([
-                "\n### package updated\n",
-                "| package | before | after | pr |",
+                "\n| package | before | after | pr |",
                 "| --- | --- | --- | --- |",
             ])
             for change in changes:
                 pr_url = submission_urls.get(change["submission_key"])
-                pr_link = f"[PR #{pr_url.rsplit('/', 1)[-1]}]({pr_url})" if pr_url else "—"
+                pr_link = f"[#{pr_url.rsplit("/", 1)[-1]}]({pr_url})" if pr_url else "—"
                 lines.append(
-                    f"| {change['package']} | {change['before']} | {change['after']} | {pr_link} |"
+                    f"| {change["package"]} | {change["before"]} | {change["after"]} | {pr_link} |"
                 )
         with open(path, "a", encoding="utf-8") as summary:
             summary.write("\n".join(lines) + "\n")
@@ -190,7 +189,7 @@ def submit_package(tool, version_folder, options=""):
     ))
     
     if found_pr:
-        # submission_urls[str(version_folder)] = f"https://github.com/microsoft/winget-pkgs/pull/{found_pr[0]['number']}"
+        # submission_urls[str(version_folder)] = f"https://github.com/microsoft/winget-pkgs/pull/{found_pr[0]["number"]}"
         log(f"{"::warning title=Duplicate PR::" if os.getenv("GITHUB_ACTIONS") else ""}{version_folder} found in already opened PR(s): {", ".join(str(i["number"]) for i in found_pr)}")
     else:
         submit_q.append((f"{command} {version_folder} {options}", version_folder))
@@ -238,7 +237,7 @@ if __name__ == "__main__":
                 continue
         elapsed = time.monotonic() - started
         update_results.append({"name": path.stem, "updates": updates, "duration": elapsed, "changes": changes})
-        message = f"{path.stem}: {'updated' if updates else 'no updates'} ({updates}) in {elapsed:.1f}s"
+        message = f"{path.stem}: {"updated" if updates else "no updates"} ({updates}) {"package(s)" if updates else ""} in {elapsed:.1f}s"
         log(f"::notice::{message}" if os.getenv("GITHUB_ACTIONS") else message)
     submit_flush()
     sync_manifests()
