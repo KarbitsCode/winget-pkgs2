@@ -86,7 +86,7 @@ foreach ($prNumber in ($prNumbers | Sort-Object {[int]$_})) {
 
     if ($env:GITHUB_ACTIONS) {
         # If ran inside a GitHub workflow
-        $autoMessage = "> Automatic submission from run: $($env:GITHUB_RUN_ID)$($env:GITHUB_RUN_NUMBER)$($env:GITHUB_RUN_ATTEMPT)"
+        $autoMessage = "> Automatic submission from run: [$($env:GITHUB_RUN_ID)$($env:GITHUB_RUN_NUMBER)$($env:GITHUB_RUN_ATTEMPT)]($($env:GITHUB_SERVER_URL)/$($env:GITHUB_REPOSITORY)/actions/runs/$($env:GITHUB_RUN_ID)/attempts/$($env:GITHUB_RUN_ATTEMPT))"
         $bodyContent = Get-Content $tempFile -Raw -Encoding utf8
         $bodyContent = $bodyContent -replace "(##\s+.*?Description\s*<!--.*?-->)", "`$1`n`n$autoMessage"
         Set-Content $tempFile $bodyContent -Encoding utf8
