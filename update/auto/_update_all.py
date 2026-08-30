@@ -77,11 +77,11 @@ def inject_context(target):
     })
 
 def run_with_stream(*args, **kwargs):
-    def pump(stream, collect=False):
+    def pump(stream, collect=None):
         for line in stream:
             print(line, end="")
-            if collect:
-                output.append(line)
+            if isinstance(collect, list):
+                collect.append(line)
     output = []
     command = args[0]
     if isinstance(command, str):
@@ -102,8 +102,8 @@ def run_with_stream(*args, **kwargs):
         shell=True,
         **kwargs,
     )
-    t1 = threading.Thread(target=pump, args=(proc.stdout, True))
-    t2 = threading.Thread(target=pump, args=(proc.stderr, False))
+    t1 = threading.Thread(target=pump, args=(proc.stdout, output))
+    t2 = threading.Thread(target=pump, args=(proc.stderr, None))
     t1.start()
     t2.start()
     t1.join()
@@ -239,5 +239,7 @@ if __name__ == "__main__":
         update_results.append({"name": path.stem, "updates": updates, "duration": elapsed, "changes": changes})
         message = f"{path.stem}: {"updated" if updates else "no updates"} ({updates}) {"package(s)" if updates else ""} in {elapsed:.1f}s"
         log(f"::notice::{message}" if os.getenv("GITHUB_ACTIONS") else message)
-    submit_flush()
-    sync_manifests()
+    with log_group("pull_request_submission"):
+        submit_flush()
+    with log_group("synchronize_manifests"):
+        sync_manifests()
