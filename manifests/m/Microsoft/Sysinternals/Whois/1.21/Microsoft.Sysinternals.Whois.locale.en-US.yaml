@@ -1,5 +1,5 @@
-# Created using wingetcreate 1.10.3.0
-# yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
+# Created using wingetcreate 1.12.8.0
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.12.0.schema.json
 
 PackageIdentifier: Microsoft.Sysinternals.Whois
 PackageVersion: "1.21"
@@ -19,6 +19,8 @@ Description: Whois performs the registration record for the domain name or IP ad
 Moniker: whois
 Tags:
 - sysinternals
+ReleaseNotes: Includes a number of bugfixes
+ReleaseNotesUrl: https://techcommunity.microsoft.com/blog/sysinternals-blog/sysmon-v10-42-zoomit-v4-52-whois-v1-21/1060875
 Documentations:
 - DocumentLabel: Sysinternals Blog
   DocumentUrl: https://techcommunity.microsoft.com/category/windows/blog/sysinternals-blog
@@ -29,4 +31,4 @@ Documentations:
 - DocumentLabel: Troubleshooting with the Windows Sysinternals Tools
   DocumentUrl: https://learn.microsoft.com/en-us/sysinternals/resources/troubleshooting-book
 ManifestType: defaultLocale
-ManifestVersion: 1.10.0
+ManifestVersion: 1.12.0
