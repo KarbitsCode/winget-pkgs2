@@ -19,7 +19,6 @@ def run(*, is_main=(__name__ == "__main__")):
     changes = []
     
     for new_version in new_versions:
-        updater = selfname.lstrip("_").removeprefix("auto_")
         package_folder = wakatime_dir
         new_version_folder = package_folder / new_version
         update_package_local(
