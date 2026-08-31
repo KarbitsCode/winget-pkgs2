@@ -9,6 +9,12 @@ if "%~1"=="" (
 
 set "VERSION=%~1"
 
+for /f "usebackq delims=" %%A in (`
+  powershell -NoLogo -Command ^
+    "$r = Invoke-RestMethod 'https://api.github.com/repos/TDesktop-x64/tdesktop/releases/tags/v%VERSION%';" ^
+    "$r.assets | Where-Object { $_.name -like '*.exe' -and $_.name -match '64Gram.*x64' } | ForEach-Object { Write-Output ('X64=' + $_.browser_download_url) }" 2^>con
+`) do set "%%A"
+
 wingetcreate update 64Gram.64Gram ^
   --version %VERSION% ^
-  --urls "https://github.com/TDesktop-x64/tdesktop/releases/download/v%VERSION%/64Gram-setup-x64.%VERSION%.exe|x64"
+  --urls "%X64%|x64"
