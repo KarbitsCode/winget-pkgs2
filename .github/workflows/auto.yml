@@ -107,3 +107,45 @@ jobs:
           wingetcreate cache --clean
           wingetcreate token --clear
           komac token remove --yes
+
+  result:
+    runs-on: windows-latest
+    needs: updater
+    if: always()
+    permissions:
+      checks: read
+    steps:
+      - name: Conclude status result
+        uses: actions/github-script@v9.0.0
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const jobs = await github.paginate(
+              github.rest.actions.listJobsForWorkflowRun,
+              {
+                owner,
+                repo,
+                run_id: context.runId,
+              }
+            );
+            const updater = jobs.find(job => job.name === "updater");
+            const annotations = await github.paginate(
+              github.rest.checks.listAnnotations,
+              {
+                owner,
+                repo,
+                check_run_id: updater.id,
+              }
+            );
+            const errors = annotations.filter(annotation => annotation.annotation_level === "failure");
+            core.info(`Found ${errors.length} error annotation(s).`);
+            if (errors.length > 0) {
+              for (const error of errors) {
+                core.error(
+                  `${error.title ?? "Error"}: ${error.message ?? ""}`
+                );
+              }
+              core.setFailed(
+                `${errors.length} error annotation(s) found in updater.`
+              );
+            }
