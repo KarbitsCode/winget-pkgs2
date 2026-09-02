@@ -34,12 +34,7 @@ def run(*, is_main=(__name__ == "__main__")):
             package_folder,
             f"{new_version}"
         )
-        previous_version = max(
-            (version for version in existing if version.split(".", 1)[0] == new_version.split(".", 1)[0]),
-            key=version_key,
-            default="—",
-        )
-        changes.append({"package": f"OpenJS.Electron.{new_version.split(".", 1)[0]}", "before": previous_version, "after": new_version, "submission_key": str(new_version_folder)})
+        changes.append({"package": f"OpenJS.Electron.{new_version.split(".", 1)[0]}", "before": "—", "after": new_version, "submission_key": str(new_version_folder)})
         log(f"Queueing package submission for Electron version: {new_version}")
         submit_package("komac", new_version_folder)
     

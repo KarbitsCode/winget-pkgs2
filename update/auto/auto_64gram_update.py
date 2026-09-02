@@ -29,12 +29,7 @@ def run(*, is_main=(__name__ == "__main__")):
         run_with_stream(
             f"\"{sys.executable}\" update\\releasenotes\\releasenotes_{updater}.py {new_version_folder} --no-backup"
         )
-        previous_version = max(
-            existing,
-            key=version_key,
-            default="—",
-        )
-        changes.append({"package": "64Gram.64Gram", "before": previous_version, "after": new_version, "submission_key": str(new_version_folder)})
+        changes.append({"package": "64Gram.64Gram", "before": "—", "after": new_version, "submission_key": str(new_version_folder)})
         log(f"Queueing package submission for 64Gram version: {new_version}")
         submit_package("wingetcreate", new_version_folder)
     
