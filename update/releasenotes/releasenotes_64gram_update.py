@@ -23,7 +23,7 @@ with open(output, "r", encoding="utf-8") as f:
 
 url = f"https://api.github.com/repos/TDesktop-x64/tdesktop/releases"
 print(f"Fetching {url}...")
-response = requests.get(url, timeout=30)
+response = requests.get(url, params={"per_page": 100}, timeout=30)
 response.raise_for_status()
 releases = response.json()
 
