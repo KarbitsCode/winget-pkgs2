@@ -12,9 +12,9 @@ import importlib.util
 from pathlib import Path
 from contextlib import contextmanager
 
-submit_q = []
-update_results = []
-submission_urls = {}
+_submit_q = []
+_update_results = []
+_submission_urls = {}
 
 def log(message):
     print(message, flush=True)
@@ -22,58 +22,11 @@ def log(message):
 def version_key(version):
     return tuple(int(part) for part in re.findall(r"\d+", version))
 
-@contextmanager
-def log_group(title):
-    if os.getenv("GITHUB_ACTIONS"):
-        log(f"::group::{title}")
-    else:
-        log(f"--- {title} ---")
-    try:
-        yield
-    finally:
-        if os.getenv("GITHUB_ACTIONS"):
-            log("::endgroup::")
-
-def write_summary():
-    path = os.getenv("GITHUB_STEP_SUMMARY")
-    if path:
-        updated = sum(item["updates"] > 0 and not item.get("failed") for item in update_results)
-        failed = sum(bool(item.get("failed")) for item in update_results)
-        unchanged = len(update_results) - updated - failed
-        lines = [
-            "## autoupdater summary\n",
-            f"**{updated} updated** · **{unchanged} unchanged** · **{failed} failed**\n",
-            "| updater | result | updates | execution time |",
-            "| --- | --- | ---: | ---: |",
-        ]
-        for item in update_results:
-            status = "some failed" if item.get("failed") else "updated" if item["updates"] else "no updates"
-            lines.append(f"| {item["name"]} | {status} | {item["updates"]} | {item["duration"]:.1f}s |")
-        changes = [
-            change
-            for item in update_results
-            for change in item.get("changes", [])
-        ]
-        if changes:
-            lines.extend([
-                "\n| package | before | after | pr |",
-                "| --- | --- | --- | --- |",
-            ])
-            for change in changes:
-                pr_url = submission_urls.get(change["submission_key"])
-                pr_link = f"[#{pr_url.rsplit("/", 1)[-1]}]({pr_url})" if pr_url else "—"
-                lines.append(
-                    f"| {change["package"]} | {change["before"]} | {change["after"]} | {pr_link} |"
-                )
-        with open(path, "a", encoding="utf-8") as summary:
-            summary.write("\n".join(lines) + "\n")
-atexit.register(write_summary)
-
 def inject_context(target):
     target.update({
         k: v
         for k, v in globals().items()
-        if not k.startswith("__")
+        if not k.startswith("_")
     })
 
 def run_with_stream(*args, **kwargs):
@@ -170,9 +123,6 @@ def update_package_local(updater, package_folder, batch_args, replace_folder="")
     )
     if replace_folder:
         shutil.rmtree(replace_folder)
-    run_with_stream(
-        f"git add {package_folder} && git --no-pager diff --color=always HEAD {package_folder}"
-    )
 
 def update_and_replace(updater, package_folder, batch_args, replace):
     return update_package_local(updater, package_folder, batch_args, replace)
@@ -183,39 +133,89 @@ def submit_package(tool, version_folder, options=""):
     elif tool == "komac":
         command = "komac submit --submit"
     
-    found_pr = json.loads(run_with_stream(
+    found_pr = json.loads(run_without_stream(
         f"powershell -ExecutionPolicy Bypass -File Tools\\GitHubPRSearch.ps1 {version_folder}"
     ))
     
     if found_pr:
-        # submission_urls[str(version_folder)] = f"https://github.com/microsoft/winget-pkgs/pull/{found_pr[0]["number"]}"
+        # _submission_urls[str(version_folder)] = f"https://github.com/microsoft/winget-pkgs/pull/{found_pr[0]["number"]}"
         log(f"{"::warning title=Duplicate PR::" if os.getenv("GITHUB_ACTIONS") else ""}{version_folder} found in already opened PR(s): {", ".join(str(i["number"]) for i in found_pr)}")
     else:
-        submit_q.append((f"{command} {version_folder} {options}", version_folder))
+        run_with_stream(
+            f"git add {package_folder} && git --no-pager diff --color=always HEAD {package_folder}"
+        )
+        _submit_q.append((f"{command} {version_folder} {options}", version_folder))
 
 def submit_flush():
-    for command, version_folder in submit_q:
+    for command, version_folder in _submit_q:
         try:
             log(f"Submitting {version_folder}...")
             submit_output = run_with_stream(
                 f"{command}"
             )
             pr_url = re.search(r"https://github\.com/microsoft/winget-pkgs/pull/\d+", submit_output).group(0)
-            submission_urls[str(version_folder)] = pr_url
+            _submission_urls[str(version_folder)] = pr_url
             run_with_stream(
                 f"powershell -ExecutionPolicy Bypass -File Tools\\UpdatePRBody.ps1 Tools\\PRBodyTemplate\\PRBodyModify.md -pr {pr_url.split("/")[-1]}"
             )
         except Exception as e:
             log(f"{"::error title=Failed submission::" if os.getenv("GITHUB_ACTIONS") else ""}Failed to submit {version_folder}: {type(e).__name__}: {e}")
-    submit_q.clear()
+    _submit_q.clear()
 
 def sync_manifests():
     run_with_stream(
         f"powershell -ExecutionPolicy Bypass -File Tools\\SyncManifests.ps1"
     )
 
+@contextmanager
+def _log_group(title):
+    if os.getenv("GITHUB_ACTIONS"):
+        log(f"::group::{title}")
+    else:
+        log(f"--- {title} ---")
+    try:
+        yield
+    finally:
+        if os.getenv("GITHUB_ACTIONS"):
+            log("::endgroup::")
+
+def _write_summary():
+    path = os.getenv("GITHUB_STEP_SUMMARY")
+    if path:
+        updated = sum(item["updates"] > 0 and not item.get("failed") for item in _update_results)
+        failed = sum(bool(item.get("failed")) for item in _update_results)
+        unchanged = len(_update_results) - updated - failed
+        lines = [
+            "## autoupdater summary\n",
+            f"**{updated} updated** · **{unchanged} unchanged** · **{failed} failed**\n",
+            "| updater | result | updates | execution time |",
+            "| --- | --- | ---: | ---: |",
+        ]
+        for item in _update_results:
+            status = "some failed" if item.get("failed") else "updated" if item["updates"] else "no updates"
+            lines.append(f"| {item["name"]} | {status} | {item["updates"]} | {item["duration"]:.1f}s |")
+        changes = [
+            change
+            for item in _update_results
+            for change in item.get("changes", [])
+        ]
+        if changes:
+            lines.extend([
+                "\n| package | before | after | pr |",
+                "| --- | --- | --- | --- |",
+            ])
+            for change in changes:
+                pr_url = _submission_urls.get(change["submission_key"])
+                pr_link = f"[#{pr_url.rsplit("/", 1)[-1]}]({pr_url})" if pr_url else "—"
+                lines.append(
+                    f"| {change["package"]} | {change["before"]} | {change["after"]} | {pr_link} |"
+                )
+        with open(path, "a", encoding="utf-8") as summary:
+            summary.write("\n".join(lines) + "\n")
+
 
 if __name__ == "__main__":
+    atexit.register(_write_summary)
     for path in Path(__file__).parent.glob("auto_*.py"):
         if path.stem == Path(__file__).stem:
             continue
@@ -224,21 +224,21 @@ if __name__ == "__main__":
         inject_context(module.__dict__)
         spec.loader.exec_module(module)
         started = time.monotonic()
-        with log_group(path.stem.removeprefix("auto_")):
+        with _log_group(path.stem.removeprefix("auto_")):
             try:
                 changes = module.run()
                 updates = len(changes)
             except Exception as error:
                 elapsed = time.monotonic() - started
-                update_results.append({"name": path.stem, "updates": 0, "duration": elapsed, "changes": [], "failed": True})
+                _update_results.append({"name": path.stem, "updates": 0, "duration": elapsed, "changes": [], "failed": True})
                 message = f"{type(error).__name__}: {error}"
                 log(f"::error title={path.stem} failed::{message}" if os.getenv("GITHUB_ACTIONS") else f"{path.stem} failed: {message}")
                 continue
         elapsed = time.monotonic() - started
-        update_results.append({"name": path.stem, "updates": updates, "duration": elapsed, "changes": changes})
+        _update_results.append({"name": path.stem, "updates": updates, "duration": elapsed, "changes": changes})
         message = f"{path.stem}: {"updated" if updates else "no updates"} ({updates}) {"package(s)" if updates else ""} in {elapsed:.1f}s"
         log(f"::notice::{message}" if os.getenv("GITHUB_ACTIONS") else message)
-    with log_group("pull_request_submission"):
+    with _log_group("pull_request_submission"):
         submit_flush()
-    with log_group("synchronize_manifests"):
+    with _log_group("synchronize_manifests"):
         sync_manifests()
