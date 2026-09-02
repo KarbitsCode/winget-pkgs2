@@ -138,13 +138,7 @@ jobs:
               }
             );
             const errors = annotations.filter(annotation => annotation.annotation_level === "failure");
-            core.info(`Found ${errors.length} error annotation(s).`);
             if (errors.length > 0) {
-              for (const error of errors) {
-                core.error(
-                  `${error.title ?? "Error"}: ${error.message ?? ""}`
-                );
-              }
               core.setFailed(
                 `${errors.length} error annotation(s) found in updater.`
               );
