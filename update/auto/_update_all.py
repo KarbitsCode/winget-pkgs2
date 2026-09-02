@@ -142,7 +142,7 @@ def submit_package(tool, version_folder, options=""):
         log(f"{"::warning title=Duplicate PR::" if os.getenv("GITHUB_ACTIONS") else ""}{version_folder} found in already opened PR(s): {", ".join(str(i["number"]) for i in found_pr)}")
     else:
         run_with_stream(
-            f"git add {package_folder} && git --no-pager diff --color=always HEAD {package_folder}"
+            f"git add {version_folder.parent} && git --no-pager diff --color=always HEAD {version_folder.parent}"
         )
         _submit_q.append((f"{command} {version_folder} {options}", version_folder))
 
