@@ -43,23 +43,22 @@ target_version = f"v{version}"
 for release in releases:
     if release.get("tag_name") != target_version:
         continue
-
+    
     notes = release.get("body")
     if notes is None:
         raise RuntimeError(f"No release notes found for {target_version}")
-
+    
     print(f"Found release notes for version {version}:\n'{notes}'")
     print(f"Deleting existing release notes...")
     data.pop("ReleaseNotes", None)
     with open(output, "w", encoding="utf-8") as f:
         yaml.dump(data, f)
-
+    
     print(f"Writing new release notes...")
     with open(output, "a", encoding="utf-8") as f:
         first_line = next((line.strip() for line in notes.splitlines() if line.strip()), "")
         f.write("ReleaseNotes: |-\n")
         f.write(f"  {first_line}\n")
-
         for note in notes.splitlines():
             note = note.strip()
             if not note or note == first_line:
