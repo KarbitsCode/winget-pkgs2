@@ -157,8 +157,8 @@ jobs:
         shell: pwsh
         run: |
           python --version
-          python -m pip install --upgrade pip -vvv
-          pip install -r requirements.txt -vvv
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
       - name: Set up winget
         shell: pwsh
