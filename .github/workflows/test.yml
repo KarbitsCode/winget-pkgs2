@@ -99,7 +99,7 @@ jobs:
           fetch-depth: 0
 
       - name: Set up python
-        uses: actions/setup-python@6.3.0
+        uses: actions/setup-python@v6.3.0
         with:
           python-version: '3.14'
           update-environment: true
@@ -148,7 +148,7 @@ jobs:
           fetch-depth: 0
 
       - name: Set up python
-        uses: actions/setup-python@6.3.0
+        uses: actions/setup-python@v6.3.0
         with:
           python-version: '3.14'
           update-environment: true
