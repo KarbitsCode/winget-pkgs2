@@ -95,6 +95,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Set up python
+        uses: actions/setup-python@6.3.0
+        with:
+          python-version: '3.14'
+          update-environment: true
 
       - name: Set up python packages
         shell: pwsh
@@ -136,6 +144,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Set up python
+        uses: actions/setup-python@6.3.0
+        with:
+          python-version: '3.14'
+          update-environment: true
 
       - name: Set up python packages
         shell: pwsh
