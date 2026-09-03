@@ -148,7 +148,7 @@ def submit_package(tool, version_folder, options=""):
         _submit_q.append((f"{command} {version_folder} {options}", version_folder))
 
 def submit_flush():
-    for command, version_folder in reversed(_submit_q):
+    for command, version_folder in _submit_q:
         try:
             log(f"Submitting {version_folder}...")
             submit_output = run_with_stream(
