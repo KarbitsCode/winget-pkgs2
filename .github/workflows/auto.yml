@@ -49,7 +49,7 @@ jobs:
           gh repo set-default microsoft/winget-pkgs
           Pop-Location
 
-      - name: Set up python
+      - name: Set up python interpreter
         uses: actions/setup-python@v6.3.0
         with:
           python-version: '3.14'
