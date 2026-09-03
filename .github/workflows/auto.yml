@@ -49,6 +49,12 @@ jobs:
           gh repo set-default microsoft/winget-pkgs
           Pop-Location
 
+      - name: Set up python
+        uses: actions/setup-python@6.3.0
+        with:
+          python-version: '3.14'
+          update-environment: true
+
       - name: Set up python packages
         shell: pwsh
         run: |
