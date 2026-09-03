@@ -5,6 +5,7 @@ import time
 import json
 import atexit
 import shutil
+import tempfile
 import requests
 import threading
 import subprocess
@@ -168,6 +169,25 @@ def sync_manifests():
     )
 
 @contextmanager
+def _manifest_snapshot():
+    manifest_root = Path("manifests")
+    git_index = Path(run_without_stream("git rev-parse --git-path index").strip()).resolve()
+    submission_count = len(_submit_q)
+    with tempfile.TemporaryDirectory(prefix="winget-manifests-") as t:
+        snapshot = Path(t) / "manifests"
+        index_snapshot = Path(t) / "index"
+        shutil.copytree(manifest_root, snapshot)
+        shutil.copy2(git_index, index_snapshot)
+        try:
+            yield
+        except Exception:
+            shutil.rmtree(manifest_root)
+            shutil.copytree(snapshot, manifest_root)
+            shutil.copy2(index_snapshot, git_index)
+            del _submit_q[submission_count:]
+            raise
+
+@contextmanager
 def _log_group(title):
     if os.getenv("GITHUB_ACTIONS"):
         log(f"::group::{title}")
@@ -192,7 +212,7 @@ def _write_summary():
             "| --- | --- | ---: | ---: |",
         ]
         for item in _update_results:
-            status = "some failed" if item.get("failed") else "updated" if item["updates"] else "no updates"
+            status = "failed" if item.get("failed") else "updated" if item["updates"] else "no updates"
             lines.append(f"| {item["name"]} | {status} | {item["updates"]} | {item["duration"]:.1f}s |")
         changes = [
             change
@@ -226,8 +246,9 @@ if __name__ == "__main__":
         started = time.monotonic()
         with _log_group(path.stem.removeprefix("auto_")):
             try:
-                changes = module.run()
-                updates = len(changes)
+                with _manifest_snapshot():
+                    changes = module.run()
+                    updates = len(changes)
             except Exception as error:
                 elapsed = time.monotonic() - started
                 _update_results.append({"name": path.stem, "updates": 0, "duration": elapsed, "changes": [], "failed": True})
