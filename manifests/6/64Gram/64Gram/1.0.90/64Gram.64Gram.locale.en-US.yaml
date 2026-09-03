@@ -17,11 +17,11 @@ ShortDescription: Unofficial Telegram Desktop
 Moniker: 64gram
 Tags:
 - telegram
-ReleaseNotesUrl: https://github.com/TDesktop-x64/tdesktop/releases/tag/v1.0.90
-ManifestType: defaultLocale
-ManifestVersion: 1.12.0
 ReleaseNotes: |-
   v1.0.90 (TDesktop v4.9.2 aka 4.9.3)
   - [Fix] active chat folder when back from archived chats with hide all chats
   - [Fix] repeater crash when repeat a non-exist message
   - [Fix] active chat folder when hide all chats is enabled
+ReleaseNotesUrl: https://github.com/TDesktop-x64/tdesktop/releases/tag/v1.0.90
+ManifestType: defaultLocale
+ManifestVersion: 1.12.0

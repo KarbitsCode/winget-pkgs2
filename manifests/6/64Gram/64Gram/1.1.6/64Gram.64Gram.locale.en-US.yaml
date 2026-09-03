@@ -17,10 +17,10 @@ ShortDescription: Unofficial Telegram Desktop
 Moniker: 64gram
 Tags:
 - telegram
-ReleaseNotesUrl: https://github.com/TDesktop-x64/tdesktop/releases/tag/v1.1.6
-ManifestType: defaultLocale
-ManifestVersion: 1.12.0
 ReleaseNotes: |-
   v1.1.6 (TDesktop v4.13.1)
   - [Fix] voice chat auto unmute
   - [New] Add a little avatar of the sender on the corner of a group icon in chat list (Enhanced settings)
+ReleaseNotesUrl: https://github.com/TDesktop-x64/tdesktop/releases/tag/v1.1.6
+ManifestType: defaultLocale
+ManifestVersion: 1.12.0
