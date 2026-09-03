@@ -17,10 +17,10 @@ ShortDescription: Unofficial Telegram Desktop
 Moniker: 64gram
 Tags:
 - telegram
-ReleaseNotesUrl: https://github.com/TDesktop-x64/tdesktop/releases/tag/v1.0.91
-ManifestType: defaultLocale
-ManifestVersion: 1.12.0
 ReleaseNotes: |-
   v1.0.91 (TDesktop v4.9.4)
   - [Fix] Forward button visual bug in scheduled messages
   - [Change] Decrease search field rounding
+ReleaseNotesUrl: https://github.com/TDesktop-x64/tdesktop/releases/tag/v1.0.91
+ManifestType: defaultLocale
+ManifestVersion: 1.12.0

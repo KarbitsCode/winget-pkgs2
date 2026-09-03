@@ -17,10 +17,10 @@ ShortDescription: Unofficial Telegram Desktop
 Moniker: 64gram
 Tags:
 - telegram
-ReleaseNotesUrl: https://github.com/TDesktop-x64/tdesktop/releases/tag/v1.0.89
-ManifestType: defaultLocale
-ManifestVersion: 1.12.0
 ReleaseNotes: |-
   v1.0.89 (TDesktop v4.9.1)
   - [Improve] hide stories
   - [Fix] enhanced settings can't save
+ReleaseNotesUrl: https://github.com/TDesktop-x64/tdesktop/releases/tag/v1.0.89
+ManifestType: defaultLocale
+ManifestVersion: 1.12.0

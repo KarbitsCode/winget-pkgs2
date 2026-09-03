@@ -17,12 +17,12 @@ ShortDescription: Unofficial Telegram Desktop
 Moniker: 64gram
 Tags:
 - telegram
-ReleaseNotesUrl: https://github.com/TDesktop-x64/tdesktop/releases/tag/v1.1.0
-ManifestType: defaultLocale
-ManifestVersion: 1.12.0
 ReleaseNotes: |-
   v1.1.0 (TDesktop v4.11.1)
   - No changelog :)
   - **NOTE: No Linux build**
   - **There are no ETA about Linux build.**
   - [ASK = MUTE](https://github.com/telegramdesktop/tdesktop/issues/26982)
+ReleaseNotesUrl: https://github.com/TDesktop-x64/tdesktop/releases/tag/v1.1.0
+ManifestType: defaultLocale
+ManifestVersion: 1.12.0
