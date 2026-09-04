@@ -62,21 +62,7 @@ $hToken = [IntPtr]::Zero
 if (-not [Win32]::OpenProcessToken($hExplorer, 0x0002 -bor 0x0008 <# TOKEN_DUPLICATE | TOKEN_QUERY #>, [ref]$hToken)) {
     throw "OpenProcessToken failed: $([Runtime.InteropServices.Marshal]::GetLastWin32Error())"
 }
-$elevation = New-Object Win32+TE
-$elevationType = 0
-$returnLength = 0
-if (-not [Win32]::GetTokenInformation($hToken, 20 <# TokenElevation #>, [ref]$elevation, [Runtime.InteropServices.Marshal]::SizeOf($elevation), [ref]$returnLength)) {
-    throw "GetTokenInformation failed: $([Runtime.InteropServices.Marshal]::GetLastWin32Error())"
-}
-if (-not [Win32]::GetTokenInformation($hToken, 18 <# TokenElevationType #>, [ref]$elevationType, 4, [ref]$returnLength)) {
-    throw "GetTokenInformation2 failed: $([Runtime.InteropServices.Marshal]::GetLastWin32Error())"
-}
-Write-Host "Explorer elevated: $([bool]$elevation.TokenIsElevated) $(switch ($elevationType) {
-    1 { 'Default' }
-    2 { 'Full' }
-    3 { 'Limited' }
-    default { `"Unknown ($type)`" }
-})"
+
 $sa = New-Object Win32+SA;
 $sa.nLength = [Runtime.InteropServices.Marshal]::SizeOf($sa)
 $sa.bInheritHandle = $true
