@@ -15,6 +15,7 @@ def run(*, is_main=(__name__ == "__main__")):
         for version in versions
         if version not in existing
     ]
+    new_versions = list(reversed(new_versions))
     log(f"Found {len(new_versions)} new WakaTime CLI release(s).")
     changes = []
     

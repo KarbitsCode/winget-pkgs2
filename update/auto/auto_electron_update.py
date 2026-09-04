@@ -23,6 +23,7 @@ def run(*, is_main=(__name__ == "__main__")):
         if version not in existing
         and version.split(".", 1)[0] in tracked_majors
     ]
+    new_versions = list(reversed(new_versions))
     log(f"Found {len(new_versions)} new Electron release(s).")
     changes = []
     
