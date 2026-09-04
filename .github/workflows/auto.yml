@@ -102,6 +102,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.WINGET_TOKEN }}
           BOT_TOKEN: ${{ steps.github-app.outputs.token }}
+          PYTHONIOENCODING: utf-8
         run: |
           # https://github.com/PowerShell/PowerShell/issues/14100
           $env:PSModulePath = "C:\Windows\System32\WindowsPowerShell\v1.0\Modules"
