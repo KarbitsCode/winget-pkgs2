@@ -17,9 +17,9 @@ for /f "usebackq delims=" %%A in (`
     "$ogurl = @([regex]::Match($input, 'InstallerUrl:\s*(\S+)') | ForEach-Object { $_.Groups[1].Value });" ^
     "$suffix = if ($ogurl[0] -match '%PKGBASE%\d+(?:_\d+)*(?<Suffix>[A-Za-z]*)\.exe$') { $Matches['Suffix'] };" ^
     "$list = @(" ^
-      "@{ Url='https://sourceforge.net/projects/crystalmarkretro/files/%VERSION%/CrystalMarkRetro' + $('%VERSION%' -replace '\.', '_') + $suffix + '.exe'; Arch='x86' }," ^
-      "@{ Url='https://sourceforge.net/projects/crystalmarkretro/files/%VERSION%/CrystalMarkRetro' + $('%VERSION%' -replace '\.', '_') + $suffix + '.exe'; Arch='x64' }," ^
-      "@{ Url='https://sourceforge.net/projects/crystalmarkretro/files/%VERSION%/CrystalMarkRetro' + $('%VERSION%' -replace '\.', '_') + $suffix + '.exe'; Arch='arm64' }" ^
+      "@{ Url='https://sourceforge.net/projects/%PKGNAME%/files/%VERSION%/%PKGNAME%' + $('%VERSION%' -replace '\.', '_') + $suffix + '.exe'; Arch='x86' }," ^
+      "@{ Url='https://sourceforge.net/projects/%PKGNAME%/files/%VERSION%/%PKGNAME%' + $('%VERSION%' -replace '\.', '_') + $suffix + '.exe'; Arch='x64' }," ^
+      "@{ Url='https://sourceforge.net/projects/%PKGNAME%/files/%VERSION%/%PKGNAME%' + $('%VERSION%' -replace '\.', '_') + $suffix + '.exe'; Arch='arm64' }" ^
     ");" ^
     "$urls  = $list | ForEach-Object { $_.Url };" ^
     "$archs = $list | ForEach-Object { $_.Arch };" ^
