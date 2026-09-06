@@ -27,6 +27,11 @@ Description: |-
   * Import from URL
   * Read aloud (Automatic Text-to-Speech)
   * Save as WAV file
+Tags:
+- Reader
+- Reading
+- Text
+- Text-To-Speech
 ReleaseNotesUrl: https://vovsoft.com/version-history/read-mode/
 PurchaseUrl: https://vovsoft.com/purchase/read-mode/
 Documentations:

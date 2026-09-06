@@ -37,6 +37,11 @@ Description: |-
     - Auto-detects encoding to ensure compatibility with different file types.
 
   This program offers an efficient and user-friendly solution for analyzing log files, extracting key details, processing structured data, and cleaning up big text files.
+Tags:
+- Filter
+- Log
+- RegEx
+- Text
 ReleaseNotesUrl: https://vovsoft.com/version-history/text-filter/
 Documentations:
 - DocumentLabel: Text Filter Help
