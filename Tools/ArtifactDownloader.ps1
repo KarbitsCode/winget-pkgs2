@@ -41,8 +41,13 @@ if ($botComment) {
     }
 } else {
     $pr = gh api "repos/microsoft/winget-pkgs/pulls/$PRNumber" | ConvertFrom-Json
-    $checkRuns = gh api "repos/microsoft/winget-pkgs/commits/$($pr.head.sha)/check-runs?per_page=100" | ConvertFrom-Json
-    $check = $checkRuns.check_runs |
+    $checkRuns = @(
+        gh api --paginate `
+            "repos/microsoft/winget-pkgs/commits/$($pr.head.sha)/check-runs?per_page=100" `
+            --jq '.check_runs[]' |
+            ConvertFrom-Json
+    )
+    $check = $checkRuns |
         Where-Object {
             $_.name -eq "10. Validation Completed" -and
             $_.app.slug -eq "wingetvalidator-prod"
