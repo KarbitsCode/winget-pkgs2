@@ -30,14 +30,13 @@ def run(*, is_main=(__name__ == "__main__")):
     for new_version in new_versions:
         package_folder = electron_dir / new_version.split(".", 1)[0]
         new_version_folder = package_folder / new_version
-        update_package_local(
+        update_package(
             updater,
-            package_folder,
             f"{new_version}"
         )
-        changes.append({"package": f"OpenJS.Electron.{new_version.split(".", 1)[0]}", "before": "—", "after": new_version, "submission_key": str(new_version_folder)})
         log(f"Queueing package submission for Electron version: {new_version}")
         submit_package("komac", new_version_folder)
+        changes.append({"package": f"OpenJS.Electron.{new_version.split(".", 1)[0]}", "before": "—", "after": new_version, "submission_key": str(new_version_folder)})
     
     if is_main:
         submit_flush()

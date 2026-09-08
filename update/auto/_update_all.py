@@ -118,15 +118,12 @@ def check_releases(url):
         if not release["draft"] and not release["prerelease"]
     ]
 
-def update_package_local(updater, package_folder, batch_args, replace_folder=""):
+def update_package(updater, batch_args, replace=""):
     run_with_stream(
         f"update\\{updater}.bat {batch_args}"
     )
-    if replace_folder:
-        shutil.rmtree(replace_folder)
-
-def update_and_replace(updater, package_folder, batch_args, replace):
-    return update_package_local(updater, package_folder, batch_args, replace)
+    if replace:
+        shutil.rmtree(replace)
 
 def submit_package(tool, version_folder, options=""):
     if tool == "wingetcreate":
@@ -143,7 +140,7 @@ def submit_package(tool, version_folder, options=""):
         log(f"{"::warning title=Duplicate PR::" if os.getenv("GITHUB_ACTIONS") else ""}{version_folder} found in already opened PR(s): {", ".join(str(i["number"]) for i in found_pr)}")
     else:
         run_with_stream(
-            f"git add {version_folder.parent} && git --no-pager diff --color=always HEAD {version_folder.parent}"
+            f"git add {version_folder.parent} && git --no-pager diff --color=always HEAD {version_folder if sum(p.is_dir() for p in version_folder.iterdir()) > 1 else version_folder.parent}"
         )
         _submit_q.append((f"{command} {version_folder} {options}", version_folder))
 

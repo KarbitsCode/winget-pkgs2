@@ -25,15 +25,14 @@ def run(*, is_main=(__name__ == "__main__")):
         old_version_folder = Path(file).parent
         package_folder = old_version_folder.parent
         new_version_folder = package_folder / new_version
-        update_and_replace(
+        update_package(
             updater,
-            package_folder,
             f"{new_version}",
             replace=old_version_folder
         )
-        changes.append({"package": package_name, "before": old_version_folder.name, "after": new_version, "submission_key": str(new_version_folder)})
         log(f"Queueing package submission for Ubisoft Connect version: {new_version}")
         submit_package("wingetcreate", new_version_folder, "--replace")
+        changes.append({"package": package_name, "before": old_version_folder.name, "after": new_version, "submission_key": str(new_version_folder)})
     
     if is_main:
         submit_flush()
