@@ -2,14 +2,14 @@
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.SpeechToSubtitleConverter
-PackageVersion: 2.3.0.0
+PackageVersion: 2.4.0.0
 InstallerLocale: en-US
 Installers:
 - Architecture: x64
   InstallerType: inno
   Scope: machine
   InstallerUrl: https://files.vovsoft.com/speech-to-subtitle-converter.exe
-  InstallerSha256: 4FECC4BF0ABBD692FEAA48199AB45F0972D667023D20C00C71E219E6C0CD0982
+  InstallerSha256: FAA7549A8FC7585C5DFD2852D36AF8F768CA63F7B34ECC8C0CAA3BA49BECE54A
   InstallModes:
   - interactive
   - silent
@@ -33,8 +33,8 @@ Installers:
   - RelativeFilePath: speechtosubtitle.exe
     PortableCommandAlias: speechtosubtitle
   InstallerUrl: https://files.vovsoft.com/speech-to-subtitle-converter-portable.zip
-  InstallerSha256: 7A3F3DF5618156567F1BDEC62662D6E5B66E4213771D76BB254D13DA6D31A040
+  InstallerSha256: 13789C22840F00A908BD734AA4C6B093D211448DB02ABD3C758577A84C525338
   ArchiveBinariesDependOnPath: true
 ManifestType: installer
 ManifestVersion: 1.12.0
-ReleaseDate: 2026-08-22
+ReleaseDate: 2026-09-08
