@@ -1,8 +1,8 @@
-# Automatically updated by the winget bot at 2026/Jul/30
+# Automatically updated by the winget bot at 2026/Sep/08
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.locale.1.12.0.schema.json
 
 PackageIdentifier: Easeware.DriverEasy
-PackageVersion: 7.1.5.5750
+PackageVersion: 7.2.0.6141
 PackageLocale: de-DE
 Publisher: Easeware
 PublisherUrl: https://de.drivereasy.com/
@@ -13,8 +13,8 @@ PackageName: Driver Easy
 PackageUrl: https://www.drivereasy.com/goto/de.php
 License: Proprietär
 LicenseUrl: https://de.drivereasy.com/eula/
-Copyright: Copyright (c) 2009-2025 Easeware.
-ShortDescription: Laden Sie einfach die neuesten/fehlenden Treiber für Ihren Computer herunter!
+Copyright: © 2009-2026 Easeware.
+ShortDescription: Laden Sie einfach die neuesten/fehlenden Treiber für Ihren Computer herunter.
 Tags:
 - geräte-treiber
 - treiber
