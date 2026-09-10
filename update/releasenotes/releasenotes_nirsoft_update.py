@@ -32,14 +32,14 @@ soup = BeautifulSoup(response.text, "lxml")
 history_heading = soup.find(
     "h4",
     class_="utilsubject",
-    string=lambda text: text and text.strip() == "Versions History"
+    string=re.compile(r"^Versions? History$")
 )
 if history_heading is None:
-    raise RuntimeError("Versions History section was not found.")
+    raise RuntimeError("Version history section was not found.")
 
 history = history_heading.find_next("ul")
 if history is None:
-    raise RuntimeError("Versions History list was not found.")
+    raise RuntimeError("Version history list was not found.")
 
 if "--latest-version" in sys.argv:
     latest_entry = history.find("li", recursive=False)
