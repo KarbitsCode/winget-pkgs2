@@ -2,7 +2,7 @@
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: BandicamCompany.Bandicam
-PackageVersion: 8.3.1.2537
+PackageVersion: 27.0.6.2686
 InstallerLocale: en-US
 Platform:
 - Windows.Desktop
@@ -13,7 +13,7 @@ InstallModes:
 - silent
 UpgradeBehavior: install
 ProductCode: Bandicam
-ReleaseDate: 2026-06-26
+ReleaseDate: 2026-09-09
 AppsAndFeaturesEntries:
 - Publisher: Bandicam.com
   ProductCode: Bandicam
@@ -21,7 +21,7 @@ InstallationMetadata:
   DefaultInstallLocation: '%ProgramFiles%\Bandicam'
 Installers:
 - Architecture: x64
-  InstallerUrl: https://dl.bandicam.com/old/BDCAMSETUP_ENG_8_3_1_2537.EXE
-  InstallerSha256: 58B852C3E614D2C38A024163656711974412B9F4381C971FA6A601E0FFCCEC74
+  InstallerUrl: https://dl.bandicam.com/bdcamsetup.exe
+  InstallerSha256: 379992E206FEC23848C43FB14B27A80758FC461AEF941C48E029303CE359D5DD
 ManifestType: installer
 ManifestVersion: 1.12.0

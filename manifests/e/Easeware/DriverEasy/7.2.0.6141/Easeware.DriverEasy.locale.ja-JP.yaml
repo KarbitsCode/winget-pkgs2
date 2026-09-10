@@ -1,8 +1,8 @@
-# Automatically updated by the winget bot at 2026/Jul/30
+# Automatically updated by the winget bot at 2026/Sep/08
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.locale.1.12.0.schema.json
 
 PackageIdentifier: Easeware.DriverEasy
-PackageVersion: 7.1.5.5750
+PackageVersion: 7.2.0.6141
 PackageLocale: ja-JP
 Publisher: Easeware
 PublisherUrl: https://www.drivereasy.jp/
@@ -13,7 +13,7 @@ PackageName: Driver Easy
 PackageUrl: https://www.drivereasy.com/goto/ja.php
 License: 独自の
 LicenseUrl: https://www.drivereasy.jp/eula/
-Copyright: Copyright (c) 2009-2025 Easeware.
+Copyright: © 2009-2026 Easeware.
 ShortDescription: お使いのコンピューターの最新/不足しているドライバーを簡単にダウンロードできます。
 Tags:
 - デバイスドライバー
