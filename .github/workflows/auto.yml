@@ -80,7 +80,7 @@ jobs:
           winget source reset --force
           winget source list
 
-          winget install wingetcreate komac --accept-package-agreements --accept-source-agreements --disable-interactivity
+          winget install wingetcreate komac innounp --accept-package-agreements --accept-source-agreements --disable-interactivity
           wingetcreate token --store --token $env:WINGET_TOKEN
           komac token new --token $env:WINGET_TOKEN
 
@@ -148,6 +148,6 @@ jobs:
             const errors = annotations.filter(annotation => annotation.annotation_level === "failure");
             if (errors.length > 0) {
               core.setFailed(
-                `${errors.length} error annotation(s) found in updater.`
+                `${errors.length} error annotation(s) in updater.`
               );
             }
