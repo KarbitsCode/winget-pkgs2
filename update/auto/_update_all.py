@@ -254,7 +254,7 @@ if __name__ == "__main__":
                 continue
         elapsed = time.monotonic() - started
         _update_results.append({"name": path.stem, "updates": updates, "duration": elapsed, "changes": changes})
-        message = f"{path.stem}: {"updated" if updates else "no updates"} ({updates}) {"package(s)" if updates else ""} in {elapsed:.1f}s"
+        message = f"{path.stem}: {"updated" if updates else "no updates"} ({updates}) {"package(s)" if updates else "\b"} in {elapsed:.1f}s"
         log(f"::notice::{message}" if os.getenv("GITHUB_ACTIONS") else message)
     with _log_group("pull_request_submission"):
         submit_flush()
