@@ -17,9 +17,6 @@ ShortDescription: Unofficial Telegram Desktop
 Moniker: 64gram
 Tags:
 - telegram
-ReleaseNotesUrl: https://github.com/TDesktop-x64/tdesktop/releases/tag/v1.1.54
-ManifestType: defaultLocale
-ManifestVersion: 1.12.0
 ReleaseNotes: |-
   v1.1.54
   - [Remove] download speed boost
@@ -30,3 +27,6 @@ ReleaseNotes: |-
   - and now, media player crashes.
   - So I removed the bug😇
   - Download speed boost=bug itself
+ReleaseNotesUrl: https://github.com/TDesktop-x64/tdesktop/releases/tag/v1.1.54
+ManifestType: defaultLocale
+ManifestVersion: 1.12.0

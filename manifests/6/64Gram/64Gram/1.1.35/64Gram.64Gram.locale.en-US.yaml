@@ -17,11 +17,11 @@ ShortDescription: Unofficial Telegram Desktop
 Moniker: 64gram
 Tags:
 - telegram
-ReleaseNotesUrl: https://github.com/TDesktop-x64/tdesktop/releases/tag/v1.1.35
-ManifestType: defaultLocale
-ManifestVersion: 1.12.0
 ReleaseNotes: |-
   v1.1.35 (TDesktop v5.5.1)
   - [New] sticker owner info
   - -- If you have "seen" them, 64Gram will open owner profile for you.
   - -- Otherwise, it will copy owner id to clipboard and you need to obtain owner info from !@#@$!%!Q! bot🌚
+ReleaseNotesUrl: https://github.com/TDesktop-x64/tdesktop/releases/tag/v1.1.35
+ManifestType: defaultLocale
+ManifestVersion: 1.12.0
