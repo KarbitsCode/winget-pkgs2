@@ -17,9 +17,9 @@ ShortDescription: Unofficial Telegram Desktop
 Moniker: 64gram
 Tags:
 - telegram
-ReleaseNotesUrl: https://github.com/TDesktop-x64/tdesktop/releases/tag/v1.1.20
-ManifestType: defaultLocale
-ManifestVersion: 1.12.0
 ReleaseNotes: |-
   v1.1.20 (TDesktop v5.0.0)
   - [Fix] account can't open in new window
+ReleaseNotesUrl: https://github.com/TDesktop-x64/tdesktop/releases/tag/v1.1.20
+ManifestType: defaultLocale
+ManifestVersion: 1.12.0

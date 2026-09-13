@@ -17,12 +17,12 @@ ShortDescription: Unofficial Telegram Desktop
 Moniker: 64gram
 Tags:
 - telegram
-ReleaseNotesUrl: https://github.com/TDesktop-x64/tdesktop/releases/tag/v1.1.33
-ManifestType: defaultLocale
-ManifestVersion: 1.12.0
 ReleaseNotes: |-
   v1.1.33 (TDesktop v5.4.0)
   - [New] Add quick forward when pressed ctrl
   - [New] Screenshot privacy mode
   - [New] Support to drag and drop in the filter menu
   - [New] Support sending and viewing location
+ReleaseNotesUrl: https://github.com/TDesktop-x64/tdesktop/releases/tag/v1.1.33
+ManifestType: defaultLocale
+ManifestVersion: 1.12.0
