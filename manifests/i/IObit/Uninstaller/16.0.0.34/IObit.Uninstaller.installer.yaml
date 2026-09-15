@@ -2,7 +2,7 @@
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: IObit.Uninstaller
-PackageVersion: 16.0.0.32
+PackageVersion: 16.0.0.34
 InstallerLocale: en-US
 InstallerType: inno
 Scope: machine
@@ -24,7 +24,7 @@ ElevationRequirement: elevatesSelf
 Installers:
 - Architecture: x64
   InstallerUrl: https://cdn.iobit.com/dl/iobituninstaller.exe
-  InstallerSha256: A0A2494DC561955613C3E6B1E4A6D6E8F143DDB81927FE0C122E38FB4253529E
+  InstallerSha256: 9C1AACA1E078415A7FF7A6722CFCC028352A3D5204EB16695A156934626480C2
 ManifestType: installer
 ManifestVersion: 1.12.0
-ReleaseDate: 2026-09-09
+ReleaseDate: 2026-09-14
