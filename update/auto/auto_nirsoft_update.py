@@ -19,7 +19,7 @@ def run(*, is_main=(__name__ == "__main__")):
             f"\"{sys.executable}\" update\\releasenotes\\releasenotes_{updater}.py {folder} --latest-version"
         )
         new_version = re.search(r"^Latest version:\s+(\S+)$", check_output, re.MULTILINE).group(1)
-        log(f"{folder}: latest version {new_version}")
+        log(f"{folder} => {new_version}")
         if folder.name == new_version:
             log("Already current.")
             new_versions.append(None)
