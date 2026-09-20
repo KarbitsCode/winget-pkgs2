@@ -7,7 +7,9 @@ $CommitMessage = $CommitMessage.Trim()
 Push-Location $PSScriptRoot\..
 
 # Check if there are changes in manifests
+git add manifests
 $changes = git status --porcelain manifests
+git restore --staged manifests
 
 if (-not $changes) {
     Write-Host "No changes detected in manifests folder" -ForegroundColor Yellow
