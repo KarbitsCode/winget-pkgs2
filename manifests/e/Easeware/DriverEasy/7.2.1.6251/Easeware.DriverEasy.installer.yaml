@@ -2,7 +2,8 @@
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: Easeware.DriverEasy
-PackageVersion: 7.2.1.6181
+PackageVersion: 7.2.1.6251
+InstallerLocale: en-US
 InstallerType: inno
 Scope: machine
 InstallModes:
@@ -11,7 +12,7 @@ InstallModes:
 - silentWithProgress
 UpgradeBehavior: install
 ProductCode: DriverEasy_is1
-ReleaseDate: 2026-09-14
+ReleaseDate: 2026-09-21
 AppsAndFeaturesEntries:
 - DisplayName: Driver Easy 7.2.1
   ProductCode: DriverEasy_is1
@@ -21,6 +22,6 @@ InstallationMetadata:
 Installers:
 - Architecture: x86
   InstallerUrl: https://download.drivereasy.com/DriverEasy_Setup.exe
-  InstallerSha256: 57D3DCA49BBF9BA5877AF9C127C0F27673FA0B81A8B230634C54506F7EFBFFB3
+  InstallerSha256: 410E5B3192878A70D6010E4ACC9CEFBB1F281C9A56283382B82C129229412237
 ManifestType: installer
 ManifestVersion: 1.12.0
