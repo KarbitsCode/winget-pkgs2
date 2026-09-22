@@ -5,6 +5,7 @@ param(
 )
 
 $targetLabels = @("Internal-Error", "Defender-Error", "SmartScreen-Error", "Installation-Error")
+$login = gh api user --jq .login
 
 while ($true) {
     # Get the latest open PR
@@ -18,7 +19,11 @@ while ($true) {
     foreach ($pr in ($prs | Sort-Object {[int]$_.number})) {
         foreach ($prlabel in $pr.labels.name) {
             if ($prlabel -match $targetlabel) {
-                $targetprs += $pr.number
+                $comments = gh pr view $pr.number --json comments | ConvertFrom-Json
+                if (-not ($comments.comments | Where-Object { $_.author.login -eq $login -and $_.body -match "(?m)^\.except$" })) {
+                    $targetprs += $pr.number
+                }
+                break
             }
         }
     }
