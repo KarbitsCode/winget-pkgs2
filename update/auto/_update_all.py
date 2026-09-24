@@ -110,8 +110,14 @@ def check_mismatches(package_folder):
     
     return files, urls, packages
 
-def check_releases(url):
-    releases = requests.get(url, params={"per_page": 100}, timeout=10).json()
+def check_releases(repo):
+    response = requests.get(f"https://api.github.com/repos/{repo}/releases",
+        headers={"Authorization": f"Bearer {token}"} if (token := os.getenv("GH_TOKEN")) else {},
+        params={"per_page": 100},
+        timeout=10
+    )
+    response.raise_for_status()
+    releases = response.json()
     return [
         release["tag_name"].removeprefix("v")
         for release in releases
