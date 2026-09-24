@@ -3,7 +3,7 @@ def run(*, is_main=(__name__ == "__main__")):
     updater = selfname.lstrip("_").removeprefix("auto_")
     
     log("Checking releases...")
-    versions = check_releases("https://api.github.com/repos/TDesktop-x64/tdesktop/releases")
+    versions = check_releases("TDesktop-x64/tdesktop")
     sixtyfourgram_dir = Path("manifests\\6\\64Gram\\64Gram")
     existing = {
         folder.name

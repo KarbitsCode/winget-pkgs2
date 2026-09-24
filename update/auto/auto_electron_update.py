@@ -3,7 +3,7 @@ def run(*, is_main=(__name__ == "__main__")):
     updater = selfname.lstrip("_").removeprefix("auto_")
     
     log("Checking releases...")
-    versions = check_releases("https://api.github.com/repos/electron/electron/releases")
+    versions = check_releases("electron/electron")
     electron_dir = Path("manifests\\o\\OpenJS\\Electron")
     tracked_majors = {
         folder.name

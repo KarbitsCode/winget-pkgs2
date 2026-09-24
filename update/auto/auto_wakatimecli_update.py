@@ -3,7 +3,7 @@ def run(*, is_main=(__name__ == "__main__")):
     updater = selfname.lstrip("_").removeprefix("auto_")
     
     log("Checking releases...")
-    versions = check_releases("https://api.github.com/repos/wakatime/wakatime-cli/releases")
+    versions = check_releases("wakatime/wakatime-cli")
     wakatime_dir = Path("manifests\\w\\Wakatime\\CLIWakatime")
     existing = {
         folder.name
