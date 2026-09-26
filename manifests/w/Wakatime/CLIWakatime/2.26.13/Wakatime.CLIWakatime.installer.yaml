@@ -1,0 +1,30 @@
+# Created with komac v2.16.0
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
+
+PackageIdentifier: Wakatime.CLIWakatime
+PackageVersion: 2.26.13
+InstallerLocale: en-US
+InstallerType: zip
+NestedInstallerType: portable
+ReleaseDate: 2026-09-26
+Installers:
+- Architecture: x86
+  NestedInstallerFiles:
+  - RelativeFilePath: wakatime-cli-windows-386.exe
+    PortableCommandAlias: wakatime-cli
+  InstallerUrl: https://github.com/wakatime/wakatime-cli/releases/download/v2.26.13/wakatime-cli-windows-386.zip
+  InstallerSha256: E008F3B049E5EF9ADCFCF3089FAFC4034A44108875FFB6599B701F4F82FFB845
+- Architecture: x64
+  NestedInstallerFiles:
+  - RelativeFilePath: wakatime-cli-windows-amd64.exe
+    PortableCommandAlias: wakatime-cli
+  InstallerUrl: https://github.com/wakatime/wakatime-cli/releases/download/v2.26.13/wakatime-cli-windows-amd64.zip
+  InstallerSha256: 6E2562D7FCD66ECC1AAAA472B0F73616EC3FFAA0EA91953ADAFBE4150CDFE1B6
+- Architecture: arm64
+  NestedInstallerFiles:
+  - RelativeFilePath: wakatime-cli-windows-arm64.exe
+    PortableCommandAlias: wakatime-cli
+  InstallerUrl: https://github.com/wakatime/wakatime-cli/releases/download/v2.26.13/wakatime-cli-windows-arm64.zip
+  InstallerSha256: 308F1A9F7A33A9A2BA4672767C8294EC4AC4CF509536E23E86E52E10B9C36779
+ManifestType: installer
+ManifestVersion: 1.12.0
