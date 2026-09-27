@@ -22,7 +22,7 @@ def run(*, is_main=(__name__ == "__main__")):
         
         results = []
         for f in sorted(extract_dir.rglob("*")):
-            if not f.is_file():
+            if not f.is_file() or f == installer:
                 continue
             
             # Detect encoding
