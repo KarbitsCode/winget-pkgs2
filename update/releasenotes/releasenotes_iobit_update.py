@@ -9,8 +9,7 @@ def run(*, is_main=(__name__ == "__main__")):
         extract_dir = Path(extract_dir_str)
         
         installer = extract_dir / "installer.bin"
-        response = fetch(installer_url, timeout=30)
-        installer.write_bytes(response.content)
+        installer.write_bytes(fetch(installer_url, timeout=30).content)
         run_with_stream(
             f"innounp -x -y -b -d{extract_dir} {str(installer)} *.txt *.ini *.log"
         )
