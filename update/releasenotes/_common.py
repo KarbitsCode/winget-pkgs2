@@ -3,31 +3,100 @@ import os
 import sys
 import shutil
 import requests
+import tempfile
+import threading
+import subprocess
 from pathlib import Path
+from datetime import datetime
 from bs4 import BeautifulSoup
 from ruamel.yaml import YAML
-    
+
 yaml = YAML(typ="rt")
 
 def log(message):
     print(message, flush=True)
 
+def inject_context(target):
+    target.update({
+        k: v
+        for k, v in globals().items()
+        if not k.startswith("_")
+    })
+
+def run_with_stream(*args, **kwargs):
+    def pump(stream, collect=None):
+        for line in stream:
+            print(line, end="")
+            if isinstance(collect, list):
+                collect.append(line)
+    output = []
+    command = args[0]
+    if isinstance(command, str):
+        interpreter = re.search(
+            r'(?i)(?:^|&&|\|\||[;&])\s*("[^\"]*python(?:\.exe)?"|\'[^\']*python(?:\.exe)?\'|python(?:\.exe)?|py(?:\.exe)?)(?=\s|$)',
+            command,
+        )
+        if interpreter:
+            remainder = command[interpreter.end():]
+            if not re.match(r"\s+-u(?:\s|$)", remainder, re.IGNORECASE):
+                command = f"{command[:interpreter.end()]} -u{remainder}"
+    args = (command, *args[1:])
+    proc = subprocess.Popen(
+        *args,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+        shell=True,
+        **kwargs,
+    )
+    t1 = threading.Thread(target=pump, args=(proc.stdout, output))
+    t2 = threading.Thread(target=pump, args=(proc.stderr, None))
+    t1.start()
+    t2.start()
+    t1.join()
+    t2.join()
+    proc.wait()
+    if proc.returncode:
+        raise subprocess.CalledProcessError(proc.returncode, proc.args)
+    return "".join(output)
+
+def run_without_stream(*args, **kwargs):
+    proc = subprocess.Popen(
+        *args,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+        shell=True,
+        **kwargs,
+    )
+    output, _ = proc.communicate()
+    if proc.returncode:
+        raise subprocess.CalledProcessError(proc.returncode, proc.args)
+    return output
+
 def load_manifest():
-    target = Path(sys.argv[1])
-    if target.is_file() and target.name.endswith(".locale.en-US.yaml"):
-        file_path = target
+    target = Path([arg for arg in sys.argv if not arg.startswith("-")][1])
+    if target.is_file() and target.name.endswith(".yaml"):
+        file_paths = [target]
     elif target.is_dir():
-        file_path = next(target.rglob("*.locale.en-US.yaml"), None)
-        if file_path is None:
-            raise RuntimeError("No .locale.en-US.yaml manifest was found.")
+        file_paths = sorted(target.rglob("*.yaml"))
+        if not file_paths:
+            raise RuntimeError("No manifest files were found.")
     else:
         raise RuntimeError("Not a manifest file or directory")
+    manifests = {}
+    for file_path in file_paths:
+        log(f"Loading {file_path.name}...")
+        output = file_path.resolve()
+        with output.open("r", encoding="utf-8") as file:
+            manifests[output] = yaml.load(file)
+    return manifests
 
-    log(f"Loading {file_path.name}...")
-    output = file_path.resolve()
-    with output.open("r", encoding="utf-8") as file:
-        data = yaml.load(file)
-    return output, data
+def get_manifest(manifests, target):
+    for path, data in manifests.items():
+        if path.name.endswith(f".{target}.yaml"):
+            return path, data
+    raise RuntimeError(f"No manifest found for {target}")
 
 def fetch(url, **kwargs):
     log(f"Fetching {url}...")

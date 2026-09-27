@@ -1,13 +1,11 @@
-if __name__ == "__main__":
-    from _common import *
-
-    output, data = load_manifest()
+def run(*, is_main=(__name__ == "__main__")):
+    output, data = get_manifest(load_manifest(), "locale.en-US")
     version = data.get("PackageVersion")
-
+    
     url = f"https://api.github.com/repos/TDesktop-x64/tdesktop/releases"
     response = fetch(url, timeout=30)
     releases = response.json()
-
+    
     if asked_latest_version():
         if not releases:
             raise RuntimeError("No releases found.")
@@ -15,9 +13,9 @@ if __name__ == "__main__":
         new_version = re.sub(r"^v", "", latest_release["tag_name"])
         log(f"Latest version: {new_version}")
         raise SystemExit
-
+    
     create_backup(output)
-
+    
     target_version = f"v{version}"
     for release in releases:
         if release.get("tag_name") != target_version:
@@ -27,8 +25,7 @@ if __name__ == "__main__":
         if notes is None:
             raise RuntimeError(f"No release notes found for {target_version}")
         
-        log(f"Found release notes for version {version}:\n'{notes}'")
-        log(f"Writing new release notes...")
+        # log(f"Found raw release notes:\n{notes}")
         release_notes = []
         first_line = next((line.strip() for line in notes.splitlines() if line.strip()), "")
         release_notes.append(first_line)
@@ -38,9 +35,18 @@ if __name__ == "__main__":
                 continue
             note = re.sub(r"^\d+\.\s+", "", note)
             release_notes.append(f"- {note}")
-        write_release_notes(output, data, release_notes)
         
+        log(f"Release notes for version {version}:\n{"\n".join(release_notes)}")
+        create_backup(output)
+        log(f"Writing new release notes...")
+        write_release_notes(output, data, release_notes)
         log("Done.")
         break
     else:
         raise RuntimeError(f"{target_version} was not found.")
+
+
+if __name__ == "__main__":
+    from _common import inject_context
+    inject_context(globals())
+    run()

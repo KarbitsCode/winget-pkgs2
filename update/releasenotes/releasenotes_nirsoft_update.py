@@ -1,12 +1,10 @@
-if __name__ == "__main__":
-    from _common import *
-
-    output, data = load_manifest()
-    url = data.get("PackageUrl")
+def run(*, is_main=(__name__ == "__main__")):
+    output, data = get_manifest(load_manifest(), "locale.en-US")
     version = data.get("PackageVersion")
-
+    url = data.get("PackageUrl")
+    
     response = fetch(url, timeout=30)
-
+    
     log(f"Parsing page...")
     soup = BeautifulSoup(response.text, "lxml")
     history_heading = soup.find(
@@ -16,11 +14,11 @@ if __name__ == "__main__":
     )
     if history_heading is None:
         raise RuntimeError("Version history section was not found.")
-
+    
     history = history_heading.find_next("ul")
     if history is None:
         raise RuntimeError("Version history list was not found.")
-
+    
     if asked_latest_version():
         latest_entry = history.find("li", recursive=False)
         if latest_entry is None:
@@ -29,9 +27,7 @@ if __name__ == "__main__":
         new_version = re.sub(r"^Version\s+", "", latest_label).rstrip(":")
         log(f"Latest version: {new_version}")
         raise SystemExit
-
-    create_backup(output)
-
+    
     target_version = f"Version {version}"
     for entry in history.find_all("li", recursive=False):
         # The text directly inside the outer <li> is the version label.
@@ -44,16 +40,24 @@ if __name__ == "__main__":
         if notes is None:
             raise RuntimeError(f"No release notes found for {target_version}")
         
-        log(f"Found release notes for version {version}:\n'{' '.join(str(notes or '').split())}'")
-        log(f"Writing new release notes...")
+        # log(f"Found raw release notes:\n{' '.join(str(notes or '').split())}")
         release_notes = []
         release_notes.append(f"- {target_version}:")
         for note in notes.find_all("li", recursive=False):
             text = re.sub(r"\s+", " ", note.get_text(" ", strip=True))
             release_notes.append(f"  - {text}")
-        write_release_notes(output, data, release_notes)
         
+        log(f"Release notes for version {version}:\n{"\n".join(release_notes)}")
+        create_backup(output)
+        log(f"Writing new release notes...")
+        write_release_notes(output, data, release_notes)
         log("Done.")
         break
     else:
         raise RuntimeError(f"{target_version} was not found.")
+
+
+if __name__ == "__main__":
+    from _common import inject_context
+    inject_context(globals())
+    run()
