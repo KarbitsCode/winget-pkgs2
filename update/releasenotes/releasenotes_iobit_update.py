@@ -15,6 +15,11 @@ def run(*, is_main=(__name__ == "__main__")):
             f"innounp -x -y -b -d{extract_dir} {str(installer)} *.txt *.ini *.log"
         )
         
+        header_re = re.compile(
+            r'^\[?\s*[Vv](\d+(?:\.\d+)*)\s*(?:-\s*Updated\s+)?'
+            r'\(?\s*(\d{4}[-.]\d{2}[-.]\d{2}|[A-Za-z]+ \d{1,2},\s*\d{4})\s*\)?\]?\s*$'
+        )
+        
         results = []
         for f in sorted(extract_dir.rglob("*")):
             if not f.is_file():
@@ -36,11 +41,7 @@ def run(*, is_main=(__name__ == "__main__")):
                 # V14.0 2026.09.15
                 # v13.5 (2026-09-07)
                 # [V16.0 - Updated September 09, 2026]
-                if re.match(
-                    r'^\[?\s*[Vv]\d+(?:\.\d+)*\s*(?:-\s*Updated\s+)?'
-                    r'\(?\s*(?:\d{4}[-.]\d{2}[-.]\d{2}|[A-Za-z]+ \d{1,2},\s*\d{4})\s*\)?\]?\s*$',
-                    line.strip()
-                )
+                if header_re.match(line.strip())
             )
             results.append((f, score, text))
         
@@ -73,11 +74,7 @@ def run(*, is_main=(__name__ == "__main__")):
             if not line:
                 continue
             
-            header = re.match(
-                r'^\[?\s*[Vv](\d+(?:\.\d+)*)\s*(?:-\s*Updated\s+)?'
-                r'\(?\s*(\d{4}[-.]\d{2}[-.]\d{2}|[A-Za-z]+ \d{1,2},\s*\d{4})\s*\)?\]?\s*$',
-                line
-            )
+            header = header_re.match(line.strip())
             if header:
                 raw_version, raw_date = header.groups()
                 date = raw_date
