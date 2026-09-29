@@ -2,7 +2,7 @@
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: NirSoft.GUIPropView
-PackageVersion: "1.33"
+PackageVersion: "1.34"
 InstallerLocale: en-US
 InstallerType: zip
 NestedInstallerType: portable
@@ -12,10 +12,10 @@ NestedInstallerFiles:
 Installers:
 - Architecture: x86
   InstallerUrl: https://www.nirsoft.net/utils/guipropview.zip
-  InstallerSha256: CF668F622AFB5D7DAF7F76903203610B39319DC3D94B9C96E8E5898DA0A91480
+  InstallerSha256: 51CC61BD2955A4AE19FEFF6F7E42F9885096046F1BAF238BF3E6C35F2A32A826
 - Architecture: x64
   InstallerUrl: https://www.nirsoft.net/utils/guipropview-x64.zip
-  InstallerSha256: 9B515E445AA648574143747A516C7DF3AB644918AA75B851367693082B64C107
+  InstallerSha256: F0D395DB719DD56EE519AA51BA99EF501A7BB847510ABAB9BEA12D67180D48EF
 ManifestType: installer
 ManifestVersion: 1.12.0
-ReleaseDate: 2026-09-01
+ReleaseDate: 2026-09-29
