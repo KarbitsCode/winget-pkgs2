@@ -2,14 +2,14 @@
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.VovMusicPlayer
-PackageVersion: 12.8.0.0
+PackageVersion: 13.0.0.0
 InstallerLocale: en-US
 Installers:
 - Architecture: x86
   InstallerType: inno
   Scope: machine
   InstallerUrl: https://files.vovsoft.com/vov-music-player.exe
-  InstallerSha256: 8BFF025B4A6704FFDB88F1D8A69E7FB0C713489CBFAE969B1B85E50B865EBEDD
+  InstallerSha256: A74A4FEE0E98A9452BC093B224FD811D75A2768A458CC3509B61CAB9110D0CF4
   InstallModes:
   - interactive
   - silent
@@ -48,8 +48,8 @@ Installers:
   - RelativeFilePath: vovmusic.exe
     PortableCommandAlias: vovmusic
   InstallerUrl: https://files.vovsoft.com/vov-music-player-portable.zip
-  InstallerSha256: D4211AE04D1862D72F8E9C1A51C55C2A73421F795A1BA48CA83D6F080A5B6AA1
+  InstallerSha256: 7B0140D251840D886AC3918D08B3FC31B5F6FE78B8F1FAED7E3212D5747A5D33
   ArchiveBinariesDependOnPath: true
 ManifestType: installer
 ManifestVersion: 1.12.0
-ReleaseDate: 2026-09-03
+ReleaseDate: 2026-09-28
