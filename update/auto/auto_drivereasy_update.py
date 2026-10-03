@@ -31,7 +31,7 @@ def run(*, is_main=(__name__ == "__main__")):
             replace=old_version_folder
         )
         log(f"Queueing package submission for DriverEasy version: {new_version}")
-        submit_package("wingetcreate", new_version_folder, "--replace")
+        submit_package("wingetcreate", new_version_folder)
         changes.append({"package": package_name, "before": old_version_folder.name, "after": new_version, "submission_key": str(new_version_folder)})
     
     if is_main:
