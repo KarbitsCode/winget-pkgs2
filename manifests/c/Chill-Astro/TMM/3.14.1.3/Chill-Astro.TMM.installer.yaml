@@ -8,10 +8,6 @@ Commands:
 ReleaseDate: 2026-03-30
 Installers:
 - Architecture: x64
-  InstallerType: portable
-  InstallerUrl: https://github.com/Chill-Astro/Trust-My-Msix/releases/download/v3.14.1.3/tmm.exe
-  InstallerSha256: 945D0619394B4CB537328B0F465A448BA4E52F1A8E622DDCE83EABF7F3B6D22A
-- Architecture: x64
   InstallerType: inno
   Scope: machine
   InstallerUrl: https://github.com/Chill-Astro/Trust-My-Msix/releases/download/v3.14.1.3/Setup.exe
@@ -22,5 +18,9 @@ Installers:
   ElevationRequirement: elevatesSelf
   InstallationMetadata:
     DefaultInstallLocation: '%ProgramFiles%\Chill-Astro\Trust My Msix!'
+- Architecture: x64
+  InstallerType: portable
+  InstallerUrl: https://github.com/Chill-Astro/Trust-My-Msix/releases/download/v3.14.1.3/tmm.exe
+  InstallerSha256: 945D0619394B4CB537328B0F465A448BA4E52F1A8E622DDCE83EABF7F3B6D22A
 ManifestType: installer
 ManifestVersion: 1.12.0
