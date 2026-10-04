@@ -1,4 +1,4 @@
-# Created with komac v2.16.0
+# Created with YamlCreate.ps1 Dumplings Mod
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: Chill-Astro.TMM
@@ -17,8 +17,6 @@ Installers:
   InstallerUrl: https://github.com/Chill-Astro/Trust-My-Msix/releases/download/v3.14.1.6/Setup.exe
   InstallerSha256: 4394A2BE77299A9312B3056F1D6AA30DD30D4BEA18F01707D6C142F9E347BEB4
   ProductCode: '{26C9CAE8-B622-450D-8982-50157B3AE892}_is1'
-  AppsAndFeaturesEntries:
-  - ProductCode: '{26C9CAE8-B622-450D-8982-50157B3AE892}_is1'
   ElevationRequirement: elevatesSelf
   InstallationMetadata:
     DefaultInstallLocation: '%ProgramFiles%\Chill-Astro\Trust My Msix!'
