@@ -3,7 +3,8 @@ def run(*, is_main=(__name__ == "__main__")):
     updater = selfname.lstrip("_").removeprefix("auto_")
     
     log("Checking installer mismatches...")
-    files, urls, packages = check_mismatches("manifests\\n\\NirSoft")
+    nirsoft_dir = Path("manifests\\n\\NirSoft")
+    files, urls, packages = check_mismatches(nirsoft_dir)
     for i in range(len(urls) - 1, -1, -1):
         if not urls[i].endswith(".zip"):
             del files[i]
@@ -40,7 +41,7 @@ def run(*, is_main=(__name__ == "__main__")):
         run_with_stream(
             f"\"{sys.executable}\" update\\releasenotes\\releasenotes_{updater}.py {new_version_folder} --no-backup"
         )
-        log(f"Queueing package submission for NirSoft version: {new_version}")
+        log(f"Queueing package submission for {package_name} version: {new_version}")
         submit_package("wingetcreate", new_version_folder, "--replace")
         changes.append({"package": package_name, "before": old_version_folder.name, "after": new_version, "submission_key": str(new_version_folder)})
     

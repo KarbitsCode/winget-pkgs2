@@ -21,6 +21,7 @@ def run(*, is_main=(__name__ == "__main__")):
     
     for new_version in new_versions:
         package_folder = sixtyfourgram_dir
+        package_name = str.join('.', package_folder.as_posix().split("/")[2:])
         new_version_folder = package_folder / new_version
         update_package(
             updater,
@@ -29,9 +30,9 @@ def run(*, is_main=(__name__ == "__main__")):
         run_with_stream(
             f"\"{sys.executable}\" update\\releasenotes\\releasenotes_{updater}.py {new_version_folder} --no-backup"
         )
-        log(f"Queueing package submission for 64Gram version: {new_version}")
+        log(f"Queueing package submission for {package_name} version: {new_version}")
         submit_package("wingetcreate", new_version_folder)
-        changes.append({"package": "64Gram.64Gram", "before": "—", "after": new_version, "submission_key": str(new_version_folder)})
+        changes.append({"package": package_name, "before": "—", "after": new_version, "submission_key": str(new_version_folder)})
     
     if is_main:
         submit_flush()

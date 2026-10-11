@@ -21,14 +21,15 @@ def run(*, is_main=(__name__ == "__main__")):
     
     for new_version in new_versions:
         package_folder = wakatime_dir
+        package_name = str.join('.', package_folder.as_posix().split("/")[2:])
         new_version_folder = package_folder / new_version
         update_package(
             updater,
             f"{new_version}"
         )
-        log(f"Queueing package submission for WakaTime CLI version: {new_version}")
+        log(f"Queueing package submission for {package_name} version: {new_version}")
         submit_package("komac", new_version_folder)
-        changes.append({"package": "Wakatime.CLIWakatime", "before": "—", "after": new_version, "submission_key": str(new_version_folder)})
+        changes.append({"package": package_name, "before": "—", "after": new_version, "submission_key": str(new_version_folder)})
     
     if is_main:
         submit_flush()

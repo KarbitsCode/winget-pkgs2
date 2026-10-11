@@ -3,7 +3,8 @@ def run(*, is_main=(__name__ == "__main__")):
     updater = selfname.lstrip("_").removeprefix("auto_")
     
     log("Checking installer mismatches...")
-    files, urls, packages = check_mismatches("manifests\\r\\RootsMagic\\RootsMagic")
+    rootsmagic_dir = Path("manifests\\r\\RootsMagic\\RootsMagic")
+    files, urls, packages = check_mismatches(rootsmagic_dir)
     for i in range(len(urls) - 1, -1, -1):
         if not urls[i].endswith(".exe"):
             del files[i]
@@ -30,7 +31,7 @@ def run(*, is_main=(__name__ == "__main__")):
             f"{new_version}",
             replace=old_version_folder
         )
-        log(f"Queueing package submission for RootsMagic version: {new_version}")
+        log(f"Queueing package submission for {package_name} version: {new_version}")
         submit_package("wingetcreate", new_version_folder, "--replace")
         changes.append({"package": package_name, "before": old_version_folder.name, "after": new_version, "submission_key": str(new_version_folder)})
     
