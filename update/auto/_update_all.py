@@ -81,6 +81,15 @@ def run_without_stream(*args, **kwargs):
         raise subprocess.CalledProcessError(proc.returncode, proc.args)
     return output
 
+def github_fetch(url, params={}):
+    response = requests.get(f"https://api.github.com/{url}",
+        headers={"Authorization": f"Bearer {token}"} if (token := os.getenv("GH_TOKEN")) else {},
+        params=params,
+        timeout=30
+    )
+    response.raise_for_status()
+    return response
+
 def check_mismatches(package_folder):
     check_output = run_without_stream(
         f"\"{sys.executable}\" Tools\\TestLinks.py {package_folder}\\*.installer.*",
@@ -111,18 +120,34 @@ def check_mismatches(package_folder):
     return files, urls, packages
 
 def check_releases(repo):
-    response = requests.get(f"https://api.github.com/repos/{repo}/releases",
-        headers={"Authorization": f"Bearer {token}"} if (token := os.getenv("GH_TOKEN")) else {},
-        params={"per_page": 100},
-        timeout=10
-    )
-    response.raise_for_status()
+    response = github_fetch(f"repos/{repo}/releases", {"per_page": 100})
     releases = response.json()
     return [
         release["tag_name"].removeprefix("v")
         for release in releases
         if not release["draft"] and not release["prerelease"]
     ]
+
+def get_current_versions(package_path):
+    ref = package_path.as_posix().strip("/")
+    tree = github_fetch(f"repos/microsoft/winget-pkgs/git/trees/master:{ref}", params={"recursive": 1}).json()
+    if tree.get("truncated"):
+        raise RuntimeError(f"{ref!r} tree is too large")
+    parts = ref.split("/")
+    id_prefix = parts[2:] if parts[0] == "manifests" else parts
+    packages = {}
+    for entry in tree.get("tree", []):
+        if entry["type"] != "blob" or not entry["path"].lower().endswith(".yaml"):
+            continue
+        path = entry["path"].split("/")
+        if len(path) < 2:
+            continue
+        package_id = ".".join(id_prefix + path[:-2])
+        packages.setdefault(package_id, set()).add(path[-2])
+    return {pkg: sorted(vers, key=version_key) for pkg, vers in sorted(packages.items())}
+
+def remove_package(package_name, version, reason):
+    _submit_q.append((f"komac remove {package_name} --version {version} --reason \"{reason}\" --submit", f"{package_name}@{version}"))
 
 def update_package(updater, batch_args, replace=""):
     run_with_stream(
@@ -153,7 +178,7 @@ def submit_package(tool, version_folder, options=""):
 def submit_flush():
     for command, version_folder in _submit_q:
         try:
-            log(f"Submitting {version_folder}...")
+            log(f"Submitting {f"removal of {version_folder}" if "@" in version_folder else version_folder}...")
             submit_output = run_with_stream(
                 f"{command}"
             )
