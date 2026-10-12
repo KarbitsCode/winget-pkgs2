@@ -178,7 +178,7 @@ def submit_package(tool, version_folder, options=""):
 def submit_flush():
     for command, version_folder in _submit_q:
         try:
-            log(f"Submitting {f"removal of {version_folder}" if "@" in version_folder else version_folder}...")
+            log(f"Submitting {f"removal of {version_folder}" if "@" in str(version_folder) else version_folder}...")
             submit_output = run_with_stream(
                 f"{command}"
             )
