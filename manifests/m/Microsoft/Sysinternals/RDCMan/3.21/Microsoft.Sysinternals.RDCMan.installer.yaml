@@ -13,7 +13,6 @@ InstallModes:
 UpgradeBehavior: uninstallPrevious
 Commands:
 - rdcman
-ReleaseDate: 2026-08-19
 Installers:
 - Architecture: x86
   NestedInstallerFiles:
@@ -29,3 +28,4 @@ Installers:
   InstallerSha256: 100ADED2E7124A76B6FD1ADFD4257CB559CE45989B574172609F025C2C7B254D
 ManifestType: installer
 ManifestVersion: 1.12.0
+ReleaseDate: 2026-08-19
