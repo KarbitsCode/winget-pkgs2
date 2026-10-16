@@ -21,7 +21,7 @@ InstallationMetadata:
   DefaultInstallLocation: '%ProgramFiles%\Bandicam'
 Installers:
 - Architecture: x64
-  InstallerUrl: https://dl.bandicam.com/bdcamsetup.exe
+  InstallerUrl: https://dl.bandicam.com/old/BDCAMSETUP_27_0_6_2686.EXE
   InstallerSha256: 379992E206FEC23848C43FB14B27A80758FC461AEF941C48E029303CE359D5DD
 ManifestType: installer
 ManifestVersion: 1.12.0
