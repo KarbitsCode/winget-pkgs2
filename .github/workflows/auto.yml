@@ -81,6 +81,7 @@ jobs:
           winget source list
 
           winget install wingetcreate komac innounp --accept-package-agreements --accept-source-agreements --disable-interactivity
+          winget install komac --version 2.16.0 --accept-package-agreements --accept-source-agreements --disable-interactivity
           wingetcreate token --store --token $env:WINGET_TOKEN
           komac token new --token $env:WINGET_TOKEN
 
