@@ -185,7 +185,7 @@ def submit_flush():
             pr_url = re.search(r"https://github\.com/microsoft/winget-pkgs/pull/\d+", submit_output).group(0)
             _submission_urls[str(version_folder)] = pr_url
             run_with_stream(
-                f"powershell -ExecutionPolicy Bypass -File Tools\\UpdatePRBody.ps1 Tools\\PRBodyTemplate\\PRBodyModify.md -pr {pr_url.split("/")[-1]}"
+                f"powershell -ExecutionPolicy Bypass -File Tools\\UpdatePRBody.ps1 Tools\\PRBodyTemplate\\{"PRBodyRemove.md" if "@" in str(version_folder) else "PRBodyModify.md"} -pr {pr_url.split("/")[-1]}"
             )
         except Exception as e:
             log(f"{"::error title=Failed submission::" if os.getenv("GITHUB_ACTIONS") else ""}Failed to submit {version_folder}: {type(e).__name__}: {e}")
