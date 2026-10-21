@@ -178,15 +178,16 @@ def submit_package(tool, version_folder, options=""):
 def submit_flush():
     for command, version_folder in _submit_q:
         try:
-            log(f"Submitting {f"removal of {version_folder}" if "@" in str(version_folder) else version_folder}...")
-            submit_output = run_with_stream(
-                f"{command}"
-            )
-            pr_url = re.search(r"https://github\.com/microsoft/winget-pkgs/pull/\d+", submit_output).group(0)
-            _submission_urls[str(version_folder)] = pr_url
-            run_with_stream(
-                f"powershell -ExecutionPolicy Bypass -File Tools\\UpdatePRBody.ps1 Tools\\PRBodyTemplate\\{"PRBodyRemove.md" if "@" in str(version_folder) else "PRBodyModify.md"} -pr {pr_url.split("/")[-1]}"
-            )
+            with _submission_snapshot(version_folder):
+                log(f"Submitting {f"removal of {version_folder}" if "@" in str(version_folder) else version_folder}...")
+                submit_output = run_with_stream(
+                    f"{command}"
+                )
+                pr_url = re.search(r"https://github\.com/microsoft/winget-pkgs/pull/\d+", submit_output).group(0)
+                _submission_urls[str(version_folder)] = pr_url
+                run_with_stream(
+                    f"powershell -ExecutionPolicy Bypass -File Tools\\UpdatePRBody.ps1 Tools\\PRBodyTemplate\\{"PRBodyRemove.md" if "@" in str(version_folder) else "PRBodyModify.md"} -pr {pr_url.split("/")[-1]}"
+                )
         except Exception as e:
             log(f"{"::error title=Failed submission::" if os.getenv("GITHUB_ACTIONS") else ""}Failed to submit {version_folder}: {type(e).__name__}: {e}")
     _submit_q.clear()
@@ -195,6 +196,22 @@ def sync_manifests():
     run_with_stream(
         f"powershell -ExecutionPolicy Bypass -File Tools\\SyncManifests.ps1"
     )
+
+@contextmanager
+def _submission_snapshot(version_folder):
+    # Removal submissions has no changes
+    if "@" in str(version_folder):
+        yield
+        return
+
+    package_folder = Path(version_folder).parent
+    try:
+        yield
+    except Exception:
+        run_with_stream(
+            f"git restore --source=HEAD --staged --worktree -- {package_folder} && git clean -fd -- {package_folder}"
+        )
+        raise
 
 @contextmanager
 def _manifest_snapshot():
