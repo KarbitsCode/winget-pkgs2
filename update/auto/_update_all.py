@@ -154,7 +154,9 @@ def update_package(updater, batch_args, replace=""):
         f"update\\{updater}.bat {batch_args}"
     )
     if replace:
-        shutil.rmtree(replace)
+        replace = Path(replace)
+        if replace.is_dir() and any(p.is_dir() and p != replace for p in replace.parent.iterdir()):
+            shutil.rmtree(replace)
 
 def submit_package(tool, version_folder, options=""):
     if tool == "wingetcreate":
