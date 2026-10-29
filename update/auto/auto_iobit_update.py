@@ -31,9 +31,12 @@ def run(*, is_main=(__name__ == "__main__")):
             f"{package_name.split(".")[-1]} {new_version}",
             replace=old_version_folder
         )
-        run_with_stream(
-            f"\"{sys.executable}\" update\\releasenotes\\releasenotes_{updater}.py {new_version_folder} --no-backup"
-        )
+        try:
+            run_with_stream(
+                f"\"{sys.executable}\" update\\releasenotes\\releasenotes_{updater}.py {new_version_folder} --no-backup"
+            )
+        except Exception as e:
+            log(f"{"::warning title=Release Notes::" if os.getenv("GITHUB_ACTIONS") else ""}Failed to generate release notes for {package_name} version: {new_version}. Error: {e}")
         log(f"Queueing package submission for {package_name} version: {new_version}")
         submit_package("wingetcreate", new_version_folder)
         changes.append({"package": package_name, "before": old_version_folder.name, "after": new_version, "submission_key": str(new_version_folder)})
