@@ -2,7 +2,7 @@
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.12.0.schema.json
 
 PackageIdentifier: iTop.iTopScreenRecorder
-PackageVersion: 7.0.0.3778
+PackageVersion: 7.1.0.3787
 PackageLocale: en-US
 Publisher: iTop Inc.
 PublisherUrl: https://www.itopvpn.com/
@@ -15,14 +15,6 @@ LicenseUrl: https://www.itopvpn.com/eula/
 Copyright: Copyright © iTop Inc. All rights reserved.
 CopyrightUrl: https://www.itopvpn.com/terms/
 ShortDescription: Your Free Screen Recorder - iTop Screen Recorder
-ReleaseNotes: |-
-  v7.0 (2026-08-20)
-  - Brand‑new Auto Focus to automatically focus on key content during recording.
-  - Added search support for Text‑to‑Speech and expanded the AI voice library to over 370 voices.
-  - Optimized Enhanced Mode to further reduce instances of black‑screen content in recordings.
-  - Improved the architecture of AI tools (Remove BG and Text-to-Speech) to deliver faster and more reliable performance.
-  - Refined the program GUI for better visual appearance and clearer information display.
-  - Fixed other known bugs.
 PurchaseUrl: https://recorder.itopvpn.com/purchase/
 Documentations:
 - DocumentLabel: Blog
@@ -35,3 +27,9 @@ Documentations:
   DocumentUrl: https://www.itopvpn.com/user-manual/isr/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  v7.1 (2026-10-29)
+  - Added a subtitle translation feature in Quick Editor to translate video subtitles into multiple languages.
+  - Added OCR to Screenshot, supporting one-click text extraction from screenshots.
+  - Added a search function in the Files list to quickly find your videos, audios, and screenshots.
+  - Fixed other known bugs.
