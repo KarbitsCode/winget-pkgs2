@@ -1,7 +1,7 @@
 def run(*, is_main=(__name__ == "__main__")):
     selfname = Path(__file__).stem
     updater = selfname.lstrip("_").removeprefix("auto_")
-
+    
     log("Checking installer mismatches...")
     ubisoftconnect_dir = Path("manifests\\u\\Ubisoft\\Connect")
     files, urls, packages = check_mismatches(ubisoftconnect_dir)

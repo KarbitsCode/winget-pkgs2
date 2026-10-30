@@ -1,7 +1,7 @@
 def run(*, is_main=(__name__ == "__main__")):
     selfname = Path(__file__).stem
     updater = selfname.lstrip("_").removeprefix("auto_")
-
+    
     log("Checking installer mismatches...")
     iobit_dir = Path("manifests\\i\\IObit")
     files, urls, packages = check_mismatches(iobit_dir)
@@ -40,7 +40,7 @@ def run(*, is_main=(__name__ == "__main__")):
         log(f"Queueing package submission for {package_name} version: {new_version}")
         submit_package("wingetcreate", new_version_folder)
         changes.append({"package": package_name, "before": old_version_folder.name, "after": new_version, "submission_key": str(new_version_folder)})
-
+    
     remote_versions = get_current_versions(iobit_dir)
     for package_name, versions in remote_versions.items():
         if len(versions) > 1: # might have the older version present
