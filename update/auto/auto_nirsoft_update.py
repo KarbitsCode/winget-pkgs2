@@ -19,7 +19,7 @@ def run(*, is_main=(__name__ == "__main__")):
         check_output = run_with_stream(
             f"\"{sys.executable}\" update\\releasenotes\\releasenotes_{updater}.py {folder} --latest-version"
         )
-        new_version = re.search(r"^Latest version:\s+(\S+)$", check_output, re.MULTILINE).group(1)
+        new_version = cast(re.Match[str], re.search(r"^Latest version:\s+(\S+)$", check_output, re.MULTILINE)).group(1)
         log(f"{folder} => {new_version}")
         if folder.name == new_version:
             log("Already current.")
@@ -36,7 +36,7 @@ def run(*, is_main=(__name__ == "__main__")):
         update_package(
             updater,
             f"{package_name.split(".")[1]} {new_version}",
-            replace=old_version_folder
+            replace=str(old_version_folder)
         )
         run_with_stream(
             f"\"{sys.executable}\" update\\releasenotes\\releasenotes_{updater}.py {new_version_folder} --no-backup"

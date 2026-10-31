@@ -18,7 +18,7 @@ def run(*, is_main=(__name__ == "__main__")):
         new_version_check_output = run_with_stream(
             f"powershell -ExecutionPolicy Bypass -File Tools\\InstallerUrlChecker.ps1 {url}"
         )
-        new_product_version = re.search(r"^FileVersion:\s*(\S+)\s*$", new_version_check_output, re.MULTILINE).group(1)
+        new_product_version = cast(re.Match[str], re.search(r"^FileVersion:\s*(\S+)\s*$", new_version_check_output, re.MULTILINE)).group(1)
         new_versions.append(new_product_version)
     log(f"Resolved {len(new_versions)} IObit version(s).")
     
@@ -29,7 +29,7 @@ def run(*, is_main=(__name__ == "__main__")):
         update_package(
             updater,
             f"{package_name.split(".")[-1]} {new_version}",
-            replace=old_version_folder
+            replace=str(old_version_folder)
         )
         try:
             run_with_stream(

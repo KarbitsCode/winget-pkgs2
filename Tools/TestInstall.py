@@ -209,6 +209,7 @@ def test_install(directory, args = ""):
         install_proc = run_powershell(ps_script, directory, *ps_args)
     except KeyboardInterrupt:
         traceback.print_exc()
+        return {"INST": install_success, "UNINST": uninstall_success}
     finally:
         # Stop handling popups
         pp_stop.set()

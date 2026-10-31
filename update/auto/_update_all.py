@@ -10,6 +10,7 @@ import requests
 import threading
 import subprocess
 import importlib.util
+from typing import cast
 from pathlib import Path
 from contextlib import contextmanager
 
@@ -106,8 +107,8 @@ def check_mismatches(package_folder):
             continue
         
         log(block)
-        file = re.search(r"^File:\s+(\S+)$", block, re.MULTILINE).group(1)
-        url = re.search(r"^URL:\s+(\S+)$", block, re.MULTILINE).group(1)
+        file = cast(re.Match[str], re.search(r"^File:\s+(\S+)$", block, re.MULTILINE)).group(1)
+        url = cast(re.Match[str], re.search(r"^URL:\s+(\S+)$", block, re.MULTILINE)).group(1)
         package = file.rsplit("\\", 1)[1].replace(".installer.yaml", "")
         if package in seen:
             continue
@@ -163,6 +164,8 @@ def submit_package(tool, version_folder, options=""):
         command = "wingetcreate submit --no-open"
     elif tool == "komac":
         command = "komac submit --submit"
+    else:
+        raise ValueError(f"Unknown submission tool: {tool}")
     
     found_pr = json.loads(run_without_stream(
         f"powershell -ExecutionPolicy Bypass -File Tools\\GitHubPRSearch.ps1 {version_folder}"
@@ -185,7 +188,7 @@ def submit_flush():
                 submit_output = run_with_stream(
                     f"{command}"
                 )
-                pr_url = re.search(r"https://github\.com/microsoft/winget-pkgs/pull/\d+", submit_output).group(0)
+                pr_url = cast(re.Match[str], re.search(r"https://github\.com/microsoft/winget-pkgs/pull/\d+", submit_output)).group(0)
                 _submission_urls[str(version_folder)] = pr_url
                 run_with_stream(
                     f"powershell -ExecutionPolicy Bypass -File Tools\\UpdatePRBody.ps1 Tools\\PRBodyTemplate\\{"PRBodyRemove.md" if "@" in str(version_folder) else "PRBodyModify.md"} -pr {pr_url.split("/")[-1]}"
@@ -287,6 +290,7 @@ if __name__ == "__main__":
         if path.stem == Path(__file__).stem:
             continue
         spec = importlib.util.spec_from_file_location(path.stem, path)
+        assert spec and spec.loader
         module = importlib.util.module_from_spec(spec)
         inject_context(module.__dict__)
         spec.loader.exec_module(module)
