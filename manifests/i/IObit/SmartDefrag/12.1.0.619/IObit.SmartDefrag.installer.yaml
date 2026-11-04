@@ -2,7 +2,7 @@
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: IObit.SmartDefrag
-PackageVersion: 12.0.0.536
+PackageVersion: 12.1.0.619
 InstallerLocale: en-US
 InstallerType: inno
 Scope: machine
@@ -24,7 +24,7 @@ ElevationRequirement: elevatesSelf
 Installers:
 - Architecture: x86
   InstallerUrl: https://cdn.iobit.com/dl/smart-defrag-setup.exe
-  InstallerSha256: 52D43C2C86EC222153555BACA8520A936EB6F1218D45862DE29A6710A609551E
+  InstallerSha256: 0B8643309F76E3679C7018892809B0DA290590B7F4D43734803D7055D006CDE3
 ManifestType: installer
 ManifestVersion: 1.12.0
-ReleaseDate: 2026-08-25
+ReleaseDate: 2026-11-04
