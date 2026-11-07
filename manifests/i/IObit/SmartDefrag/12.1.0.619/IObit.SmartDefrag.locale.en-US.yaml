@@ -15,17 +15,17 @@ LicenseUrl: https://www.iobit.com/eula.php
 Copyright: © IObit. All rights reserved.
 CopyrightUrl: https://www.iobit.com/legal.php
 ShortDescription: Fast & Deep Defrag to Optimize Hard Drive & PC Performance
-Description: IObit Smart Defrag is a powerful defragmentation tool designed to 
-  optimize your Windows PC's performance. It reduces file fragmentation, speeds 
-  up data access, and enhances overall system efficiency. With features like 
-  Boot Time Defrag, SSD Trim, and Game Optimization, Smart Defrag ensures faster
-  startup times, improved gaming performance, and extended disk lifespan. The 
-  user-friendly interface and automatic defragmentation make it an essential 
-  tool for maintaining a smooth and efficient PC.
+Description: IObit Smart Defrag is a powerful defragmentation tool designed to optimize your Windows PC's performance. It reduces file fragmentation, speeds up data access, and enhances overall system efficiency. With features like Boot Time Defrag, SSD Trim, and Game Optimization, Smart Defrag ensures faster startup times, improved gaming performance, and extended disk lifespan. The user-friendly interface and automatic defragmentation make it an essential tool for maintaining a smooth and efficient PC.
 Tags:
 - defragmentation
 - optimization
 - performance
+ReleaseNotes: |-
+  v12.1 (2026-11-04)
+  - Optimized Auto Analyze for smarter analysis and more accurate results
+  - Optimized Boot Time Defrag to improve startup speed
+  - Enhanced compatibility for more stable and efficient defragment
+  - Fixed minor bugs
 Documentations:
 - DocumentLabel: FAQ
   DocumentUrl: https://www.iobit.com/faq.php
@@ -33,9 +33,3 @@ Documentations:
   DocumentUrl: https://www.iobit.com/product-manuals/sd-help/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
-ReleaseNotes: |-
-  v12.1 (2026-11-04)
-  - Optimized Auto Analyze for smarter analysis and more accurate results
-  - Optimized Boot Time Defrag to improve startup speed
-  - Enhanced compatibility for more stable and efficient defragment
-  - Fixed minor bugs

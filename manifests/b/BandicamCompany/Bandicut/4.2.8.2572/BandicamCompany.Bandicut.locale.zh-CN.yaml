@@ -1,4 +1,4 @@
-# Created with YamlCreate.ps1 Dumplings Mod
+# Created with komac v2.17.1
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.locale.1.28.0.schema.json
 
 PackageIdentifier: BandicamCompany.Bandicut
@@ -33,11 +33,11 @@ Tags:
 - 剪辑
 - 影片
 - 电影
+- 编辑
+- 编辑器
 - 视频
 - 视频编辑
 - 视频编辑器
-- 编辑
-- 编辑器
 ReleaseNotes: |-
   - 优化视频倍速设置：播放速度设置
   - 新增文件添加顺序选项（按文件名 / 创建日期 / 修改日期）
