@@ -8,22 +8,6 @@ ReleaseDate: 2026-08-29
 Installers:
 - Architecture: x64
   InstallerType: inno
-  Scope: user
-  InstallerUrl: https://files.vovsoft.com/audio-to-lyrics-converter.exe
-  InstallerSha256: 45347E88A43D6C308B24F0D7E6FFC54613D1908963B23C2BCD33EFA88957253A
-  InstallModes:
-  - interactive
-  - silent
-  - silentWithProgress
-  UpgradeBehavior: install
-  InstallerSwitches:
-    Custom: /CURRENTUSER
-  ProductCode: Audio to Lyrics Converter_is1
-  AppsAndFeaturesEntries:
-  - ProductCode: Audio to Lyrics Converter_is1
-  ElevationRequirement: elevatesSelf
-- Architecture: x64
-  InstallerType: inno
   Scope: machine
   InstallerUrl: https://files.vovsoft.com/audio-to-lyrics-converter.exe
   InstallerSha256: 45347E88A43D6C308B24F0D7E6FFC54613D1908963B23C2BCD33EFA88957253A
@@ -32,8 +16,6 @@ Installers:
   - silent
   - silentWithProgress
   UpgradeBehavior: install
-  InstallerSwitches:
-    Custom: /ALLUSERS
   ProductCode: Audio to Lyrics Converter_is1
   AppsAndFeaturesEntries:
   - ProductCode: Audio to Lyrics Converter_is1

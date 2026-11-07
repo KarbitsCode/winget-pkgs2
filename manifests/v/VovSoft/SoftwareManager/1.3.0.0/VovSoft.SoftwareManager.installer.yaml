@@ -7,6 +7,7 @@ InstallerLocale: en-US
 Installers:
 - Architecture: x86
   InstallerType: inno
+  Scope: machine
   InstallerUrl: https://files.vovsoft.com/software-manager.exe
   InstallerSha256: 1EBD8EC309AFAC90620BDF09409326D0862B3C6D28A6E534BBF81897538DC68F
   InstallModes:

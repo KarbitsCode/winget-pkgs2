@@ -8,22 +8,6 @@ ReleaseDate: 2026-06-19
 Installers:
 - Architecture: x86
   InstallerType: inno
-  Scope: user
-  InstallerUrl: https://files.vovsoft.com/ip-scanner.exe
-  InstallerSha256: 75F99B0147D95865320FE61A4FF56589E8CF1B553D42FAB78A38342F41D49F5F
-  InstallModes:
-  - interactive
-  - silent
-  - silentWithProgress
-  UpgradeBehavior: install
-  InstallerSwitches:
-    Custom: /CURRENTUSER
-  ProductCode: IP Scanner_is1
-  AppsAndFeaturesEntries:
-  - ProductCode: IP Scanner_is1
-  ElevationRequirement: elevatesSelf
-- Architecture: x86
-  InstallerType: inno
   Scope: machine
   InstallerUrl: https://files.vovsoft.com/ip-scanner.exe
   InstallerSha256: 75F99B0147D95865320FE61A4FF56589E8CF1B553D42FAB78A38342F41D49F5F
@@ -32,8 +16,6 @@ Installers:
   - silent
   - silentWithProgress
   UpgradeBehavior: install
-  InstallerSwitches:
-    Custom: /ALLUSERS
   ProductCode: IP Scanner_is1
   AppsAndFeaturesEntries:
   - ProductCode: IP Scanner_is1
