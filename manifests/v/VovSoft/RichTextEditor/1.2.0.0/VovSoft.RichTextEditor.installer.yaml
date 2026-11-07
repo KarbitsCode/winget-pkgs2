@@ -8,22 +8,6 @@ ReleaseDate: 2026-09-27
 Installers:
 - Architecture: x86
   InstallerType: inno
-  Scope: user
-  InstallerUrl: https://files.vovsoft.com/rich-text-editor.exe
-  InstallerSha256: 9F3395CA73565EE5DC3B482626FC9AC426A7F9158535AE319C2E4BB2F620A9AB
-  InstallModes:
-  - interactive
-  - silent
-  - silentWithProgress
-  UpgradeBehavior: install
-  InstallerSwitches:
-    Custom: /CURRENTUSER
-  ProductCode: Rich Text Editor_is1
-  AppsAndFeaturesEntries:
-  - ProductCode: Rich Text Editor_is1
-  ElevationRequirement: elevatesSelf
-- Architecture: x86
-  InstallerType: inno
   Scope: machine
   InstallerUrl: https://files.vovsoft.com/rich-text-editor.exe
   InstallerSha256: 9F3395CA73565EE5DC3B482626FC9AC426A7F9158535AE319C2E4BB2F620A9AB
@@ -32,8 +16,6 @@ Installers:
   - silent
   - silentWithProgress
   UpgradeBehavior: install
-  InstallerSwitches:
-    Custom: /ALLUSERS
   ProductCode: Rich Text Editor_is1
   AppsAndFeaturesEntries:
   - ProductCode: Rich Text Editor_is1

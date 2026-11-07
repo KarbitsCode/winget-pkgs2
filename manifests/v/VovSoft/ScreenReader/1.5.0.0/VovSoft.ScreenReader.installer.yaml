@@ -8,22 +8,6 @@ ReleaseDate: 2026-08-03
 Installers:
 - Architecture: x86
   InstallerType: inno
-  Scope: user
-  InstallerUrl: https://files.vovsoft.com/screen-reader.exe
-  InstallerSha256: B7E203D7D3403B27C973A90B22A81E2BC50E5BC5766FFB0D98523BFC537ECE55
-  InstallModes:
-  - interactive
-  - silent
-  - silentWithProgress
-  UpgradeBehavior: install
-  InstallerSwitches:
-    Custom: /CURRENTUSER
-  ProductCode: Screen Reader_is1
-  AppsAndFeaturesEntries:
-  - ProductCode: Screen Reader_is1
-  ElevationRequirement: elevatesSelf
-- Architecture: x86
-  InstallerType: inno
   Scope: machine
   InstallerUrl: https://files.vovsoft.com/screen-reader.exe
   InstallerSha256: B7E203D7D3403B27C973A90B22A81E2BC50E5BC5766FFB0D98523BFC537ECE55
@@ -32,8 +16,6 @@ Installers:
   - silent
   - silentWithProgress
   UpgradeBehavior: install
-  InstallerSwitches:
-    Custom: /ALLUSERS
   ProductCode: Screen Reader_is1
   AppsAndFeaturesEntries:
   - ProductCode: Screen Reader_is1

@@ -8,22 +8,6 @@ ReleaseDate: 2026-09-13
 Installers:
 - Architecture: x86
   InstallerType: inno
-  Scope: user
-  InstallerUrl: https://files.vovsoft.com/log-analyzer.exe
-  InstallerSha256: D96D5BE7E07EED99A7F24889752D48D337438CF2D29B6F31C86B2F1887BF7017
-  InstallModes:
-  - interactive
-  - silent
-  - silentWithProgress
-  UpgradeBehavior: install
-  InstallerSwitches:
-    Custom: /CURRENTUSER
-  ProductCode: Log Analyzer_is1
-  AppsAndFeaturesEntries:
-  - ProductCode: Log Analyzer_is1
-  ElevationRequirement: elevatesSelf
-- Architecture: x86
-  InstallerType: inno
   Scope: machine
   InstallerUrl: https://files.vovsoft.com/log-analyzer.exe
   InstallerSha256: D96D5BE7E07EED99A7F24889752D48D337438CF2D29B6F31C86B2F1887BF7017
@@ -32,8 +16,6 @@ Installers:
   - silent
   - silentWithProgress
   UpgradeBehavior: install
-  InstallerSwitches:
-    Custom: /ALLUSERS
   ProductCode: Log Analyzer_is1
   AppsAndFeaturesEntries:
   - ProductCode: Log Analyzer_is1
