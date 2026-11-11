@@ -51,8 +51,8 @@ for %%A in (!FILES!) do (
 )
 
 komac update 7zip.7zip ^
+  --exit ^
   --output . ^
-  --dry-run ^
   --skip-pr-check ^
   --version %VERSION% ^
   --release-notes-url %RELEASE_NOTES_URL% ^
@@ -67,8 +67,8 @@ if not "%ERRORLEVEL%"=="0" (
     )
   )
   komac update 7zip.7zip ^
+    --exit ^
     --output . ^
-    --dry-run ^
     --skip-pr-check ^
     --version %VERSION% ^
     --release-notes-url %RELEASE_NOTES_URL% ^

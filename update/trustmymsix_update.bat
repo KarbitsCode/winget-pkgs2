@@ -10,8 +10,8 @@ if "%~1"=="" (
 set "VERSION=%~1"
 
 komac update Chill-Astro.TMM ^
+  --exit ^
   --output . ^
-  --dry-run ^
   --skip-pr-check ^
   --version %VERSION% ^
   --urls ^

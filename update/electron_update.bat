@@ -21,8 +21,8 @@ for /f "usebackq delims=" %%A in (`
 `) do set "URLS=%%A"
 
 komac update OpenJS.Electron.%SHORT_VERSION% ^
+  --exit ^
   --output . ^
-  --dry-run ^
   --skip-pr-check ^
   --version %VERSION% ^
   --urls %URLS%
