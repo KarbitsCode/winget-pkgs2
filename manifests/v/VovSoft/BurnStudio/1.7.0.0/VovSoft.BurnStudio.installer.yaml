@@ -1,4 +1,4 @@
-# Created with komac v2.16.0
+# Created using wingetcreate 1.12.13.0
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
 
 PackageIdentifier: VovSoft.BurnStudio
@@ -12,7 +12,6 @@ InstallModes:
 - silentWithProgress
 UpgradeBehavior: install
 ProductCode: Burn Studio_is1
-ReleaseDate: 2020-02-26
 AppsAndFeaturesEntries:
 - ProductCode: Burn Studio_is1
 ElevationRequirement: elevatesSelf
@@ -20,10 +19,11 @@ InstallationMetadata:
   DefaultInstallLocation: '%ProgramFiles%\VOVSOFT\Burn Studio'
 Dependencies:
   WindowsFeatures:
-    - NetFx3
+  - NetFx3
 Installers:
 - Architecture: x86
   InstallerUrl: https://files.vovsoft.com/burn-studio.exe
   InstallerSha256: BB5E87F2BFDFE9335386F91B6974932443E25B415704AF4F70CBB82B064AE13C
 ManifestType: installer
 ManifestVersion: 1.12.0
+ReleaseDate: 2020-02-26
