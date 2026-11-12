@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.12.13.0
-# yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
+# Created using wingetcreate 1.28.1.0
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.28.0.schema.json
 
 PackageIdentifier: IObit.DriverBooster
-PackageVersion: 14.0.1.462
+PackageVersion: 14.1.0.557
 InstallerLocale: en-US
 InstallerType: inno
 Scope: machine
@@ -18,13 +18,13 @@ ProductCode: Driver Booster_is1
 AppsAndFeaturesEntries:
 - DisplayName: Driver Booster 13
   Publisher: IObit
-  DisplayVersion: 14.0.1
+  DisplayVersion: 14.1.0
   ProductCode: Driver Booster_is1
 ElevationRequirement: elevatesSelf
 Installers:
 - Architecture: x86
   InstallerUrl: https://cdn.iobit.com/dl/driver_booster_setup.exe
-  InstallerSha256: 37F881B9F996155037AC829A42680FEAE04C23C9F1C9A25A0F05AF348FE7AB94
+  InstallerSha256: 6A979EE043CC6BE0A6B117B9A640FB1B8249E2AB5D13C2B362EA20B8A56CCD22
 ManifestType: installer
-ManifestVersion: 1.12.0
-ReleaseDate: 2026-09-24
+ManifestVersion: 1.28.0
+ReleaseDate: 2026-11-12
