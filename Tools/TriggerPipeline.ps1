@@ -4,10 +4,12 @@ param(
 )
 
 Push-Location .\winget-pkgs\
+$before = git rev-parse -q --verify refs/stash
 if ($(git status | Out-String) -notmatch 'tree clean') {
-    git reset --hard
-    git clean -d -f
+    git stash push --include-untracked
 }
+$after = git rev-parse -q --verify refs/stash
+$stashed = $before -ne $after
 
 foreach ($PRNumber in $PRNumbers) {
     $prNumber = $PRNumber.Trim() -replace '#', ''
@@ -65,4 +67,10 @@ foreach ($PRNumber in $PRNumbers) {
     }
 }
 
+if ($stashed) {
+    git stash pop --index
+    if ($LASTEXITCODE -ne 0) {
+        Write-Warning "Stash pop failed."
+    }
+}
 Pop-Location
