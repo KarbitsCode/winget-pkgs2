@@ -36,7 +36,7 @@ def run(*, is_main=(__name__ == "__main__")):
         release_notes = [title]
         for note in notes.find_all("li", recursive=False):
             text = re.sub(r"\s+", " ", note.get_text(" ", strip=True))
-            release_notes.append(f"- {text}")
+            release_notes.append(f"- {to_ascii(text)}")
         
         log("Release notes for version " + str(version) + ":\n" + "\n".join(release_notes))
         create_backup(output)

@@ -25,7 +25,6 @@ def run(*, is_main=(__name__ == "__main__")):
         if notes is None:
             raise RuntimeError(f"No release notes found for {target_version}")
         
-        # log(f"Found raw release notes:\n{notes}")
         release_notes = []
         first_line = next((line.strip() for line in notes.splitlines() if line.strip()), "")
         release_notes.append(first_line)
@@ -34,7 +33,7 @@ def run(*, is_main=(__name__ == "__main__")):
             if not note or note == first_line:
                 continue
             note = re.sub(r"^\d+\.\s+", "", note)
-            release_notes.append(f"- {note}")
+            release_notes.append(f"- {to_ascii(note)}")
         
         log(f"Release notes for version {version}:\n{"\n".join(release_notes)}")
         create_backup(output)

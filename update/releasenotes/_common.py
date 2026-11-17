@@ -6,6 +6,7 @@ import requests
 import tempfile
 import threading
 import subprocess
+import unicodedata
 from pathlib import Path
 from datetime import datetime
 from bs4 import BeautifulSoup
@@ -123,3 +124,15 @@ def write_release_notes(output, data, notes):
         file.write("ReleaseNotes: |-\n")
         for note in notes:
             file.write(f"  {note}\n")
+
+def to_ascii(text):
+    ascii_map = str.maketrans({
+        "“": '"', "”": '"', "„": '"', "‟": '"', "«": '"', "»": '"', "″": '"',  # double quotes
+        "‘": "'", "’": "'", "‚": "'", "‛": "'", "′": "'", "´": "'",  # single qoutes
+        "‐": "-", "‑": "-", "‒": "-", "–": "-", "−": "-", "—": "--", "―": "--",  # dashes
+        "•": "-", "×": "x", "\u200b": "", "\u200c": "", "\u200d": "", "\ufeff": "", "\u00ad": "",  # etc
+    })
+    text = unicodedata.normalize("NFKC", text).translate(ascii_map)
+    if left := sorted(set(re.findall(r"[^\x00-\x7f]", text))):
+        log(f"Warning: non-ASCII characters left: {" ".join(left)}")
+    return text
