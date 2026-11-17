@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.12.13.0
-# yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.12.0.schema.json
+# Created using wingetcreate 1.28.1.0
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.28.0.schema.json
 
 PackageIdentifier: iTop.iTopDataRecovery
-PackageVersion: 6.4.0.959
+PackageVersion: 6.5.0.965
 PackageLocale: en-US
 Publisher: iTop Inc.
 PublisherUrl: https://www.itopvpn.com/
@@ -15,10 +15,6 @@ LicenseUrl: https://www.itopvpn.com/eula/
 Copyright: Copyright © iTop Inc. All rights reserved.
 CopyrightUrl: https://www.itopvpn.com/terms/
 ShortDescription: Data Recovery Made Easy - iTop Data Recovery
-ReleaseNotes: |-
-  v6.4 (2026-09-17)
-  - Resolved known issues for enhanced stability and smoother performance
-  - Further optimized and expanded multi-language support
 PurchaseUrl: https://www.itopvpn.com/store/
 Documentations:
 - DocumentLabel: Blog
@@ -26,4 +22,8 @@ Documentations:
 - DocumentLabel: FAQ
   DocumentUrl: https://www.itopvpn.com/faqs/
 ManifestType: defaultLocale
-ManifestVersion: 1.12.0
+ManifestVersion: 1.28.0
+ReleaseNotes: |-
+  v6.5 (2026-11-17)
+  - Fixed known issues to deliver a more stable and seamless experience
+  - Further refined and expanded multi-language support
