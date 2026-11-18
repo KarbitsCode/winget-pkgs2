@@ -4,6 +4,7 @@ import sys
 import shutil
 import requests
 import tempfile
+import textwrap
 import threading
 import subprocess
 import unicodedata

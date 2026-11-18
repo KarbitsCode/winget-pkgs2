@@ -35,7 +35,7 @@ def run(*, is_main=(__name__ == "__main__")):
             note = re.sub(r"^\d+\.\s+", "", note)
             release_notes.append(f"- {to_ascii(note)}")
         
-        log(f"Release notes for version {version}:\n{"\n".join(release_notes)}")
+        log(f"Release notes for version {version}:\n{textwrap.indent("\n".join(release_notes), "> ")}")
         create_backup(output)
         log(f"Writing new release notes...")
         write_release_notes(output, data, release_notes)
