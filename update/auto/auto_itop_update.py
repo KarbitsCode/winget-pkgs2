@@ -41,15 +41,20 @@ def run(*, is_main=(__name__ == "__main__")):
         submit_package("wingetcreate", new_version_folder)
         changes.append({"package": package_name, "before": old_version_folder.name, "after": new_version, "submission_key": str(new_version_folder)})
     
-    # remote_versions = get_current_versions(itop_dir)
-    # for package_name, versions in remote_versions.items():
-        # if len(versions) > 1: # might have the older version present
-            # older_than_latest = sorted(versions, key=version_key)[:-1]
-            # log(f"Found older versions for {package_name}: {older_than_latest}")
-            # for version in older_than_latest:
-                # log(f"Queueing package removal for {package_name} version: {version}")
-                # remove_package(package_name, version, "Old version")
-                # changes.append({"package": package_name, "before": version, "after": "—", "submission_key": f"{package_name}@{version}"})
+    remote_versions = get_current_versions(itop_dir)
+    for package_name, versions in remote_versions.items():
+        if len(versions) > 1:
+            installers = {}
+            for version in versions:
+                package_path = "/".join([package_name[0].lower(), *package_name.split(".")])
+                manifest = github_fetch(f"repos/microsoft/winget-pkgs/contents/manifests/{package_path}/{version}/{package_name}.installer.yaml").json()
+                installers[version] = dict(re.findall(r"InstallerUrl:\s*(\S+)\s+InstallerSha256:\s*(\S+)", base64.b64decode(manifest["content"]).decode("utf-8")))
+            for version in versions[:-1]:
+                # if two or more versions has the same installer url but different hash, the older one will get removed
+                if any(installers[versions[-1]].get(url, sha) != sha for url, sha in installers[version].items()):
+                    log(f"Queueing package removal for {package_name} version: {version}")
+                    remove_package(package_name, version, "Installer hash mismatch")
+                    changes.append({"package": package_name, "before": version, "after": "—", "submission_key": f"{package_name}@{version}"})
     
     if is_main:
         submit_flush()
