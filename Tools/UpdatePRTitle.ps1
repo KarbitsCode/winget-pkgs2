@@ -59,9 +59,12 @@ foreach ($prNumber in ($prNumbers | Sort-Object {[int]$_})) {
 
     # Edit the PR title and get the result
     gh pr edit $prNumber --title "$($NewTitlePrefix.Trim()): $oldTitle"
-    $newTitle = gh pr view $prNumber --json title --jq ".title"
-
-    Write-Host "Updated PR #$prNumber title to: '$newTitle'" -ForegroundColor Green
+    if ($LASTEXITCODE -eq 0) {
+        $newTitle = gh pr view $prNumber --json title --jq ".title"
+        Write-Host "Updated PR #$prNumber title to: '$newTitle'" -ForegroundColor Green
+    } else {
+        Write-Host "Failed to update PR #$prNumber"
+    }
 }
 
 Pop-Location

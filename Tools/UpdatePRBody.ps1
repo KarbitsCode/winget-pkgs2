@@ -95,7 +95,11 @@ foreach ($prNumber in ($prNumbers | Sort-Object {[int]$_})) {
 
     # Update PR body
     gh pr edit $prNumber --body-file "$tempFile"
-    Write-Host "Updated PR #$prNumber body with contents of $(Split-Path $BodyFile -Leaf)" -ForegroundColor Green
+    if ($LASTEXITCODE -eq 0) {
+        Write-Host "Updated PR #$prNumber body with contents of $(Split-Path $BodyFile -Leaf)" -ForegroundColor Green
+    } else {
+        Write-Host "Failed to update PR #$prNumber"
+    }
 
     if ($tempFile -ne $BodyFile) {
         Remove-Item $tempFile -Force

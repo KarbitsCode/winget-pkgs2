@@ -47,8 +47,12 @@ $unused | ForEach-Object { Write-Host "  $($_.name)" }
 
 if (-not $DryRun) {
     foreach ($b in $unused) {
-        gh api -X DELETE "repos/$fork/git/refs/heads/$($b.name)" | Out-Null
-        Write-Host "Deleted $($b.name)"
+        gh api -X DELETE "repos/$fork/git/refs/heads/$($b.name)"
+        if ($LASTEXITCODE -eq 0) {
+            Write-Host "Deleted $($b.name)" -ForegroundColor Green
+        } else {
+            Write-Host "Failed to delete $($b.name)"
+        }
     }
 }
 
