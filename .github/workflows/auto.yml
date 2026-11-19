@@ -113,7 +113,8 @@ jobs:
         shell: pwsh
         run: |
           wingetcreate cache --clean
-          komac clean --all
+          komac cleanup --all
+          komac sync-fork
           wingetcreate token --clear
           komac token remove --yes
 
