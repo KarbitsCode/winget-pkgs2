@@ -26,9 +26,11 @@ AppsAndFeaturesEntries:
 ElevationRequirement: elevatesSelf
 InstallationMetadata:
   DefaultInstallLocation: '%ProgramFiles%\Resource Hacker'
+  # Alternative: Resource Cracker https://www.pelock.com/products/resource-cracker
 Installers:
 - Architecture: x86
   InstallerUrl: https://www.angusj.com/resourcehacker/reshacker_setup.exe
+  # Alternative: Resource Cracker https://www.pelock.com/download/resource-cracker.exe
   InstallerSha256: B611BE2F35CB44EFD1C29DF03E7EBE62BD556A500585680E1AFA5E073EAF1756
 ManifestType: installer
 ManifestVersion: 1.9.0
