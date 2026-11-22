@@ -14,7 +14,8 @@ PackageUrl: https://vovsoft.com/software/keep-software-alive/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/keep-software-alive/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Keep Software Alive ensures uninterrupted application operation by automatically restarting them after crashes or closures.
+ShortDescription: Vovsoft Keep Software Alive ensures uninterrupted application 
+  operation by automatically restarting them after crashes or closures.
 Description: |-
   Vovsoft Keep Software Alive ensures uninterrupted application operation by automatically restarting them after crashes or closures.
   Some processes and services are prone to crash, this utility can automatically restarts them. All you have to do is set "check interval" in seconds and select the applications you wish to restart. You can also include command line start parameters. The utility is built for system administrators and power users. Using this utility you can minimize application stoppages. It runs on Windows XP, Vista, 7, 8, 8.1, 10, 11 and Windows Server editions.
@@ -32,3 +33,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/keep-software-alive/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Keep Software Alive 3.4 (2025-09-15)
+  - Fixed parameter bug in "Start Executable"

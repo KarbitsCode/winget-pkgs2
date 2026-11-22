@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/clipboard-reader/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/clipboard-reader/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Clipboard Reader is a Windows software that allows you to convert any text to speech with just a click. With this clipboard speaker program, you can listen to whatever text you copy to your clipboard.
+ShortDescription: Vovsoft Clipboard Reader is a Windows software that allows you
+  to convert any text to speech with just a click. With this clipboard speaker 
+  program, you can listen to whatever text you copy to your clipboard.
 Description: |-
   Vovsoft Clipboard Reader is a Windows software that allows you to convert any text to speech with just a click. With this clipboard speaker program, you can listen to whatever text you copy to your clipboard. It is an ideal tool for anyone who wants to listen to articles, documents, emails, or any other text content without having to read it.
 
@@ -34,3 +36,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/clipboard-reader/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Clipboard Reader 1.4 (2026-03-27)
+  - Added "Speech Speed"
+  - Added "Hotkey"

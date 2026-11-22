@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/cpu-monitor-gadget/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/cpu-monitor-gadget/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Simple little gadget for monitoring CPU performance from your desktop. It displays a real-time graph of CPU performance as well as current usage indicator. Features include user defined colors, transparency.
+ShortDescription: Simple little gadget for monitoring CPU performance from your 
+  desktop. It displays a real-time graph of CPU performance as well as current 
+  usage indicator. Features include user defined colors, transparency.
 Description: |-
   CPU Monitor Gadget is a simple little gadget for monitoring CPU performance from your desktop. It displays current CPU usage with a real-time graph. Features include user defined colors and transparency. It comes integrated with a sophisticated processor detection toolkit which provides CPU information.
 
@@ -33,3 +35,8 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/cpu-monitor-gadget/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  CPU Monitor Gadget 1.7 (2023-01-22)
+  - Allowed multiple instances
+  - Fixed background color bug
+  - New icon

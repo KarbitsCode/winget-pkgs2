@@ -14,7 +14,10 @@ PackageUrl: https://vovsoft.com/software/vcf-to-txt-converter/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/vcf-to-txt-converter/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Designed with simplicity in mind, this VCF to text converter program can only perform one task, that of extracting the contacts from the input VCF container, then transfer it to a newly created text file anywhere on your computer.
+ShortDescription: Designed with simplicity in mind, this VCF to text converter 
+  program can only perform one task, that of extracting the contacts from the 
+  input VCF container, then transfer it to a newly created text file anywhere on
+  your computer.
 Description: |-
   VCF files store information regarding your contacts, enclosing more vCards (short for Virtual Business Cards), each on a separate row. Such files are used to export and import contacts from and to Microsoft Outlook. In case you want to build a list of contacts in your Outlook address book, you can try to export the content of the VCF file. Desktop computers, laptops and mobile phones can recognize VCF file type.
 
@@ -33,3 +36,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/vcf-to-txt-converter/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  VCF to TXT Converter 3.2 (2026-02-11)
+  - Improved translations
+  - Fixed some high-DPI issues

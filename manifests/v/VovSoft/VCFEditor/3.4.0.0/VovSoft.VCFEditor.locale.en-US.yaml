@@ -14,7 +14,8 @@ PackageUrl: https://vovsoft.com/software/vcf-editor/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/vcf-editor/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft VCF Editor is a powerful, offline tool designed for managing and editing vCard files (VCF) on Windows.
+ShortDescription: Vovsoft VCF Editor is a powerful, offline tool designed for 
+  managing and editing vCard files (VCF) on Windows.
 Description: |-
   Vovsoft VCF Editor is a powerful, offline tool designed for managing and editing vCard files (VCF) on Windows. Running locally on the user’s computer, it ensures privacy and security by processing all data offline without the need for an internet connection. This makes it ideal for users who prioritize keeping their contact information private and secure.
 
@@ -34,3 +35,10 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/vcf-editor/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  VCF Editor 3.4 (2026-10-26)
+  - Added "Export as Separate VCF Files" menu item
+  - Added "Load vCards from Folder" menu item
+  - Added support for folder drag-and-drop
+  - Added support for loading .vcard files in addition to .vcf
+  - Improved compatibility for multi-line NOTE fields

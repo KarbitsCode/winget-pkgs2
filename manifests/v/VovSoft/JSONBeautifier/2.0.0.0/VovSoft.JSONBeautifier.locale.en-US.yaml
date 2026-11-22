@@ -14,7 +14,8 @@ PackageUrl: https://vovsoft.com/software/json-beautifier/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/json-beautifier/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft JSON Beautifier is an easy to use JSON viewer and JSON formatter software for your desktop or laptop computer.
+ShortDescription: Vovsoft JSON Beautifier is an easy to use JSON viewer and JSON
+  formatter software for your desktop or laptop computer.
 Description: |-
   Vovsoft JSON Beautifier is an easy to use JSON viewer and JSON formatter software for your desktop or laptop computer. Opening a JSON file with a text editor usually reveals a text that is practically impossible to read and comprehend. Vovsoft JSON Beautifier provides a way to make the text inside JSON files readable.
 
@@ -35,3 +36,9 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/json-beautifier/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  JSON Beautifier 2.0 (2026-01-02)
+  - Deployed as 64-bit executable
+  - Supported larger JSON files, up to 2GB file size
+  - Added "Find" button
+  - Improved UI

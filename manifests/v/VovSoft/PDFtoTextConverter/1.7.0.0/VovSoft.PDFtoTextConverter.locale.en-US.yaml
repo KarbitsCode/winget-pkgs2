@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/pdf-to-text-converter/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/pdf-to-text-converter/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Convert your PDF documents to text with the help of this program. No need to upload your PDF files to online servers. PDF to Text Converter can convert PDF files to TXT files. It also supports drag and drop.
+ShortDescription: Convert your PDF documents to text with the help of this 
+  program. No need to upload your PDF files to online servers. PDF to Text 
+  Converter can convert PDF files to TXT files. It also supports drag and drop.
 Description: |-
   Vovsoft PDF to Text Converter is a fast, lightweight desktop application that converts PDF (Portable Document Format) files to editable TXT files entirely offline with no uploads to online servers. Built for both beginners and power users, it offers a clean, minimalist interface where every feature is immediately accessible.
 
@@ -38,3 +40,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/pdf-to-text-converter/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  PDF to Text Converter 1.7 (2026-10-20)
+  - Added "Batch Processing"

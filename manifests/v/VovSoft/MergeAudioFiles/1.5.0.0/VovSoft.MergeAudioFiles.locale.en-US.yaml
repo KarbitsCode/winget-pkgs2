@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/merge-audio-files/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/merge-audio-files/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Merge Audio Files is a lightweight Windows app that lets you easily join different audio formats into one file without complex editing tools.
+ShortDescription: Vovsoft Merge Audio Files is a lightweight Windows app that 
+  lets you easily join different audio formats into one file without complex 
+  editing tools.
 Description: |-
   Vovsoft Merge Audio Files is a simple and efficient Windows application that helps you merge multiple audio tracks into a single file. Whether you want to combine songs, audiobook chapters, podcasts, recordings, or music collections, the program provides a straightforward way to create one continuous audio file.
 
@@ -52,3 +54,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/merge-audio-files/
 ManifestType: defaultLocale
 ManifestVersion: 1.28.0
+ReleaseNotes: |-
+  Merge Audio Files 1.5 (2026-11-12)
+  - Fixed different bitrate problem

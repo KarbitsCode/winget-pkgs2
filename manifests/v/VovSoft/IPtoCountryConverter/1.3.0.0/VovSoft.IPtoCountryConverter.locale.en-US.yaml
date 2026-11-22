@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/ip-to-country-converter/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/ip-to-country-converter/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft IP to Country Converter is a powerful software tool designed to streamline the process of converting IP addresses to their respective countries.
+ShortDescription: Vovsoft IP to Country Converter is a powerful software tool 
+  designed to streamline the process of converting IP addresses to their 
+  respective countries.
 Description: |-
   Vovsoft IP to Country Converter is a powerful software tool designed to streamline the process of converting IP addresses to their respective countries. This application is crafted for efficiency and ease of use, catering to individuals and organizations dealing with large volumes of IPv4 and IPv6 addresses.
 
@@ -46,3 +48,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/ip-to-country-converter/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  IP to Country Converter 1.3 (2026-03-08)
+  - Added online database support
+  - Updated offline database

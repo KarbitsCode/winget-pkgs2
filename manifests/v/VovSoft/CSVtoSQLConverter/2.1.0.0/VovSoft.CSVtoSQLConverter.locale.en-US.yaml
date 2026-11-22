@@ -14,7 +14,10 @@ PackageUrl: https://vovsoft.com/software/csv-to-sql-converter/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/csv-to-sql-converter/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Convert CSV files to SQL files. A comma-separated values (CSV) file is a delimited text file that uses a comma to separate values. Each line of the file is a data record. Each record consists of one or more fields, separated by commas.
+ShortDescription: Convert CSV files to SQL files. A comma-separated values (CSV)
+  file is a delimited text file that uses a comma to separate values. Each line 
+  of the file is a data record. Each record consists of one or more fields, 
+  separated by commas.
 Description: |-
   A comma-separated values (CSV) file is a delimited text file that uses a comma to separate values. Each line of the file is a data record. Each record consists of one or more fields, separated by commas. CSV files are used by Microsoft Excel and other office products.
 
@@ -42,3 +45,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/csv-to-sql-converter/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  CSV to SQL Converter 2.1 (2023-08-11)
+  - Improved UI

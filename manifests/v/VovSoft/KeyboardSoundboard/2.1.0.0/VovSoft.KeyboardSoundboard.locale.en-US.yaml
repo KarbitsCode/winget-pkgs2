@@ -14,7 +14,8 @@ PackageUrl: https://vovsoft.com/software/keyboard-soundboard/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/keyboard-soundboard/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Keyboard Soundboard is a fun little app that allows you to assign sounds to keyboard keys.
+ShortDescription: Vovsoft Keyboard Soundboard is a fun little app that allows 
+  you to assign sounds to keyboard keys.
 Description: |-
   Vovsoft Keyboard Soundboard is a fun little app that allows you to assign sounds to keyboard keys.
 
@@ -36,3 +37,8 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/keyboard-soundboard/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Keyboard Soundboard 2.1 (2026-10-25)
+  - Supported more keyboard keys
+  - Improved installer, confirms before keys.db overwrite
+  - Improved UI

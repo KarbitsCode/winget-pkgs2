@@ -14,7 +14,10 @@ PackageUrl: https://vovsoft.com/software/filename-lister/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/filename-lister/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Filename Lister is an easy to use file listing software that can list and export folder structures. It gives you the possibility to choose any drive or directory in order to list all containing files, folders or both.
+ShortDescription: Vovsoft Filename Lister is an easy to use file listing 
+  software that can list and export folder structures. It gives you the 
+  possibility to choose any drive or directory in order to list all containing 
+  files, folders or both.
 Description: |-
   Vovsoft Filename Lister is an easy to use file listing software that can list and export folder structures. It gives you the possibility to choose any drive or directory in order to list all containing files, folders or both. There are also exporting options available, in case you want to not just view the listed items but also save this information to file.
 
@@ -47,3 +50,9 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/filename-lister/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Filename Lister 5.4 (2026-08-03)
+  - Added "Change Font"
+  - Added "Rename Folder"
+  - Improved "Rename File"
+  - Improved long path handling

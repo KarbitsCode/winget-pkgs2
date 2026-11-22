@@ -14,7 +14,11 @@ PackageUrl: https://vovsoft.com/software/webp-converter/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/webp-converter/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: You can convert JPEG/PNG/APNG/TIFF/GIF/BMP/PSD/AVIF/HEIC/HEIF/SVG/TGA/JFIF/JX1/JP2 images to WebP images or convert WebP files to PNG/APNG/JPEG/TIFF/GIF/BMP/PSD/AVIF/HEIC/HEIF/SVG/TGA/JFIF/JX1/JP2 with Vovsoft WebP Converter.
+ShortDescription: You can convert 
+  JPEG/PNG/APNG/TIFF/GIF/BMP/PSD/AVIF/HEIC/HEIF/SVG/TGA/JFIF/JX1/JP2 images to 
+  WebP images or convert WebP files to 
+  PNG/APNG/JPEG/TIFF/GIF/BMP/PSD/AVIF/HEIC/HEIF/SVG/TGA/JFIF/JX1/JP2 with 
+  Vovsoft WebP Converter.
 Description: |-
   You can convert JPEG/PNG/APNG/TIFF/GIF/BMP/PSD/AVIF/HEIC/HEIF/SVG/TGA/JFIF/JX1/JP2 images to WebP images or convert WebP files to PNG/APNG/JPEG/TIFF/GIF/BMP/PSD/AVIF/HEIC/HEIF/SVG/TGA/JFIF/JX1/JP2 with Vovsoft WebP Converter. Conversion preserves transparency (when possible). This software also allows you to create black and white pictures using "Convert to Grayscale" option. You can even convert animated WebP files to animated PNG or GIF files, or animated GIF files to WebP files.
 
@@ -32,3 +36,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/webp-converter/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  WEBP Converter 2.1 (2026-01-18)
+  - Fixed TIF output
+  - Fixed some high-DPI issues

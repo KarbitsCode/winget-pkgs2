@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/audio-to-lyrics-converter/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/audio-to-lyrics-converter/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Audio to Lyrics Converter uses offline Whisper AI models to securely transcribe audio into synchronized lyrics and subtitles (LRC, SRT, VTT).
+ShortDescription: Vovsoft Audio to Lyrics Converter uses offline Whisper AI 
+  models to securely transcribe audio into synchronized lyrics and subtitles 
+  (LRC, SRT, VTT).
 Description: |-
   Vovsoft Audio to Lyrics Converter is a user-friendly Windows utility designed to automatically generate text transcripts from audio files. Powered by offline AI models, this software "listens" to your tracks and accurately extracts the spoken or sung words, outputting them into perfectly timed lyric or subtitle files.
 
@@ -45,3 +47,8 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/audio-to-lyrics-converter/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Audio to Lyrics Converter 1.5 (2026-08-29)
+  - Supported "Large Turbo" model
+  - Updated ggml binaries, supported wider range of CPUs
+  - Improved "Show Error Details", enabled by default

@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/random-wordlist-generator/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/random-wordlist-generator/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Random Wordlist Generator is a simple tool that allows you to create a word list of random characters. You can generate random words using different sets of characters.
+ShortDescription: Vovsoft Random Wordlist Generator is a simple tool that allows
+  you to create a word list of random characters. You can generate random words 
+  using different sets of characters.
 Description: |-
   Vovsoft Random Wordlist Generator is a simple tool that allows you to create a word list of random characters. You can generate random words using different sets of characters. With a mouse click you can generate thousands of different words in seconds.
 
@@ -36,3 +38,10 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/random-wordlist-generator/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Random Wordlist Generator 2.0 (2026-02-18)
+  - Added sequential and random options
+  - Improved "Output Word Limit"
+  - Improved "Wordlist Filesize"
+  - Improved UI
+  - Fixed some high-DPI issues

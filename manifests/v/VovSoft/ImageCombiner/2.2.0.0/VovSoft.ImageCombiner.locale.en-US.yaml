@@ -14,7 +14,8 @@ PackageUrl: https://vovsoft.com/software/image-combiner/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/image-combiner/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Image Combiner can combine photos, pictures and images as many as you want through a user-friendly interface.
+ShortDescription: Vovsoft Image Combiner can combine photos, pictures and images
+  as many as you want through a user-friendly interface.
 Description: |-
   Vovsoft Image Combiner can combine photos, pictures and images as many as you want through a user-friendly interface. You can easily create long webtoons, comics, cartoons, contact sheets or picture strips by selecting the files or folders. The application will do the rest for you. All popular formats are supported, such as JPEG, PNG, GIF, TIFF and BMP.
 
@@ -31,3 +32,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/image-combiner/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Image Combiner 2.2 (2026-02-18)
+  - Fixed "Access violation in module ucrtbase.dll" error

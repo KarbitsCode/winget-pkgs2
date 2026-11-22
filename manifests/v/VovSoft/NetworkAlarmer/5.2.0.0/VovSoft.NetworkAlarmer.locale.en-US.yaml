@@ -14,7 +14,10 @@ PackageUrl: https://vovsoft.com/software/network-alarmer/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/network-alarmer/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Network Alarmer is a lightweight software created to offer you the ability of verifying availability of various network devices by checking their IP addresses and warning you through automatic phone calls or email messages.
+ShortDescription: Vovsoft Network Alarmer is a lightweight software created to 
+  offer you the ability of verifying availability of various network devices by 
+  checking their IP addresses and warning you through automatic phone calls or 
+  email messages.
 Description: |-
   Vovsoft Network Alarmer is a lightweight software created to offer you the ability of verifying availability of various network devices by checking their IP addresses and warning you through automatic phone calls or email messages, when something goes off course.
 
@@ -43,3 +46,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/network-alarmer/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Network Alarmer 5.2 (2026-05-22)
+  - Added "Start Minimized" setting
+  - Improved system-tray icon click-behavior

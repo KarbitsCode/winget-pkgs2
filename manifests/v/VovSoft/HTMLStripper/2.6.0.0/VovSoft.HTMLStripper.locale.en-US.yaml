@@ -14,7 +14,8 @@ PackageUrl: https://vovsoft.com/software/html-stripper/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/html-stripper/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft HTML Stripper is a simple tool to strip HTML (Hyper Text Markup Language). Remove HTML and formatting from your text.
+ShortDescription: Vovsoft HTML Stripper is a simple tool to strip HTML (Hyper 
+  Text Markup Language). Remove HTML and formatting from your text.
 Description: |-
   Vovsoft HTML Stripper is a simple tool to strip HTML (Hyper Text Markup Language). Remove HTML and formatting from your text. This software gives quick and easy way to transform formatted text. This HTML2TXT tool is an HTML code stripper that helps you to strip HTML tags, remove code and convert to text/string/data.
 
@@ -33,3 +34,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/html-stripper/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  HTML Stripper 2.6 (2026-08-14)
+  - Added the ability to extract HTML tables

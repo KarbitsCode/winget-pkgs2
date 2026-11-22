@@ -14,7 +14,10 @@ PackageUrl: https://vovsoft.com/software/sitemap-generator/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/sitemap-generator/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Sitemap Generator is a lightweight website crawler designed to help you freely create a sitemap in a couple of simple steps. It can come in handy in a number of scenarios, and it features a minimalistic, user-friendly GUI.
+ShortDescription: Vovsoft Sitemap Generator is a lightweight website crawler 
+  designed to help you freely create a sitemap in a couple of simple steps. It 
+  can come in handy in a number of scenarios, and it features a minimalistic, 
+  user-friendly GUI.
 Description: |-
   Vovsoft Sitemap Generator is a lightweight website crawler designed to help you freely create a sitemap in a couple of simple steps. It can come in handy in a number of scenarios, and it features a minimalistic, user-friendly GUI. This application is well suited for those who need to create a sitemap quickly and easily, as it does not require you to complete any complex configurations before performing a scan.
 
@@ -33,3 +36,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/sitemap-generator/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Sitemap Generator 4.5 (2026-02-13)
+  - Fixed "Ignore URLs" multiple line save bug
+  - Fixed URL decode problem

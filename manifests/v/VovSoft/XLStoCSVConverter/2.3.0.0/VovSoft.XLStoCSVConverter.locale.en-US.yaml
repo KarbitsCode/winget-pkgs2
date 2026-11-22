@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/xls-to-csv-converter/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/xls-to-csv-converter/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft XLS to CSV Converter is a minimalist and user-friendly software that can help you convert multiple Excel spreadsheets to CSV files with only a few mouse clicks.
+ShortDescription: Vovsoft XLS to CSV Converter is a minimalist and user-friendly
+  software that can help you convert multiple Excel spreadsheets to CSV files 
+  with only a few mouse clicks.
 Description: |-
   Vovsoft XLS to CSV Converter is a minimalist and user-friendly software that can help you convert multiple Excel spreadsheets to CSV files with only a few mouse clicks. This utility can batch convert chunks of Excel workbooks and worksheets in bulk.
 
@@ -39,3 +41,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/xls-to-csv-converter/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  XLS to CSV Converter 2.3 (2024-06-06)
+  - Added "Preserve Multiple Line Cells" option
+  - Added "Preserve Sheet Names in Filenames" option

@@ -14,7 +14,8 @@ PackageUrl: https://vovsoft.com/software/auto-change-screensavers/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/auto-change-screensavers/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Auto Change Screensavers is a desktop tool that will change your screensavers.
+ShortDescription: Vovsoft Auto Change Screensavers is a desktop tool that will 
+  change your screensavers.
 Description: |-
   Vovsoft Auto Change Screensavers is a desktop tool that will change your screensavers.
   Forget about setting different screensavers manually and use this compact app that will automatically run screensavers for you in whichever order you prefer.
@@ -31,3 +32,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/auto-change-screensavers/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Auto Change Screensavers 2.2 (2025-10-20)
+  - Fixed an issue with filenames containing spaces

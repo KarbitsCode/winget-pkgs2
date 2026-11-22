@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/math-practice/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/math-practice/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Math Practice is an easy to use software addressed to teachers and parents who wish to help kids make their first steps into the world of mathematics.
+ShortDescription: Math Practice is an easy to use software addressed to teachers
+  and parents who wish to help kids make their first steps into the world of 
+  mathematics.
 Description: |-
   Vovsoft Math Practice is an easy-to-use educational software designed for elementary school teachers, homeschooling families, and parents who want to help children build a strong foundation in mathematics. The program offers simple yet effective learning tools within a clean, distraction-free interface, allowing young learners to focus on practicing essential arithmetic skills without unnecessary complexity. It provides a comfortable learning environment where children can develop confidence with numbers step by step.
 
@@ -37,3 +39,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/math-practice/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Math Practice 3.3 (2026-03-10)
+  - Removed unnecessary registry usage
+  - Fixed some high-DPI issues

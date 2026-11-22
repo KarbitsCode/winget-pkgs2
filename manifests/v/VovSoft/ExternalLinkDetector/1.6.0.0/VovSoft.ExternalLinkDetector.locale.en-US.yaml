@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/external-link-detector/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/external-link-detector/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft External Link Detector is a software product that helps users to scan any website and identify all the outbound links that are present on web pages.
+ShortDescription: Vovsoft External Link Detector is a software product that 
+  helps users to scan any website and identify all the outbound links that are 
+  present on web pages.
 Description: |-
   Vovsoft External Link Detector is a software product that helps users to scan any website and identify all the outbound links that are present on web pages.
 
@@ -34,3 +36,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/external-link-detector/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  External Link Detector 1.6 (2024-08-23)
+  - Improved INI file
+  - Fixed "Ignore URLs" multiple line save bug

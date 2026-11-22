@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/visual-notes/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/visual-notes/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: This software allows you to create new notes simply by clicking anywhere on the window, providing a seamless and intuitive note-taking experience.
+ShortDescription: This software allows you to create new notes simply by 
+  clicking anywhere on the window, providing a seamless and intuitive 
+  note-taking experience.
 Description: |-
   Experience the convenience of having all your notes on a single screen with Vovsoft Visual Notes. This software allows you to create new notes simply by clicking anywhere on the window, providing a seamless and intuitive note-taking experience.
 
@@ -33,3 +35,12 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/visual-notes/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Visual Notes 1.6 (2023-05-20)
+  - Supported multi-line notes
+  - Added "Remember Notes"
+  - Added "Reset to Defaults"
+  - Implemented SaveDialog overwrite prompt
+  - Fixed some high-DPI issues
+  - Improved installer
+  - Improved icon

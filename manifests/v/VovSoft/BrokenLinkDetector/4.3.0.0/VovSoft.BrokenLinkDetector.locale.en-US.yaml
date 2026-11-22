@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/broken-link-detector/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/broken-link-detector/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Check any website for dead links with the help of this lightweight software utility that enables you to export the results for further analysis.
+ShortDescription: Check any website for dead links with the help of this 
+  lightweight software utility that enables you to export the results for 
+  further analysis.
 Description: |-
   Check any website for dead links with the help of this lightweight software utility that enables you to export the results for further analysis.
 
@@ -36,3 +38,9 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/broken-link-detector/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Broken Link Detector 4.3 (2025-03-06)
+  - Supported loading HTML files
+  - Supported loading JSON bookmark files
+  - Fixed right-click "Check URL" icon bug
+  - Improved "Stop" button

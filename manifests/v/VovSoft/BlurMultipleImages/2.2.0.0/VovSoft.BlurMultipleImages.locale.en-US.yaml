@@ -14,7 +14,8 @@ PackageUrl: https://vovsoft.com/software/blur-multiple-images/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/blur-multiple-images/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Add a blur effect to large numbers of image files in one quick operation, with the help of this lightweight utility.
+ShortDescription: Add a blur effect to large numbers of image files in one quick
+  operation, with the help of this lightweight utility.
 Description: |-
   Blurring images is a popular technique used to soften details, while also enhancing the overall visual appeal. By applying a blurring effect, unwanted or sensitive elements can be effectively hidden. Additionally, blurring can contribute to smoothing out imperfections, reducing the visibility of noise or pixelation in images. This process helps create a more polished and professional appearance, making it a valuable tool in various contexts such as privacy protection, artistic enhancements, or denoising photographs.
 
@@ -40,3 +41,9 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/blur-multiple-images/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Blur Multiple Images 2.2 (2026-08-18)
+  - "Skia" is now the default engine
+  - Added "WIC" engine
+  - Added .webp support
+  - Improved UI

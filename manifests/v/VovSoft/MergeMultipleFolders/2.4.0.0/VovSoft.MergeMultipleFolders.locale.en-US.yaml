@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/merge-multiple-folders/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/merge-multiple-folders/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Merge Multiple Folders is a tool to combine the contents of different folders into a single folder. You can concatenate multiple directories using this easy to use folder merger software.
+ShortDescription: Vovsoft Merge Multiple Folders is a tool to combine the 
+  contents of different folders into a single folder. You can concatenate 
+  multiple directories using this easy to use folder merger software.
 Description: |-
   Vovsoft Merge Multiple Folders is a tool to combine the contents of different folders into a single folder. You can concatenate multiple directories using this easy to use folder merger software.
 
@@ -44,3 +46,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/merge-multiple-folders/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Merge Multiple Folders 2.4 (2026-04-07)
+  - Fixed "Auto Close" issue
+  - Fixed "Environment Variables" issue

@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/vov-system-uptime/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/vov-system-uptime/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vov System Uptime runs in the system tray and allows you to see the Windows uptime with a single mouse click. It lets you know how long your server, laptop or desktop computer has been running.
+ShortDescription: Vov System Uptime runs in the system tray and allows you to 
+  see the Windows uptime with a single mouse click. It lets you know how long 
+  your server, laptop or desktop computer has been running.
 Description: |-
   Vov System Uptime runs in the system tray and allows you to see the Windows uptime with a single mouse click. It lets you know how long your server, laptop or desktop computer has been running.
 
@@ -30,3 +32,9 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/vov-system-uptime/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Vov System Uptime 1.8 (2026-03-24)
+  - Updated compiler
+  - The "Settings" form can now be closed with ESC key
+  - The "still here" notification is disabled by default
+  - Improved UI

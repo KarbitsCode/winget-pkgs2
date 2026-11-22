@@ -14,7 +14,8 @@ PackageUrl: https://vovsoft.com/software/text-decoder-and-encoder/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/text-decoder-and-encoder/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Text Decoder and Encoder is an easy to use tool designed for encoding and decoding text.
+ShortDescription: Vovsoft Text Decoder and Encoder is an easy to use tool 
+  designed for encoding and decoding text.
 Description: |-
   Vovsoft Text Decoder and Encoder is an easy to use tool designed for encoding and decoding text. This user-friendly application simplifies the process of text transformation, supporting a variety of widely-used encoding algorithms, including:
   - Base64
@@ -42,3 +43,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/text-decoder-and-encoder/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Text Decoder And Encoder 2.4 (2026-02-14)
+  - Added "Unix Timestamp (Epoch)"

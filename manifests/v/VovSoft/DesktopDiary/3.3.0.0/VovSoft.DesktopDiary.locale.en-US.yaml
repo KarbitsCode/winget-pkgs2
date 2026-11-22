@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/desktop-diary/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/desktop-diary/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Desktop Diary is a handy journal application that enables you to lock your personal account with a password, preventing others from accessing your private data.
+ShortDescription: Vovsoft Desktop Diary is a handy journal application that 
+  enables you to lock your personal account with a password, preventing others 
+  from accessing your private data.
 Description: |-
   Vovsoft Desktop Diary is a handy journal application that enables you to lock your personal account with a password, preventing others from accessing your private data. You can use it to write your memories, as well as save important appointments. It's a daily journal software for Windows that allows you to save your daily notes efficiently on your desktop or laptop computer.
 
@@ -39,3 +41,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/desktop-diary/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Desktop Diary 3.3 (2026-07-27)
+  - Improved email validation

@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/file-checksum-calculator/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/file-checksum-calculator/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft File Checksum Calculator is a standalone utility that generates and verifies cryptographic hashes in CRC-32, MD5, SHA-1, SHA-256 and SHA-512.
+ShortDescription: Vovsoft File Checksum Calculator is a standalone utility that 
+  generates and verifies cryptographic hashes in CRC-32, MD5, SHA-1, SHA-256 and
+  SHA-512.
 Description: |-
   Vovsoft File Checksum Calculator is a standalone utility that generates and verifies cryptographic hashes in CRC-32, MD5, SHA-1, SHA-256 and SHA-512. The software supports lowercase and uppercase letters for displaying and validation, based on user selection.
 
@@ -36,3 +38,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/file-checksum-calculator/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  File Checksum Calculator 2.5 (2026-05-05)
+  - Added "Stay on Top" setting
+  - Improved handling of multiple input files: when filenames are provided via drag-and-drop or command line, the first file opens in the current instance, while the remaining files open in new instances

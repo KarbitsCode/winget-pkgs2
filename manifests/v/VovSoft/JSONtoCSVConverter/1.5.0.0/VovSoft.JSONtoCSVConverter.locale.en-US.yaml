@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/json-to-csv-converter/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/json-to-csv-converter/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft JSON to CSV Converter is a user-friendly desktop application designed to streamline the process of converting JSON (JavaScript Object Notation) files into CSV (Comma-Separated Values) format.
+ShortDescription: Vovsoft JSON to CSV Converter is a user-friendly desktop 
+  application designed to streamline the process of converting JSON (JavaScript 
+  Object Notation) files into CSV (Comma-Separated Values) format.
 Description: |-
   Vovsoft JSON to CSV Converter is a user-friendly desktop application designed to streamline the process of converting JSON (JavaScript Object Notation) files into CSV (Comma-Separated Values) format. This software is an essential tool for data analysts, developers, and anyone who needs to manipulate and analyze data stored in JSON format, enabling them to convert it into a more universally accepted and spreadsheet-friendly CSV format.
 
@@ -36,3 +38,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/json-to-csv-converter/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  JSON to CSV Converter 1.5 (2024-12-20)
+  - Fixed single line JSON file bug

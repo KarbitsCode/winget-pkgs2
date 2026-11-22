@@ -14,7 +14,10 @@ PackageUrl: https://vovsoft.com/software/map-chart-creator/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/map-chart-creator/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Make your own custom map of the world with colors. You can create map charts to compare values of geographical regions. You can export and import the country data as CSV file and create the geochart in HTML format.
+ShortDescription: Make your own custom map of the world with colors. You can 
+  create map charts to compare values of geographical regions. You can export 
+  and import the country data as CSV file and create the geochart in HTML 
+  format.
 Description: |-
   Make your own custom map of the world with colors. You can create map charts to compare values of geographical regions. You can export and import the country data as CSV file and create the geochart in HTML format. This software utilizes Google GeoChart in order to export Region GeoCharts.
 
@@ -41,3 +44,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/map-chart-creator/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Map Chart Creator 1.1 (2022-10-12)
+  - Implemented high-DPI icons
+  - Improved Ctrl+V behavior in license window

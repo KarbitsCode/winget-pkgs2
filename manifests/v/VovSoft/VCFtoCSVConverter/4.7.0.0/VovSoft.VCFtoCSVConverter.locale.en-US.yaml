@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/vcf-to-csv-converter/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/vcf-to-csv-converter/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: In case you want to build an Excel list of your contacts in any Android device, iPhone or Outlook address book, you can easily export the contents of the VCF file using a converter.
+ShortDescription: In case you want to build an Excel list of your contacts in 
+  any Android device, iPhone or Outlook address book, you can easily export the 
+  contents of the VCF file using a converter.
 Description: |-
   VCF files store information regarding your contacts, enclosing vCards (short for Virtual Business Cards). VCF is a file type recognized by desktop computers, laptops and mobile devices. These files primarily store names and phone numbers in order to export and import contacts. In case you want to build an Excel list of your contacts in any Android device, iPhone or Outlook address book, you can easily export the contents of the VCF file using a converter. A dedicated software tool such as Vovsoft VCF to CSV Converter can help you in this regard. This program supports a wide variety of VCF formats including iCloud, Android, Google Contacts, and Outlook.
 
@@ -34,3 +36,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/vcf-to-csv-converter/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  VCF to CSV Converter 4.7 (2026-09-10)
+  - Improved translations
+  - Fixed some high-DPI issues

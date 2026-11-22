@@ -14,7 +14,10 @@ PackageUrl: https://vovsoft.com/software/hex-viewer/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/hex-viewer/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Hex Viewer is a simple application that allows you to view hex code of binary files. Open any binary file on your laptop or desktop computer to view its hex code and explore it with ease with the help of this easy to use program for Windows.
+ShortDescription: Vovsoft Hex Viewer is a simple application that allows you to 
+  view hex code of binary files. Open any binary file on your laptop or desktop 
+  computer to view its hex code and explore it with ease with the help of this 
+  easy to use program for Windows.
 Description: |-
   Vovsoft Hex Viewer is a simple application that allows you to view hex code of binary files. Open any binary file on your laptop or desktop computer to view its hex code and explore it with ease with the help of this easy to use program for Windows.
 
@@ -37,3 +40,8 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/hex-viewer/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Hex Viewer 1.6 (2025-01-05)
+  - Supported loading file using command line arguments
+  - Added "Match Case" option into "Find Dialog"
+  - Improved Find

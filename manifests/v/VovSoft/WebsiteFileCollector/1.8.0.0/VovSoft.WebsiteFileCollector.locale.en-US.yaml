@@ -14,7 +14,8 @@ PackageUrl: https://vovsoft.com/software/website-file-collector/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/website-file-collector/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Website File Collector is a powerful Windows application designed to simplify file downloads from websites.
+ShortDescription: Vovsoft Website File Collector is a powerful Windows 
+  application designed to simplify file downloads from websites.
 Description: |-
   Vovsoft Website File Collector is a powerful Windows application designed to simplify file downloads from websites. Whether you need documents, images, scripts, or media files, the software enables you to gather the resources you need quickly and efficiently.
 
@@ -41,3 +42,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/website-file-collector/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Website File Collector 1.8 (2026-10-25)
+  - Fixed OpenSSL issue in "URL Grabber"
+  - Fixed "Show Source" issue

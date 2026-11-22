@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/hierarchical-file-manager/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/hierarchical-file-manager/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Hierarchical File Manager is a simple file management utility that aims to bring the convenience of column-view browsing, similar to Mac's Finder, to Windows users.
+ShortDescription: Vovsoft Hierarchical File Manager is a simple file management 
+  utility that aims to bring the convenience of column-view browsing, similar to
+  Mac's Finder, to Windows users.
 Description: |-
   Vovsoft Hierarchical File Manager is a simple file management utility that aims to bring the convenience of column-view browsing, similar to Mac's Finder, to Windows users. This easy-to-use application organizes folders and files in a horizontal, multi-pane layout where each directory level appears in its own column, helping users better understand their folder structure.
 
@@ -31,3 +33,10 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/hierarchical-file-manager/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Hierarchical File Manager 1.3 (2026-08-26)
+  - Added the ability to resize columns
+  - Added "Refresh" right-click menu item
+  - Fixed file/directory rename issue
+  - Fixed some memory leaks
+  - Fixed some high-DPI issues

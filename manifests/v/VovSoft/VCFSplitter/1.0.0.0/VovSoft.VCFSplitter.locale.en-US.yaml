@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/vcf-splitter/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/vcf-splitter/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft VCF Splitter is an easy-to-use utility that lets you split large vCard (.vcf) files into individual contact files, with no internet connection required — your data stays entirely on your computer.
+ShortDescription: Vovsoft VCF Splitter is an easy-to-use utility that lets you 
+  split large vCard (.vcf) files into individual contact files, with no internet
+  connection required — your data stays entirely on your computer.
 Description: |-
   Vovsoft VCF Splitter is an easy-to-use utility that lets you split large vCard (.vcf) files into individual contact files, with no internet connection required — your data stays entirely on your computer.
 
@@ -41,3 +43,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/vcf-splitter/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  VCF Splitter 1.0 (2025-07-10)
+  - First public release

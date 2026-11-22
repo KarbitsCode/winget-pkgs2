@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/create-image-gallery/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/create-image-gallery/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Quickly and easily create image galleries. You can either use the default settings or fine-tune the gallery to your needs using available options. Drag and drop the image files and create photo galleries.
+ShortDescription: Quickly and easily create image galleries. You can either use 
+  the default settings or fine-tune the gallery to your needs using available 
+  options. Drag and drop the image files and create photo galleries.
 Description: |-
   Quickly and easily create image galleries. You can either use the default settings or fine-tune the gallery to your needs using available options. Drag and drop the image files and create photo galleries.
 
@@ -41,3 +43,9 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/create-image-gallery/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Create Image Gallery 2.0 (2025-09-23)
+  - Added "Header Text" setting
+  - Added "Footer Text" setting
+  - Added "Image Links" setting
+  - Added "Clear" menu item

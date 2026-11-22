@@ -14,7 +14,8 @@ PackageUrl: https://vovsoft.com/software/markdown-converter/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/markdown-converter/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Markdown Converter is a user-friendly tool designed to effortlessly transform your markdown documents into HTML format.
+ShortDescription: Vovsoft Markdown Converter is a user-friendly tool designed to
+  effortlessly transform your markdown documents into HTML format.
 Description: |-
   Vovsoft Markdown Converter is a user-friendly tool designed to effortlessly transform your markdown documents into HTML format. It has an intuitive interface that simplifies the conversion process. You don't need to be a tech guru to use our software; it's designed for everyone, from beginners to advanced users. It runs smoothly on your Windows-based devices, providing a hassle-free user experience.
 
@@ -45,3 +46,12 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/markdown-converter/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Markdown Converter 1.3 (2026-07-20)
+  - Added "Batch Processing"
+  - Added support for opening files using command line parameters
+  - Added support for opening multiple files using drag and drop
+  - Added support for Microsoft Edge WebView2
+  - Added "Auto Preview" setting
+  - Added "Reset to Defaults" menu item
+  - Fixed UTF-8 encoding issue
