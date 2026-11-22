@@ -111,10 +111,13 @@ jobs:
       - name: Post cleanup winget token
         if: always()
         shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.WINGET_TOKEN }}
         run: |
-          wingetcreate cache --clean
+          .\Tools\BranchCleaner.ps1
           komac cleanup --all
           komac sync-fork
+          wingetcreate cache --clean
           wingetcreate token --clear
           komac token remove --yes
 
