@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/customer-tracker/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/customer-tracker/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: A lightweight Windows CRM for managing contacts, sales, and notes. It supports multiple address books, VCF import/export, and stores all data in a single SQLite file.
+ShortDescription: A lightweight Windows CRM for managing contacts, sales, and 
+  notes. It supports multiple address books, VCF import/export, and stores all 
+  data in a single SQLite file.
 Description: |-
   Vovsoft Customer Tracker is a lightweight CRM for Windows designed to help individuals and small businesses manage their client relationships and information efficiently.
 
@@ -41,3 +43,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/customer-tracker/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Customer Tracker 1.1 (2026-05-26)
+  - Fixed note-edit bug

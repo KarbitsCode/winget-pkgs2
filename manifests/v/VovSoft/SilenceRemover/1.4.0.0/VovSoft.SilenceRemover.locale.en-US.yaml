@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/silence-remover/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/silence-remover/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Silence Remover is a Windows software designed to simplify audio editing by automatically removing unwanted pauses and silent segments from your recordings.
+ShortDescription: Vovsoft Silence Remover is a Windows software designed to 
+  simplify audio editing by automatically removing unwanted pauses and silent 
+  segments from your recordings.
 Description: |-
   Vovsoft Silence Remover is a Windows software designed to simplify audio editing by automatically removing unwanted pauses and silent segments from your recordings. Whether you’re a podcaster striving for smooth narration or a vlogger aiming for seamless video voiceovers, Silence Remover helps you achieve professional-quality results effortlessly.
 
@@ -41,3 +43,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/silence-remover/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Silence Remover 1.4 (2026-04-13)
+  - Added "Audio Bitrate" setting

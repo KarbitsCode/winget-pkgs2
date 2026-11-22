@@ -14,7 +14,10 @@ PackageUrl: https://vovsoft.com/software/web-platform-identifier/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/web-platform-identifier/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Web Platform Identifier is a powerful program, designed for desktop and laptop computers, that automatically recognizes websites based on their platform such as WordPress, Shopify, vBulletin and hundreds more.
+ShortDescription: Vovsoft Web Platform Identifier is a powerful program, 
+  designed for desktop and laptop computers, that automatically recognizes 
+  websites based on their platform such as WordPress, Shopify, vBulletin and 
+  hundreds more.
 Description: |-
   Vovsoft Web Platform Identifier is a powerful program, designed for desktop and laptop computers, that automatically recognizes websites based on their platform such as WordPress, Shopify, vBulletin and hundreds more.
 
@@ -31,3 +34,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/web-platform-identifier/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Web Platform Identifier 1.6 (2026-02-28)
+  - Fixed some high-DPI issues

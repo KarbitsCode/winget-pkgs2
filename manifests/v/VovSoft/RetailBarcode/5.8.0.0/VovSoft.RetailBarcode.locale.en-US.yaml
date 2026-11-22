@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/retail-barcode/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/retail-barcode/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Retail Barcode is a lightweight cashier application that can help users keep track of products sales. The tool allows one to define customers, as well as to link product credit sales to individual clients.
+ShortDescription: Retail Barcode is a lightweight cashier application that can 
+  help users keep track of products sales. The tool allows one to define 
+  customers, as well as to link product credit sales to individual clients.
 Description: |-
   Vovsoft Retail Barcode is a lightweight cashier application that can help users keep track of products sales. If you are looking for a barcode software for your retail store, you can rely on this easy to use tool.
 
@@ -48,3 +50,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/retail-barcode/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Retail Barcode 5.8 (2026-02-15)
+  - Deleting a payment in "Sales" now automatically increases product stock
+  - Fixed "PAID" button bug in "Customers"

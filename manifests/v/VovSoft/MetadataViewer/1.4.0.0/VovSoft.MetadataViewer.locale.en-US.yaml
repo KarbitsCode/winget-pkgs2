@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/metadata-viewer/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/metadata-viewer/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Extract hidden metadata from digital files including EXIF camera settings, GPS coordinates from photos, ID3 music tags, and other formats.
+ShortDescription: Extract hidden metadata from digital files including EXIF 
+  camera settings, GPS coordinates from photos, ID3 music tags, and other 
+  formats.
 Description: |-
   Metadata Viewer is a simple tool for viewing and analyzing hidden metadata embedded in digital files. Whether you're examining photographs, audio files, documents, or executables, this software reveals the technical details and information stored within.
 
@@ -37,3 +39,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/metadata-viewer/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Metadata Viewer 1.4 (2026-03-10)
+  - Improved error messages

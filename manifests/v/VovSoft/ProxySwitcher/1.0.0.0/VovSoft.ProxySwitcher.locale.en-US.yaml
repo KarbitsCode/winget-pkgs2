@@ -14,7 +14,8 @@ PackageUrl: https://vovsoft.com/software/proxy-switcher/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/proxy-switcher/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Proxy Switcher is a simple local proxy server that automatically forwards your traffic through multiple upstream proxies.
+ShortDescription: Vovsoft Proxy Switcher is a simple local proxy server that 
+  automatically forwards your traffic through multiple upstream proxies.
 Description: |-
   Vovsoft Proxy Switcher is a simple local proxy server that automatically forwards your traffic through multiple upstream proxies. Instead of configuring applications to switch proxies manually, you simply connect them to this program, and it handles the rotation for you in the background. This approach makes it easy to distribute requests, avoid rate limits — all without constantly reconfiguring your software.
 
@@ -38,3 +39,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/proxy-switcher/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Proxy Switcher 1.0 (2025-10-02)
+  - First public release

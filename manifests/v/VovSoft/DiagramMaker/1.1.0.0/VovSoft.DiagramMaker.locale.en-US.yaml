@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/diagram-maker/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/diagram-maker/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Diagram Maker is a free diagramming and flowchart maker software. You can create organization, relationship hierarchy and structure charts.
+ShortDescription: Diagram Maker is a free diagramming and flowchart maker 
+  software. You can create organization, relationship hierarchy and structure 
+  charts.
 Description: |-
   Vovsoft Diagram Maker is a free diagramming application and flowchart maker software. You can add, drag-and-drop shapes, create graphs, organization charts (org chart), relationship hierarchy charts and structure charts. You can also use it to generate circuit and network diagrams.
 
@@ -37,3 +39,10 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/diagram-maker/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Diagram Maker 1.1 (2024-02-26)
+  - Added "Reset to Defaults"
+  - Implemented SaveDialog overwrite prompt
+  - Changed default font
+  - Improved installer
+  - Fixed some high-DPI issues

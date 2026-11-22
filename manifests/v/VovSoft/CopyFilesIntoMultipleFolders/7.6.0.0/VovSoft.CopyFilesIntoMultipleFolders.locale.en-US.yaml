@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/copy-files-into-multiple-folders/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/copy-files-into-multiple-folders/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Copy Files Into Multiple Folders is a handy piece of software that, as its name implies, enables you to copy and paste files to multiple directories in one quick operation.
+ShortDescription: Vovsoft Copy Files Into Multiple Folders is a handy piece of 
+  software that, as its name implies, enables you to copy and paste files to 
+  multiple directories in one quick operation.
 Description: |-
   Vovsoft Copy Files Into Multiple Folders is a handy piece of software that, as its name implies, enables you to copy and paste files to multiple directories in one quick operation. It is a very simple-to-use batch file copy tool. This application is great for those who only wish to transfer a set of files to many locations simultaneously in an effortless manner. First-time users should not run into any issues, as the program's functions are self-explanatory.
 
@@ -32,10 +34,14 @@ Description: |-
 Tags:
 - Files
 - Tool
-ReleaseNotesUrl: https://vovsoft.com/version-history/copy-files-into-multiple-folders/
+ReleaseNotesUrl: 
+  https://vovsoft.com/version-history/copy-files-into-multiple-folders/
 PurchaseUrl: https://vovsoft.com/purchase/copy-files-into-multiple-folders/
 Documentations:
 - DocumentLabel: Copy Files Into Multiple Folders Help
   DocumentUrl: https://vovsoft.com/help/copy-files-into-multiple-folders/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Copy Files Into Multiple Folders 7.6 (2026-07-15)
+  - Improved translations

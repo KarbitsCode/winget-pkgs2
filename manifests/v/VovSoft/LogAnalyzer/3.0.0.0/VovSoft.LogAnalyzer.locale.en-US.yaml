@@ -14,7 +14,8 @@ PackageUrl: https://vovsoft.com/software/log-analyzer/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/log-analyzer/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Log Analyzer is a tool that helps you search huge text files. You can search log files larger than gigabytes using this utility.
+ShortDescription: Log Analyzer is a tool that helps you search huge text files. 
+  You can search log files larger than gigabytes using this utility.
 Description: |-
   Vovsoft Log Analyzer is a file viewer and analysis tool designed to help you examine large text files.
 
@@ -34,3 +35,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/log-analyzer/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Log Analyzer 3.0 (2026-09-13)
+  - Added support for "Apache Log File" analysis
+  - Added support for "Windows Event Log File" analysis (evtx files)

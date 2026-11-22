@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/rich-text-editor/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/rich-text-editor/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Rich Text Editor is a user-friendly app for clutter-free text editing. Seamlessly open, edit, and save DOCX, RTF, HTML, and Markdown files, or export to PDF.
+ShortDescription: Vovsoft Rich Text Editor is a user-friendly app for 
+  clutter-free text editing. Seamlessly open, edit, and save DOCX, RTF, HTML, 
+  and Markdown files, or export to PDF.
 Description: |-
   Vovsoft Rich Text Editor is a user-friendly document editing application. The software provides a clean interface with standard text formatting, allowing users to easily adjust fonts, alignment, and insert media.
 
@@ -49,3 +51,9 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/rich-text-editor/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Rich Text Editor 1.2 (2026-09-27)
+  - Added support for clickable hyperlinks
+  - Improved "Dark Theme"
+  - Improved bullets and numbering
+  - Improved spell checking

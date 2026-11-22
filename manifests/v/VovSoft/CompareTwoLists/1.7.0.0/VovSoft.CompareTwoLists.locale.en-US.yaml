@@ -14,7 +14,10 @@ PackageUrl: https://vovsoft.com/software/compare-two-lists/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/compare-two-lists/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Compare Two Lists is a list comparison tool that can perform set operations over lists of words or numbers. Copy and paste your lists into the program, then click the Compare button to get the differences between the two lists.
+ShortDescription: Compare Two Lists is a list comparison tool that can perform 
+  set operations over lists of words or numbers. Copy and paste your lists into 
+  the program, then click the Compare button to get the differences between the 
+  two lists.
 Description: |-
   Vovsoft Compare Two Lists is a list comparison tool that can perform set operations over text lists. Copy and paste your lists into the program, then click the "Compare" button to get the difference between the two lists. You can compare multiple lists without having to write Excel functions to do the task. Features: Set Intersections (AND), Set Unions (OR) and Set Differences. Options include case-sensitive, case-insensitive, ignore whitespaces.
 
@@ -55,3 +58,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/compare-two-lists/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Compare Two Lists 1.7 (2026-04-05)
+  - "Remove Duplicates" buttons now respect the "Case Sensitive" setting

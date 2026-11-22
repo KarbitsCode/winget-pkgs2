@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/prime-number-counter/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/prime-number-counter/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: A prime number (or a prime) is a natural number greater than 1 that has no positive divisors other than 1 and itself. Prime Number Counter is a small utility to calculate the prime numbers.
+ShortDescription: A prime number (or a prime) is a natural number greater than 1
+  that has no positive divisors other than 1 and itself. Prime Number Counter is
+  a small utility to calculate the prime numbers.
 Description: |-
   A prime number (or a prime) is a natural number greater than 1 that has no positive divisors other than 1 and itself.
 
@@ -31,3 +33,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/prime-number-counter/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Prime Number Counter 2.2 (2022-11-27)
+  - Supported Windows Aero effects
+  - Improved icon

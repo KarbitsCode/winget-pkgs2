@@ -14,7 +14,8 @@ PackageUrl: https://vovsoft.com/software/convert-video-to-audio/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/convert-video-to-audio/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Convert Video to Audio is a simple and efficient software designed to extract sound from video files.
+ShortDescription: Vovsoft Convert Video to Audio is a simple and efficient 
+  software designed to extract sound from video files.
 Description: |-
   Vovsoft Convert Video to Audio is a simple and efficient software designed to extract sound from video files. This software is a perfect solution for those who want to convert their video files into audio formats, enabling them to enjoy audio content without requiring video playback.
 
@@ -32,3 +33,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/convert-video-to-audio/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Convert Video to Audio 2.4 (2025-05-14)
+  - Improved usage with command line arguments

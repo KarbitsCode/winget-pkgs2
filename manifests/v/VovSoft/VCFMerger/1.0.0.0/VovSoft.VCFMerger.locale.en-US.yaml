@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/vcf-merger/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/vcf-merger/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft VCF Merger is an easy-to-use utility that lets you combine multiple vCard (.vcf) files into a single contact file, with no internet connection required — your data stays entirely on your computer.
+ShortDescription: Vovsoft VCF Merger is an easy-to-use utility that lets you 
+  combine multiple vCard (.vcf) files into a single contact file, with no 
+  internet connection required — your data stays entirely on your computer.
 Description: |-
   Vovsoft VCF Merger is an easy-to-use utility that lets you combine multiple vCard (.vcf) files into a single contact file, with no internet connection required — your data stays entirely on your computer.
 
@@ -42,3 +44,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/vcf-merger/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  VCF Merger 1.0 (2025-07-12)
+  - First public release

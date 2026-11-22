@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/duplicate-file-finder/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/duplicate-file-finder/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Duplicate File Finder is an easy to use tool to search duplicate files on your laptop or desktop computer. It can scan filenames, file sizes or file contents (using SHA-1 algorithm).
+ShortDescription: Vovsoft Duplicate File Finder is an easy to use tool to search
+  duplicate files on your laptop or desktop computer. It can scan filenames, 
+  file sizes or file contents (using SHA-1 algorithm).
 Description: |-
   Vovsoft Duplicate File Finder is an easy to use tool to search duplicate files on your laptop or desktop computer. It can scan filenames, file sizes or file contents (using SHA-1 algorithm).
 
@@ -42,3 +44,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/duplicate-file-finder/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Duplicate File Finder 2.1 (2025-12-21)
+  - Added CSV headers

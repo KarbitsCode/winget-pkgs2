@@ -14,7 +14,10 @@ PackageUrl: https://vovsoft.com/software/proxy-server/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/proxy-server/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Proxy Server is an easily manageable proxy server for Windows. This straightforward tool supports both HTTP and SOCKS protocols, allowing you to enhance privacy, access geo-blocked content, and test applications effortlessly.
+ShortDescription: Vovsoft Proxy Server is an easily manageable proxy server for 
+  Windows. This straightforward tool supports both HTTP and SOCKS protocols, 
+  allowing you to enhance privacy, access geo-blocked content, and test 
+  applications effortlessly.
 Description: |-
   Vovsoft Proxy Server is an easily manageable proxy server for Windows. This straightforward tool supports both HTTP and SOCKS protocols, allowing you to enhance privacy, access geo-blocked content, and test applications effortlessly. With its user-friendly interface, creating your proxy server has never been simpler.
 
@@ -39,3 +42,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/proxy-server/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Proxy Server 1.3 (2025-10-24)
+  - The application remembers last used HTTP port and SOCKS port

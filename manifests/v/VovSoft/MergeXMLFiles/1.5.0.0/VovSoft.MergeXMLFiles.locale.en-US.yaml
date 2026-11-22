@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/merge-xml-files/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/merge-xml-files/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Merge XML Files is a user-friendly software for combining multiple XML documents into one large one. You can combine XML files by using this compact and lightweight XML file combiner software.
+ShortDescription: Merge XML Files is a user-friendly software for combining 
+  multiple XML documents into one large one. You can combine XML files by using 
+  this compact and lightweight XML file combiner software.
 Description: |-
   Working with XML files can sometimes require merging operations; achieving such an outcome might require the use of a dedicated tool for combining them. This utility is designed to allow users to join XML files with ease, escaping the trouble of going through some potentially complex undertakings.
 
@@ -37,3 +39,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/merge-xml-files/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Merge XML Files 1.5 (2025-09-02)
+  - Fixed "DTD is prohibited" error

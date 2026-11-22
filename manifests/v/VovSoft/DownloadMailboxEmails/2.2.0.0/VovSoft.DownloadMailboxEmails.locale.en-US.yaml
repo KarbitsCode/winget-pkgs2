@@ -14,7 +14,10 @@ PackageUrl: https://vovsoft.com/software/download-mailbox-emails/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/download-mailbox-emails/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Download Mailbox Emails will provide users with an efficient and simple way of connecting to their email accounts, selecting the preferred content, and downloading it. This software is an easy to use mailbox download tool.
+ShortDescription: Vovsoft Download Mailbox Emails will provide users with an 
+  efficient and simple way of connecting to their email accounts, selecting the 
+  preferred content, and downloading it. This software is an easy to use mailbox
+  download tool.
 Description: |-
   Ensuring your mailbox safety can sometimes require saving emails in an offline means of storage. However, managing to easily download the required email messages from your account, can be a lengthy and somewhat challenging undertaking.
 
@@ -39,3 +42,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/download-mailbox-emails/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Download Mailbox Emails 2.2 (2026-11-01)
+  - Added timeout settings

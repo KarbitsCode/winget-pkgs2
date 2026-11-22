@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/regex-extractor/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/regex-extractor/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft RegEx Extractor is a simple but powerful data mining software utility designed to extract various data from text files or logs using regular expressions and rules (contains, lacks, starts with, ends with).
+ShortDescription: Vovsoft RegEx Extractor is a simple but powerful data mining 
+  software utility designed to extract various data from text files or logs 
+  using regular expressions and rules (contains, lacks, starts with, ends with).
 Description: |-
   Vovsoft RegEx Extractor is a simple but powerful data mining software utility designed to extract various data from text files or logs using regular expressions and rules (contains, lacks, starts with, ends with). One of its advantages is that it allows batch processing, enabling you to perform searches within multiple files at the same time.
 
@@ -31,3 +33,9 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/regex-extractor/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  RegEx Extractor 3.0 (2025-06-11)
+  - Added "Text" field as input, in addition to "Files"
+  - Added "Word Wrap" setting for the text field
+  - Remembers form position
+  - Remembers last used tab

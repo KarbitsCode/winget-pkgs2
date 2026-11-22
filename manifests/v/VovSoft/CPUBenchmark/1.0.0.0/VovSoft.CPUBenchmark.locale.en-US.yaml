@@ -13,7 +13,9 @@ PackageUrl: https://vovsoft.com/software/cpu-benchmark/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/cpu-benchmark/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: A lightweight tool designed to evaluate your processor’s performance by running synthetic benchmarks and reporting operations per second (M ops/sec).
+ShortDescription: A lightweight tool designed to evaluate your processor’s 
+  performance by running synthetic benchmarks and reporting operations per 
+  second (M ops/sec).
 Description: |-
   Vovsoft CPU Benchmark is a lightweight tool designed to evaluate your processor’s performance by running synthetic benchmarks and reporting operations per second (M ops/sec).
 
@@ -33,3 +35,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/cpu-benchmark/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  CPU Benchmark 1.0 (2025-07-11)
+  - First public release

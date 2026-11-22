@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/http-requester/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/http-requester/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft HTTP Requester is a simple but powerful tool designed to streamline the process of sending batch HTTP requests and receiving responses.
+ShortDescription: Vovsoft HTTP Requester is a simple but powerful tool designed 
+  to streamline the process of sending batch HTTP requests and receiving 
+  responses.
 Description: |-
   Vovsoft HTTP Requester is a simple but powerful tool designed to streamline the process of sending batch HTTP requests and receiving responses. Whether you're a developer, tester, or simply someone looking to interact with web services, this intuitive application empowers you to effortlessly create, and analyze HTTP/HTTPS requests with precision and ease.
   - User-Friendly Interface: The software offers an intuitive and user-friendly interface, making it accessible to both beginners and experienced users. Its straightforward design allows you to quickly grasp its functionality and get started in no time.
@@ -48,3 +50,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/http-requester/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  HTTP Requester 6.7 (2026-10-28)
+  - Improved error window, added "Ignore Future Errors" option

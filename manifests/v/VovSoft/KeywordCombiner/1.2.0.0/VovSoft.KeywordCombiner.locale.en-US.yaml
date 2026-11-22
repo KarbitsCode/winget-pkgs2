@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/keyword-combiner/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/keyword-combiner/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Keyword Combiner is an easy to use software tool for effortlessly fusing and mixing keywords to create compelling keyword combinations.
+ShortDescription: Vovsoft Keyword Combiner is an easy to use software tool for 
+  effortlessly fusing and mixing keywords to create compelling keyword 
+  combinations.
 Description: |-
   Vovsoft Keyword Combiner is an easy to use software tool for effortlessly fusing and mixing keywords to create compelling keyword combinations. Whether you're a digital marketer optimizing Google AdWords campaigns or seeking the perfect domain name for your online venture, this program is the ultimate solution.
 
@@ -35,3 +37,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/keyword-combiner/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Keyword Combiner 1.2 (2024-07-31)
+  - Added "Number List" to Insert menu

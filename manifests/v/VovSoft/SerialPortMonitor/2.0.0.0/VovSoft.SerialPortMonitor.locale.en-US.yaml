@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/serial-port-monitor/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/serial-port-monitor/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Serial Port Monitor is an easy to use utility that allows monitoring your computer's COM port data traffic. You can read serial data from any COM port and send data to any COM port.
+ShortDescription: Vovsoft Serial Port Monitor is an easy to use utility that 
+  allows monitoring your computer's COM port data traffic. You can read serial 
+  data from any COM port and send data to any COM port.
 Description: |-
   Vovsoft Serial Port Monitor is an easy to use utility that allows monitoring your computer's COM port data traffic. You can read serial data from any COM port and send data to any COM port. You can change connection parameters such as baud rate (bits per second), parity, data bits and stop bits. This software can send and receive data in ASCII text. Hexadecimal, decimal, octal and binary formats are also supported when sending and displaying received data. It is possible to send serial commands periodically or according to a time schedule. "Clear", "Save to file" and "Copy to clipboard" buttons can be used. Setting font and background color is allowed by using the menu.
 
@@ -36,3 +38,9 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/serial-port-monitor/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Serial Port Monitor 2.0 (2025-12-13)
+  - Added "File" mode with "Auto Start", "Auto Repeat", and "Auto Close" options
+  - The application now displays last sent values
+  - The application now saves last auto detected COM port
+  - Fixed "Send Periodically" bug

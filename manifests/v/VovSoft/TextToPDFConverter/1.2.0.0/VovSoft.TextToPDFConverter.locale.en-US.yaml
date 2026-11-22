@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/text-to-pdf-converter/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/text-to-pdf-converter/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: User-friendly software utility that allows you to convert one or more text files to PDF. When you want to make sure unauthorized people cannot edit your text documents, you can convert them to PDF format.
+ShortDescription: User-friendly software utility that allows you to convert one 
+  or more text files to PDF. When you want to make sure unauthorized people 
+  cannot edit your text documents, you can convert them to PDF format.
 Description: |-
   Vovsoft Text to PDF Converter is a straightforward utility designed to turn plain text documents into PDF files. Built to simplify the conversion process, it includes a batch processing feature to handle multiple text files at once without extra hassle.
 
@@ -43,3 +45,8 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/text-to-pdf-converter/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Text to PDF Converter 1.2 (2026-08-05)
+  - Added "Portrait" and "Landscape" orientation setting
+  - Added "Paper Size" setting
+  - Fixed "Word Wrap" issue

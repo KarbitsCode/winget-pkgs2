@@ -14,7 +14,8 @@ PackageUrl: https://vovsoft.com/software/batch-video-upscaler/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/batch-video-upscaler/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Batch Video Upscaler is a powerful Windows software that enhances and enlarges videos using AI technology.
+ShortDescription: Vovsoft Batch Video Upscaler is a powerful Windows software 
+  that enhances and enlarges videos using AI technology.
 Description: |-
   Vovsoft Batch Video Upscaler is a powerful Windows software that enhances and enlarges videos using AI technology. Designed for simplicity and performance, it runs entirely offline without requiring any external dependencies. Thanks to Vulkan-based acceleration, it works seamlessly with Intel, AMD, and Nvidia graphics cards. It supports popular file formats, including MP4 and AVI, and allows you to process multiple videos in bulk, saving you time and effort.
 
@@ -35,3 +36,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/batch-video-upscaler/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Batch Video Upscaler 1.2 (2026-08-06)
+  - Added the ability to choose GPU
+  - Improved error messages

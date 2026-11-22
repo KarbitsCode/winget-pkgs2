@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/disk-monitor-gadget/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/disk-monitor-gadget/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Disk Monitor Gadget is a lightweight Windows utility that helps you monitor your disk space usage in real-time. Features include user defined colors and transparency.
+ShortDescription: Vovsoft Disk Monitor Gadget is a lightweight Windows utility 
+  that helps you monitor your disk space usage in real-time. Features include 
+  user defined colors and transparency.
 Description: |-
   Vovsoft Disk Monitor Gadget is a lightweight Windows utility that helps you monitor your disk space usage in real-time. Features include user defined colors and transparency. Compact tool with tiny footprint.
 
@@ -43,3 +45,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/disk-monitor-gadget/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Disk Monitor Gadget 2.1 (2026-03-25)
+  - Added "Bar Height" setting
+  - Fixed some high-DPI issues

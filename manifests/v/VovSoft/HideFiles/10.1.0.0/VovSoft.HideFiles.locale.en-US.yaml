@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/hide-files/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/hide-files/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Hide Files is an easy to use program to protect your sensitive information from being seen or accessed. It can easily hide any files, folders or even USB drives and keep them safe with a password.
+ShortDescription: Vovsoft Hide Files is an easy to use program to protect your 
+  sensitive information from being seen or accessed. It can easily hide any 
+  files, folders or even USB drives and keep them safe with a password.
 Description: |-
   Vovsoft Hide Files is an easy to use program to protect your sensitive information from being seen or accessed. It can easily hide any files, folders or even USB drives and keep them safe with a password.
 
@@ -34,3 +36,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/hide-files/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Hide Files 10.1 (2026-10-10)
+  - Improved UI
+  - Improved translations
