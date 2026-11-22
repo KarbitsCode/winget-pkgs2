@@ -31,8 +31,12 @@ def run(*, is_main=(__name__ == "__main__")):
             f"{new_version}",
             replace=str(old_version_folder)
         )
+        if old_version_folder.name in get_current_versions(drivereasy_dir)[package_name]:
+            options = f"--replace {old_version_folder.name}"
+        else:
+            options = ""
         log(f"Queueing package submission for {package_name} version: {new_version}")
-        submit_package("wingetcreate", new_version_folder, "--replace")
+        submit_package("wingetcreate", new_version_folder, options)
         changes.append({"package": package_name, "before": old_version_folder.name, "after": new_version, "submission_key": str(new_version_folder)})
     
     if is_main:

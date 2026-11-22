@@ -35,7 +35,7 @@ def run(*, is_main=(__name__ == "__main__")):
             f"\"{sys.executable}\" update\\releasenotes\\releasenotes_{updater}.py {new_version_folder} --no-backup"
         )
         log(f"Queueing package submission for {package_name} version: {new_version}")
-        submit_package("wingetcreate", new_version_folder, "--replace")
+        submit_package("wingetcreate", new_version_folder, f"--replace {old_version_folder.name}")
         changes.append({"package": package_name, "before": old_version_folder.name, "after": new_version, "submission_key": str(new_version_folder)})
     
     if is_main:
