@@ -14,7 +14,10 @@ PackageUrl: https://vovsoft.com/software/placebo-cleaner/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/placebo-cleaner/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: You don't have to clean your PC for hours or risk your computer crashing if something goes wrong with the cleaning. Placebo Cleaner can (or can not) clean your computer's RAM, drives, registry and gaming-related issues.
+ShortDescription: You don't have to clean your PC for hours or risk your 
+  computer crashing if something goes wrong with the cleaning. Placebo Cleaner 
+  can (or can not) clean your computer's RAM, drives, registry and 
+  gaming-related issues.
 Description: |-
   There are a lot of PC cleaning apps (cleaner, optimizer, system care, tune-up), some work pretty well, some are just scam. But the feeling of relaxation after the end of the cleaning process is priceless. This is where "Placebo Cleaner" comes in.
 
@@ -33,3 +36,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/placebo-cleaner/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Placebo Cleaner 1.2 (2023-03-30)
+  - New animations using lottie

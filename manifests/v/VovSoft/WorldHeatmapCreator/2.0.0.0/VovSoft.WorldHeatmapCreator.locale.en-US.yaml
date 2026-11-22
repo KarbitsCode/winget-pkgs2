@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/world-heatmap-creator/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/world-heatmap-creator/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Heatmaps display information about a specific parameter value using color codes throughout a regular map. World Heatmap Creator creates a world map in HTML format and marks all the locations you choose.
+ShortDescription: Heatmaps display information about a specific parameter value 
+  using color codes throughout a regular map. World Heatmap Creator creates a 
+  world map in HTML format and marks all the locations you choose.
 Description: |-
   Heatmaps display information about a specific parameter value using color codes throughout a regular map. Aside from being visually appealing, these statistical instruments are capable of representing large data sets in a simple manner.
 
@@ -34,3 +36,10 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/world-heatmap-creator/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  World Heatmap Creator 2.0 (2023-01-17)
+  - New icon
+  - "Create World Heatmap" button asks for the output directory, instead of HTML filename
+  - Added "View" menu
+  - Fixed some high-DPI issues
+  - Improved UI

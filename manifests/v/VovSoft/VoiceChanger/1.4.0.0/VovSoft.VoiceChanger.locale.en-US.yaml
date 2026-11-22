@@ -14,7 +14,10 @@ PackageUrl: https://vovsoft.com/software/voice-changer/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/voice-changer/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Voice Changer is a free audio enhancer and voice modifier tool that lets you add special sound effects to your recordings. There is a simple user interface where you can select the file and make any alterations you wish.
+ShortDescription: Vovsoft Voice Changer is a free audio enhancer and voice 
+  modifier tool that lets you add special sound effects to your recordings. 
+  There is a simple user interface where you can select the file and make any 
+  alterations you wish.
 Description: |-
   Vovsoft Voice Changer is a free audio enhancer and voice modifier tool that lets you add special sound effects to your recordings. There is a simple user interface where you can select the file and make any alterations you wish. It also has the ability to play the tracks and export in various formats.
 
@@ -34,3 +37,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/voice-changer/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Voice Changer 1.4 (2025-07-29)
+  - Added plus and minus buttons for custom filters
+  - Fixed decimal separator bug in custom filter

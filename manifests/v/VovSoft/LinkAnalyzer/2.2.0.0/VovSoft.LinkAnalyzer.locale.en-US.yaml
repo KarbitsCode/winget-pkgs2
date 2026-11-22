@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/link-analyzer/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/link-analyzer/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Link Analyzer is a user-friendly software designed for Windows that allows users to delve into the structure of any input URL and thoroughly examine all the links present within the webpage.
+ShortDescription: Vovsoft Link Analyzer is a user-friendly software designed for
+  Windows that allows users to delve into the structure of any input URL and 
+  thoroughly examine all the links present within the webpage.
 Description: |-
   Vovsoft Link Analyzer is a user-friendly software that allows users to delve into the structure of any input URL and thoroughly examine all the links present within the webpage. Whether you're a web developer, SEO professional, or simply curious about the links on a website, this URL analyzer software is your go-to tool for in-depth link analysis. The program will list all links on a webpage with ease. It can export the results into CSV or TXT files.
 
@@ -41,3 +43,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/link-analyzer/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Link Analyzer 2.2 (2026-04-08)
+  - Implemented dropdown history URL bar

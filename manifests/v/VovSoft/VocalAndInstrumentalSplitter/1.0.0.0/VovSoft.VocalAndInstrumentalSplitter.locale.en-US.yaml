@@ -14,7 +14,8 @@ PackageUrl: https://vovsoft.com/software/vocal-and-instrumental-splitter/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/vocal-and-instrumental-splitter/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Offline tool that extracts vocals and instrumental tracks from audio files like MP3 and WAV in batches.
+ShortDescription: Offline tool that extracts vocals and instrumental tracks from
+  audio files like MP3 and WAV in batches.
 Description: |-
   Vovsoft Vocal and Instrumental Splitter is a dedicated desktop utility designed to effortlessly extract human vocals and background music from your audio tracks. Whether you are creating karaoke backing tracks, gathering samples for a remix, or analyzing instrumentation, this tool isolates the core audio components and saves them as distinct, ready-to-use files.
 
@@ -34,10 +35,14 @@ Tags:
 - Music
 - Splitter
 - Vocals
-ReleaseNotesUrl: https://vovsoft.com/version-history/vocal-and-instrumental-splitter/
+ReleaseNotesUrl: 
+  https://vovsoft.com/version-history/vocal-and-instrumental-splitter/
 PurchaseUrl: https://vovsoft.com/purchase/vocal-and-instrumental-splitter/
 Documentations:
 - DocumentLabel: Vocal and Instrumental Splitter Help
   DocumentUrl: https://vovsoft.com/help/vocal-and-instrumental-splitter/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Vocal and Instrumental Splitter 1.0 (2026-09-12)
+  - First public release

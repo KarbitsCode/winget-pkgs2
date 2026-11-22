@@ -14,7 +14,10 @@ PackageUrl: https://vovsoft.com/software/pdf-reader/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/pdf-reader/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft PDF Reader is a lightweight super-simple PDF viewer application. No complicated configuration is needed to view your PDF files from your desktop or laptop computer. The interface is minimalistic, it provides all the essentials.
+ShortDescription: Vovsoft PDF Reader is a lightweight super-simple PDF viewer 
+  application. No complicated configuration is needed to view your PDF files 
+  from your desktop or laptop computer. The interface is minimalistic, it 
+  provides all the essentials.
 Description: |-
   Vovsoft PDF Reader is a lightweight super-simple PDF viewer application. No complicated configuration is needed to view your PDF files from your desktop or laptop computer. The interface is minimalistic, it provides all the essentials.
 
@@ -47,3 +50,10 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/pdf-reader/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  PDF Reader 6.0 (2026-10-02)
+  - Added "Page Thumbnails"
+  - Updated PDFium engine
+  - Improved UI
+  - Fixed print orientation detection problem
+  - Fixed some high-DPI issues

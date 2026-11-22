@@ -14,7 +14,8 @@ PackageUrl: https://vovsoft.com/software/health-break-reminder/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/health-break-reminder/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Health Break Reminder is here to help — your perfect Windows companion for maintaining a healthier work-life balance.
+ShortDescription: Vovsoft Health Break Reminder is here to help — your perfect 
+  Windows companion for maintaining a healthier work-life balance.
 Description: |-
   Spending long hours in front of your computer can make it easy to lose track of time, often at the expense of your well-being. Skipping regular breaks can negatively impact both your physical and mental health. Vovsoft Health Break Reminder is here to help — your perfect Windows companion for maintaining a healthier work-life balance.
 
@@ -35,3 +36,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/health-break-reminder/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Health Break Reminder 2.7 (2026-11-06)
+  - Improved stability

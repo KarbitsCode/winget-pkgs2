@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/print-multiple-web-pages/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/print-multiple-web-pages/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Batch print utility for HTML files and web sites. Print Multiple Web Pages will help you save time when printing a large number of HTML documents or online web pages.
+ShortDescription: Batch print utility for HTML files and web sites. Print 
+  Multiple Web Pages will help you save time when printing a large number of 
+  HTML documents or online web pages.
 Description: |-
   Vovsoft Print Multiple Web Pages is a batch print utility for HTML files and websites. This web page printing software will help you save time when printing a large number of HTML documents or online web pages in bulk.
 
@@ -37,3 +39,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/print-multiple-web-pages/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Print Multiple Web Pages 2.8 (2022-12-27)
+  - Improved application icon
+  - Improved UI

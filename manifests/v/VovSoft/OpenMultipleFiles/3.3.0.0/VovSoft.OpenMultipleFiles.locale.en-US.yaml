@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/open-multiple-files/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/open-multiple-files/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Open multiple files, folders, and URLs instantly with Vovsoft Open Multiple Files. Save clicks, automate startup, and create batch files easily.
+ShortDescription: Open multiple files, folders, and URLs instantly with Vovsoft 
+  Open Multiple Files. Save clicks, automate startup, and create batch files 
+  easily.
 Description: |-
   Working with multiple files, folders, executables or URLs at the same time can result in hectic situations, especially when trying to launch or open several instances at a time. Carried out manually, this process can be at least tiresome, not to mention inefficient. Vovsoft Open Multiple Files is an instant file opener that helps users cope with such issues and allow them to open multiple files or folders simultaneously. You can save thousands of clicks and make your life easier with the help of this little software.
 
@@ -42,3 +44,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/open-multiple-files/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Open Multiple Files 3.3 (2026-03-06)
+  - Fixed some high-DPI issues

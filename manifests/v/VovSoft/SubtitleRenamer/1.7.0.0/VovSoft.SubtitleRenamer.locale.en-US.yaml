@@ -14,7 +14,8 @@ PackageUrl: https://vovsoft.com/software/subtitle-renamer/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/subtitle-renamer/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: You can easily rename subtitle filenames according to video filenames by using this software.
+ShortDescription: You can easily rename subtitle filenames according to video 
+  filenames by using this software.
 Description: |-
   Many Smart-TV's, Home Theater Systems and Media Players require matching subtitle and video filenames. For users having many movies or series with lots of subtitle files, it is a hard work to rename all the subtitle filenames manually. This is where Vovsoft Subtitle Renamer comes in. You can easily rename filenames of closed captions (CC) according to video filenames by selecting the video directory and clicking the "Start" button. The software will rename all the subtitle files.
 
@@ -35,3 +36,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/subtitle-renamer/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Subtitle Renamer 1.7 (2024-01-21)
+  - Fixed some high-DPI issues
+  - Improved UI

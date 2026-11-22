@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/sound-recorder/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/sound-recorder/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Sound Recorder helps you record your system sound and microphone with ease. It saves audio from your input device (microphone) or from your output device (loopback recording).
+ShortDescription: Vovsoft Sound Recorder helps you record your system sound and 
+  microphone with ease. It saves audio from your input device (microphone) or 
+  from your output device (loopback recording).
 Description: |-
   Vovsoft Sound Recorder helps you record your system sound and microphone with ease. It saves audio from your input device (microphone) or from your output device (loopback recording).
 
@@ -48,3 +50,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/sound-recorder/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Sound Recorder 3.3 (2026-02-10)
+  - Added microphone device selection
+  - Added "Minimize to System Tray" setting

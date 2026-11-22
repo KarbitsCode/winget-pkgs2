@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/website-screenshot-generator/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/website-screenshot-generator/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Website Screenshot Generator is a powerful automation tool that allows you to capture screenshots of multiple web pages with just a few clicks.
+ShortDescription: Vovsoft Website Screenshot Generator is a powerful automation 
+  tool that allows you to capture screenshots of multiple web pages with just a 
+  few clicks.
 Description: |-
   Vovsoft Website Screenshot Generator is a powerful automation tool that allows you to capture screenshots of multiple web pages with just a few clicks. Whether you need to take screenshots for website testing, marketing, or design purposes, this software provides an easy and efficient solution. With its intuitive interface, you can simply enter the URLs, adjust the capture settings, and save the website snapshots in the desired format.
 
@@ -28,10 +30,16 @@ Tags:
 - Generator
 - Screenshot
 - Website
-ReleaseNotesUrl: https://vovsoft.com/version-history/website-screenshot-generator/
+ReleaseNotesUrl: 
+  https://vovsoft.com/version-history/website-screenshot-generator/
 PurchaseUrl: https://vovsoft.com/purchase/website-screenshot-generator/
 Documentations:
 - DocumentLabel: Website Screenshot Generator Help
   DocumentUrl: https://vovsoft.com/help/website-screenshot-generator/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Website Screenshot Generator 2.5 (2026-06-07)
+  - Added "Clear" button
+  - Improved "Auto-click link" with case-insensitive text matching and proper JavaScript escaping
+  - Improved UI

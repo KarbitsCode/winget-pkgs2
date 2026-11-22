@@ -14,7 +14,10 @@ PackageUrl: https://vovsoft.com/software/text-to-mp3-converter/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/text-to-mp3-converter/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Easily convert any text to speech. Perfect for e-learning, presentations, YouTube videos and increasing the accessibility. You can convert from text to speech and save it as audio file in a few clicks. The text can be exported as MP3 and WAV file.
+ShortDescription: Easily convert any text to speech. Perfect for e-learning, 
+  presentations, YouTube videos and increasing the accessibility. You can 
+  convert from text to speech and save it as audio file in a few clicks. The 
+  text can be exported as MP3 and WAV file.
 Description: |-
   Easily convert any text to speech. Perfect for e-learning, presentations, YouTube videos and increasing the accessibility. You can convert from text to speech and save it as audio file in a few clicks. The text can be exported as MP3 and WAV file.
   This program uses the preinstalled Microsoft SAPI Text-to-Speech (TTS) engine for generating voice. It can convert text of up to 500,000 characters into an audio file, that’s approximately 8 hours long.
@@ -41,3 +44,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/text-to-mp3-converter/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Text to MP3 Converter 4.7 (2026-10-04)
+  - Fixed mouth shapes (visemes)

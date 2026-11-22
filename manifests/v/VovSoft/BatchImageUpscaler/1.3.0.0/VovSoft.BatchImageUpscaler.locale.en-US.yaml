@@ -14,7 +14,8 @@ PackageUrl: https://vovsoft.com/software/batch-image-upscaler/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/batch-image-upscaler/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Batch Image Upscaler is an AI-powered software designed to enhance and upscale your images with exceptional quality.
+ShortDescription: Vovsoft Batch Image Upscaler is an AI-powered software 
+  designed to enhance and upscale your images with exceptional quality.
 Description: |-
   Vovsoft Batch Image Upscaler is an AI-powered software designed to enhance and upscale your images with exceptional quality. It supports popular file formats, including JPG, PNG, and WEBP, and allows you to process multiple images in bulk, saving you time and effort.
 
@@ -39,3 +40,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/batch-image-upscaler/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Batch Image Upscaler 1.3 (2026-05-31)
+  - Improved translations

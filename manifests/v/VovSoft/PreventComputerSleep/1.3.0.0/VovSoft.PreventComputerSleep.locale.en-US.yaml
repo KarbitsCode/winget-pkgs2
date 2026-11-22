@@ -14,7 +14,8 @@ PackageUrl: https://vovsoft.com/software/prevent-computer-sleep/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/prevent-computer-sleep/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Prevent Computer Sleep is a simple yet powerful tool designed to keep your PC awake by simulating keypresses at regular intervals.
+ShortDescription: Vovsoft Prevent Computer Sleep is a simple yet powerful tool 
+  designed to keep your PC awake by simulating keypresses at regular intervals.
 Description: |-
   Vovsoft Prevent Computer Sleep is a simple yet powerful tool designed to keep your PC awake by simulating keypresses at regular intervals. Whether you're running important tasks, watching videos, or giving a presentation, this software ensures that your computer doesn't go into sleep mode or lock the screen due to inactivity.
 
@@ -39,3 +40,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/prevent-computer-sleep/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Prevent Computer Sleep 1.3 (2026-09-10)
+  - Fixed "Auto-Start at Startup" issue

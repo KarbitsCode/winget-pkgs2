@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/bulk-barcode-generator/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/bulk-barcode-generator/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Bulk Barcode Generator is a powerful desktop application that allows you to create thousands of barcodes from plain-text data in batch mode.
+ShortDescription: Vovsoft Bulk Barcode Generator is a powerful desktop 
+  application that allows you to create thousands of barcodes from plain-text 
+  data in batch mode.
 Description: |-
   Vovsoft Bulk Barcode Generator is a powerful desktop application that allows you to create thousands of barcodes from plain-text data in batch mode.
 
@@ -38,3 +40,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/bulk-barcode-generator/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Bulk Barcode Generator 1.1 (2025-08-03)
+  - Increased total supported barcode types to 85
+  - Added support for PNG, JPEG, GIF, and BMP as output image formats

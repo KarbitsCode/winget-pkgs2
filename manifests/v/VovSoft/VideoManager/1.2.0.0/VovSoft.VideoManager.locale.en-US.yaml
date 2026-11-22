@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/video-manager/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/video-manager/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Video Manager is a user-friendly software designed to simplify your video organization experience. With this tool, managing extensive video directories becomes effortless.
+ShortDescription: Vovsoft Video Manager is a user-friendly software designed to 
+  simplify your video organization experience. With this tool, managing 
+  extensive video directories becomes effortless.
 Description: |-
   Vovsoft Video Manager is a user-friendly software designed to simplify your video organization experience. With this tool, managing extensive video directories becomes effortless. Seamlessly navigate through your collection and swiftly locate specific videos, thanks to its intuitive interface.
 
@@ -35,3 +37,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/video-manager/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Video Manager 1.2 (2023-12-14)
+  - Added "Delete" menu item

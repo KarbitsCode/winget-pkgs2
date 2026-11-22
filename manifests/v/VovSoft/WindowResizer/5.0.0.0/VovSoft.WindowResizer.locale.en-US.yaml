@@ -14,7 +14,10 @@ PackageUrl: https://vovsoft.com/software/window-resizer/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/window-resizer/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Window Resizer is a utility software that allows you to resize any window to an exact, predefined size. This is extremely useful when designing web pages, as it allows you to see how the page will look when viewed at a smaller size.
+ShortDescription: Vovsoft Window Resizer is a utility software that allows you 
+  to resize any window to an exact, predefined size. This is extremely useful 
+  when designing web pages, as it allows you to see how the page will look when 
+  viewed at a smaller size.
 Description: |-
   Vovsoft Window Resizer is a utility software that allows you to resize any window to an exact, predefined size. This is extremely useful when designing web pages, as it allows you to see how the page will look when viewed at a smaller size. The utility is also handy when compiling screenshots for documentation. Using Window Resizer allows you to easily maintain the same window size across screen grabs. Additionally, it works well with multi-monitor setups, allowing you to open different applications in specific positions on each monitor at Windows startup.
 
@@ -41,3 +44,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/window-resizer/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Window Resizer 5.0 (2026-09-17)
+  - Added "Workspaces"
+  - Improved UI

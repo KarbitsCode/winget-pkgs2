@@ -14,7 +14,10 @@ PackageUrl: https://vovsoft.com/software/webcam-capture/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/webcam-capture/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Webcam Capture is a very simple webcam snapshot software that enables you to monitor your cam from a streamlined, minimalist user interface. It offers various visual effects and can help you modify video properties.
+ShortDescription: Vovsoft Webcam Capture is a very simple webcam snapshot 
+  software that enables you to monitor your cam from a streamlined, minimalist 
+  user interface. It offers various visual effects and can help you modify video
+  properties.
 Description: |-
   Vovsoft Webcam Capture is a very simple webcam snapshot software that enables you to monitor your cam from a streamlined, minimalist user interface.
   It offers various visual effects and can help you modify video properties.
@@ -44,3 +47,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/webcam-capture/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Webcam Capture 3.4 (2025-09-05)
+  - Added "Mirror Horizontal"
+  - Added "Mirror Vertical"

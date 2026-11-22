@@ -14,7 +14,10 @@ PackageUrl: https://vovsoft.com/software/ram-monitor-gadget/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/ram-monitor-gadget/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft RAM Monitor Gadget is a RAM monitoring tool for anyone who wants to keep track of their computer's memory usage. This small but powerful RAM watcher provides real-time information about your system's RAM usage.
+ShortDescription: Vovsoft RAM Monitor Gadget is a RAM monitoring tool for anyone
+  who wants to keep track of their computer's memory usage. This small but 
+  powerful RAM watcher provides real-time information about your system's RAM 
+  usage.
 Description: |-
   Vovsoft RAM Monitor Gadget is a RAM monitoring tool for anyone who wants to keep track of their computer's memory usage. This small but powerful RAM watcher provides real-time information about your system's RAM usage.
 
@@ -33,3 +36,11 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/ram-monitor-gadget/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  RAM Monitor Gadget 2.0 (2026-06-18)
+  - Added "Start Minimized" setting, disabled by default
+  - Added "Show Left Axis Labels" setting, enabled by default
+  - Added "Seconds" setting, the default value is 10
+  - Added thousand separators to RAM values
+  - Improved "Stay On Top"
+  - Fixed some high-DPI issues

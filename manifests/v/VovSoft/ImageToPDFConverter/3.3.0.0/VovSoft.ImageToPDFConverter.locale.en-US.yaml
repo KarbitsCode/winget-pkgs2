@@ -14,7 +14,10 @@ PackageUrl: https://vovsoft.com/software/image-to-pdf-converter/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/image-to-pdf-converter/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: You can easily convert your image files to PDF with this software. Just add image files (JPEG, TIFF, PNG, GIF, BMP) to the list and click the Create PDF button, this software will directly convert them to PDF document.
+ShortDescription: You can easily convert your image files to PDF with this 
+  software. Just add image files (JPEG, TIFF, PNG, GIF, BMP) to the list and 
+  click the Create PDF button, this software will directly convert them to PDF 
+  document.
 Description: |-
   If you're looking for a simple and efficient method of turning images into PDF documents, you can try Vovsoft Image to PDF Converter. It's a lightweight, fast and easy-to-use application capable of converting photos to PDFs.
 
@@ -46,3 +49,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/image-to-pdf-converter/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Image to PDF Converter 3.3 (2026-10-16)
+  - Supported Ctrl+A (Select All) and Del (Delete Selected) keystrokes

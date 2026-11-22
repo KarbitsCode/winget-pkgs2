@@ -14,7 +14,8 @@ PackageUrl: https://vovsoft.com/software/pdf-to-image-converter/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/pdf-to-image-converter/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: If you're looking for a simple and efficient way of turning PDF documents into image files, you can try Vovsoft PDF to Image Converter.
+ShortDescription: If you're looking for a simple and efficient way of turning 
+  PDF documents into image files, you can try Vovsoft PDF to Image Converter.
 Description: |-
   If you're looking for a simple and efficient way of turning PDF documents into image files, you can try Vovsoft PDF to Image Converter. It's a lightweight, fast and easy-to-use application capable of converting PDFs to images.
 
@@ -36,3 +37,8 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/pdf-to-image-converter/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  PDF to Image Converter 1.6 (2026-04-01)
+  - Added "Keep Original Filenames" setting
+  - Added "Clear" menu item
+  - Improved UI

@@ -14,7 +14,10 @@ PackageUrl: https://vovsoft.com/software/disk-benchmark/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/disk-benchmark/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Measure hard drive and SSD performance. Benchmark programs usually measure theoretical top speeds of devices. On the contrary Vovsoft Disk Benchmark measures the real-world speeds by allowing the user to change some parameters.
+ShortDescription: Measure hard drive and SSD performance. Benchmark programs 
+  usually measure theoretical top speeds of devices. On the contrary Vovsoft 
+  Disk Benchmark measures the real-world speeds by allowing the user to change 
+  some parameters.
 Description: |-
   Vovsoft Disk Benchmark is a benchmarking utility designed to test and assess the performance of your hard drive and SSD, revealing the speed of the drive.
 
@@ -35,3 +38,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/disk-benchmark/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Disk Benchmark 2.0 (2021-09-10)
+  - Implemented high-DPI icons
+  - Supported portable deployment

@@ -14,7 +14,8 @@ PackageUrl: https://vovsoft.com/software/compare-two-texts/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/compare-two-texts/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Compare Two Texts is a Windows software designed for comparing textual content.
+ShortDescription: Vovsoft Compare Two Texts is a Windows software designed for 
+  comparing textual content.
 Description: |-
   Vovsoft Compare Two Texts is a Windows software designed for comparing textual content.
 
@@ -33,3 +34,8 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/compare-two-texts/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Compare Two Texts 1.5 (2026-09-24)
+  - The application now displays in-line text differences
+  - Added support for language files
+  - Improved translation window

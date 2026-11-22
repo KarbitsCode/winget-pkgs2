@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/ip-scanner/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/ip-scanner/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Discover devices on your local network and the internet with Vovsoft IP Scanner. A fast, multi-threaded tool using ARP, ICMP, and TCP for complete visibility.
+ShortDescription: Discover devices on your local network and the internet with 
+  Vovsoft IP Scanner. A fast, multi-threaded tool using ARP, ICMP, and TCP for 
+  complete visibility.
 Description: |-
   Vovsoft IP Scanner is an easy-to-use administration tool built to reveal network devices and ports. Whether you are auditing your local area network (LAN) or scanning external IP ranges across the internet (WAN), it provides fast, accurate, and comprehensive device discovery.
 
@@ -42,3 +44,10 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/ip-scanner/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  IP Scanner 1.1 (2026-06-19)
+  - Added "Host Name" column
+  - Added "Export to CSV" menu item
+  - Displayed device count
+  - Displayed last checked IP and port
+  - Improved ICMP

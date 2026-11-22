@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/keystroke-visualizer/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/keystroke-visualizer/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Keystroke Visualizer can show keys on your screen on top of everything. It can be very useful for presentations or creating software demonstration videos.
+ShortDescription: Vovsoft Keystroke Visualizer can show keys on your screen on 
+  top of everything. It can be very useful for presentations or creating 
+  software demonstration videos.
 Description: |-
   Vovsoft Keystroke Visualizer can show keys on your screen on top of everything. It can be very useful for presentations or creating software demonstration videos. Small texts will pop-up in the bottom-right corner or anywhere you move. It is a simple keypress OSD (on-screen display) software that can show what the demonstrator has typed or keys pressed.
 
@@ -31,3 +33,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/keystroke-visualizer/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Keystroke Visualizer 3.4 (2025-11-25)
+  - Fixed redundant application name refresh on every FormShow event

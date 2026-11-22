@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/speech-to-text-converter/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/speech-to-text-converter/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft Speech to Text Converter is an automatic speech conversion software to convert voice into text, supporting more than 50 languages.
+ShortDescription: Vovsoft Speech to Text Converter is an automatic speech 
+  conversion software to convert voice into text, supporting more than 50 
+  languages.
 Description: |-
   Vovsoft Speech to Text Converter is an automatic speech conversion software to convert voice into text, supporting more than 50 languages. This audio to text utility can save you hours transcribing interviews, meetings, podcasts or any long audio files.
 
@@ -44,3 +46,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/speech-to-text-converter/
 ManifestType: defaultLocale
 ManifestVersion: 1.28.0
+ReleaseNotes: |-
+  Speech to Text Converter 6.2 (2026-11-11)
+  - Fixed "How to" button issues

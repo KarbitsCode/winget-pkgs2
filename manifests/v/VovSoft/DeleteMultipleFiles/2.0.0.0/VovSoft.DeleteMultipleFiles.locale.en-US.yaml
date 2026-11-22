@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/delete-multiple-files/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/delete-multiple-files/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Easy to use batch delete application. Easily remove several files and folders from your computer with minimum effort. Get rid of many unneeded files on your computer at once.
+ShortDescription: Easy to use batch delete application. Easily remove several 
+  files and folders from your computer with minimum effort. Get rid of many 
+  unneeded files on your computer at once.
 Description: |-
   Vovsoft Delete Multiple Files enables batch file/folder deletion with a simple graphical user interface (GUI). It permits you to get rid of multiple files or folders from your computer without the need to go through and manually delete them. It presents a simplified window without overly complex settings.
 
@@ -39,3 +41,11 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/delete-multiple-files/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Delete Multiple Files 2.0 (2026-04-07)
+  - Added file and directory icons
+  - Added "Delete All" button to "List All" window
+  - Fixed file mask issue
+  - Fixed "Auto Close" issue
+  - Fixed "Environment Variables" issue
+  - Fixed drag and drop issue

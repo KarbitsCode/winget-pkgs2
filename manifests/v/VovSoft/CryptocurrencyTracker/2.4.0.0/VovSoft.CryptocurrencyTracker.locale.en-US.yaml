@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/cryptocurrency-tracker/
 License: Freeware
 LicenseUrl: https://vovsoft.com/eula/cryptocurrency-tracker/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: This software is a desktop app to visualize cryptocurrency market data. You can view cryptocoin prices and charts, including Bitcoin, Ethereum, XRP, LTC, BNB and thousands of more crypto currencies.
+ShortDescription: This software is a desktop app to visualize cryptocurrency 
+  market data. You can view cryptocoin prices and charts, including Bitcoin, 
+  Ethereum, XRP, LTC, BNB and thousands of more crypto currencies.
 Description: |-
   This software is a desktop app to visualize cryptocurrency market data. You can view cryptocoin prices and charts, including Bitcoin, Ethereum, XRP, LTC, BNB and thousands of more crypto currencies. Supports exporting raw data as CSV file and chart image as JPEG file. You can make the application stay-on-top and use it as a desktop widget.
 
@@ -37,3 +39,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/cryptocurrency-tracker/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Cryptocurrency Tracker 2.4 (2025-01-25)
+  - Added the ability to change auto-refresh interval in seconds

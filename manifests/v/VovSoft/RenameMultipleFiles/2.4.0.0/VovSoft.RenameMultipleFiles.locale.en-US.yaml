@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/rename-multiple-files/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/rename-multiple-files/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Rename multiple files with just a few clicks. Rename multiple files at the same time by specifying renaming rules with using the original name, extension, custom text, and numbering.
+ShortDescription: Rename multiple files with just a few clicks. Rename multiple 
+  files at the same time by specifying renaming rules with using the original 
+  name, extension, custom text, and numbering.
 Description: |-
   If you like to organize every bit of information on your computer, you must be interested in a software application that's capable of renaming multiple files at the same time. It significantly speeds up things, compared to manually changing the name of one file at once. Vovsoft Rename Multiple Files is a tiny tool that is designed with ease of use in mind. It can rename multiple files in bulk. It also has intuitive renaming settings that you can tailor to your preferences, such as automatic incrementation. This utility is an easy way to batch rename files.
 
@@ -43,3 +45,8 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/rename-multiple-files/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Rename Multiple Files 2.4 (2023-09-24)
+  - Supported loading and saving CSV files
+  - Improved error messages
+  - Fixed ComboBox bug

@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/url-extractor/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/url-extractor/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Vovsoft URL Extractor is one of the best link extractor programs that can recover http and https web page addresses, emails, ftp links. You can extract and harvest all URLs from files in seconds.
+ShortDescription: Vovsoft URL Extractor is one of the best link extractor 
+  programs that can recover http and https web page addresses, emails, ftp 
+  links. You can extract and harvest all URLs from files in seconds.
 Description: |-
   Vovsoft URL Extractor is one of the best link extractor programs that can recover http and https web page addresses, emails, ftp links. You can extract and harvest all URLs from files in seconds. Once installed, you can start the application and begin searching for links almost immediately. You only need to provide a directory, as the program can take care of the rest.
 
@@ -39,3 +41,7 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/url-extractor/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  URL Extractor 2.7 (2026-10-08)
+  - Added "Maximum URL Length"
+  - The default PDF engine is now PDFium

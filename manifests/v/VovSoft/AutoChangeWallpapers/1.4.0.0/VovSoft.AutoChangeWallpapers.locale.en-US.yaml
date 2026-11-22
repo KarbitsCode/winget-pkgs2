@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/auto-change-wallpapers/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/auto-change-wallpapers/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Instead of manually having to change their computer's wallpaper daily, users can instead rely on a software that does the job automatically.
+ShortDescription: Instead of manually having to change their computer's 
+  wallpaper daily, users can instead rely on a software that does the job 
+  automatically.
 Description: |-
   Those who are in the habit of changing their wallpapers on a daily basis can attest to the fact that this activity can become somewhat annoying and boring after a while. Instead of manually having to change their computer's wallpaper daily, users can instead rely on a software that does the job automatically. Vovsoft Auto Change Wallpapers is a program designed to enable users to automatically change their desktop wallpapers.
 
@@ -35,3 +37,9 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/auto-change-wallpapers/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Auto Change Wallpapers 1.4 (2025-12-19)
+  - Added "Send to Recycle Bin" right-click menu item
+  - Added "Minimize to System Tray" setting
+  - Improved UI
+  - Fixed some high-DPI issues in the nag screen

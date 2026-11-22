@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/text-statistics-analyzer/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/text-statistics-analyzer/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Analyze statistics on your character, word, and line frequency with the help of this lightweight software utility that could prove quite handy in linguistics studies.
+ShortDescription: Analyze statistics on your character, word, and line frequency
+  with the help of this lightweight software utility that could prove quite 
+  handy in linguistics studies.
 Description: |-
   Analyze statistics on your character, word, and line frequency with the help of this lightweight software utility that could prove quite handy in linguistics studies. The GUI packs two main buttons, one allowing you to load your text from a file, with the other initiating the analysis itself. You can also simply paste your text in the main window, take a look at it and even make modifications if you consider them necessary.
 
@@ -30,3 +32,8 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/text-statistics-analyzer/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Text Statistics Analyzer 4.0 (2026-08-20)
+  - Supported language files
+  - Improved speed
+  - Improved UI

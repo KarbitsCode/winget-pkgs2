@@ -14,7 +14,9 @@ PackageUrl: https://vovsoft.com/software/text-to-image-converter/
 License: Proprietary
 LicenseUrl: https://vovsoft.com/eula/text-to-image-converter/
 Copyright: VOVSOFT.COM © 2015 - 2026
-ShortDescription: Batch convert plain text lists into individual image files in seconds. Easily customize fonts, colors, and backgrounds without complex editors.
+ShortDescription: Batch convert plain text lists into individual image files in 
+  seconds. Easily customize fonts, colors, and backgrounds without complex 
+  editors.
 Description: |-
   Vovsoft Text to Image Converter is a streamlined utility designed to instantly transform lists of plain text into individual image files. Perfect for batch processing, this tool eliminates the need to manually create graphics in complex editors. Simply paste a list of text, choose a color or custom background image, customize your layout, and let the software automatically generate a dedicated image for every line of text in seconds.
 
@@ -48,3 +50,6 @@ Documentations:
   DocumentUrl: https://vovsoft.com/help/text-to-image-converter/
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
+ReleaseNotes: |-
+  Text to Image Converter 2.3 (2026-05-22)
+  - The application remembers font settings
