@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.12.8.0
-# yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.12.0.schema.json
+# Created using wingetcreate 1.28.1.0
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.28.0.schema.json
 
 PackageIdentifier: VovSoft.KeepSoftwareAlive
-PackageVersion: 3.4.0.0
+PackageVersion: 3.5.0.0
 PackageLocale: en-US
 Publisher: VOVSOFT
 PublisherUrl: https://vovsoft.com/
@@ -32,7 +32,10 @@ Documentations:
 - DocumentLabel: Keep Software Alive Help
   DocumentUrl: https://vovsoft.com/help/keep-software-alive/
 ManifestType: defaultLocale
-ManifestVersion: 1.12.0
+ManifestVersion: 1.28.0
 ReleaseNotes: |-
-  Keep Software Alive 3.4 (2025-09-15)
-  - Fixed parameter bug in "Start Executable"
+  Keep Software Alive 3.5 (2026-11-22)
+  - Added "Logging" option
+  - Dropped Windows XP support
+  - Improved speed
+  - Improved service handling
