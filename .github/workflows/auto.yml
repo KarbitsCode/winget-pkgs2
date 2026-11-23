@@ -22,13 +22,6 @@ jobs:
           path: winget-pkgs
           fetch-depth: 0
 
-      - name: Set up app token
-        id: github-app
-        uses: actions/create-github-app-token@v3.2.0
-        with:
-          client-id: ${{ secrets.APP_CLIENT_ID }}
-          private-key: ${{ secrets.APP_PRIVATE_KEY }}
-
       - name: Set up GPG config
         uses: crazy-max/ghaction-import-gpg@v7.0.0
         with:
@@ -102,7 +95,6 @@ jobs:
         env:
           PYTHONIOENCODING: utf-8
           GH_TOKEN: ${{ secrets.WINGET_TOKEN }}
-          BOT_TOKEN: ${{ steps.github-app.outputs.token }}
         run: |
           # https://github.com/PowerShell/PowerShell/issues/14100
           $env:PSModulePath = "C:\Windows\System32\WindowsPowerShell\v1.0\Modules"
