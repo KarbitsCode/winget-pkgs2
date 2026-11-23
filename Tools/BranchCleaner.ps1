@@ -43,6 +43,16 @@ $unused | ForEach-Object { Write-Host "  $($_.name)" }
 
 if (-not $DryRun) {
     foreach ($b in $unused) {
+        # Last check
+        $open = gh pr list --repo $upstream --head $b.name --state open --json number | ConvertFrom-Json
+        if ($LASTEXITCODE -ne 0) {
+            Write-Host "Skipped $($b.name) (could not check its PRs)"
+            continue
+        }
+        if ($open) {
+            Write-Host "Skipped $($b.name) (open PR #$($open[0].number))"
+            continue
+        }
         gh api -X DELETE "repos/$fork/git/refs/heads/$($b.name)"
         if ($LASTEXITCODE -eq 0) {
             Write-Host "Deleted $($b.name)" -ForegroundColor Green
