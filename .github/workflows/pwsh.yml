@@ -19,6 +19,10 @@ on:
       - synchronize
   workflow_dispatch:
 
+concurrency:
+  group: psscriptanalyzer-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   analyze:
     runs-on: ubuntu-latest
