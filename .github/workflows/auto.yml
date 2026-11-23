@@ -2,6 +2,11 @@ name: winget-pkgs auto
 on:
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+  queue: max
+
 jobs:
   updater:
     runs-on: windows-latest
