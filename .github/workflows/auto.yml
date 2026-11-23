@@ -109,6 +109,7 @@ jobs:
         if: always()
         shell: pwsh
         env:
+          GH_DEBUG: 1
           GH_TOKEN: ${{ secrets.WINGET_TOKEN }}
         run: |
           .\Tools\BranchCleaner.ps1
