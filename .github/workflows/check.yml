@@ -50,7 +50,7 @@ jobs:
           .\Tools\CheckMonikers.ps1 -Verbose
 
       - name: Delegate workflow
-        uses: benc-uk/workflow-dispatch@v1.3.2
+        uses: benc-uk/workflow-dispatch@v1.3.3
         if: always() && github.event_name != 'workflow_dispatch'
         with:
           workflow: auto.yml
