@@ -13,7 +13,7 @@ if ($url -notmatch 'github\.com[:/]([^/]+)/([^/]+?)(\.git)?/?$') {
 $me = gh api user --jq .login
 $fork = "$me/$($Matches[2])"
 $repo = gh api "repos/$fork" | ConvertFrom-Json
-$upstream = "$($Matches[1])/$($Matches[2])"
+$upstream = $repo.parent.full_name
 $default = $repo.default_branch
 
 # Get all branches that has PR attached
