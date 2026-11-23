@@ -10,14 +10,10 @@ $url = git remote get-url origin
 if ($url -notmatch 'github\.com[:/]([^/]+)/([^/]+?)(\.git)?/?$') {
     throw "Invalid url: $url"
 }
-$owner = $Matches[1]
 $me = gh api user --jq .login
-if ($owner -ne $me) {
-    throw "Owner mismatch"
-}
-$fork = "$owner/$($Matches[2])"
+$fork = "$me/$($Matches[2])"
 $repo = gh api "repos/$fork" | ConvertFrom-Json
-$upstream = $repo.parent.full_name
+$upstream = "$($Matches[1])/$($Matches[2])"
 $default = $repo.default_branch
 
 # Get all branches that has PR attached
@@ -26,7 +22,7 @@ $used = New-Object 'System.Collections.Generic.HashSet[string]'
 foreach ($target in @($upstream, $fork)) {
     $prs = gh pr list --repo $target --state all --author '@me' --limit 1000 --json headRefName,headRepositoryOwner | ConvertFrom-Json
     foreach ($pr in $prs) {
-        if ($pr.headRepositoryOwner.login -eq $owner -or $target -eq $fork) {
+        if ($pr.headRepositoryOwner.login -eq $me -or $target -eq $fork) {
             [void]$used.Add($pr.headRefName)
         }
     }
