@@ -2,7 +2,7 @@
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.28.0.schema.json
 
 PackageIdentifier: IObit.DriverBooster
-PackageVersion: 14.1.0.572
+PackageVersion: 14.1.0.557
 InstallerLocale: en-US
 InstallerType: inno
 Scope: machine
@@ -24,7 +24,7 @@ ElevationRequirement: elevatesSelf
 Installers:
 - Architecture: x86
   InstallerUrl: https://cdn.iobit.com/dl/driver_booster_setup.exe
-  InstallerSha256: 1E467ECFDC585C746A322AAE5600EABCA76CD1B1B87C2F546C98C01293F1B5E4
+  InstallerSha256: 6A979EE043CC6BE0A6B117B9A640FB1B8249E2AB5D13C2B362EA20B8A56CCD22
 ManifestType: installer
 ManifestVersion: 1.28.0
-ReleaseDate: 2026-11-23
+ReleaseDate: 2026-11-12
