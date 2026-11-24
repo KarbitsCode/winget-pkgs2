@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.12.13.0
-# yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.12.0.schema.json
+# Created using wingetcreate 1.28.1.0
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.28.0.schema.json
 
 PackageIdentifier: VovSoft.HealthBreakReminder
-PackageVersion: 2.7.0.0
+PackageVersion: 2.8.0.0
 PackageLocale: en-US
 Publisher: VOVSOFT
 PublisherUrl: https://vovsoft.com/
@@ -35,7 +35,8 @@ Documentations:
 - DocumentLabel: Health Break Reminder Help
   DocumentUrl: https://vovsoft.com/help/health-break-reminder/
 ManifestType: defaultLocale
-ManifestVersion: 1.12.0
+ManifestVersion: 1.28.0
 ReleaseNotes: |-
-  Health Break Reminder 2.7 (2026-11-06)
+  Health Break Reminder 2.8 (2026-11-23)
+  - Added error logging
   - Improved stability
