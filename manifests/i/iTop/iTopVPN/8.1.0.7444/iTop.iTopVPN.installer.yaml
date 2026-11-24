@@ -1,8 +1,8 @@
-# Created using wingetcreate 1.12.13.0
-# yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
+# Created using wingetcreate 1.28.1.0
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.28.0.schema.json
 
 PackageIdentifier: iTop.iTopVPN
-PackageVersion: 8.0.0.7373
+PackageVersion: 8.1.0.7444
 InstallerLocale: en-US
 InstallerType: inno
 Scope: machine
@@ -15,7 +15,7 @@ InstallationMetadata:
 Installers:
 - Architecture: x86
   InstallerUrl: https://download.itopvpn.com/installer/iTopVPN_setup_Free.exe
-  InstallerSha256: 43406A4A4AC36B78302BEE9703F6D3D96EB73140E312BE0C02EA6EA7675A2F2D
+  InstallerSha256: 467B4368DE4DD816ADABC6754B0A79470B2E4D6BE09D91E047DD3E47AAE703A3
 ManifestType: installer
-ManifestVersion: 1.12.0
-ReleaseDate: 2026-09-21
+ManifestVersion: 1.28.0
+ReleaseDate: 2026-11-23
